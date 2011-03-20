@@ -1,0 +1,30 @@
+[submodule "vendor/symfony"]
+	path = vendor/symfony
+	url = git://github.com/symfony/symfony.git
+[submodule "vendor/mongodb-odm"]
+	path = vendor/mongodb-odm
+	url = git://github.com/doctrine/mongodb-odm
+[submodule "vendor/zend"]
+	path = vendor/zend
+	url = git://github.com/zendframework/zf2.git
+[submodule "vendor/twig"]
+	path = vendor/twig
+	url = git://github.com/fabpot/Twig.git
+[submodule "vendor/bundles/FOS/UserBundle"]
+	path = vendor/bundles/FOS/UserBundle
+	url = git://github.com/FriendsOfSymfony/UserBundle.git
+[submodule "vendor/doctrine-data-fixtures"]
+	path = vendor/doctrine-data-fixtures
+	url = git://github.com/ornicar/data-fixtures
+[submodule "vendor/bundles/FOS/CommentBundle"]
+	path = vendor/bundles/FOS/CommentBundle
+	url = git://github.com/FriendsOfSymfony/CommentBundle.git
+[submodule "vendor/bundles/Sensio/FrameworkExtraBundle"]
+	path = vendor/bundles/Sensio/FrameworkExtraBundle
+	url = git://github.com/sensio/FrameworkExtraBundle.git
+[submodule "vendor/bundles/JMS/SecurityExtraBundle"]
+	path = vendor/bundles/JMS/SecurityExtraBundle
+	url = git://github.com/schmittjoh/SecurityExtraBundle.git
+[submodule "vendor/bundles/Symfony/Bundle/WebConfiguratorBundle"]
+	path = vendor/bundles/Symfony/Bundle/WebConfiguratorBundle
+	url = git://github.com/symfony/WebConfiguratorBundle.git

@@ -1,0 +1,52 @@
+#!/bin/sh
+
+show_run()
+{
+    echo "    $ $*"
+    result=$($*)
+    if [ $? -ne  0 ]; then
+        echo "--- FAIL"
+        echo $result
+        exit 1
+    fi
+}
+
+echo -e "\n--- Clearing cache"
+show_run rm -rf app/cache/*
+
+#echo -e "\n--- Building bootstrap"
+#show_run "php bin/build_bootstrap.php"
+
+if [ ! -f app/config/config_local.yml ]; then
+    echo "\n--- Creating local configuration file"
+    show_run cp app/config/config_local.yml.dist app/config/config_local.yml
+fi
+
+for cache in proxies hydrators; do
+    echo -e "\n--- Generating Doctrine $cache for dev"
+    show_run "php app/console --env=dev doctrine:mongodb:generate:$cache"
+done
+
+echo -e "\n--- Copying Doctrine cache from dev to test"
+show_run "mkdir -p app/cache/test"
+show_run "cp -r app/cache/dev/doctrine app/cache/test/doctrine"
+
+echo -e "\n--- Loading dev fixtures"
+show_run "php app/console --env=dev doctrine:mongodb:data:load"
+
+echo -e "\n--- Creating dev MongoDB standard indexes"
+show_run "php app/console --env=dev doctrine:mongodb:schema:create --index"
+
+echo -e "\n--- Dropping test database"
+echo "    $ mongo ltc_test --eval \"db.dropDatabase();\""
+mongo ltc_test --eval "db.dropDatabase();" > /dev/null
+
+echo -e "\n--- Copying dev database to test database"
+echo "    $ mongo ltc_dev --eval \"db.copyDatabase('ltc_dev', 'ltc_test');\""
+mongo ltc_dev --eval "db.copyDatabase('ltc_dev', 'ltc_test');" > /dev/null
+
+echo -e "\n--- Creating assets symlinks"
+show_run php app/console assets:install web --symlink
+
+# Show a cow saying something smart.
+curl --connect-timeout 1 -s "http://lichess.org/fortune.php?cowsay=1" 2>/dev/null

@@ -1,0 +1,5 @@
+/app/config/config_local.yml
+/app/cache/*
+/app/logs/*
+/bin/deploy*
+/app/bootstrap*

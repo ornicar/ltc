@@ -1,0 +1,42 @@
+imports:
+    - { resource: security.yml }
+framework:
+    charset:       UTF-8
+    error_handler: null
+    csrf_protection:
+        enabled: true
+        #secret: see_config_local
+    router:        { resource: "%kernel.root_dir%/config/routing.yml" }
+    validation:    { enabled: true, annotations: true }
+    templating:    { engines: ['twig'] }
+    #assets_version: 1
+    session:
+        default_locale: fr
+        lifetime:       36000
+        auto_start:     true
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Assetic Configuration
+assetic:
+    debug:          %kernel.debug%
+    use_controller: false
+
+# Doctrine Configuration
+doctrine_mongo_db:
+    connections:
+        default:
+            server: mongodb://localhost:27017
+            options:
+                connect: true
+                persist: ltc
+    default_database: ltc_%kernel.environment%
+    document_managers:
+        default:
+            mappings:
+
+imports:
+    - { resource: config_local.yml }

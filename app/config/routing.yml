@@ -1,0 +1,2 @@
+main:
+    resource: "@LtcCoreBundle/Resources/config/routing.yml"
