@@ -8,15 +8,17 @@ use Symfony\Component\ClassLoader\UniversalClassLoader;
 $loader = new UniversalClassLoader();
 $loader->registerNamespaces(array(
     'Symfony'                        => $vendorDir.'/symfony/src',
-    'Sensio'                         => $vendorDir.'/bundles',
-    'JMS'                            => $vendorDir.'/bundles',
     'Doctrine\\Common\\DataFixtures' => $vendorDir.'/doctrine-data-fixtures/lib',
     'Doctrine\\Common'               => $vendorDir.'/doctrine-common/lib',
     'Doctrine\\MongoDB'              => $vendorDir.'/doctrine-mongodb/lib',
     'Doctrine\\ODM\\MongoDB'         => $vendorDir.'/doctrine-mongodb-odm/lib',
+    'Doctrine\\ODM\\MongoDB'         => $vendorDir.'/doctrine-mongodb-odm/lib',
+    'Gedmo'                          => $vendorDir.'/doctrine-extensions/lib',
     'Zend'                           => $vendorDir.'/zend/library',
     'Assetic'                        => $vendorDir.'/assetic/src',
-    'Ltc'                            => $srcDir.'/',
+    'Ltc'                            => $srcDir,
+    'FOS'                            => $srcDir,
+    'Stof'                           => $srcDir,
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => $vendorDir.'/twig-extensions/lib',

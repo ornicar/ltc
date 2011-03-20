@@ -28,3 +28,12 @@
 [submodule "vendor/bundles/Symfony/Bundle/WebConfiguratorBundle"]
 	path = vendor/bundles/Symfony/Bundle/WebConfiguratorBundle
 	url = git://github.com/symfony/WebConfiguratorBundle.git
+[submodule "src/Stof/DoctrineExtensionsBundle"]
+	path = src/Stof/DoctrineExtensionsBundle
+	url = git://github.com/stof/DoctrineExtensionsBundle.git
+[submodule "vendor/doctrine-extensions"]
+	path = vendor/doctrine-extensions
+	url = git://github.com/l3pp4rd/DoctrineExtensions.git
+[submodule "src/Sonata/AdminBundle"]
+	path = src/Sonata/AdminBundle
+	url = git://github.com/sonata-project/AdminBundle.git

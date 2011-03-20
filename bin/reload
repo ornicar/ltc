@@ -47,6 +47,3 @@ mongo ltc_dev --eval "db.copyDatabase('ltc_dev', 'ltc_test');" > /dev/null
 
 echo -e "\n--- Creating assets symlinks"
 show_run php app/console assets:install web --symlink
-
-# Show a cow saying something smart.
-curl --connect-timeout 1 -s "http://lichess.org/fortune.php?cowsay=1" 2>/dev/null

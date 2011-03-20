@@ -13,9 +13,19 @@ class AppKernel extends Kernel
             new Symfony\Bundle\ZendBundle\ZendBundle(),
             new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-            new Ltc\CoreBundle\LtcCoreBundle()
+            new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+
+            new FOS\UserBundle\FOSUserBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+
+            new Ltc\UserBundle\LtcUserBundle(),
+            new Ltc\CoreBundle\LtcCoreBundle(),
+            new Ltc\DocBundle\LtcDocBundle(),
+            new Ltc\BlogBundle\LtcBlogBundle(),
+            new Ltc\ArticleBundle\LtcArticleBundle(),
+            new Ltc\PackageBundle\LtcPackageBundle(),
+            new Ltc\ImportBundle\LtcImportBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

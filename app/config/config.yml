@@ -1,5 +1,3 @@
-imports:
-    - { resource: security.yml }
 framework:
     charset:       UTF-8
     error_handler: null
@@ -37,6 +35,57 @@ doctrine_mongo_db:
     document_managers:
         default:
             mappings:
+                FOSUserBundle:
+                FOSCommentBundle:
+                StofDoctrineExtensionsBundle:
+                LtcUserBundle:
+                LtcDocBundle:
+                LtcArticleBundle:
+                LtcBlogBundle:
+                LtcPackageBundle:
+
+stof_doctrine_extensions:
+    mongodb:
+        default:
+            sluggable: true
+            translatable: false
+            timestampable: true
+            loggable: false
+            tree: false
+
+security:
+    providers:
+        fos_user_provider:
+            id: fos_user.user_manager
+    firewalls:
+        main:
+            form_login:
+                provider:    fos_user_provider
+                login_path:  /login
+                check_path:  /login_check
+                use_referer: true
+            remember_me:
+                key:  kRopAjYEwDza74
+                name: ltc_remember_me
+                lifetime: 31536000
+                always_remember_me: true
+                remember_me_parameter: _remember_me
+            logout: true
+            anonymous: true
+
+fos_user:
+    db_driver: mongodb
+    provider_key: main
+    class:
+        model:
+            user: Ltc\UserBundle\Document\User
+            group: FOS\UserBundle\Document\DefaultGroup
+
+fos_comment:
+    db_driver: mongodb
+    class:
+        model:
+            comment: FOS\CommentBundle\Document\Comment
 
 imports:
     - { resource: config_local.yml }
