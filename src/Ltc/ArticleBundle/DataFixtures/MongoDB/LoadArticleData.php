@@ -10,10 +10,21 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
 use Ltc\ArticleBundle\Document\Article;
+use DateTime;
 
 class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
+    const TABLE = 'pap_article';
+
+    protected $dossiers = array(
+        2 => 'textes',
+        3 => 'invites',
+        4 => 'outils',
+        5 => 'visuels',
+        6 => 'chantiers'
+    );
     protected $userManager;
+    protected $data;
 
     public function getOrder()
     {
@@ -22,51 +33,49 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 
     public function setContainer(ContainerInterface $container = null)
     {
+        $this->userManager  = $container->get('fos_user.user_manager');
+        $this->data = $container->get('ltc_import.unserializer')->unserialize(self::TABLE);
     }
 
     public function load($manager)
     {
-        $article = new Article();
-        $article->setAuthor($this->getReference('user-thibault'));
-        $article->setCategory($this->getReference('category-textes'));
-        $article->setTitle("La fiche-concept en didactique de l’Information-documentation : outil d’acculturation professionnelle, support pour la construction des connaissances ?");
-        $article->setSummary($this->getText('1-summary'));
-        $article->setBody($this->getText('1-body'));
-        $article->setReference("Duplessis Pascal. « Frédéric Rabat, ou l’entrée dans la culture de l’information par ses objets » [en ligne]. *Les Trois couronnes*, 2009. Disponible sur http://esmeree.fr/lestroiscouronnes/idoc/blog/frederic-rabat-ou-l-entree-dans-la-culture-de-l-information-par-ses-objets");
-        $manager->persist($article);
+        foreach ($this->data as $a) {
+            if (!isset($this->dossiers[$a['dossier_id']])) {
+                continue;
+            }
+            $category = $this->getReference('category-'.$this->dossiers[$a['dossier_id']]);
+            $o = new Article();
+            $o->setCategory($category);
+            $o->setCreatedAt(new DateTime($a['created_at']));
+            $o->setUpdatedAt(new DateTime($a['updated_at']));
+            $o->setTitle($a['nom']);
+            $o->setSummary($a['resume']);
+            $o->setBody($a['description']);
+            $o->setTitle($a['nom']);
+            $o->setSlug($a['strip']);
+            $o->setReference($a['reference']);
+            $o->setUrl($a['lien']);
 
-        $article = new Article();
-        $article->setAuthor($this->getReference('user-pascal'));
-        $article->setCategory($this->getReference('category-textes'));
-        $article->setTitle("Les médias d’information et leur didactisation dans le secondaire : Fonctions, enjeux, contenus conceptuels");
-        $article->setSummary($this->getText('2-summary'));
-        $article->setBody($this->getText('2-body'));
-        $article->setReference("Duplessis Pascal. Fiche de donnees didactiques sur Google [en ligne]. *Les Trois couronnes*, 2009. Disponible sur http://esmeree.fr/lestroiscouronnes/idoc/outils/fiche-de-donnees-didactiques-sur-google");
-        $manager->persist($article);
-
-        $article = new Article();
-        $article->setAuthor($this->getReference('user-pascal'));
-        $article->setCategory($this->getReference('category-textes'));
-        $article->setTitle("Entrer dans la culture de l’information par les usages");
-        $article->setSummary($this->getText('3-summary'));
-        $article->setBody($this->getText('3-body'));
-        $article->setReference("Duplessis Pascal. Entrer dans la culture de l’information par les usages [en ligne]. *Les Trois couronnes*, 2009. Disponible sur http://esmeree.fr/lestroiscouronnes/idoc/outils/entrer-dans-la-culture-de-l-information-par-les-usages");
-        $manager->persist($article);
-
-        $article = new Article();
-        $article->setAuthor($this->getReference('user-pascal'));
-        $article->setCategory($this->getReference('category-outils'));
-        $article->setTitle("La démarche de réfutation");
-        $article->setSummary($this->getText('4-summary'));
-        $article->setBody($this->getText('4-body'));
-        $article->setReference("Duplessis Pascal. La démarche de réfutation [en ligne]. *Les Trois couronnes*, 2009. Disponible sur : http://esmeree.fr/lestroiscouronnes/idoc/outils/la-demarche-de-refutation");
-        $manager->persist($article);
-
+            if (isset($a['author'])) {
+                $user = $this->createUser($a['author'], $a['qualite']);
+            } else {
+                $user = $this->getReference('user-pascal');
+            }
+            $o->setAuthor($user);
+            $manager->persist($o);
+        }
         $manager->flush();
     }
 
-    protected function getText($file)
+    protected function createUser($userFullName)
     {
-        return file_get_contents(__DIR__.'/../text/'.$file);
+        $user = $this->userManager->createUser();
+        $user->setUsername($userFullName);
+        $user->setFullName($userFullName);
+        $user->setBio($bio);
+        $user->setPlainPassword(base_convert(mt_rand(0x1D39D3E06400000, 0x41C21CB8E0FFFFFF), 10, 36));
+        $this->userManager->updateUser();
+
+        return $user;
     }
 }
