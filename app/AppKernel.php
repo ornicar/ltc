@@ -18,6 +18,10 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            //new Sonata\jQueryBundle\SonatajQueryBundle(),
+            //new Sonata\BluePrintBundle\SonataBluePrintBundle(),
+            //new Sonata\AdminBundle\SonataAdminBundle(),
+            //new Knplabs\MenuBundle\KnplabsMenuBundle(),
 
             new Ltc\UserBundle\LtcUserBundle(),
             new Ltc\CoreBundle\LtcCoreBundle(),
@@ -25,6 +29,8 @@ class AppKernel extends Kernel
             new Ltc\BlogBundle\LtcBlogBundle(),
             new Ltc\ArticleBundle\LtcArticleBundle(),
             new Ltc\PackageBundle\LtcPackageBundle(),
+            new Ltc\ImageBundle\LtcImageBundle(),
+            new Ltc\TagBundle\LtcTagBundle(),
             new Ltc\ImportBundle\LtcImportBundle(),
         );
 

@@ -43,6 +43,8 @@ doctrine_mongo_db:
                 LtcArticleBundle:
                 LtcBlogBundle:
                 LtcPackageBundle:
+                LtcImageBundle:
+                LtcTagBundle:
 
 stof_doctrine_extensions:
     mongodb:

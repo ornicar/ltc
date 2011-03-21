@@ -2,6 +2,7 @@
 
 namespace Ltc\DocBundle\Document;
 
+use Ltc\ImageBundle\Document\Image;
 use Ltc\UserBundle\Document\User;
 use DateTime;
 
@@ -111,6 +112,30 @@ abstract class Doc
      * @mongodb:Field(type="string")
      */
     protected $body;
+
+    /**
+     * Main image of the article
+     *
+     * @var Image
+     */
+    protected $image;
+
+    /**
+     * @return Image
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param  Image
+     * @return null
+     */
+    public function setImage(Image $image)
+    {
+        $this->image = $image;
+    }
 
     /**
      * @return bool

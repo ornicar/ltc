@@ -10,11 +10,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
 use Ltc\ArticleBundle\Document\Article;
+use Ltc\ImageBundle\Document\Image;
+use Symfony\Component\HttpFoundation\File\File;
 use DateTime;
 
 class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
-    const TABLE = 'pap_article';
+    const ARTICLE_TABLE     = 'pap_article';
+    const TAG_TABLE         = 'pap_tag';
+    const ARTICLE_TAG_TABLE = 'pap_article_tag';
 
     protected $dossiers = array(
         2 => 'textes',
@@ -24,7 +28,9 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         6 => 'chantiers'
     );
     protected $userManager;
-    protected $data;
+    protected $articles;
+    protected $tags;
+    protected $articleTags;
 
     public function getOrder()
     {
@@ -33,13 +39,17 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 
     public function setContainer(ContainerInterface $container = null)
     {
-        $this->userManager  = $container->get('fos_user.user_manager');
-        $this->data = $container->get('ltc_import.unserializer')->unserialize(self::TABLE);
+        $this->userManager = $container->get('fos_user.user_manager');
+        $this->articles    = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TABLE);
+        $this->tags        = $container->get('ltc_import.unserializer')->unserialize(self::TAG_TABLE);
+        $this->articleTags = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TAG_TABLE);
     }
 
     public function load($manager)
     {
-        foreach ($this->data as $a) {
+        $articleTags = $this->prepareArticleTags();
+
+        foreach ($this->articles as $a) {
             if (!isset($this->dossiers[$a['dossier_id']])) {
                 continue;
             }
@@ -55,16 +65,48 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             $o->setSlug($a['strip']);
             $o->setReference($a['reference']);
             $o->setUrl($a['lien']);
-
             if (isset($a['author'])) {
                 $user = $this->createUser($a['author'], $a['qualite']);
             } else {
                 $user = $this->getReference('user-pascal');
             }
+            if (isset($a['image'])) {
+                $image = $this->createImage($a['image'], $a['legende']);
+                $o->setImage($image);
+            }
             $o->setAuthor($user);
+            if (isset($articleTags[$a['id']])) {
+                $o->setTags($articleTags[$a['id']]);
+            }
             $manager->persist($o);
         }
         $manager->flush();
+    }
+
+    protected function prepareArticleTags()
+    {
+        $tagsById = array();
+        foreach ($this->tags as $tag) {
+            $tagsById[$tag['id']] = $tag['nom'];
+        }
+        $articleTags = array();
+        foreach ($this->articleTags as $at) {
+            $articleId = $at['article_id'];
+            if (!isset($articleTags[$articleId])) {
+                $articleTags[$articleId] = array();
+            }
+            $articleTags[$articleId][] = $tagsById[$at['tag_id']];
+        }
+    }
+
+    protected function createImage($filename, $legend)
+    {
+        $image = new Image();
+        $image->setLegend($legend);
+        $file = new File(__DIR__.'/../fixture.jpg');
+        $image->setFile($file);
+
+        return $image;
     }
 
     protected function createUser($userFullName)

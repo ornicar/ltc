@@ -18,7 +18,7 @@ class File
     protected $title;
 
     /**
-     * Real name on the file on filesystem
+     * Real name of the file on filesystem
      *
      * @var string
      * @mongodb:Field(type="string")
@@ -89,14 +89,6 @@ class File
     }
 
     /**
-     * @param  string
-     * @return null
-     */
-    public function setWebPath($webPath)
-    {
-        $this->webPath = $webPath;
-    }
-    /**
      * @return string
      */
     public function getPath()
@@ -105,28 +97,11 @@ class File
     }
 
     /**
-     * @param  string
-     * @return null
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-    }
-    /**
      * @return string
      */
     public function getFilename()
     {
         return $this->filename;
-    }
-
-    /**
-     * @param  string
-     * @return null
-     */
-    public function setFilename($filename)
-    {
-        $this->filename = $filename;
     }
 
     /**
@@ -138,15 +113,6 @@ class File
     }
 
     /**
-     * @param  int
-     * @return null
-     */
-    public function setVersion($version)
-    {
-        $this->version = $version;
-    }
-
-    /**
      * @return int
      */
     public function getSize()
@@ -155,14 +121,6 @@ class File
     }
 
     /**
-     * @param  int
-     * @return null
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
-    }
-    /**
      * @return string
      */
     public function getExtension()
@@ -170,14 +128,6 @@ class File
         return $this->extension;
     }
 
-    /**
-     * @param  string
-     * @return null
-     */
-    public function setExtension($extension)
-    {
-        $this->extension = $extension;
-    }
     /**
      * @return string
      */
