@@ -6,8 +6,11 @@ use Ltc\DocBundle\Document\Doc;
 
 /**
  * @mongodb:Document(
- *   collection="article"
+ *   collection="article",
+ *   repositoryClass="Ltc\ArticleBundle\Document\ArticleRepository"
  * )
+ * @mongodb:Index(keys={"category.$id"="asc"})
+ * @mongodb:Index(keys={"slug"="asc"})
  */
 class Article extends Doc
 {
@@ -24,7 +27,6 @@ class Article extends Doc
      *
      * @var string
      * @mongodb:Field(type="string")
-     * @gedmo:Slug(unique="false", updatable="true")
      */
     protected $slug;
 

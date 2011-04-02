@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             //new Sonata\jQueryBundle\SonatajQueryBundle(),
             //new Sonata\BluePrintBundle\SonataBluePrintBundle(),
             //new Sonata\AdminBundle\SonataAdminBundle(),
-            new Knplabs\MenuBundle\KnplabsMenuBundle(),
+            new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
 
             new Ltc\UserBundle\LtcUserBundle(),
             new Ltc\CoreBundle\LtcCoreBundle(),

@@ -7,7 +7,8 @@ use MongoId;
 
 /**
  * @mongodb:Document(
- *   collection="user"
+ *   collection="user",
+ *   repositoryClass="Ltc\UserBundle\Document\UserRepository"
  * )
  */
 class User extends BaseUser

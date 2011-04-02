@@ -5,13 +5,14 @@ namespace Ltc\DocBundle\Document;
 use Ltc\ImageBundle\Document\Image;
 use Ltc\UserBundle\Document\User;
 use DateTime;
+use Gedmo\Sluggable\Util\Urlizer;
 
 /**
  * @mongodb:MappedSuperclass
- * @mongodb:UniqueIndex(keys={"slug"="asc"}, options={"unique"="false"})
  * @mongodb:Indexes({
  *   @mongodb:Index(keys={"createdAt"="desc"}),
- *   @mongodb:Index(keys={"published"="desc"})
+ *   @mongodb:Index(keys={"published"="desc"}),
+ *   @mongodb:Index(keys={"tags"="asc"})
  * })
  */
 abstract class Doc
@@ -47,7 +48,6 @@ abstract class Doc
      *
      * @var string
      * @mongodb:Field(type="string")
-     * @gedmo:Sluggable
      */
     protected $title;
 
@@ -70,7 +70,7 @@ abstract class Doc
      * Tags
      *
      * @var array
-     * @mongodb:Field(type="collection")
+     * @mongodb:ReferenceMany(targetDocument="Ltc\TagBundle\Document\Tag", sort={"_id"="asc"})
      */
     protected $tags = array();
 
@@ -86,6 +86,7 @@ abstract class Doc
      * User author of this article
      *
      * @var User
+     * @mongodb:ReferenceOne(targetDocument="Ltc\UserBundle\Document\User")
      */
     protected $author;
 
@@ -290,13 +291,28 @@ abstract class Doc
         return $this->title;
     }
 
+    public function getShortTitle()
+    {
+        $limit = 40;
+
+        $firstPart = substr($this->getTitle(), 0, strpos($this->getTitle(), ':'));
+
+        if (strlen($firstPart) > $limit) {
+            return $firstPart;
+        }
+
+        return $this->getTitle();
+    }
+
     /**
+     * Sets the title and generates the slug
      * @param  string
      * @return null
      */
     public function setTitle($title)
     {
         $this->title = $title;
+        $this->setSlug(Urlizer::urlize($this->getShortTitle()));
     }
 
     /**
@@ -331,5 +347,15 @@ abstract class Doc
     public function setCreatedAt(DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * Return the slugs of this doc tags
+     *
+     * @return array
+     **/
+    public function getTagSlugs()
+    {
+        return array_map(function($tag) { return $tag->getSlug(); }, $this->getTags()->toArray());
     }
 }

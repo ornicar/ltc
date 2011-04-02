@@ -1,0 +1,18 @@
+<table>
+    {% for tag in ['thead', 'tfoot'] %}
+    <{{ tag }}>
+        <tr>
+            <th>Titre</th>
+            <th>Date</th>
+        </tr>
+    </{{ tag }}>
+    {% endfor %}
+    <tbody>
+    {% for article in articles %}
+        <tr>
+            <td><a href="{{ path("ltc_article_admin_article_view", {"categorySlug": article.category.slug, "slug": article.slug}) }}">{{ article.title }}</a></td>
+            <td>{{ article.createdAt|date }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

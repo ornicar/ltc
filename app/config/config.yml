@@ -34,6 +34,7 @@ doctrine_mongo_db:
     default_database: ltc_%kernel.environment%
     document_managers:
         default:
+            metadata_cache_driver: apc
             mappings:
                 FOSUser:
                 FOSComment:
@@ -82,7 +83,7 @@ security:
 
 fos_user:
     db_driver: mongodb
-    provider_key: main
+    firewall_name: main
     class:
         model:
             user: Ltc\UserBundle\Document\User
@@ -96,6 +97,9 @@ fos_comment:
 apc:
     host: http://ltc
     web_dir: %kernel.root_dir%/../web
+
+knplabs_menu:
+    twig: true
 
 imports:
     - { resource: config_local.yml }

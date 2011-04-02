@@ -3,6 +3,7 @@
 namespace Ltc\ArticleBundle\Document;
 
 use DateTime;
+use Gedmo\Sluggable\Util\Urlizer;
 
 /**
  * @mongodb:Document(
@@ -45,7 +46,6 @@ class Category
      *
      * @var string
      * @mongodb:Field(type="string")
-     * @gedmo:Sluggable
      */
     protected $title;
 
@@ -54,7 +54,6 @@ class Category
      *
      * @var string
      * @mongodb:Field(type="string")
-     * @gedmo:Slug(unique="true", updatable="true")
      */
     protected $slug;
 
@@ -170,6 +169,7 @@ class Category
     public function setTitle($title)
     {
         $this->title = $title;
+        $this->setSlug(Urlizer::urlize($title));
     }
 
     /**

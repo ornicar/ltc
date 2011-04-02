@@ -8,6 +8,7 @@ use Ltc\DocBundle\Document\Doc;
  * @mongodb:Document(
  *   collection="article"
  * )
+ * @mongodb:UniqueIndex(keys={"slug"="asc"})
  */
 class BlogEntry extends Doc
 {

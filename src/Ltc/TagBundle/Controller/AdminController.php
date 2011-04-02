@@ -2,12 +2,17 @@
 
 namespace Ltc\TagBundle\Controller;
 
-use Sonata\AdminBundle\Controller\CRUDController as Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AdminController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LtcTag:Admin:index.html.twig');
+        $tags = $this->get('ltc_tag.repository.tag')->findAll();
+
+        return $this->render('LtcTag:Admin:index.html.twig', array(
+            'tags' => $tags
+        ));
     }
 }

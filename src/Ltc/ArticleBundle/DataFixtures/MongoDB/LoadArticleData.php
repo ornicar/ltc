@@ -27,10 +27,12 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         5 => 'visuels',
         6 => 'chantiers'
     );
+    protected $categoryRepository;
+    protected $userRepository;
     protected $userManager;
     protected $articles;
-    protected $tags;
     protected $articleTags;
+    protected $tags;
 
     public function getOrder()
     {
@@ -39,36 +41,48 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 
     public function setContainer(ContainerInterface $container = null)
     {
-        $this->userManager = $container->get('fos_user.user_manager');
-        $this->articles    = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TABLE);
-        $this->tags        = $container->get('ltc_import.unserializer')->unserialize(self::TAG_TABLE);
-        $this->articleTags = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TAG_TABLE);
+        $this->userManager        = $container->get('fos_user.user_manager');
+        $this->userRepository     = $container->get('ltc_user.repository.user');
+        $this->articles           = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TABLE);
+        $this->categoryRepository = $container->get('ltc_article.repository.category');
+        $this->tagRepository      = $container->get('ltc_tag.repository.tag');
+        $this->articleTags        = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TAG_TABLE);
+        $this->tags               = $container->get('ltc_import.unserializer')->unserialize(self::TAG_TABLE);
     }
 
     public function load($manager)
     {
         $articleTags = $this->prepareArticleTags();
 
+        foreach ($this->dossiers as $slug) {
+            $this->categoriesBySlug[$slug] = $this->categoryRepository->findOneBySlug($slug);
+        }
+        $categoriesBySlug = $this->categoryRepository->findAllIndexBySlug();
+        $usersByUsername = $this->userRepository->findAllIndexByUsernameCanonical();
+
         foreach ($this->articles as $a) {
             if (!isset($this->dossiers[$a['dossier_id']])) {
                 continue;
             }
-            $category = $this->getReference('category-'.$this->dossiers[$a['dossier_id']]);
+            $categorySlug = $this->dossiers[$a['dossier_id']];
+            $category = $categoriesBySlug[$categorySlug];
+
             $o = new Article();
             $o->setCategory($category);
             $o->setCreatedAt(new DateTime($a['created_at']));
             $o->setUpdatedAt(new DateTime($a['updated_at']));
-            $o->setTitle($a['nom']);
             $o->setSummary($a['resume']);
             $o->setBody($a['description']);
             $o->setTitle($a['nom']);
-            $o->setSlug($a['strip']);
+            if (!empty($a['strip'])) {
+                $o->setSlug($a['strip']);
+            }
             $o->setReference($a['reference']);
             $o->setUrl($a['lien']);
             if (isset($a['author'])) {
                 $user = $this->createUser($a['author'], $a['qualite']);
             } else {
-                $user = $this->getReference('user-pascal');
+                $user = $usersByUsername['pascal'];
             }
             if (isset($a['image'])) {
                 $image = $this->createImage($a['image'], $a['legende']);
@@ -85,11 +99,12 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 
     protected function prepareArticleTags()
     {
+        $tagsBySlug = $this->tagRepository->findAllIndexBySlug();
+        $articleTags = array();
         $tagsById = array();
         foreach ($this->tags as $tag) {
-            $tagsById[$tag['id']] = $tag['nom'];
+            $tagsById[$tag['id']] = $tagsBySlug[$tag['strip']];
         }
-        $articleTags = array();
         foreach ($this->articleTags as $at) {
             $articleId = $at['article_id'];
             if (!isset($articleTags[$articleId])) {
@@ -97,6 +112,8 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             }
             $articleTags[$articleId][] = $tagsById[$at['tag_id']];
         }
+
+        return $articleTags;
     }
 
     protected function createImage($filename, $legend)

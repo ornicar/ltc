@@ -1,12 +1,13 @@
 {% extends "LtcCore:Layout:root.html.twig" %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset("bundles/ltcadmin/css/style.css") }}">
+<link rel="stylesheet" href="{{ asset("bundles/ltcadmin/css/admin.css") }}">
 {% endblock %}
 
 {% block javascripts %}
 {{ parent() }}
 <script src="{{ asset("bundles/ltccore/vendor/jquery-ui.min.js") }}"></script>
+<script src="{{ asset("bundles/ltcadmin/js/admin.js") }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -20,20 +21,17 @@
                 <li><a href="#">Help</a></li>
                 #}
                 <li class="username">{{ app.user.username }}</li>
-                <li><a href="{{ path("_security_logout") }}">Deconnection</a></li>
+                <li><a href="{{ path("_security_logout") }}">Deconnexion</a></li>
             </ul>
         </div>
-        <ul id="main_nav">
-            <li><a href="#">Home</a></li>
-            <li><a href="#" class="active">Demo</a></li>
-        </ul>
+        {{ menu("ltc.admin.main") }}
         <ul id="sub_nav">
-            <li><a id="sub_nav_1" href="javascript:switchLayout(1)" class="active">1 column</a></li>
-            <li><a id="sub_nav_2" href="javascript:switchLayout(2)">2 columns</a></li>
         </ul>
     </div>
 
     <div id="content">
+        {% block content %}
+        {% endblock %}
     </div>
 
     <div id="footer">

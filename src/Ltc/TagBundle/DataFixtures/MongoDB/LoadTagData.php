@@ -16,23 +16,23 @@ class LoadTagData extends AbstractFixture implements OrderedFixtureInterface, Co
     const TAG_TABLE         = 'pap_tag';
 
     protected $tags;
+    protected $tagRepository;
 
     public function getOrder()
     {
-        return 10;
+        return 6;
     }
 
     public function setContainer(ContainerInterface $container = null)
     {
         $this->tags = $container->get('ltc_import.unserializer')->unserialize(self::TAG_TABLE);
+        $this->tagRepository = $container->get('ltc_tag.repository.tag');
     }
 
     public function load($manager)
     {
         foreach ($this->tags as $a) {
-            $o = new Tag();
-            $o->setTitle($a['nom']);
-            $o->setSlug($a['strip']);
+            $o = $this->tagRepository->create($a['nom'], $a['strip']);
             $manager->persist($o);
         }
         $manager->flush();

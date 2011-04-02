@@ -4,9 +4,9 @@ namespace Ltc\TagBundle\Document;
 
 /**
  * @mongodb:Document(
- *   collection="tag"
+ *   collection="tag",
+ *   repositoryClass="Ltc\TagBundle\Document\TagRepository"
  * )
- * @mongodb:UniqueIndex(keys={"slug"="asc"}, options={"unique"="true", "dropDups"="true"})
  */
 class Tag
 {
@@ -14,27 +14,23 @@ class Tag
      * Unique ID
      *
      * @var string
-     * @mongodb:Id()
+     * @mongodb:Id(strategy="none")
      */
-    protected $id;
+    protected $slug;
 
     /**
      * Tag title. Should be unique.
      *
      * @var string
      * @mongodb:Field(type="string")
-     * @gedmo:Sluggable
      */
     protected $title;
 
-    /**
-     * Tag slug. Must be unique.
-     *
-     * @var string
-     * @mongodb:Field(type="string")
-     * @gedmo:Slug(unique="true", updatable="true")
-     */
-    protected $slug;
+    public function __construct($title, $slug)
+    {
+        $this->title = $title;
+        $this->slug  = $slug;
+    }
 
     /**
      * @return string
@@ -42,15 +38,6 @@ class Tag
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * @param  string
-     * @return null
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
     }
 
     /**
@@ -68,13 +55,5 @@ class Tag
     public function setTitle($title)
     {
         $this->title = $title;
-    }
-
-    /**
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }

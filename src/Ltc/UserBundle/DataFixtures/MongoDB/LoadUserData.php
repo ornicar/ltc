@@ -34,7 +34,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->setEnabled(true);
         $user->addRole(User::ROLE_SUPERADMIN);
         $this->userManager->updateUser($user);
-        $this->addReference('user-'.$user->getUsernameCanonical(), $user);
 
         $user = $this->userManager->createUser();
         $user->setUsername('pascal');
@@ -43,6 +42,5 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->setEnabled(true);
         $user->addRole(User::ROLE_ADMIN);
         $this->userManager->updateUser($user);
-        $this->addReference('user-'.$user->getUsernameCanonical(), $user);
     }
 }

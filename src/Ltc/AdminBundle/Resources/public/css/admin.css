@@ -41,14 +41,14 @@ a {
 #header #title_and_user_links {
     overflow: hidden;
     margin: 0 auto;
-    width: 960px
+    width: 1000px
 }
 #title_and_user_links h1 {
     float: left;
     margin: 0 10px;
     color: #FFF;
     font-size: 25px;
-    width: 700px
+    width: 740px
 }
 #title_and_user_links ul {
     float: right;
@@ -66,7 +66,7 @@ a {
 }
 #main_nav, #sub_nav {
     margin: 0 auto;
-    width: 940px
+    width: 980px
 }
 #main_nav a {
     background-color: #5AA7DE;
@@ -74,7 +74,7 @@ a {
     padding: 2px 0.5em;
     text-decoration: none
 }
-#main_nav a.active {
+#main_nav .current a {
     background-color: #BDDFF7;
     color: #000
 }
@@ -82,13 +82,13 @@ a {
     height: 20px;
     background-color: #BDDFF7;
     padding: 10px 10px 0;
-    width: 940px
+    width: 980px
 }
 #sub_nav a {
     padding: 3px 0.5em;
     text-decoration: none
 }
-#sub_nav a.active {
+#sub_nav .current a {
     background-color: #FFF
 }
 
@@ -96,7 +96,8 @@ a {
 #content {
     margin: 10px auto;
     overflow: hidden;
-    width: 960px
+    width: 1000px;
+    min-height: 400px;
 }
 #login_page #content {
     width: 400px
@@ -159,12 +160,18 @@ table {
     margin-bottom: 10px;
     width: 100%
 }
+table a {
+    text-decoration: none;
+}
+table a:hover {
+    text-decoration: underline;
+}
 thead, tfoot {
     background-color: #DEDEDE;
     border: 1px solid #BBB
 }
 td, th {
-    padding: 2px 10px;
+    padding: 5px 10px;
     text-align: left
 }
 tfoot td {
