@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Bundle\ApcBundle\ApcBundle(),
             //new Sonata\jQueryBundle\SonatajQueryBundle(),
             //new Sonata\BluePrintBundle\SonataBluePrintBundle(),
             //new Sonata\AdminBundle\SonataAdminBundle(),

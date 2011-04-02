@@ -46,3 +46,6 @@
 [submodule "src/Knplabs/MenuBundle"]
 	path = src/Knplabs/MenuBundle
 	url = git@github.com:sonata-project/MenuBundle.git
+[submodule "src/Bundle/ApcBundle"]
+	path = src/Bundle/ApcBundle
+	url = git://github.com/ornicar/ApcBundle

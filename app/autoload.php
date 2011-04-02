@@ -21,6 +21,7 @@ $loader->registerNamespaces(array(
     'Stof'                           => $srcDir,
     'Sonata'                         => $srcDir,
     'Knplabs'                        => $srcDir,
+    'Bundle'                         => $srcDir,
 ));
 $loader->registerPrefixes(array(
     'Twig_Extensions_' => $vendorDir.'/twig-extensions/lib',
