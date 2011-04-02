@@ -3,7 +3,7 @@
 	url = git://github.com/symfony/symfony.git
 [submodule "vendor/doctrine-mongodb-odm"]
 	path = vendor/doctrine-mongodb-odm
-	url = git://github.com/doctrine/doctrine-mongodb-odm.git
+	url = git://github.com/ornicar/doctrine-mongodb-odm.git
 [submodule "vendor/doctrine-mongodb"]
 	path = vendor/doctrine-mongodb
 	url = git://github.com/doctrine/doctrine-mongodb.git
