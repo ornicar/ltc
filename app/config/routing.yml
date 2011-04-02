@@ -1,11 +1,6 @@
 main:
     resource: "@LtcCore/Resources/config/routing.yml"
 
-#admin:
-    #resource: '@SonataAdmin/Resources/config/routing/sonata_admin.xml'
-    #prefix: /admin
-
-#_sonata_admin:
-    #resource: .
-    #type: sonata_admin
-    #prefix: /admin
+admin:
+    resource: "@LtcAdmin/Resources/config/routing.yml"
+    prefix: /admin

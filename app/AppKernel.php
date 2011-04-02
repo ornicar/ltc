@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             //new Sonata\jQueryBundle\SonatajQueryBundle(),
             //new Sonata\BluePrintBundle\SonataBluePrintBundle(),
             //new Sonata\AdminBundle\SonataAdminBundle(),
-            //new Knplabs\MenuBundle\KnplabsMenuBundle(),
+            new Knplabs\MenuBundle\KnplabsMenuBundle(),
 
             new Ltc\UserBundle\LtcUserBundle(),
             new Ltc\CoreBundle\LtcCoreBundle(),
@@ -33,6 +33,7 @@ class AppKernel extends Kernel
             new Ltc\ImageBundle\LtcImageBundle(),
             new Ltc\TagBundle\LtcTagBundle(),
             new Ltc\ImportBundle\LtcImportBundle(),
+            new Ltc\AdminBundle\LtcAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
