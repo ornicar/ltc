@@ -1,42 +1,42 @@
 [submodule "vendor/symfony"]
 	path = vendor/symfony
 	url = git://github.com/symfony/symfony.git
-[submodule "vendor/mongodb-odm"]
-	path = vendor/mongodb-odm
-	url = git://github.com/doctrine/mongodb-odm
+[submodule "vendor/doctrine-mongodb-odm"]
+	path = vendor/doctrine-mongodb-odm
+	url = git://github.com/doctrine/doctrine-mongodb-odm.git
+[submodule "vendor/doctrine-mongodb"]
+	path = vendor/doctrine-mongodb
+	url = git://github.com/doctrine/doctrine-mongodb.git
+[submodule "vendor/doctrine-common"]
+    path = vendor/doctrine-common
+    url = git://github.com/doctrine/doctrine-common.git
 [submodule "vendor/zend"]
 	path = vendor/zend
 	url = git://github.com/zendframework/zf2.git
+[submodule "vendor/assetic"]
+    path = vendor/assetic
+    url = git://github.com/kriswallsmith/assetic.git
 [submodule "vendor/twig"]
 	path = vendor/twig
 	url = git://github.com/fabpot/Twig.git
-[submodule "vendor/bundles/FOS/UserBundle"]
-	path = vendor/bundles/FOS/UserBundle
-	url = git://github.com/FriendsOfSymfony/UserBundle.git
 [submodule "vendor/doctrine-data-fixtures"]
 	path = vendor/doctrine-data-fixtures
-	url = git://github.com/ornicar/data-fixtures
-[submodule "vendor/bundles/FOS/CommentBundle"]
-	path = vendor/bundles/FOS/CommentBundle
-	url = git://github.com/FriendsOfSymfony/CommentBundle.git
-[submodule "vendor/bundles/Sensio/FrameworkExtraBundle"]
-	path = vendor/bundles/Sensio/FrameworkExtraBundle
-	url = git://github.com/sensio/FrameworkExtraBundle.git
-[submodule "vendor/bundles/JMS/SecurityExtraBundle"]
-	path = vendor/bundles/JMS/SecurityExtraBundle
-	url = git://github.com/schmittjoh/SecurityExtraBundle.git
-[submodule "vendor/bundles/Symfony/Bundle/WebConfiguratorBundle"]
-	path = vendor/bundles/Symfony/Bundle/WebConfiguratorBundle
-	url = git://github.com/symfony/WebConfiguratorBundle.git
-[submodule "src/Stof/DoctrineExtensionsBundle"]
-	path = src/Stof/DoctrineExtensionsBundle
-	url = git://github.com/stof/DoctrineExtensionsBundle.git
+	url = git://github.com/ornicar/data-fixtures.git
 [submodule "vendor/doctrine-extensions"]
 	path = vendor/doctrine-extensions
 	url = git://github.com/l3pp4rd/DoctrineExtensions.git
+[submodule "src/Stof/DoctrineExtensionsBundle"]
+	path = src/Stof/DoctrineExtensionsBundle
+	url = git://github.com/stof/DoctrineExtensionsBundle.git
 [submodule "src/Bundle/ApcBundle"]
 	path = src/Bundle/ApcBundle
-	url = git://github.com/ornicar/ApcBundle
+	url = git://github.com/ornicar/ApcBundle.git
 [submodule "src/Knplabs/Bundle/MenuBundle"]
 	path = src/Knplabs/Bundle/MenuBundle
-	url = git://github.com/knplabs/MenuBundle
+	url = git://github.com/knplabs/MenuBundle.git
+[submodule "src/FOS/UserBundle"]
+    path = src/FOS/UserBundle
+    url = git://github.com/FriendsOfSymfony/UserBundle.git
+[submodule "src/FOS/CommentBundle"]
+    path = src/FOS/CommentBundle
+    url = git://github.com/FriendsOfSymfony/CommentBundle.git
