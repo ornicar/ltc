@@ -55,6 +55,7 @@ abstract class Doc
      * Url friendly slug based on title
      *
      * @var string
+     * @mongodb:Field(type="string")
      */
     protected $slug;
 
