@@ -1,3 +1,3 @@
 homepage:
     pattern:  /
-    defaults: { _controller: LtcCoreBundle:Main:index }
+    defaults: { _controller: LtcCore:Main:index }

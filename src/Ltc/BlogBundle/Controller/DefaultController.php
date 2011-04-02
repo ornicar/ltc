@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LtcBlogBundle:Default:index.html.twig');
+        return $this->render('LtcBlog:Default:index.html.twig');
     }
 }

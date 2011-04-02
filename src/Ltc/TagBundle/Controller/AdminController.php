@@ -8,6 +8,6 @@ class AdminController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LtcTagBundle:Admin:index.html.twig');
+        return $this->render('LtcTag:Admin:index.html.twig');
     }
 }

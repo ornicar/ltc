@@ -8,7 +8,7 @@
         <service id="ltc_tag.admin.tag" class="Ltc\TagBundle\Admin\TagAdmin">
             <tag name="sonata.admin" manager_type="mongodb" group="tag" label="tag"/>
             <argument>Ltc\TagBundle\Document\Tag</argument>
-            <argument>LtcTagBundle:TagAdmin</argument>
+            <argument>LtcTag:TagAdmin</argument>
         </service>
     </services>
 

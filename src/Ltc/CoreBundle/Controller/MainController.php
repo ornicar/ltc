@@ -8,6 +8,6 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LtcCoreBundle:Main:index.html.twig');
+        return $this->render('LtcCore:Main:index.html.twig');
     }
 }
