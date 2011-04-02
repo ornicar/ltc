@@ -1,8 +1,8 @@
 main:
-    resource: "@LtcCoreBundle/Resources/config/routing.yml"
+    resource: "@LtcCore/Resources/config/routing.yml"
 
 #admin:
-    #resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    #resource: '@SonataAdmin/Resources/config/routing/sonata_admin.xml'
     #prefix: /admin
 
 #_sonata_admin:

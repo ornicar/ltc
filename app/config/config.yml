@@ -35,16 +35,16 @@ doctrine_mongo_db:
     document_managers:
         default:
             mappings:
-                FOSUserBundle:
-                FOSCommentBundle:
-                StofDoctrineExtensionsBundle:
-                LtcUserBundle:
-                LtcDocBundle:
-                LtcArticleBundle:
-                LtcBlogBundle:
-                LtcPackageBundle:
-                LtcImageBundle:
-                LtcTagBundle:
+                FOSUser:
+                FOSComment:
+                StofDoctrineExtensions:
+                LtcUser:
+                LtcDoc:
+                LtcArticle:
+                LtcBlog:
+                LtcPackage:
+                LtcImage:
+                LtcTag:
 
 stof_doctrine_extensions:
     mongodb:
@@ -81,13 +81,16 @@ fos_user:
     class:
         model:
             user: Ltc\UserBundle\Document\User
-            group: FOS\UserBundle\Document\DefaultGroup
 
 fos_comment:
     db_driver: mongodb
     class:
         model:
             comment: FOS\CommentBundle\Document\Comment
+
+apc:
+    host: http://ltc
+    web_dir: %kernel.root_dir%/../web
 
 imports:
     - { resource: config_local.yml }

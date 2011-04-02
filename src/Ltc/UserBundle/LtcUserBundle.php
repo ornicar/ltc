@@ -8,6 +8,6 @@ class LtcUserBundle extends Bundle
 {
     public function getParent()
     {
-        return 'FOSUserBundle';
+        return 'FOSUser';
     }
 }
