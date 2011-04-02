@@ -23,6 +23,7 @@ class Article extends Doc
      * Overrides Doc.slug to give it sluggable options
      *
      * @var string
+     * @mongodb:Field(type="string")
      * @gedmo:Slug(unique="false", updatable="true")
      */
     protected $slug;
