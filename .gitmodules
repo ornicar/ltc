@@ -34,18 +34,9 @@
 [submodule "vendor/doctrine-extensions"]
 	path = vendor/doctrine-extensions
 	url = git://github.com/l3pp4rd/DoctrineExtensions.git
-[submodule "src/Sonata/AdminBundle"]
-	path = src/Sonata/AdminBundle
-	url = git://github.com/sonata-project/AdminBundle.git
-[submodule "src/Sonata/jQueryBundle"]
-	path = src/Sonata/jQueryBundle
-	url = git@github.com:sonata-project/jQueryBundle.git
-[submodule "src/Sonata/BluePrintBundle"]
-	path = src/Sonata/BluePrintBundle
-	url = git@github.com:sonata-project/BluePrintBundle.git
-[submodule "src/Knplabs/MenuBundle"]
-	path = src/Knplabs/MenuBundle
-	url = git@github.com:sonata-project/MenuBundle.git
 [submodule "src/Bundle/ApcBundle"]
 	path = src/Bundle/ApcBundle
 	url = git://github.com/ornicar/ApcBundle
+[submodule "src/Knplabs/Bundle/MenuBundle"]
+	path = src/Knplabs/Bundle/MenuBundle
+	url = git://github.com/knplabs/MenuBundle
