@@ -4,3 +4,10 @@ main:
 admin:
     resource: "@LtcAdmin/Resources/config/routing.yml"
     prefix: /admin
+
+fos_user_user:
+    resource: "@FOSUser/Resources/config/routing/user.xml"
+    prefix: /user
+
+fos_user_security:
+    resource: "@FOSUser/Resources/config/routing/security.xml"

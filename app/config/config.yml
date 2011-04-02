@@ -67,7 +67,8 @@ security:
                 provider:    fos_user_provider
                 login_path:  /login
                 check_path:  /login_check
-                use_referer: true
+                use_referer: false
+                default_target_path: /admin
             remember_me:
                 key:  kRopAjYEwDza74
                 name: ltc_remember_me

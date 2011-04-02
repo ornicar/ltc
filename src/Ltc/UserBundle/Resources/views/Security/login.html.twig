@@ -1,0 +1,33 @@
+{% extends "LtcAdmin::layout.html.twig" %}
+
+{% block body %}
+<div id="login_page">
+    <div id="content">
+        <h1>Les Trois Couronnes</h1>
+        {% if error %}
+            <div class="error message">{{ error }}</div>
+        {% endif %}
+
+        <form action="{{ path("_security_check") }}" method="post">
+            <div>
+                <label for="username">Pseudonyme:</label>
+                <input type="text" id="username" name="_username" size="40" value="{{ last_username }}" />
+            </div>
+
+            <div>
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="_password" size="40" />
+            </div>
+
+            <div>
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <label class="inline" for="remember_me">Se souvenir de moi</label>
+            </div>
+
+            <div>
+                <button type="submit" name="submit" class="submit">Connexion</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock body %}
