@@ -3,15 +3,15 @@
 namespace Ltc\DocBundle\Document;
 
 use Ltc\ImageBundle\Document\Image;
-use Ltc\UserBundle\Document\User;
 use DateTime;
 use Gedmo\Sluggable\Util\Urlizer;
+use Doctrine\Common\Collections\Collection;
 
 /**
  * @mongodb:MappedSuperclass
  * @mongodb:Indexes({
  *   @mongodb:Index(keys={"createdAt"="desc"}),
- *   @mongodb:Index(keys={"published"="desc"}),
+ *   @mongodb:Index(keys={"isPublished"="desc"}),
  *   @mongodb:Index(keys={"tags"="asc"})
  * })
  */
@@ -48,6 +48,9 @@ abstract class Doc
      *
      * @var string
      * @mongodb:Field(type="string")
+     * @assert:NotBlank
+     * @assert:MinLength(3)
+     * @assert:MaxLength(300)
      */
     protected $title;
 
@@ -83,12 +86,20 @@ abstract class Doc
     protected $packages;
 
     /**
-     * User author of this article
+     * Name of the author of this article
      *
-     * @var User
-     * @mongodb:ReferenceOne(targetDocument="Ltc\UserBundle\Document\User")
+     * @var string
+     * @mongodb:Field(type="string")
      */
-    protected $author;
+    protected $authorName;
+
+    /**
+     * Bio of the author of this article
+     *
+     * @var string
+     * @mongodb:Field(type="string")
+     */
+    protected $authorBio;
 
     /**
      * Whether the document is published or not
@@ -146,6 +157,11 @@ abstract class Doc
         return $this->isPublished;
     }
 
+    public function getIsPublished()
+    {
+        return $this->isPublished();
+    }
+
     /**
      * @param  bool
      * @return null
@@ -193,21 +209,39 @@ abstract class Doc
     }
 
     /**
-     * @return User
+     * @return string
      */
-    public function getAuthor()
+    public function getAuthorName()
     {
-        return $this->author;
+        return $this->authorName;
     }
 
     /**
-     * @param  User
+     * @param  string
      * @return null
      */
-    public function setAuthor(User $author)
+    public function setAuthorName($authorName)
     {
-        $this->author = $author;
+        $this->authorName = $authorName;
     }
+
+    /**
+     * @return string
+     */
+    public function getAuthorBio()
+    {
+        return $this->authorBio;
+    }
+
+    /**
+     * @param  string
+     * @return null
+     */
+    public function setAuthorBio($authorBio)
+    {
+        $this->authorBio = $authorBio;
+    }
+
     /**
      * @return string
      */
@@ -275,10 +309,10 @@ abstract class Doc
     }
 
     /**
-     * @param  array
+     * @param  Collection
      * @return null
      */
-    public function setTags(array $tags)
+    public function setTags(Collection $tags)
     {
         $this->tags = $tags;
     }

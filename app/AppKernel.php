@@ -17,12 +17,11 @@ class AppKernel extends Kernel
 
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
+            new FOQ\TyperBundle\FOQTyperBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Bundle\ApcBundle\ApcBundle(),
-            //new Sonata\jQueryBundle\SonatajQueryBundle(),
-            //new Sonata\BluePrintBundle\SonataBluePrintBundle(),
-            //new Sonata\AdminBundle\SonataAdminBundle(),
             new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
+            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
 
             new Ltc\UserBundle\LtcUserBundle(),
             new Ltc\CoreBundle\LtcCoreBundle(),

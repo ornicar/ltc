@@ -19,3 +19,7 @@ fos_user_user:
 
 fos_user_security:
     resource: "@FOSUser/Resources/config/routing/security.xml"
+
+ _imagine:
+    resource: .
+    type:     imagine

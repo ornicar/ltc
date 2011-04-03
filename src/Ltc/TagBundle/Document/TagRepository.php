@@ -38,6 +38,32 @@ class TagRepository extends DocumentRepository
     }
 
     /**
+     * Finds tags for the given titles
+     *
+     * @return array
+     **/
+    public function findByTitlesOrCreate(array $titles)
+    {
+        $tags = $this->createQueryBuilder()
+            ->field('title')->in($titles)
+            ->getQuery()
+            ->execute();
+
+        foreach ($titles as $title) {
+            foreach ($tags as $tag) {
+                if ($title === $tag->getTitle()) {
+                    continue 2;
+                }
+            }
+
+            $tag = $this->create($title);
+            $this->dm->persist($tag);
+        }
+
+        return $tags;
+    }
+
+    /**
      * Create a new tag
      *
      * @return Tag

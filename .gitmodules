@@ -40,3 +40,12 @@
 [submodule "src/FOS/CommentBundle"]
     path = src/FOS/CommentBundle
     url = git://github.com/FriendsOfSymfony/CommentBundle.git
+[submodule "src/FOQ/TyperBundle"]
+	path = src/FOQ/TyperBundle
+	url = git://github.com/ornicar/TyperBundle
+[submodule "vendor/imagine"]
+	path = vendor/imagine
+	url = git://github.com/avalanche123/Imagine.git
+[submodule "src/Avalanche/Bundle/ImagineBundle"]
+	path = src/Avalanche/Bundle/ImagineBundle
+	url = git://github.com/avalanche123/AvalancheImagineBundle.git

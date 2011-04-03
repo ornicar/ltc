@@ -44,7 +44,15 @@ class Article extends Doc
      * @var string
      * @mongodb:Field(type="string")
      */
-    protected $publication;
+    protected $publicationDate;
+
+    /**
+     * Related publications in text format
+     *
+     * @var string
+     * @mongodb:Field(type="string")
+     */
+    protected $relatedPublications;
 
     /**
      * Full resource url
@@ -74,18 +82,18 @@ class Article extends Doc
     /**
      * @return string
      */
-    public function getPublication()
+    public function getPublicationDate()
     {
-        return $this->publication;
+        return $this->publicationDate;
     }
 
     /**
      * @param  string
      * @return null
      */
-    public function setPublication($publication)
+    public function setPublicationDate($publicationDate)
     {
-        $this->publication = $publication;
+        $this->publicationDate = $publicationDate;
     }
     /**
      * @return string
@@ -118,5 +126,22 @@ class Article extends Doc
     public function setCategory(Category $category)
     {
         $this->category = $category;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRelatedPublications()
+    {
+        return $this->relatedPublications;
+    }
+
+    /**
+     * @param  string
+     * @return null
+     */
+    public function setRelatedPublications($relatedPublications)
+    {
+        $this->relatedPublications = $relatedPublications;
     }
 }

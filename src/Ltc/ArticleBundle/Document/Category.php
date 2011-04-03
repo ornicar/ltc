@@ -205,4 +205,9 @@ class Category
     {
         $this->createdAt = $createdAt;
     }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 }

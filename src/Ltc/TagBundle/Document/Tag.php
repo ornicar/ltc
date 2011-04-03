@@ -7,6 +7,7 @@ namespace Ltc\TagBundle\Document;
  *   collection="tag",
  *   repositoryClass="Ltc\TagBundle\Document\TagRepository"
  * )
+ * @mongodb:Index(keys={"docCount"="desc"})
  */
 class Tag
 {
@@ -25,6 +26,15 @@ class Tag
      * @mongodb:Field(type="string")
      */
     protected $title;
+
+    /**
+     * Number of docs that have this tag.
+     * Denormalized value.
+     *
+     * @var int
+     * @mongodb:Field(type="int")
+     */
+    protected $docCount;
 
     public function __construct($title, $slug)
     {
@@ -55,5 +65,22 @@ class Tag
     public function setTitle($title)
     {
         $this->title = $title;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDocCount()
+    {
+        return $this->docCount;
+    }
+
+    /**
+     * @param  int
+     * @return null
+     */
+    public function setDocCount($docCount)
+    {
+        $this->docCount = $docCount;
     }
 }

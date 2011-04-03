@@ -1,6 +1,5 @@
 {% extends "LtcAdmin::layout.html.twig" %}
 
 {% block content %}
-<h1>{{ category.title }}</h1>
 {% render "LtcArticle:ArticleAdmin:listByCategory" with {"category": category} %}
 {% endblock %}

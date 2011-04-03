@@ -1,0 +1,89 @@
+{% extends "LtcAdmin::layout.html.twig" %}
+
+{% block content %}
+<h1>{{ block("title") }}</h1>
+
+<form action="{{ block("action") }}" {{ form_enctype(form) }} method="post" novalidate>
+    {% if form.hasErrors %}
+        <div class="error message">{{ form_errors(form) }}</div>
+    {% endif %}
+    <div>
+        <button type="submit" name="submit" class="submit">Enregistrer</button>
+        ou
+        <a href="{{ path("ltc_article_admin_category_view", {"slug": article.category.slug}) }}">retourner a la liste</a>
+    </div>
+    <div>
+        {{ form_label(form.title, "Titre") }}
+        {{ form_errors(form.title) }}
+        {{ form_field(form.title) }}
+    </div>
+    <div class="inline_label">
+        {{ form_field(form.isPublished) }}
+        {{ form_label(form.isPublished, "Visible sur le site") }}
+    </div>
+    {% if form.has("category") %}
+    <div>
+        {{ form_label(form.category, "Rubrique") }}
+        {{ form_field(form.category) }}
+    </div>
+    {% endif %}
+    <section>
+        Image de l'article.
+        <img class="image" src="{{ article.image.path|apply_filter("thumbnail") }}" />
+        <div>
+            {{ form_label(form.image.file, "Fichier") }}
+            {{ form_field(form.image.file) }}
+            {{ form_errors(form.image) }}
+        </div>
+        <div>
+            {{ form_label(form.image.legend, "Legende") }}
+            {{ form_field(form.image.legend) }}
+        </div>
+    </section>
+    <div>
+        {{ form_label(form.summary, "Resume") }}
+        {{ form_field(form.summary, {"rows": 15}) }}
+    </div>
+    <div>
+        {{ form_label(form.body, "Texte") }}
+        {{ form_field(form.body, {"rows": 40}) }}
+    </div>
+    <div>
+        {{ form_label(form.tags, "Tags") }}
+        {{ form_field(form.tags, {"rows": 5}) }}
+    </div>
+    <div>
+        {{ form_label(form.reference, "Reference") }}
+        {{ form_field(form.reference, {"rows": 5}) }}
+    </div>
+    <div>
+        {{ form_label(form.relatedPublications, "Publications liees") }}
+        {{ form_field(form.relatedPublications, {"rows": 5}) }}
+    </div>
+    <section>
+        Uniquement en cas d'un auteur invite.
+        <div>
+            {{ form_label(form.authorName, "Auteur") }}
+            {{ form_field(form.authorName) }}
+        </div>
+        <div>
+            {{ form_label(form.authorBio, "Qualite") }}
+            {{ form_field(form.authorBio) }}
+        </div>
+    </section>
+    <div>
+        {{ form_label(form.url, "Lien") }}
+        {{ form_field(form.url) }}
+    </div>
+    <div>
+        {{ form_label(form.publicationDate, "Date de publication") }}
+        {{ form_field(form.publicationDate) }}
+    </div>
+    {{ form_hidden(form) }}
+    <div>
+        <button type="submit" name="submit" class="submit">Enregistrer</button>
+        ou
+        <a href="{{ path("ltc_article_admin_category_view", {"slug": article.category.slug}) }}">retourner a la liste</a>
+    </div>
+</form>
+{% endblock %}

@@ -13,17 +13,23 @@ framework:
         lifetime:       36000
         auto_start:     true
 
-# Twig Configuration
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
 
-# Assetic Configuration
 assetic:
     debug:          %kernel.debug%
     use_controller: false
 
-# Doctrine Configuration
+avalanche_imagine:
+    web_root:     %kernel.root_dir%/../web
+    cache_prefix: imagine
+    driver:       gd
+    filters:
+        thumbnail:
+            type:    thumbnail
+            options: { size: [120, 90], mode: outbound }
+
 doctrine_mongo_db:
     connections:
         default:
@@ -100,6 +106,9 @@ apc:
 
 knplabs_menu:
     twig: true
+
+ltc_image:
+    upload_dir: %kernel.root_dir%/../web/uploads
 
 imports:
     - { resource: config_local.yml }

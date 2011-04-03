@@ -223,49 +223,66 @@ form label {
     display: block;
     font-size: 14px;
     font-weight: 700;
-    padding-bottom: 2px
+    padding-bottom: 2px;
 }
 form label .error {
     color: red;
     font-size: 13px;
-    font-weight: 400
+    font-weight: 400;
 }
-form label.inline {
+form label.inline, form .inline_label label {
     display: inline;
     font-size: inherit;
-    font-weight: 400
+    font-weight: 400;
 }
 form input, form textarea, form select {
-    font-size: 13px
+    font-size: 13px;
+    padding: 0.4%;
+}
+form input[type=text], form textarea {
+    width: 100%;
 }
 form .description {
-    color: #777
+    color: #777;
 }
 form div {
-    margin-bottom: 10px
+    margin-bottom: 10px;
 }
 form button.submit {
     font-size: 13px;
     padding: 3px 0.5em;
-    margin:10px 15px 0 0
+    margin:10px 15px 0 0;
 }
 form .column {
     display: inline;
     float: left;
-    width: 470px
+    width: 470px;
+}
+form section {
+    padding: 0.5em 1em;
+    background: #f0f0f0;
+    margin-bottom: 0.5em;
+}
+form div ul li {
+    list-style: none;
+    color: red;
+}
+div.actions {
+    margin: 15px 10px 0 0;
+    float: right;
 }
 #main form .column {
-    width: 329px
+    width: 329px;
 }
 #main form .column.left {
-    margin-right: 10px
+    margin-right: 10px;
 }
 #main form .column.right {
-    margin-left: 10px
+    margin-left: 10px;
 }
 #sidebar label, #sidebar input, #sidebar select {
     font-size: 100%;
-    font-weight: 400
+    font-weight: 400;
 }
 
 /*** Footer ***/
@@ -273,6 +290,5 @@ form .column {
     background-color: #E6EFFF;
     margin-bottom: 10px;
     padding: 10px;
-    text-align: center
+    text-align: center;
 }
-

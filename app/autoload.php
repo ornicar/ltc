@@ -16,11 +16,14 @@ $loader->registerNamespaces(array(
     'Gedmo'                          => $vendorDir.'/doctrine-extensions/lib',
     'Zend'                           => $vendorDir.'/zend/library',
     'Assetic'                        => $vendorDir.'/assetic/src',
+    'Imagine'                        => $vendorDir.'/imagine/lib',
     'Ltc'                            => $srcDir,
     'FOS'                            => $srcDir,
+    'FOQ'                            => $srcDir,
     'Stof'                           => $srcDir,
     'Sonata'                         => $srcDir,
     'Knplabs'                        => $srcDir,
+    'Avalanche'                      => $srcDir,
     'Bundle'                         => $srcDir,
 ));
 $loader->registerPrefixes(array(

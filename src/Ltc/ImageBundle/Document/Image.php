@@ -33,7 +33,7 @@ class Image
      * Processor used to generate this image
      *
      * @var string
-     * @mongodb:String
+     * @mongodb:Field(type="string")
      */
     protected $processor;
 
@@ -49,25 +49,51 @@ class Image
      * Textual legend, can be used as image alternative
      *
      * @var string
+     * @mongodb:Field(type="string")
      */
     protected $legend;
+
+    /**
+     * Uploaded file
+     * Not persisted: it's used in form and validation only
+     *
+     * @var File
+     * @assert:File(maxSize="4M",mimeTypes={
+     *     "image/jpeg",
+     *     "image/png"
+     * })
+     */
+    public $file;
 
     public function __construct()
     {
         $this->thumbnails = new ArrayCollection();
     }
 
-    /**
-     * Populate the document using a symfony file
-     *
-     * @param SymfonyFile $file
-     */
-    public function setFile(File $file)
+    public function update(File $file)
     {
         $this->version++;
         $this->path         = $file->getPath();
         $this->webPath      = $file->getWebPath();
         $this->clearThumbnails();
+    }
+
+    /**
+     * Gets the uploaded file path (which is not persisted, it's just for form purpose)
+     *
+     * @return string
+     **/
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param string $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
     }
 
     /**

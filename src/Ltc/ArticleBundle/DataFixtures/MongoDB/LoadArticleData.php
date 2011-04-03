@@ -12,6 +12,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Ltc\ArticleBundle\Document\Article;
 use Ltc\ImageBundle\Document\Image;
 use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 use DateTime;
 
 class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
@@ -19,6 +20,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     const ARTICLE_TABLE     = 'pap_article';
     const TAG_TABLE         = 'pap_tag';
     const ARTICLE_TAG_TABLE = 'pap_article_tag';
+    const PUBLICATION_TABLE = 'pap_publication';
 
     protected $dossiers = array(
         2 => 'textes',
@@ -33,6 +35,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     protected $articles;
     protected $articleTags;
     protected $tags;
+    protected $publications;
 
     public function getOrder()
     {
@@ -48,6 +51,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $this->tagRepository      = $container->get('ltc_tag.repository.tag');
         $this->articleTags        = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TAG_TABLE);
         $this->tags               = $container->get('ltc_import.unserializer')->unserialize(self::TAG_TABLE);
+        $this->publications       = $container->get('ltc_import.unserializer')->unserialize(self::PUBLICATION_TABLE);
     }
 
     public function load($manager)
@@ -59,6 +63,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         }
         $categoriesBySlug = $this->categoryRepository->findAllIndexBySlug();
         $usersByUsername = $this->userRepository->findAllIndexByUsernameCanonical();
+        $publications = $this->preparePublications();
 
         foreach ($this->articles as $a) {
             if (!isset($this->dossiers[$a['dossier_id']])) {
@@ -79,18 +84,26 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             }
             $o->setReference($a['reference']);
             $o->setUrl($a['lien']);
-            if (isset($a['author'])) {
-                $user = $this->createUser($a['author'], $a['qualite']);
-            } else {
-                $user = $usersByUsername['pascal'];
+            if (isset($a['auteur'])) {
+                $o->setAuthorName($a['auteur']);
+                $o->setAuthorBio($a['qualite']);
             }
             if (isset($a['image'])) {
                 $image = $this->createImage($a['image'], $a['legende']);
                 $o->setImage($image);
             }
-            $o->setAuthor($user);
             if (isset($articleTags[$a['id']])) {
-                $o->setTags($articleTags[$a['id']]);
+                $o->setTags(new ArrayCollection($articleTags[$a['id']]));
+            }
+            if ($a['is_approved']) {
+                $o->setIsPublished(true);
+                $o->setPublishedAt($o->getCreatedAt());
+            } else {
+                $o->setIsPublished(false);
+            }
+            $o->setPublicationDate($a['publication']);
+            if (isset($publications[$a['id']])) {
+                $o->setRelatedPublications($publications[$a['id']]);
             }
             $manager->persist($o);
         }
@@ -116,6 +129,21 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         return $articleTags;
     }
 
+    protected function preparePublications()
+    {
+        $publicationsById = array();
+        foreach ($this->publications as $publication) {
+            $string = sprintf('[%s](%s)', $publication['nom'], $publication['url']);
+            if (isset($publicationsById[$publication['article_id']])) {
+                $publicationsById[$publication['article_id']] .= "\n".$string;
+            } else {
+                $publicationsById[$publication['article_id']] = $string;
+            }
+        }
+
+        return $publicationsById;
+    }
+
     protected function createImage($filename, $legend)
     {
         $image = new Image();
@@ -124,17 +152,5 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $image->setFile($file);
 
         return $image;
-    }
-
-    protected function createUser($userFullName)
-    {
-        $user = $this->userManager->createUser();
-        $user->setUsername($userFullName);
-        $user->setFullName($userFullName);
-        $user->setBio($bio);
-        $user->setPlainPassword(base_convert(mt_rand(0x1D39D3E06400000, 0x41C21CB8E0FFFFFF), 10, 36));
-        $this->userManager->updateUser();
-
-        return $user;
     }
 }

@@ -1,19 +1,21 @@
 {% extends "LtcAdmin::layout.html.twig" %}
 
 {% block content %}
-<h1>Tags</h1>
+<h1>{{ tags|length }} Tags</h1>
 <table>
     {% for tag in ['thead', 'tfoot'] %}
     <{{ tag }}>
         <tr>
             <th>Titre</th>
+            <th>Documents</th>
         </tr>
     </{{ tag }}>
     {% endfor %}
     <tbody>
     {% for tag in tags %}
         <tr>
-            <td><a href="{{ path("ltc_tag_admin_view", {"slug": tag.slug}) }}">{{ tag.title }}</a></td>
+            <td>{{ tag.title }}</td>
+            <td>{{ tag.docCount }}</td>
         </tr>
     {% endfor %}
     </tbody>

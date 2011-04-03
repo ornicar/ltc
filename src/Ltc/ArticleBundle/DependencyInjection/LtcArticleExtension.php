@@ -14,5 +14,6 @@ class LtcArticleExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $loader->load('repository.xml');
+        $loader->load('config.xml');
     }
 }

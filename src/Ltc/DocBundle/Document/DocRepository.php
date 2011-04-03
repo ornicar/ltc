@@ -34,4 +34,17 @@ abstract class DocRepository extends DocumentRepository
 
         return array_slice($related, 0, $limit);
     }
+
+    /**
+     * Find published documents
+     *
+     * @return void
+     */
+    public function findPublished()
+    {
+        return $this->createQueryBuilder()
+            ->field('isPublished')->equals(true)
+            ->getQuery()
+            ->execute();
+    }
 }

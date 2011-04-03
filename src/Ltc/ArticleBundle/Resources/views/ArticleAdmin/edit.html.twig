@@ -1,0 +1,4 @@
+{% extends "LtcArticle:ArticleAdmin:form.html.twig" %}
+
+{% block title %}Modifier l'article{% endblock %}
+{% block action %}{{ path("ltc_article_admin_article_edit", {"categorySlug": article.category.slug, "slug": article.slug}) }}{% endblock %}

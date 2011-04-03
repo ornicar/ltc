@@ -30,6 +30,15 @@
     </div>
 
     <div id="content">
+        {% if app.session.hasFlash("error") %}
+            <div class="error message">{{ app.session.getFlash("error") }}</div>
+        {% endif %}
+        {% if app.session.hasFlash("warning") %}
+            <div class="warning message">{{ app.session.getFlash("warning") }}</div>
+        {% endif %}
+        {% if app.session.hasFlash("notice") %}
+            <div class="Notification message">{{ app.session.getFlash("notice") }}</div>
+        {% endif %}
         {% block content %}
         {% endblock %}
     </div>
