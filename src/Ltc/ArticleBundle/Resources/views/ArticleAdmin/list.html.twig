@@ -6,6 +6,7 @@
     {% for tag in ['thead', 'tfoot'] %}
     <{{ tag }}>
         <tr>
+            <th>Image</th>
             <th>Titre</th>
             <th>Visible</th>
             <th>Creation</th>
@@ -15,6 +16,11 @@
     <tbody>
     {% for article in articles %}
         <tr>
+            <td>
+            {% if article.hasImage %}
+            <a href="{{ path("ltc_article_admin_article_edit", {"categorySlug": article.category.slug, "slug": article.slug}) }}"><img class="image_thumb" src="{{ asset(article.image.path|apply_filter("admin_small")) }}" /></a>
+            {% endif %}
+            </td>
             <td><a href="{{ path("ltc_article_admin_article_edit", {"categorySlug": article.category.slug, "slug": article.slug}) }}">{{ article.title }}</a></td>
             <td>{{ article.isPublished ? "&#9679;" : "" }}</td>
             <td>{{ article.createdAt|date }}</td>

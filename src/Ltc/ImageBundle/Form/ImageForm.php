@@ -25,6 +25,6 @@ class ImageForm extends Form
             return;
         }
         $file = $uploader->upload($fileField->getData(), $fileField->getOriginalName(), $relativeDir);
-        $this->getData()->setFile($file);
+        $this->getData()->setPath($file->getWebPath());
     }
 }

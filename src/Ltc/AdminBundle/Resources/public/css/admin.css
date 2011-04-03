@@ -172,7 +172,8 @@ thead, tfoot {
 }
 td, th {
     padding: 5px 10px;
-    text-align: left
+    text-align: left;
+    vertical-align: middle;
 }
 tfoot td {
     font-weight: 400
@@ -270,6 +271,14 @@ form div ul li {
 div.actions {
     margin: 15px 10px 0 0;
     float: right;
+}
+form .image_thumb {
+    margin-top: 0.3em;
+    float: left;
+    border: 1px solid #888;
+}
+form .image_form {
+    margin-left: 220px;
 }
 #main form .column {
     width: 329px;

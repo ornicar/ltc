@@ -28,16 +28,20 @@
     </div>
     {% endif %}
     <section>
-        Image de l'article.
-        <img class="image" src="{{ article.image.path|apply_filter("thumbnail") }}" />
-        <div>
-            {{ form_label(form.image.file, "Fichier") }}
-            {{ form_field(form.image.file) }}
-            {{ form_errors(form.image) }}
-        </div>
-        <div>
-            {{ form_label(form.image.legend, "Legende") }}
-            {{ form_field(form.image.legend) }}
+        {% if article.hasImage %}
+            <img class="image_thumb" src="{{ asset(article.image.path|apply_filter("admin_medium")) }}" />
+        {% endif %}
+        <div class="image_form">
+            Image de l'article.
+            <div>
+                {{ form_label(form.image.file, "Fichier") }}
+                {{ form_field(form.image.file) }}
+                {{ form_errors(form.image) }}
+            </div>
+            <div>
+                {{ form_label(form.image.legend, "Legende") }}
+                {{ form_field(form.image.legend) }}
+            </div>
         </div>
     </section>
     <div>

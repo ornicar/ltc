@@ -7,6 +7,7 @@ framework:
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
     validation:    { enabled: true, annotations: true }
     templating:    { engines: ['twig'] }
+    document_root: %kernel.root_dir%/../web
     #assets_version: 1
     session:
         default_locale: fr
@@ -26,9 +27,12 @@ avalanche_imagine:
     cache_prefix: imagine
     driver:       gd
     filters:
-        thumbnail:
+        admin_medium:
             type:    thumbnail
-            options: { size: [120, 90], mode: outbound }
+            options: { size: [200, 150], mode: inset }
+        admin_small:
+            type:    thumbnail
+            options: { size: [100, 50], mode: inset }
 
 doctrine_mongo_db:
     connections:

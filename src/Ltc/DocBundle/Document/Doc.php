@@ -129,6 +129,7 @@ abstract class Doc
      * Main image of the article
      *
      * @var Image
+     * @mongodb:EmbedOne(targetDocument="Ltc\ImageBundle\Document\Image")
      */
     protected $image;
 
@@ -147,6 +148,16 @@ abstract class Doc
     public function setImage(Image $image)
     {
         $this->image = $image;
+    }
+
+    /**
+     * Tells whether or not the doc has a valid image
+     *
+     * @return bool
+     */
+    public function hasImage()
+    {
+        return $this->getImage() && $this->getImage()->getPath();
     }
 
     /**
