@@ -9,6 +9,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 
+use Ltc\BlogBundle\Document\BlogEntry;
 use Ltc\ArticleBundle\Document\Article;
 use Ltc\ImageBundle\Document\Image;
 use Symfony\Component\HttpFoundation\File\File;
@@ -23,6 +24,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     const PUBLICATION_TABLE = 'pap_publication';
 
     protected $dossiers = array(
+        1 => 'blog',
         2 => 'textes',
         3 => 'invites',
         4 => 'outils',
@@ -70,10 +72,14 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
                 continue;
             }
             $categorySlug = $this->dossiers[$a['dossier_id']];
-            $category = $categoriesBySlug[$categorySlug];
-
-            $o = new Article();
-            $o->setCategory($category);
+            if ('blog' === $categorySlug) {
+                $o = new BlogEntry();
+            } else {
+                $o = new Article();
+                $o->setCategory($categoriesBySlug[$categorySlug]);
+                $o->setUrl($a['lien']);
+                $o->setPublicationDate($a['publication']);
+            }
             $o->setCreatedAt(new DateTime($a['created_at']));
             $o->setUpdatedAt(new DateTime($a['updated_at']));
             $o->setSummary($a['resume']);
@@ -83,7 +89,6 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
                 $o->setSlug($a['strip']);
             }
             $o->setReference($a['reference']);
-            $o->setUrl($a['lien']);
             if (isset($a['auteur'])) {
                 $o->setAuthorName($a['auteur']);
                 $o->setAuthorBio($a['qualite']);
@@ -101,7 +106,6 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             } else {
                 $o->setIsPublished(false);
             }
-            $o->setPublicationDate($a['publication']);
             if (isset($publications[$a['id']])) {
                 $o->setRelatedPublications($publications[$a['id']]);
             }

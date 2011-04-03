@@ -9,6 +9,10 @@ ltc_article_admin:
     resource: "@LtcArticle/Resources/config/routing_admin.yml"
     prefix: /admin/articles
 
+ltc_blog_admin:
+    resource: "@LtcBlog/Resources/config/routing_admin.yml"
+    prefix: /admin/blog
+
 ltc_tag_admin:
     resource: "@LtcTag/Resources/config/routing_admin.yml"
     prefix: /admin/tags

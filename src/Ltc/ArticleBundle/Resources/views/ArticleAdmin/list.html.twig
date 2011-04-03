@@ -1,30 +1,13 @@
-<div class="actions">
-    <a href="{{ path("ltc_article_admin_article_new", {"categorySlug": category.slug}) }}">Nouveau</a>
-</div>
-<h1>{{ articles|length }} {{ category.title }}</h1>
-<table>
-    {% for tag in ['thead', 'tfoot'] %}
-    <{{ tag }}>
-        <tr>
-            <th>Image</th>
-            <th>Titre</th>
-            <th>Visible</th>
-            <th>Creation</th>
-        </tr>
-    </{{ tag }}>
-    {% endfor %}
-    <tbody>
-    {% for article in articles %}
-        <tr>
-            <td>
-            {% if article.hasImage %}
-            <a href="{{ path("ltc_article_admin_article_edit", {"categorySlug": article.category.slug, "slug": article.slug}) }}"><img class="image_thumb" src="{{ asset(article.image.path|apply_filter("admin_small")) }}" /></a>
-            {% endif %}
-            </td>
-            <td><a href="{{ path("ltc_article_admin_article_edit", {"categorySlug": article.category.slug, "slug": article.slug}) }}">{{ article.title }}</a></td>
-            <td>{{ article.isPublished ? "&#9679;" : "" }}</td>
-            <td>{{ article.createdAt|date }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+{% extends "LtcDoc:Admin:list.html.twig" %}
+
+{% block new_link %}
+<a href="{{ path("ltc_article_admin_article_new", {"categorySlug": category.slug}) }}">Nouvel article</a>
+{% endblock %}
+
+{% block title %}
+{{ docs|length }} Articles
+{% endblock %}
+
+{% block edit_url %}
+{{ path("ltc_article_admin_article_edit", {"categorySlug": doc.category.slug, "slug": doc.slug}) }}
+{% endblock %}

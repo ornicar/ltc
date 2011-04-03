@@ -6,7 +6,8 @@ use Ltc\DocBundle\Document\Doc;
 
 /**
  * @mongodb:Document(
- *   collection="article"
+ *   collection="blog_entry",
+ *   repositoryClass="Ltc\BlogBundle\Document\BlogEntryRepository"
  * )
  * @mongodb:UniqueIndex(keys={"slug"="asc"})
  */
@@ -20,4 +21,13 @@ class BlogEntry extends Doc
      * @gedmo:Slug(unique="true", updatable="true")
      */
     protected $slug;
+
+    /**
+     * Overrides Doc.title to give it sluggable options
+     *
+     * @var string
+     * @mongodb:Field(type="string")
+     * @gedmo:Sluggable
+     */
+    protected $title;
 }

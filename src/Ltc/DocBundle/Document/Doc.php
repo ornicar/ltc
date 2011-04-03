@@ -134,6 +134,22 @@ abstract class Doc
     protected $image;
 
     /**
+     * Related publications in text format
+     *
+     * @var string
+     * @mongodb:Field(type="string")
+     */
+    protected $relatedPublications;
+
+    /**
+     * Reference
+     *
+     * @var string
+     * @mongodb:Field(type="string")
+     */
+    protected $reference;
+
+    /**
      * @return Image
      */
     public function getImage()
@@ -329,6 +345,17 @@ abstract class Doc
     }
 
     /**
+     * Sets the title and generates the slug
+     * @param  string
+     * @return null
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        $this->setSlug(Urlizer::urlize($this->getShortTitle()));
+    }
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -336,6 +363,11 @@ abstract class Doc
         return $this->title;
     }
 
+    /**
+     * Get a shorter version of the title, mainly used for slug generation
+     *
+     * @return string
+     */
     public function getShortTitle()
     {
         $limit = 40;
@@ -350,14 +382,37 @@ abstract class Doc
     }
 
     /**
-     * Sets the title and generates the slug
+     * @return string
+     */
+    public function getRelatedPublications()
+    {
+        return $this->relatedPublications;
+    }
+
+    /**
      * @param  string
      * @return null
      */
-    public function setTitle($title)
+    public function setRelatedPublications($relatedPublications)
     {
-        $this->title = $title;
-        $this->setSlug(Urlizer::urlize($this->getShortTitle()));
+        $this->relatedPublications = $relatedPublications;
+    }
+
+    /**
+     * @return string
+     */
+    public function getReference()
+    {
+        return $this->reference;
+    }
+
+    /**
+     * @param  string
+     * @return null
+     */
+    public function setReference($reference)
+    {
+        $this->reference = $reference;
     }
 
     /**

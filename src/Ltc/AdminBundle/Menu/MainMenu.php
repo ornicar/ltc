@@ -17,7 +17,7 @@ class MainMenu extends Menu
         $this->setAttribute('id', 'main_nav');
 
         $this->addChild('Admin', $router->generate('ltc_admin_dashboard'));
-        //$this->addChild('Blog', $router->generate('ltc_admin_dashboard'));
+        $this->addChild('Blog', $router->generate('ltc_blog_admin_entry_list'));
 
         foreach ($categoryRepository->getTitlesAndSlugs() as $categoryArray) {
             $this->addChild($categoryArray['title'], $router->generate('ltc_article_admin_category_view', array(

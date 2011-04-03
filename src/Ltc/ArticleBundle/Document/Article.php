@@ -31,28 +31,12 @@ class Article extends Doc
     protected $slug;
 
     /**
-     * Reference
-     *
-     * @var string
-     * @mongodb:Field(type="string")
-     */
-    protected $reference;
-
-    /**
      * Arbitrary publication date in string format
      *
      * @var string
      * @mongodb:Field(type="string")
      */
     protected $publicationDate;
-
-    /**
-     * Related publications in text format
-     *
-     * @var string
-     * @mongodb:Field(type="string")
-     */
-    protected $relatedPublications;
 
     /**
      * Full resource url
@@ -95,22 +79,7 @@ class Article extends Doc
     {
         $this->publicationDate = $publicationDate;
     }
-    /**
-     * @return string
-     */
-    public function getReference()
-    {
-        return $this->reference;
-    }
 
-    /**
-     * @param  string
-     * @return null
-     */
-    public function setReference($reference)
-    {
-        $this->reference = $reference;
-    }
     /**
      * @return Category
      */
@@ -126,22 +95,5 @@ class Article extends Doc
     public function setCategory(Category $category)
     {
         $this->category = $category;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRelatedPublications()
-    {
-        return $this->relatedPublications;
-    }
-
-    /**
-     * @param  string
-     * @return null
-     */
-    public function setRelatedPublications($relatedPublications)
-    {
-        $this->relatedPublications = $relatedPublications;
     }
 }

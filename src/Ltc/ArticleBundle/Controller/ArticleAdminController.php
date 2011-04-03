@@ -17,7 +17,7 @@ class ArticleAdminController extends Controller
 
         return $this->render('LtcArticle:ArticleAdmin:list.html.twig', array(
             'category' => $category,
-            'articles' => $articles
+            'docs' => $articles
         ));
     }
 
@@ -46,7 +46,7 @@ class ArticleAdminController extends Controller
         }
 
         return $this->render('LtcArticle:ArticleAdmin:new.html.twig', array(
-            'article' => $article,
+            'doc' => $article,
             'form' => $form
         ));
     }
@@ -68,7 +68,7 @@ class ArticleAdminController extends Controller
         }
 
         return $this->render('LtcArticle:ArticleAdmin:edit.html.twig', array(
-            'article' => $article,
+            'doc' => $article,
             'form' => $form
         ));
     }

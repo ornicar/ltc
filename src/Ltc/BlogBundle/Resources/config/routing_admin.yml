@@ -1,0 +1,11 @@
+ltc_blog_admin_entry_list:
+    pattern:  /
+    defaults: { _controller: LtcBlog:BlogAdmin:index }
+
+ltc_blog_admin_entry_new:
+    pattern:  /nouveau-billet
+    defaults: { _controller: LtcBlog:BlogAdmin:new }
+
+ltc_blog_admin_entry_edit:
+    pattern:  /{slug}
+    defaults: { _controller: LtcBlog:BlogAdmin:edit }

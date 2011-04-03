@@ -8,6 +8,19 @@ use MongoId;
 abstract class DocRepository extends DocumentRepository
 {
     /**
+     * Find all docs sorted by creation date desc
+     *
+     * @return array
+     **/
+    public function findAll()
+    {
+        return $this->createQueryBuilder()
+            ->sort('createdAt', 'desc')
+            ->getQuery()
+            ->execute();
+    }
+
+    /**
      * Find related documents based on tag matching
      *
      * @return array

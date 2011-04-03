@@ -1,0 +1,35 @@
+{% block content %}
+<div class="actions">
+    {{ block("new_link") }}
+</div>
+<h1>{{ block("title") }}</h1>
+<table>
+    {% for tag in ['thead', 'tfoot'] %}
+    <{{ tag }}>
+        <tr>
+            <th>Image</th>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Visible</th>
+            <th>Creation</th>
+        </tr>
+    </{{ tag }}>
+    {% endfor %}
+    <tbody>
+    {% for doc in docs %}
+        <tr>
+            <td>
+            {% if doc.hasImage %}
+            <a href="{{ block("edit_url") }}"><img class="image_thumb" src="{{ asset(doc.image.path|apply_filter("admin_small")) }}" /></a>
+            {% endif %}
+            </td>
+            <td><a href="{{ block("edit_url") }}">{{ doc.title }}</a></td>
+            <td>{{ doc.authorName }}</td>
+            <td>{{ doc.isPublished ? "&#9679;" : "" }}</td>
+            <td>{{ doc.createdAt|date }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+
