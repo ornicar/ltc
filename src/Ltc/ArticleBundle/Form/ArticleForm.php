@@ -4,6 +4,7 @@ namespace Ltc\ArticleBundle\Form;
 
 use Ltc\DocBundle\Form\DocForm;
 use Symfony\Component\Form\ChoiceField;
+use Symfony\Component\Form\TextField;
 use Ltc\CoreBundle\Form\ValueTransformer\DoctrineObjectTransformer;
 use Ltc\ArticleBundle\Document\CategoryRepository;
 

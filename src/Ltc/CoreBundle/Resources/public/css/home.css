@@ -1,0 +1,7 @@
+div.home_overview {
+    margin-top: 20px;
+}
+
+div.category_column > div, div.tag_cloud_small, div.home_tags {
+    margin-bottom: 20px;
+}

@@ -4,3 +4,7 @@ if ($('pre.cowsay').length) {
         success: function(text) { $('pre.cowsay').text(text); }
     });
 }
+
+$('a.confirm').click(function() {
+    return confirm($(this).text()+' ?');
+});

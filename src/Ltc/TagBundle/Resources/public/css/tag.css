@@ -1,0 +1,30 @@
+.tag_cloud_small li {
+    color: #ccc;
+    display: inline;
+}
+.tag_cloud_small li:after {
+    content: "•";
+}
+.tag_cloud_small li:last-child:after {
+    content: none;
+}
+.tag_cloud_small a {
+    color: #555;
+    margin-right: 6px;
+}
+
+.tag_cloud_big li {
+    font-size: 120%;
+    color: #ccc;
+    display: inline;
+}
+.tag_cloud_big li:after {
+    content: "•";
+}
+.tag_cloud_big li:last-child:after {
+    content: none;
+}
+.tag_cloud_big a {
+    color: #555;
+    margin-right: 6px;
+}

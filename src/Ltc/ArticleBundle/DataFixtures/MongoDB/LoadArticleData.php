@@ -25,11 +25,12 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 
     protected $dossiers = array(
         1 => 'blog',
-        2 => 'textes',
+        2 => 'didactique-information',
         3 => 'invites',
         4 => 'outils',
         5 => 'visuels',
-        6 => 'chantiers'
+        6 => 'chantiers',
+        99 => 'identite-professionnelle',
     );
     protected $categoryRepository;
     protected $userRepository;
@@ -38,6 +39,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     protected $articleTags;
     protected $tags;
     protected $publications;
+    protected $documentRoot;
 
     public function getOrder()
     {
@@ -54,6 +56,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $this->articleTags        = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TAG_TABLE);
         $this->tags               = $container->get('ltc_import.unserializer')->unserialize(self::TAG_TABLE);
         $this->publications       = $container->get('ltc_import.unserializer')->unserialize(self::PUBLICATION_TABLE);
+        $this->documentRoot       = $container->getParameter('document_root');
     }
 
     public function load($manager)
@@ -68,6 +71,9 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $publications = $this->preparePublications();
 
         foreach ($this->articles as $a) {
+            if (in_array($a['id'], array(2347, 2337, 2363, 2356))) {
+                $a['dossier_id'] = 99;
+            }
             if (!isset($this->dossiers[$a['dossier_id']])) {
                 continue;
             }
@@ -150,10 +156,14 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 
     protected function createImage($filename, $legend)
     {
+        $fixturePath = __DIR__.'/../fixture.jpg';
+        $webPath = '/uploads/fixture.jpg';
+        if (!file_exists($this->documentRoot.$webPath)) {
+            copy($fixturePath, $this->documentRoot.$webPath);
+        }
         $image = new Image();
         $image->setLegend($legend);
-        $file = new File(__DIR__.'/../fixture.jpg');
-        $image->setFile($file);
+        $image->setPath($webPath);
 
         return $image;
     }

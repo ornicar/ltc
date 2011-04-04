@@ -15,7 +15,7 @@ class BlogAdminController extends Controller
         $blogEntries = $this->get('ltc_blog.repository.blog_entry')->findAll();
 
         return $this->render('LtcBlog:Admin:index.html.twig', array(
-            'docs' => $blogEntries
+            'objects' => $blogEntries
         ));
     }
 
@@ -59,6 +59,18 @@ class BlogAdminController extends Controller
             'doc' => $blogEntry,
             'form' => $form
         ));
+    }
+
+    public function deleteAction($id)
+    {
+        $entry = $this->get('ltc_blog.repository.blog_entry')->find($id);
+        $this->get('doctrine.odm.mongodb.document_manager')->remove($entry);
+        $this->get('doctrine.odm.mongodb.document_manager')->flush();
+        $this->get('ltc_tag.denormalizer')->denormalize();
+        $this->get('doctrine.odm.mongodb.document_manager')->flush();
+        $this->get('session')->setFlash('notice', 'Billet supprime');
+
+        return new RedirectResponse($this->get('router')->generate('ltc_blog_admin_entry_list'));
     }
 
     protected function save()

@@ -15,9 +15,9 @@ class ArticleAdminController extends Controller
     {
         $articles = $this->get('ltc_article.repository.article')->findByCategory($category);
 
-        return $this->render('LtcArticle:ArticleAdmin:list.html.twig', array(
+        return $this->render('LtcArticle:ArticleAdmin:listByCategory.html.twig', array(
             'category' => $category,
-            'docs' => $articles
+            'objects' => $articles
         ));
     }
 
@@ -71,6 +71,20 @@ class ArticleAdminController extends Controller
             'doc' => $article,
             'form' => $form
         ));
+    }
+
+    public function deleteAction($id)
+    {
+        $article = $this->get('ltc_article.repository.article')->find($id);
+        $this->get('doctrine.odm.mongodb.document_manager')->remove($article);
+        $this->get('doctrine.odm.mongodb.document_manager')->flush();
+        $this->get('ltc_tag.denormalizer')->denormalize();
+        $this->get('doctrine.odm.mongodb.document_manager')->flush();
+        $this->get('session')->setFlash('notice', 'Article supprime');
+
+        return new RedirectResponse($this->get('router')->generate('ltc_article_admin_category_view', array(
+            'slug' => $article->getCategory()->getSlug()
+        )));
     }
 
     protected function save()

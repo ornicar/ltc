@@ -1,3 +1,7 @@
+ltc_article_admin_article_delete:
+    pattern:  /supprimer/{id}
+    defaults: { _controller: LtcArticle:ArticleAdmin:delete }
+
 ltc_article_admin_article_new:
     pattern:  /{categorySlug}/nouveau
     defaults: { _controller: LtcArticle:ArticleAdmin:new }

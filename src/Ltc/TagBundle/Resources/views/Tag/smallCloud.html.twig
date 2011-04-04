@@ -1,0 +1,6 @@
+<ul class="tag_cloud_small">
+    {{ ltc_tag_cloud_init(tags) }}
+    {% for tag in tags %}
+    <li><a href="{{ path("ltc_tag_view", {"slug": tag.slug}) }}" style="{{ ltc_tag_cloud_style(tag.docCount) }}">{{ tag.title }}</a></li>
+    {% endfor %}
+</ul>

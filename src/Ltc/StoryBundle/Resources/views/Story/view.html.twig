@@ -1,0 +1,8 @@
+<article class="doc_preview">
+    <header>
+        <h2><a href="{{ story.url }}">{{ story.title }}</a></h2>
+        <p class="metadata">{{ story.publishedAt|ltc_date }}, par {{ story.authorName|default("Pascal Duplessis") }}</p>
+    </header>
+    {{ story.body }}
+    <a class="more" href="{{ story.url }}">Lire la suite</a>
+</article>

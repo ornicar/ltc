@@ -9,6 +9,12 @@
         <service id="ltc_article.provider" class="Ltc\ArticleBundle\Provider">
             <argument type="service" id="ltc_article.repository.category" />
             <argument type="service" id="ltc_article.repository.article" />
+            <argument type="service" id="zend.cache_manager" />
+        </service>
+
+        <service id="ltc_article.twig.extension" class="Ltc\ArticleBundle\Twig\ArticleExtension" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="ltc_article.provider" />
         </service>
 
     </services>

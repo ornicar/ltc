@@ -22,6 +22,20 @@ class ArticleRepository extends DocRepository
     }
 
     /**
+     * Gets the latest published articles in this category
+     *
+     * @return array
+     **/
+    public function findLatestByCategory(Category $category, $limit)
+    {
+        return $this->createPublishedQueryBuilder()
+            ->field('category.$id')->equals(new MongoId($category->getId()))
+            ->limit($limit)
+            ->getQuery()
+            ->execute();
+    }
+
+    /**
      * Find one article
      *
      * @return Article

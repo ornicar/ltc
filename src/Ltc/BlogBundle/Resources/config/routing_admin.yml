@@ -9,3 +9,7 @@ ltc_blog_admin_entry_new:
 ltc_blog_admin_entry_edit:
     pattern:  /{slug}
     defaults: { _controller: LtcBlog:BlogAdmin:edit }
+
+ltc_blog_admin_entry_delete:
+    pattern:  /supprimer/{id}
+    defaults: { _controller: LtcBlog:BlogAdmin:delete }

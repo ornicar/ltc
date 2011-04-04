@@ -14,7 +14,7 @@ class CategoryAdminController extends Controller
             throw new NotFoundHttpException(sprintf('No category found with slug "%s"', $slug));
         }
 
-        return $this->render('LtcArticle:CategoryAdmin:view.html.twig', array(
+        return $this->forward('LtcArticle:ArticleAdmin:listByCategory', array(
             'category' => $category
         ));
     }

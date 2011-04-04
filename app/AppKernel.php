@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOQ\TyperBundle\FOQTyperBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Bundle\ApcBundle\ApcBundle(),
+            new Bundle\ZendCacheBundle\ZendCacheBundle(),
             new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
 
@@ -31,6 +32,7 @@ class AppKernel extends Kernel
             new Ltc\PackageBundle\LtcPackageBundle(),
             new Ltc\ImageBundle\LtcImageBundle(),
             new Ltc\TagBundle\LtcTagBundle(),
+            new Ltc\StoryBundle\LtcStoryBundle(),
             new Ltc\ImportBundle\LtcImportBundle(),
             new Ltc\AdminBundle\LtcAdminBundle(),
         );

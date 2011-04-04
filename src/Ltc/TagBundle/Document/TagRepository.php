@@ -3,7 +3,6 @@
 namespace Ltc\TagBundle\Document;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
-use MongoId;
 use Gedmo\Sluggable\Util\Urlizer;
 
 
@@ -20,6 +19,27 @@ class TagRepository extends DocumentRepository
             ->sort('_id', 'asc')
             ->getQuery()
             ->execute();
+    }
+
+    /**
+     * Finds the more popular slugs and returns them ordered by slug
+     *
+     * @return array
+     **/
+    public function findMorePopularSortBySlug($limit)
+    {
+        $tags = $this->createQueryBuilder()
+            ->sort('docCount', 'desc')
+            ->limit($limit)
+            ->getQuery()
+            ->execute()
+            ->toArray();
+
+        usort($tags, function($a, $b) {
+            return $a->getSlug() > $b->getSlug();
+        });
+
+        return $tags;
     }
 
     /**

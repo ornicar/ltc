@@ -150,6 +150,13 @@ abstract class Doc
     protected $reference;
 
     /**
+     * Tells whether the doc has a manually set publication date in string format
+     *
+     * @return bool
+     */
+    abstract public function hasPublicationDate();
+
+    /**
      * @return Image
      */
     public function getImage()
@@ -233,6 +240,16 @@ abstract class Doc
     public function setPublishedAt(DateTime $publishedAt)
     {
         $this->publishedAt = $publishedAt;
+    }
+
+    /**
+     * Tells whether the doc has an external author or not
+     *
+     * @return bool
+     **/
+    public function hasAuthor()
+    {
+        return (bool) $this->getAuthorName();
     }
 
     /**

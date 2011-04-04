@@ -1,0 +1,41 @@
+body {
+    background-color: #fff;
+    color: #222;
+    border-top: 3px solid #aa1010;
+    font: 100%/1.45 Helvetica, Arial, Verdana, sans-serif;
+    font: 100%/1.45 Georgia, Serif;
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: blue;
+}
+a:hover {
+    text-decoration: underline;
+}
+h2 {
+    font-weight: bold;
+}
+h2 a {
+    color: #222;
+}
+a.more {
+    text-decoration: underline;
+}
+.title {
+    font: 1.6em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
+    color: #cc0000;
+    line-height: 2;
+}
+.title.big {
+    font: 2em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
+    color: #cc0000;
+    line-height: 2;
+}
+
+.metadata {
+    font-size: 90%;
+    color: #888;
+    font-style: italic;
+}

@@ -10,7 +10,7 @@
             <tag name="menu" alias="ltc.admin.main" />
             <argument type="service" id="request" />
             <argument type="service" id="router" />
-            <argument type="service" id="ltc_article.repository.category" />
+            <argument type="service" id="ltc_article.provider" />
         </service>
 
     </services>

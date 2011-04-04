@@ -1,0 +1,14 @@
+<div class="row home_featured">
+    <div class="sixcol">
+        <span class="title">A propos de...</span>
+        {% include "LtcArticle:Article:preview.html.twig" with {"doc": featuredArticle} %}
+    </div>
+    <div class="twocol">
+        <span class="title">Actu</span>
+        {% include "LtcStory:Story:view.html.twig" with {"story": featuredStory} %}
+    </div>
+    <div class="fourcol last">
+        <span class="title">Le blog</span>
+        {% include "LtcBlog:Entry:smallList.html.twig" with {"docs": latestBlogEntries} %}
+    </div>
+</div>

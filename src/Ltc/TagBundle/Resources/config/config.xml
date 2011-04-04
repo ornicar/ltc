@@ -7,8 +7,13 @@
     <services>
         <service id="ltc_tag.denormalizer" class="Ltc\TagBundle\Denormalizer">
             <argument type="service" id="ltc_article.repository.article" />
+            <argument type="service" id="ltc_blog.repository.blog_entry" />
             <argument type="service" id="ltc_tag.repository.tag" />
             <argument type="service" id="doctrine.odm.mongodb.document_manager" />
+        </service>
+
+        <service id="ltc_tag.twig.extension" class="Ltc\TagBundle\Twig\TagExtension" public="false">
+            <tag name="twig.extension" />
         </service>
     </services>
 

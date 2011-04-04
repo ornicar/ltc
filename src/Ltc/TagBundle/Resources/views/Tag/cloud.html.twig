@@ -1,0 +1,14 @@
+{% extends "LtcCore:Layout:base.html.twig" %}
+
+{% block content %}
+<div class="row">
+    <h1 class="title big">Tous les tags</h1>
+
+    <div class="tag_cloud_big">
+        {{ ltc_tag_cloud_init(tags) }}
+        {% for tag in tags %}
+        <li><a href="{{ path("ltc_tag_view", {"slug": tag.slug}) }}" style="{{ ltc_tag_cloud_style(tag.docCount) }}">{{ tag.title }}</a></li>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

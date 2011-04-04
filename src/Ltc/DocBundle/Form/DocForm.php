@@ -8,10 +8,9 @@ use Symfony\Component\Form\TextareaField;
 use Symfony\Component\Form\CheckboxField;
 use Ltc\TagBundle\Document\TagRepository;
 use Ltc\TagBundle\Form\ValueTransformer\TagsValueTransformer;
-use Ltc\UserBundle\Document\UserRepository;
 use Ltc\ImageBundle\Form\ImageForm;
 
-class DocForm extends Form
+abstract class DocForm extends Form
 {
     public function configure()
     {

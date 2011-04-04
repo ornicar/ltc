@@ -64,6 +64,16 @@ class Article extends Doc
     }
 
     /**
+     * Tells whether the doc has a manually set publication date in string format
+     *
+     * @return bool
+     */
+    public function hasPublicationDate()
+    {
+        return (bool) $this->getPublicationDate();
+    }
+
+    /**
      * @return string
      */
     public function getPublicationDate()

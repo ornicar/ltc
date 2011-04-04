@@ -1,0 +1,21 @@
+{# reorder for 2-columns display #}
+{% set categories = [
+    categories[0],
+    categories[2],
+    categories[4],
+    categories[1],
+    categories[3],
+    categories[5]
+] %}
+
+<div class="fourcol category_column">
+{% for category in categories %}
+    <div>
+        <h2 class="title">{{ category["category"].title }}</h2>
+        {% include "LtcArticle:Article:smallList.html.twig" with {"docs": category["articles"] } %}
+    </div>
+    {% if loop.index == 3 %}
+    </div><div class="fourcol category_column">
+    {% endif %}
+{% endfor %}
+</div>

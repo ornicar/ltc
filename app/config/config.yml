@@ -33,6 +33,12 @@ avalanche_imagine:
         admin_small:
             type:    thumbnail
             options: { size: [100, 50], mode: inset }
+        preview:
+            type:    thumbnail
+            options: { size: [200, 200], mode: inset }
+        lantenora:
+            type:    thumbnail
+            options: { size: [351, 900], mode: inset }
 
 doctrine_mongo_db:
     connections:
@@ -56,6 +62,7 @@ doctrine_mongo_db:
                 LtcPackage:
                 LtcImage:
                 LtcTag:
+                LtcStory:
 
 stof_doctrine_extensions:
     mongodb:
@@ -113,6 +120,18 @@ knplabs_menu:
 
 ltc_image:
     upload_dir: %kernel.root_dir%/../web/uploads
+
+zend_cache:
+    templates:
+        ltc_article.provider:
+            frontendBackendAutoload: true
+            frontend:
+                name: Core
+                options:
+                    lifetime: 99999999
+                    automatic_serialization: true
+            backend:
+                name: Apc
 
 imports:
     - { resource: config_local.yml }

@@ -28,19 +28,23 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
     {
         $this->manager = $manager;
 
-        $this->create('Textes');
-        $this->create('Invites');
+        $this->create('Didactique de l\'Info', 'didactique-information');
+        $this->create('Identité professionnelle');
+        $this->create('Chantiers');
         $this->create('Outils');
         $this->create('Visuels');
-        $this->create('Chantiers');
+        $this->create('Invités');
 
         $manager->flush();
     }
 
-    protected function create($title)
+    protected function create($title, $slug = null)
     {
         $category = new Category();
         $category->setTitle($title);
+        if ($slug) {
+            $category->setSlug($slug);
+        }
         $this->manager->persist($category);
     }
 }

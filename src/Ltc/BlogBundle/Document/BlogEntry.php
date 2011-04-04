@@ -30,4 +30,14 @@ class BlogEntry extends Doc
      * @gedmo:Sluggable
      */
     protected $title;
+
+    /**
+     * Tells whether the doc has a manually set publication date in string format
+     *
+     * @return bool
+     */
+    public function hasPublicationDate()
+    {
+        return false;
+    }
 }

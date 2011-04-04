@@ -1,4 +1,29 @@
 {% extends "LtcCore:Layout:base.html.twig" %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/home.css") }}">
+{% endblock %}
+
 {% block content %}
-Hello!
+
+{% render "LtcCore:Main:Featured" with {"numberOfBlogEntries": 5} %}
+
+<div class="row home_overview">
+
+    {% render "LtcArticle:Category:overview" %}
+
+    <div class="fourcol last">
+
+        <div class="home_tags">
+            <span class="title">Tags</span>
+            {% render "LtcTag:Tag:smallCloud" with {"numberOfTags": 30} %}
+        </div>
+
+        <span class="title">Photo</span>
+        <a href="http://esmeree.fr/lantenora"><img src="{{ asset("/uploads/fixture.jpg"|apply_filter("lantenora")) }}" alt="L'Antenota" /></a>
+
+    </div>
+</div>
+
 {% endblock %}

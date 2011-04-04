@@ -8,7 +8,21 @@ use MongoId;
 abstract class DocRepository extends DocumentRepository
 {
     /**
+     * Gets the featured doc
+     *
+     * @return Doc
+     **/
+    public function findOneFeatured()
+    {
+        return $this->createPublishedQueryBuilder()
+            ->limit(1)
+            ->getQuery()
+            ->getSingleResult();
+    }
+
+    /**
      * Find all docs sorted by creation date desc
+     * Also returns non-published docs
      *
      * @return array
      **/
@@ -28,7 +42,7 @@ abstract class DocRepository extends DocumentRepository
     public function findRelated(Doc $doc, $limit = 10)
     {
         $tagSlugs = $doc->getTagSlugs();
-        $related = $this->createQueryBuilder()
+        $related = $this->createPublishedQueryBuilder()
             ->field('tags.$id')->in($tagSlugs)
             ->field('_id')->notEqual($doc->getId())
             ->getQuery()
@@ -55,9 +69,33 @@ abstract class DocRepository extends DocumentRepository
      */
     public function findPublished()
     {
-        return $this->createQueryBuilder()
-            ->field('isPublished')->equals(true)
+        return $this->createPublishedQueryBuilder()
             ->getQuery()
             ->execute();
+    }
+
+    /**
+     * Find the more recently published docs
+     *
+     * @return array
+     **/
+    public function findLatest($number)
+    {
+        return $this->createPublishedQueryBuilder()
+            ->limit($number)
+            ->getQuery()
+            ->execute();
+    }
+
+    /**
+     * Creates a query builder for published docs
+     *
+     * @return null
+     **/
+    public function createPublishedQueryBuilder()
+    {
+        return $this->createQueryBuilder()
+            ->field('isPublished')->equals(true)
+            ->sort('publishedAt', 'desc');
     }
 }

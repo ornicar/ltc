@@ -49,3 +49,6 @@
 [submodule "src/Avalanche/Bundle/ImagineBundle"]
 	path = src/Avalanche/Bundle/ImagineBundle
 	url = git://github.com/avalanche123/AvalancheImagineBundle.git
+[submodule "src/Bundle/ZendCacheBundle"]
+	path = src/Bundle/ZendCacheBundle
+	url = git://github.com/knplabs/ZendCacheBundle

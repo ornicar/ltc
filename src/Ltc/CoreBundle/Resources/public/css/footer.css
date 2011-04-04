@@ -1,0 +1,25 @@
+#footer {
+    margin-bottom: 20px;
+}
+#footer div.row {
+    margin-top: 20px;
+    padding-top: 20px;
+    background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) top repeat-x;
+}
+#footer .right {
+    float: right;
+}
+#footer .menu {
+    font-size: 90%;
+}
+#footer .menu a {
+    color: #444;
+    text-decoration: none;
+}
+#footer .menu a:hover {
+    color: #cc0000;
+    text-decoration: underline;
+}
+#footer .search label {
+    display: block;
+}

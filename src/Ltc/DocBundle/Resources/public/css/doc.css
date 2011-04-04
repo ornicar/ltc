@@ -1,0 +1,12 @@
+.doc_preview header {
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;
+}
+.doc_preview img {
+    float: left;
+    margin-right: 1em;
+}
+
+ul.doc_small_list li {
+    margin-bottom: 1em;
+}

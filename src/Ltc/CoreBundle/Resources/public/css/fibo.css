@@ -1,0 +1,409 @@
+/*
+Theme Name: The Ideal Website
+Theme URI: http://www.informationarchitects.jp/
+Description: Theme based on Fibonacci's Golden Cut.
+Version: 1.1.1
+Author: Information Architects
+Author URI: http://www.informationarchitects.jp/
+
+	The Ideal Website WP theme by iA
+	http://informationarchitects.jp/
+
+	The CSS, XHTML and design is released under GPL:
+	http://www.opensource.org/licenses/gpl-license.php
+
+*/
+
+body {
+	border-top:	.3em solid #333;
+	background-color:	#fff;
+	color:	#333;
+	font:	100%/1.45 Helvetica, Arial, Verdana, sans-serif;
+	margin:	0;
+	padding: 0;
+}
+strong {
+	color:	#cc0000;
+	font-weight:	normal;
+}
+a {
+	font-weight:	normal;
+	color:	#cc0000;
+}
+form {
+	padding:	0;
+	margin:	0;
+}
+#contactform {
+	width:	450px;
+}
+fieldset {
+	border:	none;
+	padding:	0;
+	margin:	0;
+}
+label {
+	float:	left;
+	width:	5em;
+	margin-left:	-6em;
+	text-align:	right;
+}
+a:visited {
+	color:	#333;
+	border-bottom:	none;
+}
+a:hover {
+	color:	#333;
+	border-bottom:	none;
+}
+#header {
+	background:	#fff;
+	padding:	0;
+	margin:	0 0 65 0px;
+	width:	100%;
+}
+.post {
+	margin-top:	65px;
+}
+#tagline {
+	color:	#cc0000;
+}
+#logo {
+	position:	absolute;
+	width:	75px;
+	text-align:	left;
+	float:	left;
+	margin-top:	30px;
+	margin-left:	25px;
+}
+.headerText {
+	vertical-align:	bottom;
+	padding-top:	3.7em;
+	font-size:	0.8em;
+}
+.search {
+	padding-top:	15px;
+	width:	200px;
+}
+#s {
+	width:	136px;
+}
+#searchsubmit {
+	width:	50px;
+}
+#subtitle {
+	padding:	0;
+	margin:	0;
+}
+#menu {
+	font:	80%/140% Helvetica, Arial, Verdana, sans-serif;
+	font-weight:	normal;
+	float:	right;
+	text-align:	left;
+	margin-top:	65px;
+	margin-bottom:	0px;
+	margin-right:	-260px;
+	width:	200px;
+	position:	relative;
+	padding-bottom:	0;
+	padding-top:	0;
+	padding-left:	60px;
+}
+#content {
+	padding:	0 0 50px 0;
+	margin-top:	-1px;
+	margin-left:	0px;
+	margin-right:	auto;
+	width:	99%;
+}
+#main {
+	max-width: 530px;
+    min-width: 450px;
+    width: 50%;
+	margin-left:	160px;
+	text-align:	left;
+	display:	block;
+}
+h1 {
+	color:	#333;
+	font-weight:	normal;
+    font: 2em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
+	margin-top:	65px;
+	margin-bottom:	15px;
+	text-align:	left;
+}
+h1 a {
+	border-bottom:	0;
+	color:	#cc0000;
+	font-weight:	normal;
+	text-decoration:	none;
+}
+h1 span.author {
+	color:	#666;
+	font-weight:	normal;
+	letter-spacing:	-1px;
+	text-transform:	none;
+}
+h2 {
+	color: #666;
+	font-size: 1.1em;
+	text-transform: uppercase;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+#footer h2 {
+	margin-top:	0;
+}
+h2 a {
+	border-bottom:	0;
+	color:	#cc0000;
+	font-weight:	normal;
+	text-decoration:	none;
+}
+h2 span.author {
+	color:	#666;
+	font-weight:	normal;
+	letter-spacing:	-1px;
+	text-transform:	none;
+}
+h3 {
+	color:	#333;
+	font-size:	1em/1.45;
+	font-weight:	bold;
+}
+h4 {
+	font:	80%/140% Helvetica, Arial, Verdana, sans-serif;
+	color:	#666;
+	font-weight:	normal;
+	float:	right;
+	text-align:	left;
+	margin-top:	0px;
+	margin-bottom:	0px;
+	margin-right:	-260px;
+	width:	200px;
+	position:	relative;
+	padding-bottom:	0;
+	padding-top:	0;
+	padding-left:	60px;
+}
+h6 {
+	font:	80%/168% Helvetica, Arial, Verdana, sans-serif;
+	color:	#666;
+	margin-top:	-05px;
+	margin-bottom:	30px;
+	clear:	both;
+}
+h5 {
+	font:	80%/168% Helvetica, Arial, Verdana, sans-serif;
+	color:	#666;
+	font-weight:	normal;
+	float:	left;
+	text-align:	right;
+	margin-top:	0px;
+	margin-bottom:	0px;
+	margin-left:	-156px;
+	width:	140px;
+	position:	relative;
+	padding-bottom:	0;
+	padding-top:	0;
+	clear:	both;
+	display:	inline;
+}
+h5 a:visited {
+	color:	#666;
+	border-bottom:	none;
+}
+h5 a:hover {
+	color:	#333;
+	border-bottom:	none;
+}
+p {
+	margin:	0;
+	padding-bottom:	12px;
+}
+
+ul li {
+	text-align:	left;
+	padding:	1px 0px 1px 0px;
+	margin:	0;
+}
+ul {
+	margin-left:	20px;
+}
+ul li a {
+	text-align:	left;
+	padding:	0;
+	margin:	0;
+	list-style:	none;
+}
+a:hover {
+	color:	#000000;
+	border-bottom:	none;
+}
+ul li a:hover {
+	color:	#000000;
+	border-bottom:	none;
+}
+ol li a:hover {
+	color:	#000000;
+	border-bottom:	none;
+}
+#menu ul {
+	padding:	0;
+	margin:	0;
+}
+#menu ul ul ul {
+	padding-left:	15px;
+}
+#menu ul li{
+	list-style:none;
+	padding:0;
+}
+
+#menu ul.pagemain {
+	padding:	0;
+	margin:	0;
+	padding-top:	15px;
+}
+#menu ul li .pagecat {
+	padding-bottom:	5px;
+}
+#menu ul.pagelist {
+	padding-bottom:	20px;
+}
+#menu .current_page_item a {
+	text-decoration:	none;
+	color:	#333;
+}
+#menu .current_page_item a:visited {
+	text-decoration:	none;
+	color:	#333;
+}
+#menu .current_page_item li a {
+	text-decoration:	underline;
+	color:	#CC0000;
+}
+#menu .current_page_item li a:visited {
+	text-decoration:	underline;
+	color:	#CC0000;
+}
+
+div.comment {
+	margin-top:	14px;
+	color:	#aaa;
+	width:	100%;
+	font-size:	100%;
+}
+#legalese {
+	color:	#333;
+	margin-top:	30px;
+	padding:	5px 0 5px 0;
+	text-align:	left;
+}
+blockquote {
+	font-style:	normal;
+	font-size:	80%;
+	line-height:	140%;
+	margin-left:	20px;
+}
+img {
+	border:	0;
+}
+img.wide {
+	position:	relative;
+	margin-top:	30px;
+	margin-bottom:	30px;
+	border:	none;
+}
+
+#chart {
+	font-size:	80%;
+	padding-bottom:	25px;
+}
+.comm {
+	font:	85%/1.45 Helvetica, Arial, Verdana, sans-serif;
+	color:	#333;
+	font-weight:	normal;
+	padding-top:	30px;
+}
+.commentAuthor {
+	margin-top:	30px;
+	font:	85%/1.45 Helvetica, Arial, Verdana, sans-serif;
+	color:	#666
+ font-weight: normal;
+}
+.commentAuthor a {
+	font:	85%/1.45 Helvetica, Arial, Verdana, sans-serif;
+	color:	#666;
+}
+#footer {
+	width:	100%;
+	color:	#333;
+	background-color:	#efefef;
+	clear:	both;
+	padding-bottom:	30px;
+}
+#links {
+	width:	100%;
+	color:	#333;
+	background-color:	#efefef;
+	padding-top:	10px;
+	padding-bottom:	10px;
+	font-weight:	normal;
+	height:	30px;
+}
+#linklist {
+	padding-left:	100px;
+}
+#links a, #links a:link, #links a:visited {
+	color:	#333;
+}
+#links ul, #links li {
+	display:	inline;
+	list-style:	none;
+	padding-right:	5px;
+}
+#footer h1,#footer h2,#footer h3,#footer h4,#footer h5,#footer h6 {
+	color:	#fff;
+}
+#footer h2 {
+	padding-top:	60px;
+}
+#comments {
+	color:	#333;
+	width:	423px;
+	max-width:	60%;
+	min-width:	420px;
+	padding-left:	160px;
+}
+#comments a, #comments a:link, #comments a:hover {
+	color:	#333;
+}
+#navigation {
+	padding-top:	10px;
+}
+h2 #com {
+	padding-top:	10px;
+}
+ul li a.selected {
+	text-decoration:	none;
+	color:	#333;
+}
+#menu a:visited {
+	color:	#CC0000;
+}
+#menu a:visited.selected {
+	color:	#333;
+}
+#menu a.selected {
+	color:	#333;
+}
+
+.entry img {
+	clear: both;
+    float: left;
+    padding: 1em 1em 1em 0em;
+    margin-top: 1em;
+
+}
+

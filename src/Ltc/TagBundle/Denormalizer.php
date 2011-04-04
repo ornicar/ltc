@@ -3,6 +3,7 @@
 namespace Ltc\TagBundle;
 
 use Ltc\ArticleBundle\Document\ArticleRepository;
+use Ltc\BlogBundle\Document\BlogEntryRepository;
 use Ltc\TagBundle\Document\TagRepository;
 use Doctrine\ODM\MongoDB\DocumentManager;
 
@@ -17,6 +18,13 @@ class Denormalizer
      * @var ArticleRepository
      */
     protected $articleRepository = null;
+
+    /**
+    * Blog entry repository
+    *
+    * @var BlogEntryRepository
+    */
+    protected $blogEntryRepository = null;
 
     /**
      * Tag repository
@@ -37,11 +45,12 @@ class Denormalizer
      *
      * @param ArticleRepository articleRepository
      */
-    public function __construct(ArticleRepository $articleRepository, TagRepository $tagRepository, DocumentManager $documentManager)
+    public function __construct(ArticleRepository $articleRepository, BlogEntryRepository $blogEntryRepository, TagRepository $tagRepository, DocumentManager $documentManager)
     {
-        $this->articleRepository = $articleRepository;
-        $this->tagRepository     = $tagRepository;
-        $this->documentManager   = $documentManager;
+        $this->articleRepository   = $articleRepository;
+        $this->blogEntryRepository = $blogEntryRepository;
+        $this->tagRepository       = $tagRepository;
+        $this->documentManager     = $documentManager;
     }
 
     /**
@@ -51,11 +60,11 @@ class Denormalizer
      **/
     public function denormalize()
     {
-        $articles = $this->articleRepository->findPublished();
         $tags = $this->tagRepository->findAll();
         $tagPopularity = array();
-        foreach ($articles as $article) {
-            foreach ($article->getTagSlugs() as $tagSlug) {
+
+        foreach ($this->getDocs() as $doc) {
+            foreach ($doc->getTagSlugs() as $tagSlug) {
                 if (!isset($tagPopularity[$tagSlug])) {
                     $tagPopularity[$tagSlug] = 1;
                 } else {
@@ -73,4 +82,11 @@ class Denormalizer
         }
     }
 
+    public function getDocs()
+    {
+        return array_merge(
+            $this->articleRepository->findAll()->toArray(),
+            $this->blogEntryRepository->findAll()->toArray()
+        );
+    }
 }

@@ -1,0 +1,8 @@
+{% extends "LtcCore:Layout:base.html.twig" %}
+
+{% block content %}
+<div class="row">
+    <h1 class="title big">Tag : {{ tag.title }}</h1>
+    <a href="{{ path("ltc_tag_cloud") }}">&lt; Retourner au nuage de tags</a>
+</div>
+{% endblock %}

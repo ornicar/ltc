@@ -5,6 +5,7 @@ namespace Ltc\ArticleBundle;
 use Ltc\ArticleBundle\Document\CategoryRepository;
 use Ltc\ArticleBundle\Document\ArticleRepository;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Zend\Cache\Manager as CacheManager;
 
 /**
  * Provides articles based on category and article slugs
@@ -25,16 +26,37 @@ class Provider
      */
     protected $articleRepository = null;
 
+    protected $cache;
+
     /**
      * Instanciates a new Provider
      *
      * @param CategoryRepository categoryRepository
      * @param ArticleRepository articleRepository
      */
-    public function __construct(CategoryRepository $categoryRepository, ArticleRepository $articleRepository)
+    public function __construct(CategoryRepository $categoryRepository, ArticleRepository $articleRepository, CacheManager $cacheManager)
     {
         $this->categoryRepository = $categoryRepository;
-        $this->articleRepository = $articleRepository;
+        $this->articleRepository  = $articleRepository;
+        $this->cache              = $cacheManager->getCache('ltc_article.provider');
+    }
+
+    /**
+     * Gets categories as an associative array slug => title
+     *
+     * @return array
+     */
+    public function getCategoriesInfos()
+    {
+        $cacheName = 'categories_infos';
+        $infos = $this->cache->load($cacheName);
+
+        if (!$infos) {
+            $infos = $this->categoryRepository->getTitlesIndexBySlug();
+            $this->cache->save($infos, $cacheName);
+        }
+
+        return $infos;
     }
 
     public function findArticle($categorySlug, $articleSlug)

@@ -1,29 +1,35 @@
 {% extends "LtcCore:Layout:root.html.twig" %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/style.css") }}">
+<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/reset.css") }}">
+<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/font.css") }}">
+<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/grid.css") }}">
+<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/core.css") }}">
+<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/header.css") }}">
+<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/footer.css") }}">
+<link rel="stylesheet" href="{{ asset("bundles/ltcdoc/css/doc.css") }}">
+<link rel="stylesheet" href="{{ asset("bundles/ltctag/css/tag.css") }}">
+{% endblock %}
+
+{% block body %}
+
+{% include "LtcCore:Layout:header.html.twig" %}
+
+<div id="main" role="main">
+    {% block content %}{% endblock %}
+</div>
+
+{% include "LtcCore:Layout:footer.html.twig" %}
+
 {% endblock %}
 
 {% block javascripts %}
 {{ parent() }}
+<script type="text/javascript" src="{{ asset("bundles/ltccore/js/front.js") }}"></script>
 <!-- <script>
     var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
         g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
         s.parentNode.insertBefore(g,s)}(document,"script"));
     </script> -->
-{% endblock %}
-
-{% block body %}
-<div id="container">
-    <header>
-
-    </header>
-    <div id="main" role="main">
-        {% block content %}{% endblock %}
-    </div>
-    <footer>
-
-    </footer>
-</div>
 {% endblock %}

@@ -1,0 +1,32 @@
+{% extends "LtcAdmin::form.html.twig" %}
+
+{% block list_url %}
+{{ path("ltc_story_admin_story_list") }}
+{% endblock %}
+
+{% block form_fields %}
+<div>
+    {{ form_label(form.title, "Titre") }}
+    {{ form_errors(form.title) }}
+    {{ form_field(form.title) }}
+</div>
+<div class="inline_label">
+    {{ form_field(form.isPublished) }}
+    {{ form_label(form.isPublished, "Visible sur le site") }}
+</div>
+<div>
+    {{ form_label(form.body, "Texte") }}
+    {{ form_field(form.body, {"rows": 10}) }}
+</div>
+<section>
+    Uniquement en cas d'un auteur invite.
+    <div>
+        {{ form_label(form.authorName, "Auteur") }}
+        {{ form_field(form.authorName) }}
+    </div>
+</section>
+<div>
+    {{ form_label(form.url, "Lien") }}
+    {{ form_field(form.url) }}
+</div>
+{% endblock %}

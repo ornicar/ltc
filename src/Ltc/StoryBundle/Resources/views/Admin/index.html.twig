@@ -1,0 +1,27 @@
+{% extends "LtcAdmin::list.html.twig" %}
+
+{% block new_link %}
+<a href="{{ path("ltc_story_admin_story_new") }}">Nouvelle actu</a>
+{% endblock %}
+
+{% block title %}
+{{ objects|length }} Actus
+{% endblock %}
+
+{% block table_headers %}
+<th>Titre</th>
+<th>Auteur</th>
+<th>Visible</th>
+<th>Creation</th>
+{% endblock %}
+
+{% block table_row %}
+<td><a href="{{ path("ltc_story_admin_story_edit", {"id": object.id}) }}">{{ object.title }}</a></td>
+<td>{{ object.authorName }}</td>
+<td>{{ object.isPublished ? "&#9679;" : "" }}</td>
+<td>{{ object.createdAt|date }}</td>
+{% endblock %}
+
+{% block delete_url %}
+{{ path("ltc_story_admin_story_delete", {"id": object.id}) }}
+{% endblock %}

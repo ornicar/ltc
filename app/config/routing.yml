@@ -13,9 +13,17 @@ ltc_blog_admin:
     resource: "@LtcBlog/Resources/config/routing_admin.yml"
     prefix: /admin/blog
 
+ltc_tag:
+    resource: "@LtcTag/Resources/config/routing.yml"
+    prefix: /tags
+
 ltc_tag_admin:
     resource: "@LtcTag/Resources/config/routing_admin.yml"
     prefix: /admin/tags
+
+ltc_story_admin:
+    resource: "@LtcStory/Resources/config/routing_admin.yml"
+    prefix: /admin/actus
 
 fos_user_user:
     resource: "@FOSUser/Resources/config/routing/user.xml"
