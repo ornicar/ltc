@@ -1,0 +1,10 @@
+{% extends "LtcDoc:Doc:view.html.twig" %}
+
+{% block doc_metas %}
+<div class="meta_block">
+    <a href="{{ path("ltc_blog_entry_index") }}">
+        &lt; Retour au blog
+    </a>
+</div>
+{{ parent() }}
+{% endblock %}

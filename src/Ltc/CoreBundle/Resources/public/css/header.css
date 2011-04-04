@@ -14,7 +14,8 @@
     line-height: 0.9;
 }
 #header .baseline {
-    font: 1.5em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
+    font: 1em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
+    line-height: 1.5;
     color: #777;
 }
 

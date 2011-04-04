@@ -10,9 +10,11 @@
 
 <div class="fourcol category_column">
 {% for category in categories %}
+    {% set url = path("ltc_article_category_view", {"slug": category["category"].slug}) %}
     <div>
-        <h2 class="title">{{ category["category"].title }}</h2>
+        <h2 class="title"><a href="{{ url }}">{{ category["category"].title }}</a></h2>
         {% include "LtcArticle:Article:smallList.html.twig" with {"docs": category["articles"] } %}
+        <a class="all_others" href="{{ url }}">&gt; autres articles</a>
     </div>
     {% if loop.index == 3 %}
     </div><div class="fourcol category_column">

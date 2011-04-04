@@ -1,3 +1,7 @@
 homepage:
     pattern:  /
     defaults: { _controller: LtcCore:Main:index }
+
+ltc_archive:
+    pattern:  /archives
+    defaults: { _controller: LtcCore:Main:archive }

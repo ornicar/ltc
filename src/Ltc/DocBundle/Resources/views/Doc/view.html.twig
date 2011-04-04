@@ -1,0 +1,49 @@
+{% extends "LtcCore:Layout:base.html.twig" %}
+
+{% block content %}
+<div class="row">
+    <div class="fourcol doc_metas">
+        {% block doc_metas %}
+        <div class="meta_block nice_list small">
+            <span class="title shy">Tags</span>
+            {% include "LtcTag:Tag:list.html.twig" with {"tags": doc.tags} %}
+        </div>
+
+        <div class="meta_block nice_list small">
+            <span class="title shy">Articles corrélés</span>
+            {% include "LtcDoc:Doc:linkList.html.twig" with {"docs": related} %}
+        </div>
+
+        {% if doc.relatedPublications %}
+        <div class="meta_block">
+            <span class="title shy">Publications liées</span>
+            {{ doc.relatedPublications|markdown }}
+        </div>
+        {% endif %}
+
+        {% if doc.reference %}
+        <div class="meta_block small overflowed">
+            <span class="title shy">Référence documentographique</span>
+            <div class="soft">{{ doc.reference|markdown }}</div>
+        </div>
+        {% endif %}
+        {% endblock %}
+    </div>
+    <article class="eightcol last doc_view">
+        <header>
+            <h1 class="title long">{{ doc.title }}</h1>
+            <p class="metadata">{{ ltc_doc_publication_date_and_author(doc) }}</p>
+        </header>
+        {% if doc.hasImage %}
+        <div class="doc_image">
+            <img src="{{ asset(doc.image.path|apply_filter("doc_view")) }}" />
+            {% if doc.image.legend %}
+            <p class="legend overflowed">{{ doc.image.legend }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+        {{ doc.summary|markdown }}
+        {{ doc.body|markdown }}
+    </article>
+</div>
+{% endblock %}

@@ -14,6 +14,12 @@ a {
 a:hover {
     text-decoration: underline;
 }
+strong {
+    font-weight: bold;
+}
+em {
+    font-style: italic;
+}
 h2 {
     font-weight: bold;
 }
@@ -28,14 +34,42 @@ a.more {
     color: #cc0000;
     line-height: 2;
 }
-.title.big {
-    font: 2em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
+.title a {
     color: #cc0000;
-    line-height: 2;
+}
+.title.big {
+    font-size: 2.2em;
+}
+.title.long {
+    line-height: 1.2;
+}
+.title.shy {
+    font-size: 1.4em;
+    color: #222;
+    line-height: 1.5;
 }
 
-.metadata {
+.metadata, .undertitle {
     font-size: 90%;
     color: #888;
     font-style: italic;
+}
+.small {
+    font-size: 90%;
+}
+.soft {
+    color: #666;
+}
+.overflowed {
+    overflow: hidden;
+}
+.all_others {
+    display: block;
+    text-align: right;
+    color: #888;
+}
+.nice_list li {
+    color: #aaa;
+    list-style: disc outside;
+    margin-left: 1.5em;
 }

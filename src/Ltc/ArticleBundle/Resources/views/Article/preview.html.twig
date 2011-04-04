@@ -1,11 +1,5 @@
-<article class="doc_preview">
-    <header>
-        <h2><a href="#">{{ doc.title }}</a></h2>
-        <p class="metadata">{{ ltc_doc_publication_date(doc) }}, par {{ ltc_doc_author(doc) }}</p>
-    </header>
-    {% if doc.hasImage %}
-    <img src="{{ asset(doc.image.path|apply_filter("preview")) }}" />
-    {% endif %}
-    {{ doc.summary }}
-    <a class="more" href="#">Lire la suite</a>
-</article>
+{% extends "LtcDoc:Doc:preview.html.twig" %}
+
+{% block url %}
+{{ path("ltc_article_article_view", {"categorySlug": doc.category.slug, "slug": doc.slug}) }}
+{% endblock %}

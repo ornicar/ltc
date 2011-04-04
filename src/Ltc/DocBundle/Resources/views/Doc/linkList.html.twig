@@ -1,0 +1,5 @@
+<ul class="article_link_list">
+{% for doc in docs %}
+    <li>{% include ltc_doc_controller(doc) ~ ":link.html.twig" with {"doc": doc} %}</li>
+{% endfor %}
+</ul>

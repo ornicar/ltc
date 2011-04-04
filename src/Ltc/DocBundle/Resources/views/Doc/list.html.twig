@@ -1,0 +1,3 @@
+{% for doc in docs %}
+    {% include ltc_doc_controller(doc) ~ ":preview.html.twig" with {"doc": doc} %}
+{% endfor %}

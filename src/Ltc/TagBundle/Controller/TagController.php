@@ -31,9 +31,11 @@ class TagController extends Controller
         if (!$tag) {
             throw new NotFoundHttpException(sprintf('The tag with slug "%s" does not exist', $slug));
         }
+        $docs = $this->get('ltc_core.tag_wizard')->findDocsBoundToTag($tag);
 
         return $this->render('LtcTag:Tag:view.html.twig', array(
-            'tag' => $tag
+            'tag'  => $tag,
+            'docs' => $docs
         ));
     }
 }

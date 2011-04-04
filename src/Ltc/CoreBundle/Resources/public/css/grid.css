@@ -12,8 +12,9 @@ margin: 0 auto;
 overflow: hidden;
 }
 
-.debugcol {
+.fillcol {
     background: #dddddd;
+    min-height: 600px;
 }
 .onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
 margin-right: 3.8%;

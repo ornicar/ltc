@@ -16,12 +16,14 @@
     <div class="fourcol last">
 
         <div class="home_tags">
-            <span class="title">Tags</span>
+            <span class="title"><a href="{{ path("ltc_tag_cloud") }}">Tags</a></span>
             {% render "LtcTag:Tag:smallCloud" with {"numberOfTags": 30} %}
+            <a class="all_others" href="{{ path("ltc_tag_cloud") }}">&gt; autres tags</a>
         </div>
 
         <span class="title">Photo</span>
-        <a href="http://esmeree.fr/lantenora"><img src="{{ asset("/uploads/fixture.jpg"|apply_filter("lantenora")) }}" alt="L'Antenota" /></a>
+        <a class="lantenora_link" href="http://esmeree.fr/lantenora"><img src="{{ asset("/uploads/fixture.jpg"|apply_filter("lantenora")) }}" alt="L'Antenota" /></a>
+        <a class="all_others" href="http://esmeree.fr/lantenora">&gt; L'Antenora</a>
 
     </div>
 </div>

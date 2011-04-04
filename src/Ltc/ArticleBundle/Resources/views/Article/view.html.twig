@@ -1,0 +1,10 @@
+{% extends "LtcDoc:Doc:view.html.twig" %}
+
+{% block doc_metas %}
+<div class="meta_block">
+    <a href="{{ path("ltc_article_category_view", {"slug": doc.category.slug}) }}">
+        &lt; Retour a "{{ doc.category.title }}"
+    </a>
+</div>
+{{ parent() }}
+{% endblock %}

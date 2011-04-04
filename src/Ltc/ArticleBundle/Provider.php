@@ -59,6 +59,16 @@ class Provider
         return $infos;
     }
 
+    public function findPublishedArticle($categorySlug, $articleSlug)
+    {
+        $article = $this->findArticle($categorySlug, $articleSlug);
+        if (!$article->isPublished()) {
+            throw new NotFoundHttpException(sprintf('The article "%s" is not published yet', $articleSlug));
+        }
+
+        return $article;
+    }
+
     public function findArticle($categorySlug, $articleSlug)
     {
         $category = $this->categoryRepository->findOneBySlug($categorySlug);

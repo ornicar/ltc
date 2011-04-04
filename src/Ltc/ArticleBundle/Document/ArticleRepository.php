@@ -22,6 +22,19 @@ class ArticleRepository extends DocRepository
     }
 
     /**
+     * Return the published articles bound to this category
+     *
+     * @return array
+     **/
+    public function findPublishedByCategory(Category $category)
+    {
+        return $this->createPublishedQueryBuilder()
+            ->field('category.$id')->equals(new MongoId($category->getId()))
+            ->getQuery()
+            ->execute();
+    }
+
+    /**
      * Gets the latest published articles in this category
      *
      * @return array

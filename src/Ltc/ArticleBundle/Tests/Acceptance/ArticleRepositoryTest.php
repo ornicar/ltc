@@ -26,7 +26,7 @@ class ArticleRepositoryTest extends WebTestCase
             'construire-le-concept-source-en-terminale-stg-une-sequence-didactique-de-noel-uguen',
             'la-fiche-concept-en-didactique-de-l-information-documentation',
         );
-        $relatedDocs = $articleRepository->findRelated($article);
+        $relatedDocs = $articleRepository->findPublishedRelated($article);
         $relatedSlugs = array_values(array_map(function($doc) { return $doc->getSlug(); }, $relatedDocs));
         $relatedSlugs = array_slice($relatedSlugs, 0, 3);
         $expectedSlugs = array_slice($expectedSlugs, 0, 3);

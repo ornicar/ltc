@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Bundle\ApcBundle\ApcBundle(),
             new Bundle\ZendCacheBundle\ZendCacheBundle(),
             new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
+            new Knplabs\Bundle\MarkdownBundle\KnplabsMarkdownBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
 
             new Ltc\UserBundle\LtcUserBundle(),

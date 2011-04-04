@@ -1,0 +1,14 @@
+{% extends "LtcCore:Layout:base.html.twig" %}
+
+{% block content %}
+<div class="row">
+    <div class="fourcol fillcol">
+    </div>
+    <article class="eightcol last doc_list">
+        <header>
+            <h1 class="title big">Blog</h1>
+        </header>
+        {% include "LtcDoc:Doc:list.html.twig" with {"docs": docs} %}
+    </article>
+</div>
+{% endblock %}

@@ -1,7 +1,16 @@
+div.home_featured {
+    background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
+    padding-bottom: 20px;
+}
 div.home_overview {
     margin-top: 20px;
 }
 
 div.category_column > div, div.tag_cloud_small, div.home_tags {
+    margin-bottom: 20px;
+}
+
+.tag_cloud_small, .lantenora_link {
+    display: block;
     margin-bottom: 20px;
 }

@@ -1,10 +1,9 @@
 <div class="twocol">
     <ul class="menu">
-        <li><a href="#">Blog</a></li>
+        <li><a href="{{ path("ltc_blog_entry_index") }}">Blog</a></li>
         <li><a href="{{ path("ltc_tag_cloud") }}">Tags</a></li>
         <li><a href="#">Auteur</a></li>
-        <li><a href="#">Plan du site</a></li>
-        <li><a href="#">Archives</a></li>
+        <li><a href="{{ path("ltc_archive") }}">Archives</a></li>
         <li><a href="#">Liens</a></li>
     </ul>
 </div>
@@ -12,7 +11,7 @@
 <div class="threecol last">
     <ul class="menu">
         {% for slug, title in ltc_article_categories_infos() %}
-        <li><a href="#{{ slug }}">{{ title }}</a></li>
+        <li><a href="{{ path("ltc_article_category_view", {"slug": slug}) }}">{{ title }}</a></li>
         {% endfor %}
     </ul>
 </div>

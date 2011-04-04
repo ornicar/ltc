@@ -1,0 +1,5 @@
+<ul class="tag_list">
+    {% for tag in tags %}
+    <li><a href="{{ path("ltc_tag_view", {"slug": tag.slug}) }}">{{ tag.title }}</a></li>
+    {% endfor %}
+</ul>

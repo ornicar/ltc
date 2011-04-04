@@ -35,7 +35,10 @@ avalanche_imagine:
             options: { size: [100, 50], mode: inset }
         preview:
             type:    thumbnail
-            options: { size: [200, 200], mode: inset }
+            options: { size: [252, 300], mode: inset }
+        doc_view:
+            type:    thumbnail
+            options: { size: [351, 500], mode: inset }
         lantenora:
             type:    thumbnail
             options: { size: [351, 900], mode: inset }
@@ -116,6 +119,10 @@ apc:
     web_dir: %kernel.root_dir%/../web
 
 knplabs_menu:
+    twig: true
+
+knplabs_markdown:
+    parser: true
     twig: true
 
 ltc_image:

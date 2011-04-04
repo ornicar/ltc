@@ -6,6 +6,8 @@ use Twig_Extension;
 use Twig_Function_Method;
 use Ltc\DocBundle\Document\Doc;
 use Ltc\CoreBundle\Twig\CoreExtension;
+use Ltc\ArticleBundle\Document\Article;
+use Ltc\BlogBundle\Document\BlogEntry;
 
 class DocExtension extends \Twig_Extension
 {
@@ -31,6 +33,8 @@ class DocExtension extends \Twig_Extension
         $mappings = array(
             'ltc_doc_author' => 'getAuthor',
             'ltc_doc_publication_date' => 'getPublicationDate',
+            'ltc_doc_publication_date_and_author' => 'getPublicationDateAndAuthor',
+            'ltc_doc_controller' => 'getController'
         );
 
         $functions = array();
@@ -39,6 +43,20 @@ class DocExtension extends \Twig_Extension
         }
 
         return $functions;
+    }
+
+    /**
+     * Get the best controller for this doc
+     *
+     * @return string
+     **/
+    public function getController(Doc $doc)
+    {
+        if ($doc instanceof Article) {
+            return 'LtcArticle:Article';
+        } elseif ($doc instanceof BlogEntry) {
+            return 'LtcBlog:Entry';
+        }
     }
 
     /**
@@ -54,7 +72,7 @@ class DocExtension extends \Twig_Extension
                 $author .= ', '.$bio;
             }
         } else {
-            $author = 'Pascal Duplessis';
+            $author = '';
         }
 
         return $author;
@@ -74,6 +92,17 @@ class DocExtension extends \Twig_Extension
         }
 
         return $date;
+    }
+
+    public function getPublicationDateAndAuthor(Doc $doc)
+    {
+        $string = $this->getPublicationDate($doc);
+        $author = $author = $this->getAuthor($doc);
+        if (!empty($author)) {
+            $string .= ', par '.$author;
+        }
+
+        return $string;
     }
 
     /**

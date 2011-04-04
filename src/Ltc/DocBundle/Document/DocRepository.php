@@ -2,6 +2,7 @@
 
 namespace Ltc\DocBundle\Document;
 
+use Ltc\TagBundle\Document\Tag;
 use Doctrine\ODM\MongoDB\DocumentRepository;
 use MongoId;
 
@@ -18,6 +19,19 @@ abstract class DocRepository extends DocumentRepository
             ->limit(1)
             ->getQuery()
             ->getSingleResult();
+    }
+
+    /**
+     * Find all published docs having this tag
+     *
+     * @return array
+     **/
+    public function findPublishedByTag(Tag $tag)
+    {
+        return $this->createPublishedQueryBuilder()
+            ->field('tags.$id')->equals($tag->getSlug())
+            ->getQuery()
+            ->execute();
     }
 
     /**
@@ -39,27 +53,14 @@ abstract class DocRepository extends DocumentRepository
      *
      * @return array
      **/
-    public function findRelated(Doc $doc, $limit = 10)
+    public function findPublishedRelated(Doc $doc)
     {
-        $tagSlugs = $doc->getTagSlugs();
-        $related = $this->createPublishedQueryBuilder()
-            ->field('tags.$id')->in($tagSlugs)
+        return $this->createPublishedQueryBuilder()
+            ->field('tags.$id')->in($doc->getTagSlugs())
             ->field('_id')->notEqual($doc->getId())
             ->getQuery()
             ->execute()
             ->toArray();
-
-        $correlationClosure = function(array $tagSlugs, $doc)
-        {
-            return count(array_intersect($tagSlugs, $doc->getTagSlugs()));
-        };
-        $sortCallback = function($a, $b) use ($tagSlugs, $correlationClosure)
-        {
-            return $correlationClosure($tagSlugs, $a) < $correlationClosure($tagSlugs, $b);
-        };
-        usort($related, $sortCallback);
-
-        return array_slice($related, 0, $limit);
     }
 
     /**

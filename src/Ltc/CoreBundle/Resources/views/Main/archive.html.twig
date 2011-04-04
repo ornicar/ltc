@@ -1,0 +1,25 @@
+{% extends "LtcCore:Layout:base.html.twig" %}
+
+{% block content %}
+
+<div class="row archive">
+
+    <div class="fourcol fillcol">
+    </div>
+
+    <div class="eightcol last">
+        <h1 class="title big">Archives</h1>
+        <div class="archive_category nice_list">
+            <h2 class="title"><a href="{{ path("ltc_blog_entry_index") }}">Table ronde</a></h2>
+            {% include "LtcDoc:Doc:linkList.html.twig" with {"docs": blogEntries} %}
+        </div>
+        {% for category in categories %}
+        <div class="archive_category nice_list">
+            <h2 class="title"><a href="{{ path("ltc_article_category_view", {"slug": category["category"].slug}) }}">{{ category["category"].title }}</a></h2>
+            {% include "LtcDoc:Doc:linkList.html.twig" with {"docs": category["articles"]} %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

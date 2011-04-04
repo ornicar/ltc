@@ -23,4 +23,21 @@ class MainController extends Controller
             'latestBlogEntries' => $latestBlogEntries
         ));
     }
+
+    public function archiveAction()
+    {
+        $blogEntries = $this->get('ltc_blog.repository.blog_entry')->findPublished();
+        $categories = array();
+        foreach ($this->get('ltc_article.repository.category')->findAll() as $category) {
+            $categories[$category->getSlug()] = array(
+                'category' => $category,
+                'articles' => $this->get('ltc_article.repository.article')->findPublishedByCategory($category)
+            );
+        }
+
+        return $this->render('LtcCore:Main:archive.html.twig', array(
+            'blogEntries' => $blogEntries,
+            'categories' => $categories
+        ));
+    }
 }

@@ -20,4 +20,16 @@ class CategoryController extends Controller
 
         return $this->render('LtcArticle:Category:overview.html.twig', array('categories' => $categories));
     }
+
+    public function viewAction($slug)
+    {
+        $category = $this->get('ltc_article.repository.category')->findOneBySlug($slug);
+        if (!$category) {
+            throw new NotFoundHttpException(sprintf('No category found with slug "%s"', $slug));
+        }
+
+        return $this->forward('LtcArticle:Article:listByCategory', array(
+            'category' => $category
+        ));
+    }
 }

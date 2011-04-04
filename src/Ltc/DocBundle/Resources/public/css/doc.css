@@ -2,11 +2,37 @@
     margin-top: 0.2em;
     margin-bottom: 0.5em;
 }
-.doc_preview img {
+.doc_preview img, .doc_view .doc_image {
     float: left;
     margin-right: 1em;
+    margin-top: 0.3em;
+}
+.doc_view .doc_image {
+    width: 351px;
+}
+.doc_view .doc_image .legend {
+    width: 351px;
+    overflow: hidden;
+    font-size: 80%;
+    color: #666;
+    font-style: italic;
 }
 
 ul.doc_small_list li {
     margin-bottom: 1em;
+}
+
+.doc_list .doc_preview {
+    margin: 20px 0 40px 0;
+}
+
+.doc_view header {
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+}
+.doc_view img.doc_image {
+    width: 22.15%;
+}
+.doc_metas .meta_block {
+    margin-bottom: 2em;
 }

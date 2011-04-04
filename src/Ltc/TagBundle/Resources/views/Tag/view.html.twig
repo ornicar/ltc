@@ -2,7 +2,21 @@
 
 {% block content %}
 <div class="row">
-    <h1 class="title big">Tag : {{ tag.title }}</h1>
-    <a href="{{ path("ltc_tag_cloud") }}">&lt; Retourner au nuage de tags</a>
+    <div class="fourcol doc_metas">
+        <div class="meta_block">
+            <a href="{{ path("ltc_tag_cloud") }}">&lt; Retourner au nuage de tags</a>
+        </div>
+        <div class="meta_block">
+            <span class="title shy">Tags</span>
+            {% render "LtcTag:Tag:smallCloud" with {"numberOfTags": 50} %}
+        </div>
+    </div>
+    <article class="eightcol last doc_list">
+        <header>
+            <h1 class="title long">Tag : {{ tag.title }}</h1>
+            <p class="undertitle">{{ docs|length }} documents sont liés à ce tag</p>
+        </header>
+        {% include "LtcDoc:Doc:list.html.twig" with {"docs": docs} %}
+    </article>
 </div>
 {% endblock %}

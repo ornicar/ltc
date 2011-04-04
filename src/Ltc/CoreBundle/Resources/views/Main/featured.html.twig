@@ -8,7 +8,8 @@
         {% include "LtcStory:Story:view.html.twig" with {"story": featuredStory} %}
     </div>
     <div class="fourcol last">
-        <span class="title">Le blog</span>
+        <span class="title"><a href="{{ path("ltc_blog_entry_index") }}">Table ronde</a></span>
         {% include "LtcBlog:Entry:smallList.html.twig" with {"docs": latestBlogEntries} %}
+        <a class="all_others" href="{{ path("ltc_blog_entry_index") }}">&gt; autres articles</a>
     </div>
 </div>
