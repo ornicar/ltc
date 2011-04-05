@@ -1,0 +1,20 @@
+<form class="fos_comment_comment_form" action="{{ path("fos_comment_comment_create") }}" method="POST">
+
+    {% block fos_comment_form_title %}{% endblock %}
+
+    {% block fos_comment_form_fields %}
+        <textarea name="{{ form.body.name }}"></textarea>
+        <label class="author_name">Auteur :
+            <input type="text" name="{{ form.authorName.name }}" value="{{ form.authorName.displayedData }}" />
+        </label>
+        <input type="hidden" name="{{ form.thread.name }}" value="{{ form.thread.displayedData }}" />
+        {{ form_hidden(form) }}
+    {% endblock %}
+
+    <div class="fos_comment_submit">
+        {% block fos_comment_form_submit %}
+            <input type="submit" value="Commenter" />
+        {% endblock %}
+    </div>
+
+</form>

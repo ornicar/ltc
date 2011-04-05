@@ -22,6 +22,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     const TAG_TABLE         = 'pap_tag';
     const ARTICLE_TAG_TABLE = 'pap_article_tag';
     const PUBLICATION_TABLE = 'pap_publication';
+    const COMMENT_TABLE         = 'pap_comment';
 
     protected $dossiers = array(
         1 => 'blog',
@@ -36,6 +37,9 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     protected $articleRepository;
     protected $userRepository;
     protected $userManager;
+    protected $threadManager;
+    protected $commentManager;
+    protected $comments;
     protected $articles;
     protected $articleTags;
     protected $tags;
@@ -56,6 +60,9 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $this->categoryRepository = $container->get('ltc_article.repository.category');
         $this->articleRepository  = $container->get('ltc_article.repository.article');
         $this->tagRepository      = $container->get('ltc_tag.repository.tag');
+        $this->comments           = $container->get('ltc_import.unserializer')->unserialize(self::COMMENT_TABLE);
+        $this->threadManager      = $container->get('fos_comment.manager.thread');
+        $this->commentManager     = $container->get('fos_comment.manager.comment');
         $this->articleTags        = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TAG_TABLE);
         $this->tags               = $container->get('ltc_import.unserializer')->unserialize(self::TAG_TABLE);
         $this->publications       = $container->get('ltc_import.unserializer')->unserialize(self::PUBLICATION_TABLE);
@@ -73,6 +80,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $categoriesBySlug = $this->categoryRepository->findAllIndexBySlug();
         $usersByUsername = $this->userRepository->findAllIndexByUsernameCanonical();
         $publications = $this->preparePublications();
+        $comments = $this->prepareComments();
 
         foreach ($this->articles as $a) {
             if (in_array($a['id'], array(2347, 2337, 2363, 2356))) {
@@ -90,7 +98,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
                 $o->setCategory($categoriesBySlug[$categorySlug]);
                 $o->setPublicationDate($a['publication']);
                 if ($a['lien']) {
-                    $readMore .= sprintf('[%s](%s)%s', 'Lire la suite', $a['lien'], "\n");
+                    $readMore .= sprintf('[%s](%s)%s', 'Voir la page de l\'article', $a['lien'], "\n");
                 }
             }
             $o->setReadMore($readMore);
@@ -124,6 +132,21 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             if (isset($publications[$a['id']])) {
                 $o->setRelatedPublications($publications[$a['id']]);
             }
+            if (isset($comments[$a['id']])) {
+                $thread = $this->threadManager->createThread();
+                $thread->setIdentifier($o->getCommentIdentifier());
+                $manager->persist($thread);
+                foreach ($comments[$a['id']] as $commentArray) {
+                    $comment = $this->commentManager->createComment();
+                    $comment->setBody($commentArray['description']);
+                    $comment->setCreatedAt(new DateTime($commentArray['created_at']));
+                    if (isset($commentArray['author'])) {
+                        $comment->setAuthorName($commentArray['author']);
+                    }
+                    $comment->setThread($thread);
+                    $this->commentManager->addComment($comment);
+                }
+            }
             $manager->persist($o);
         }
 
@@ -152,6 +175,20 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         }
 
         return $articleTags;
+    }
+
+    protected function prepareComments()
+    {
+        $commentsById = array();
+        foreach ($this->comments as $comment) {
+            if (isset($commentsById[$comment['article_id']])) {
+                $commentsById[$comment['article_id']][] = $comment;
+            } else {
+                $commentsById[$comment['article_id']] = array($comment);
+            }
+        }
+
+        return $commentsById;
     }
 
     protected function preparePublications()

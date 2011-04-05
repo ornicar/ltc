@@ -1,0 +1,12 @@
+<div class="fos_comment_comment_show" id="{{ comment.id }}">
+    <div class="metadata">
+        {{ comment.createdAt|ltc_date }}, par <strong>{{ comment.authorName|default("Anonyme") }}</strong>
+    </div>
+    <div class="fos_comment_comment_body">{{ comment.body|ltc_comment|raw }}</div>
+    <div class="fos_comment_comment_reply">
+        <button data-id="{{ comment.id }}" data-name="{{ comment.authorName }}" class="fos_comment_comment_reply_show_form">Répondre</button>
+    </div>
+    <div class="fos_comment_comment_replies">
+        {% include "FOSComment:Comment:tree.html.twig" with {"nodes": children|default([])} %}
+    </div>
+</div>

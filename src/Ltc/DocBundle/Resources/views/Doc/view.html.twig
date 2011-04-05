@@ -1,9 +1,15 @@
 {% extends "LtcCore:Layout:base.html.twig" %}
 
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset("bundles/ltccomment/css/comment.css") }}">
+{% endblock %}
+
 {% block content %}
 <div class="row">
     <div class="fourcol doc_metas">
         {% block doc_metas %}
+
         <div class="meta_block nice_list small">
             <span class="title shy">Tags</span>
             {% include "LtcTag:Tag:list.html.twig" with {"tags": doc.tags} %}
@@ -43,11 +49,24 @@
         </div>
         {% endif %}
         <div class="summary">{{ doc.summary|markdown }}</div>
-        {#
         <div class="body">{{ doc.body|markdown }}</div>
-        #}
+
+        {% if doc.readMore %}
+        <div class="meta_block">
+            <span class="title">Lire la suite</span>
+            {{ doc.readMore|markdown }}
+        </div>
+        {% endif %}
+
+        <span class="title">Discussion</span>
+        {% render "FOSComment:Thread:show" with {"identifier": doc.commentIdentifier} %}
     </article>
 
-    {% render "FOSComment:Thread:show" with {"identifier": doc.commentIdentifier} %}
 </div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript" src="{{ asset("bundles/ltccomment/js/jquery.form.js") }}"></script>
+<script type="text/javascript" src="{{ asset("bundles/ltccomment/js/form.js") }}"></script>
 {% endblock %}

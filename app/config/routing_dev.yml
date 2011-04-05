@@ -1,6 +1,3 @@
-_main:
-    resource: routing.yml
-
 _assetic:
     resource: .
     type:     assetic
@@ -12,3 +9,6 @@ _wdt:
 _profiler:
     resource: "@WebProfiler/Resources/config/routing/profiler.xml"
     prefix:   /_profiler
+
+_main:
+    resource: routing.yml

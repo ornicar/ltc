@@ -59,6 +59,7 @@ doctrine_mongo_db:
                 FOSComment:
                 StofDoctrineExtensions:
                 LtcUser:
+                LtcComment:
                 LtcDoc:
                 LtcArticle:
                 LtcBlog:
@@ -112,7 +113,15 @@ fos_comment:
     db_driver: mongodb
     class:
         model:
-            comment: FOS\CommentBundle\Document\Comment
+            comment: Ltc\CommentBundle\Document\Comment
+    service:
+        form_factory:
+            comment: ltc_comment.form_factory.comment
+        spam_detection:
+            comment: fos_comment.spam_detection.comment.akismet
+    akismet:
+        url: http://esmeree.fr/
+        #api_key: see_config_local
 
 apc:
     host: http://ltc
@@ -127,12 +136,6 @@ knplabs_markdown:
 
 ltc_image:
     upload_dir: %kernel.root_dir%/../web/uploads
-
-fos_comment:
-    db_driver: mongodb
-    class:
-        model:
-            comment: FOS\CommentBundle\Document\Comment
 
 zend_cache:
     templates:

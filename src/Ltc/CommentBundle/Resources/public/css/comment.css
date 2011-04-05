@@ -1,0 +1,66 @@
+div.fos_comment_thread_show {
+}
+div.fos_comment_comment_show .metadata {
+    font-size: 100%;
+    color: #808080;
+}
+div.fos_comment_comment_body {
+    line-height: 1.5em;
+}
+div.fos_comment_comment_replies {
+    margin-left: 3em;
+}
+div.fos_comment_comment_reply {
+    text-align: right;
+}
+div.fos_comment_comment_reply.replying {
+    text-align: left;
+    margin: 1em 0;
+    padding: 1em 20px;
+    background: #d6d6d6;
+}
+button.fos_comment_comment_reply_show_form {
+    padding: 2px 5px;
+    font-size: 0.8em;
+}
+div.fos_comment_comment_reply.replying button.fos_comment_comment_reply_show_form {
+    display: none;
+}
+div.fos_comment_thread_comments {
+    margin-bottom: 1.5em;
+}
+div.fos_comment_reply_prototype {
+    display: none;
+}
+div.fos_comment_thread_show > form.fos_comment_comment_form {
+    margin-bottom: 2em;
+}
+form.fos_comment_comment_form.processing {
+    opacity: 0.5;
+}
+form.fos_comment_comment_form label.author_name {
+    margin-top: 3px;
+    float:left;
+}
+form.fos_comment_comment_form label.author_name input {
+    margin-top: 5px;
+    border: 1px solid #808080;
+    padding: 3px 5px;
+    width: 300px;
+}
+form.fos_comment_comment_form textarea {
+    width: 100%;
+    height: 8em;
+    border: 1px solid #808080;
+}
+form.fos_comment_comment_form.error textarea {
+    border-color: red;
+}
+div.fos_comment_submit {
+    text-align: right;
+}
+div.fos_comment_submit input {
+    font-size: 1.2em;
+    padding: 3px 12px;
+    margin-top: 5px;
+}

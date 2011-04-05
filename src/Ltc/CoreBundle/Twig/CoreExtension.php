@@ -17,7 +17,8 @@ class CoreExtension extends \Twig_Extension
     {
         return array(
             'ltc_date' => new Twig_Filter_Method($this, 'formatDate'),
-            'ltc_shrink_link' => new Twig_Filter_Method($this, 'shrinkLink')
+            'ltc_shrink_link' => new Twig_Filter_Method($this, 'shrinkLink'),
+            'ltc_comment' => new Twig_Filter_Method($this, 'formatComment')
         );
     }
 
@@ -49,6 +50,58 @@ class CoreExtension extends \Twig_Extension
             "'<a href=\"$1\">".$name."</a>$4'",
             $text
         );
+    }
+
+    protected function autoLink($text)
+    {
+        return preg_replace_callback('~
+            (                       # leading text
+                <\w+.*?>|             #   leading HTML tag, or
+                [^=!:\'"/]|           #   leading punctuation, or
+                ^                     #   beginning of line
+            )
+            (
+                (?:https?://)|        # protocol spec, or
+                (?:www\.)             # www.*
+            )
+            (
+                [-\w]+                   # subdomain or domain
+                (?:\.[-\w]+)*            # remaining subdomains or domain
+                (?::\d+)?                # port
+                (?:/(?:(?:[\~\w\+%-\@]|(?:[,.;:][^\s$]))+)?)* # path
+                (?:\?[\w\+%&=.;-]+)?     # query string
+                (?:\#[\w\-]*)?           # trailing anchor
+            )
+            ([[:punct:]]|\s|<|$)    # trailing text
+            ~x',
+            function($matches)
+            {
+                if (preg_match("/<a\s/i", $matches[1]))
+                {
+                    return $matches[0];
+                }
+                else
+                {
+                    return $matches[1].'<a href="'.($matches[2] == 'www.' ? 'http://www.' : $matches[2]).$matches[3].'" target="_blank">'.$matches[2].$matches[3].'</a>'.$matches[4];
+                }
+            },
+            $text
+        );
+    }
+
+    public function formatComment($text)
+    {
+        return nl2br($this->autoLink($this->escape($text)));
+    }
+
+    public function shorten($text, $length = 140)
+    {
+        return mb_substr(str_replace("\n", ' ', $this->escape($text)), 0, $length);
+    }
+
+    public function escape($string)
+    {
+        return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
     }
 
     /**

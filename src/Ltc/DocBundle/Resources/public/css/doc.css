@@ -58,6 +58,9 @@ ul.doc_small_list li {
     font-style: italic;
     margin-bottom: 2em;
 }
+.doc_view .body {
+    margin-bottom: 2em;
+}
 .meta_block {
     margin-bottom: 2em;
 }

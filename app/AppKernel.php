@@ -26,6 +26,7 @@ class AppKernel extends Kernel
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
 
             new Ltc\UserBundle\LtcUserBundle(),
+            new Ltc\CommentBundle\LtcCommentBundle(),
             new Ltc\CoreBundle\LtcCoreBundle(),
             new Ltc\DocBundle\LtcDocBundle(),
             new Ltc\BlogBundle\LtcBlogBundle(),

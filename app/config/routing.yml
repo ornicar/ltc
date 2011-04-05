@@ -33,14 +33,15 @@ fos_user_user:
     resource: "@FOSUser/Resources/config/routing/user.xml"
     prefix: /user
 
+fos_comment:
+    resource: "@FOSComment/Resources/config/routing.yml"
+    prefix: /comment
+
 fos_user_security:
     resource: "@FOSUser/Resources/config/routing/security.xml"
 
 ltc_article:
     resource: "@LtcArticle/Resources/config/routing.yml"
-
-fos_comment:
-    resource: "@FOSComment/Resources/config/routing.yml"
 
 _imagine:
     resource: .
