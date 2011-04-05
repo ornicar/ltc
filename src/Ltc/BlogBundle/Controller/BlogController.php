@@ -16,6 +16,15 @@ class BlogController extends Controller
         ));
     }
 
+    public function smallListAction($numberOfDocs)
+    {
+        $blogEntries = $this->get('ltc_blog.repository.blog_entry')->findPublished($numberOfDocs);
+
+        return $this->render('LtcBlog:Entry:smallList.html.twig', array(
+            'docs' => $blogEntries
+        ));
+    }
+
     public function viewAction($slug)
     {
         $blogEntry = $this->get('ltc_blog.repository.blog_entry')->findOneBySlug($slug);

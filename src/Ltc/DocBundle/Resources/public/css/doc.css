@@ -1,5 +1,4 @@
 .doc_preview header {
-    margin-top: 0.2em;
     margin-bottom: 0.5em;
 }
 .doc_image, .doc_image {
@@ -27,17 +26,38 @@ ul.doc_small_list li {
     margin-bottom: 1em;
 }
 
-.doc_list .doc_preview {
-    margin: 20px 0 40px 0;
+.doc_list .doc_preview_with_metas {
+    margin: 10px 0 30px 0;
+    padding-bottom: 30px;
+    background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
+    position: relative;
+}
+.doc_list .doc_preview_with_metas:last-child {
+    background: none;
+}
+.doc_list .doc_preview_with_metas div.metas {
+    position: absolute;
+    width: 355px;
+    left: -395px;
+    text-align: right;
+}
+.doc_list .doc_preview_with_metas div.metas .metadata {
+    font-size: 100%;
+}
+.doc_list .doc_preview_with_metas div.metas li {
+    list-style: none;
 }
 
 .doc_view header {
-    margin-top: 0.5em;
     margin-bottom: 1.5em;
 }
 .doc_view img.doc_image {
     width: 22.15%;
 }
-.doc_metas .meta_block {
+.doc_view .summary {
+    font-style: italic;
+    margin-bottom: 2em;
+}
+.meta_block {
     margin-bottom: 2em;
 }

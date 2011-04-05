@@ -23,6 +23,7 @@ abstract class DocForm extends Form
         $this->add(new TextField('authorName'));
         $this->add(new TextField('authorBio'));
         $this->add(new TextareaField('relatedPublications'));
+        $this->add(new TextareaField('readMore'));
         $this->add(new ImageForm('image'));
     }
 

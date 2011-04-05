@@ -14,7 +14,6 @@ class ArticleForm extends DocForm
     {
         parent::configure();
 
-        $this->add(new TextField('url'));
         $this->add(new TextField('publicationDate'));
     }
 

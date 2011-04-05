@@ -59,6 +59,13 @@ class Provider
         return $infos;
     }
 
+    /**
+     * Gets one published article
+     *
+     * @param string $categorySlug
+     * @param string $articleSlug
+     * @return Article
+     */
     public function findPublishedArticle($categorySlug, $articleSlug)
     {
         $article = $this->findArticle($categorySlug, $articleSlug);
@@ -69,6 +76,13 @@ class Provider
         return $article;
     }
 
+    /**
+     * Gets one article
+     *
+     * @param string $categorySlug
+     * @param string $articleSlug
+     * @return Article
+     */
     public function findArticle($categorySlug, $articleSlug)
     {
         $category = $this->categoryRepository->findOneBySlug($categorySlug);

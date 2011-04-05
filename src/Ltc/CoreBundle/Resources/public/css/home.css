@@ -1,3 +1,11 @@
+#header {
+    margin-bottom: 0px;
+}
+div.home_banner {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #e9e9d0 url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
+}
 div.home_featured {
     background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
     padding-bottom: 20px;

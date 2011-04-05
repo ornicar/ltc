@@ -21,7 +21,7 @@ class BlogAdminController extends Controller
 
     public function newAction()
     {
-        $this->get('ltc_admin.menu.main')->getChild('Blog')->setIsCurrent(true);
+        $this->get('ltc_admin.menu.main')->getChild('Table ronde')->setIsCurrent(true);
         $blogEntry = new BlogEntry();
 
         $form = $this->createForm();
@@ -44,7 +44,7 @@ class BlogAdminController extends Controller
     public function editAction($slug)
     {
         $blogEntry = $this->get('ltc_blog.repository.blog_entry')->findOneBySlug($slug);
-        $this->get('ltc_admin.menu.main')->getChild('Blog')->setIsCurrent(true);
+        $this->get('ltc_admin.menu.main')->getChild('Table ronde')->setIsCurrent(true);
         $form = $this->createForm();
         $form->bind($this->get('request'), $blogEntry);
 

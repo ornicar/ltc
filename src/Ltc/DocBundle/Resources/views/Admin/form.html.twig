@@ -64,16 +64,14 @@
         {{ form_field(form.authorBio) }}
     </div>
 </section>
-{% if form.has("url") %}
-<div>
-    {{ form_label(form.url, "Lien") }}
-    {{ form_field(form.url) }}
-</div>
-{% endif %}
 {% if form.has("publicationDate") %}
 <div>
     {{ form_label(form.publicationDate, "Date de publication") }}
     {{ form_field(form.publicationDate) }}
 </div>
 {% endif %}
+<div>
+    {{ form_label(form.readMore, "Lire la suite") }}
+    {{ form_field(form.readMore, {"rows": 5}) }}
+</div>
 {% endblock %}

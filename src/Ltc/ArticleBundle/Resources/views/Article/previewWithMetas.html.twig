@@ -1,0 +1,5 @@
+{% extends "LtcDoc:Doc:previewWithMetas.html.twig" %}
+
+{% block url %}
+{{ path("ltc_article_article_view", {"categorySlug": doc.category.slug, "slug": doc.slug}) }}
+{% endblock %}

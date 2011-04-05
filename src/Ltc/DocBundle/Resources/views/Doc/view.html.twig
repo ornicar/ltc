@@ -42,8 +42,12 @@
             {% endif %}
         </div>
         {% endif %}
-        {{ doc.summary|markdown }}
-        {{ doc.body|markdown }}
+        <div class="summary">{{ doc.summary|markdown }}</div>
+        {#
+        <div class="body">{{ doc.body|markdown }}</div>
+        #}
     </article>
+
+    {% render "FOSComment:Thread:show" with {"identifier": doc.commentIdentifier} %}
 </div>
 {% endblock %}

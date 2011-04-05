@@ -26,13 +26,14 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     protected $dossiers = array(
         1 => 'blog',
         2 => 'didactique-information',
-        3 => 'invites',
+        3 => 'identite-professionnelle',
         4 => 'outils',
         5 => 'visuels',
         6 => 'chantiers',
         99 => 'identite-professionnelle',
     );
     protected $categoryRepository;
+    protected $articleRepository;
     protected $userRepository;
     protected $userManager;
     protected $articles;
@@ -53,6 +54,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $this->userRepository     = $container->get('ltc_user.repository.user');
         $this->articles           = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TABLE);
         $this->categoryRepository = $container->get('ltc_article.repository.category');
+        $this->articleRepository  = $container->get('ltc_article.repository.article');
         $this->tagRepository      = $container->get('ltc_tag.repository.tag');
         $this->articleTags        = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TAG_TABLE);
         $this->tags               = $container->get('ltc_import.unserializer')->unserialize(self::TAG_TABLE);
@@ -80,14 +82,18 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
                 continue;
             }
             $categorySlug = $this->dossiers[$a['dossier_id']];
+            $readMore = '';
             if ('blog' === $categorySlug) {
                 $o = new BlogEntry();
             } else {
                 $o = new Article();
                 $o->setCategory($categoriesBySlug[$categorySlug]);
-                $o->setUrl($a['lien']);
                 $o->setPublicationDate($a['publication']);
+                if ($a['lien']) {
+                    $readMore .= sprintf('[%s](%s)%s', 'Lire la suite', $a['lien'], "\n");
+                }
             }
+            $o->setReadMore($readMore);
             $o->setCreatedAt(new DateTime($a['created_at']));
             $o->setUpdatedAt(new DateTime($a['updated_at']));
             $o->setSummary($a['resume']);
@@ -120,6 +126,12 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             }
             $manager->persist($o);
         }
+
+        $manager->flush();
+
+        // set the latest article as featured
+        $featured = $this->articleRepository->findPublished(1)->toArray();
+        $this->articleRepository->feature(reset($featured));
         $manager->flush();
     }
 

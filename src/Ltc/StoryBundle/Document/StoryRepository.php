@@ -20,16 +20,28 @@ class StoryRepository extends DocumentRepository
     }
 
     /**
-     * Gets the featured story
+     * Find one featured story
      *
      * @return Story
      **/
     public function findOneFeatured()
     {
         return $this->createQueryBuilder()
-            ->sort('publishedAt', 'desc')
-            ->limit(1)
+            ->sort('isFeatured', 'desc')
             ->getQuery()
             ->getSingleResult();
+    }
+
+    /**
+     * Sets this story as featured, and unset the other ones
+     *
+     * @return null
+     **/
+    public function feature(Story $story)
+    {
+        foreach ($this->findAll() as $other) {
+            $other->setIsFeatured(false);
+        }
+        $story->setIsFeatured(true);
     }
 }

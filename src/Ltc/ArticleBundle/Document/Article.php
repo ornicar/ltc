@@ -11,6 +11,7 @@ use Ltc\DocBundle\Document\Doc;
  * )
  * @mongodb:Index(keys={"category.$id"="asc"})
  * @mongodb:Index(keys={"slug"="asc"})
+ * @mongodb:Index(keys={"isFeatured"="desc"})
  */
 class Article extends Doc
 {
@@ -39,28 +40,28 @@ class Article extends Doc
     protected $publicationDate;
 
     /**
-     * Full resource url
+     * Whether the article is featured or not
      *
-     * @var string
-     * @mongodb:Field(type="string")
+     * @var bool
+     * @mongodb:Field(type="boolean")
      */
-    protected $url;
+    protected $isFeatured = false;
 
     /**
-     * @return string
+     * @return bool
      */
-    public function getUrl()
+    public function getIsFeatured()
     {
-        return $this->url;
+        return $this->isFeatured;
     }
 
     /**
-     * @param  string
+     * @param  bool
      * @return null
      */
-    public function setUrl($url)
+    public function setIsFeatured($isFeatured)
     {
-        $this->url = $url;
+        $this->isFeatured = (bool) $isFeatured;
     }
 
     /**
@@ -105,5 +106,15 @@ class Article extends Doc
     public function setCategory(Category $category)
     {
         $this->category = $category;
+    }
+
+    /**
+     * Gets a unique comment identifier, usable as a slug
+     *
+     * @return string
+     **/
+    public function getCommentIdentifier()
+    {
+        return $this->getCategory()->getSlug().'-'.$this->getSlug();
     }
 }

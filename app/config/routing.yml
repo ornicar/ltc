@@ -39,6 +39,9 @@ fos_user_security:
 ltc_article:
     resource: "@LtcArticle/Resources/config/routing.yml"
 
+fos_comment:
+    resource: "@FOSComment/Resources/config/routing.yml"
+
 _imagine:
     resource: .
     type:     imagine

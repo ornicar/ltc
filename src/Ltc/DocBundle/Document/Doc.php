@@ -150,11 +150,43 @@ abstract class Doc
     protected $reference;
 
     /**
+     * More links and files text block
+     *
+     * @var string
+     * @mongodb:Field(type="string")
+     */
+    protected $readMore;
+
+    /**
      * Tells whether the doc has a manually set publication date in string format
      *
      * @return bool
      */
     abstract public function hasPublicationDate();
+
+    /**
+     * Gets a unique comment identifier, usable as a slug
+     *
+     * @return string
+     **/
+    abstract public function getCommentIdentifier();
+
+    /**
+     * @return string
+     */
+    public function getReadMore()
+    {
+        return $this->readMore;
+    }
+
+    /**
+     * @param  string
+     * @return null
+     */
+    public function setReadMore($readMore)
+    {
+        $this->readMore = $readMore;
+    }
 
     /**
      * @return Image

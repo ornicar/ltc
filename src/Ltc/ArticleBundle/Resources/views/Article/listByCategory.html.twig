@@ -2,13 +2,11 @@
 
 {% block content %}
 <div class="row">
-    <div class="fourcol fillcol">
+    <div class="fourcol blockcol">
     </div>
     <div class="eightcol doc_list last">
         <h1 class="title big">{{ category.title }}</h1>
-
         {% include "LtcDoc:Doc:list.html.twig" with {"docs": docs} %}
-
     </div>
 </div>
 {% endblock %}

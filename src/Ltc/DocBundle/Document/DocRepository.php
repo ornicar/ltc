@@ -9,19 +9,6 @@ use MongoId;
 abstract class DocRepository extends DocumentRepository
 {
     /**
-     * Gets the featured doc
-     *
-     * @return Doc
-     **/
-    public function findOneFeatured()
-    {
-        return $this->createPublishedQueryBuilder()
-            ->limit(1)
-            ->getQuery()
-            ->getSingleResult();
-    }
-
-    /**
      * Find all published docs having this tag
      *
      * @return array
@@ -68,9 +55,15 @@ abstract class DocRepository extends DocumentRepository
      *
      * @return void
      */
-    public function findPublished()
+    public function findPublished($limit = null)
     {
-        return $this->createPublishedQueryBuilder()
+        $queryBuilder = $this->createPublishedQueryBuilder();
+
+        if ($limit) {
+            $queryBuilder->limit($limit);
+        }
+
+        return $queryBuilder
             ->getQuery()
             ->execute();
     }

@@ -61,4 +61,30 @@ class ArticleRepository extends DocRepository
             ->getQuery()
             ->getSingleResult();
     }
+
+    /**
+     * Find one featured article
+     *
+     * @return Article
+     **/
+    public function findOneFeatured()
+    {
+        return $this->createQueryBuilder()
+            ->sort('isFeatured', 'desc')
+            ->getQuery()
+            ->getSingleResult();
+    }
+
+    /**
+     * Sets this article as featured, and unset the other ones
+     *
+     * @return null
+     **/
+    public function feature(Article $article)
+    {
+        foreach ($this->findAll() as $other) {
+            $other->setIsFeatured(false);
+        }
+        $article->setIsFeatured(true);
+    }
 }

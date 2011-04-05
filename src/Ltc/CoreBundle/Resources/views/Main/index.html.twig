@@ -7,7 +7,21 @@
 
 {% block content %}
 
-{% render "LtcCore:Main:Featured" with {"numberOfBlogEntries": 5} %}
+<div class="row home_banner_wrap">
+    <div class="home_banner">{% render "LtcStory:Story:featured" %}</div>
+</div>
+
+<div class="row home_featured">
+    <div class="eightcol">
+        <span class="title">A propos de...</span>
+        {% render "LtcArticle:Article:featured" %}
+    </div>
+    <div class="fourcol last">
+        <span class="title"><a href="{{ path("ltc_blog_entry_index") }}">Table ronde</a></span>
+        {% render "LtcBlog:Blog:smallList" with {"numberOfDocs": 5} %}
+        <a class="all_others" href="{{ path("ltc_blog_entry_index") }}">&gt; autres articles</a>
+    </div>
+</div>
 
 <div class="row home_overview">
 

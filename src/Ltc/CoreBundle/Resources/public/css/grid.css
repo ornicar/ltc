@@ -16,6 +16,9 @@ overflow: hidden;
     background: #dddddd;
     min-height: 600px;
 }
+.blockcol {
+    min-height: 1px;
+}
 .onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
 margin-right: 3.8%;
 float: left;

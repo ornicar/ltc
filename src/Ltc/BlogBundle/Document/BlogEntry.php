@@ -40,4 +40,14 @@ class BlogEntry extends Doc
     {
         return false;
     }
+
+    /**
+     * Gets a unique comment identifier, usable as a slug
+     *
+     * @return string
+     **/
+    public function getCommentIdentifier()
+    {
+        return 'table-ronde-'.$this->getSlug();
+    }
 }

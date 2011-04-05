@@ -11,7 +11,7 @@ class ArticleExtension extends \Twig_Extension
     /**
      * @var Provider
      */
-    private $cachePathResolver;
+    private $provider;
 
     /**
      * Constructs by setting $provider
@@ -31,7 +31,7 @@ class ArticleExtension extends \Twig_Extension
     public function getFunctions()
     {
         $mappings = array(
-            'ltc_article_categories_infos' => 'getCategoriesInfos',
+            'ltc_article_categories_infos' => 'getCategoriesInfos'
         );
 
         $functions = array();

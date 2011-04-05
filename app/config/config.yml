@@ -35,7 +35,7 @@ avalanche_imagine:
             options: { size: [100, 50], mode: inset }
         preview:
             type:    thumbnail
-            options: { size: [252, 300], mode: inset }
+            options: { size: [252, 350], mode: inset }
         doc_view:
             type:    thumbnail
             options: { size: [351, 500], mode: inset }
@@ -127,6 +127,12 @@ knplabs_markdown:
 
 ltc_image:
     upload_dir: %kernel.root_dir%/../web/uploads
+
+fos_comment:
+    db_driver: mongodb
+    class:
+        model:
+            comment: FOS\CommentBundle\Document\Comment
 
 zend_cache:
     templates:

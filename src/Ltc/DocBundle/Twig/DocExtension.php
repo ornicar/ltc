@@ -31,10 +31,10 @@ class DocExtension extends \Twig_Extension
     public function getFunctions()
     {
         $mappings = array(
-            'ltc_doc_author' => 'getAuthor',
-            'ltc_doc_publication_date' => 'getPublicationDate',
+            'ltc_doc_author'                      => 'getAuthor',
+            'ltc_doc_publication_date'            => 'getPublicationDate',
             'ltc_doc_publication_date_and_author' => 'getPublicationDateAndAuthor',
-            'ltc_doc_controller' => 'getController'
+            'ltc_doc_controller'                  => 'getController'
         );
 
         $functions = array();
@@ -64,7 +64,7 @@ class DocExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function getAuthor(Doc $doc)
+    public function getAuthor(Doc $doc, $default = 'Pascal Duplessis')
     {
         if ($doc->hasAuthor()) {
             $author = $doc->getAuthorName();
@@ -72,7 +72,7 @@ class DocExtension extends \Twig_Extension
                 $author .= ', '.$bio;
             }
         } else {
-            $author = '';
+            $author = $default;
         }
 
         return $author;
@@ -94,12 +94,12 @@ class DocExtension extends \Twig_Extension
         return $date;
     }
 
-    public function getPublicationDateAndAuthor(Doc $doc)
+    public function getPublicationDateAndAuthor(Doc $doc, $separator = ', ')
     {
         $string = $this->getPublicationDate($doc);
         $author = $author = $this->getAuthor($doc);
         if (!empty($author)) {
-            $string .= ', par '.$author;
+            $string .= sprintf('%spar %s', $separator, $author);
         }
 
         return $string;

@@ -47,19 +47,19 @@ a.more {
 }
 .title.shy {
     font-size: 1.4em;
-    color: #222;
+    color: #444;
     line-height: 1.5;
 }
 
 .metadata, .undertitle {
-    font-size: 85%;
+    font-size: 80%;
     color: #a0a0a0;
     font-style: italic;
 }
 .small {
     font-size: 90%;
 }
-.soft {
+.soft, .title a.soft {
     color: #666;
 }
 .overflowed {

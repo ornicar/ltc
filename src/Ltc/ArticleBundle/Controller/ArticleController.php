@@ -28,4 +28,13 @@ class ArticleController extends Controller
             'related' => $related
         ));
     }
+
+    public function featuredAction()
+    {
+        $article = $this->get('ltc_article.repository.article')->findOneFeatured();
+
+        return $this->render('LtcArticle:Article:featured.html.twig', array(
+            'doc' => $article
+        ));
+    }
 }
