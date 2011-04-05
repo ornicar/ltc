@@ -38,7 +38,7 @@
         <div class="doc_image">
             <img src="{{ asset(doc.image.path|apply_filter("doc_view")) }}" />
             {% if doc.image.legend %}
-            <p class="legend overflowed">{{ doc.image.legend }}</p>
+            <p class="legend overflowed">{{ doc.image.legend|ltc_shrink_link|raw }}</p>
             {% endif %}
         </div>
         {% endif %}

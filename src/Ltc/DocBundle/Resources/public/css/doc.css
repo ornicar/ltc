@@ -2,20 +2,25 @@
     margin-top: 0.2em;
     margin-bottom: 0.5em;
 }
-.doc_preview img, .doc_view .doc_image {
+.doc_image, .doc_image {
     float: left;
     margin-right: 1em;
     margin-top: 0.3em;
 }
 .doc_view .doc_image {
-    width: 351px;
+    max-width: 351px;
 }
-.doc_view .doc_image .legend {
-    width: 351px;
+.doc_preview .doc_image {
+    max-width: 252px;
+}
+.doc_image .legend {
     overflow: hidden;
-    font-size: 80%;
-    color: #666;
-    font-style: italic;
+    font-size: 70%;
+    color: #888;
+}
+.doc_image .legend a {
+    color: #888;
+    text-decoration: underline;
 }
 
 ul.doc_small_list li {

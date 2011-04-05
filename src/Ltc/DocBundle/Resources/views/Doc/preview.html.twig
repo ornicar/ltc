@@ -1,10 +1,15 @@
-<article class="doc_preview">
+<article class="doc_preview clearfix">
     <header>
         <h2><a href="{{ block("url") }}">{{ doc.title }}</a></h2>
         <p class="metadata">{{ ltc_doc_publication_date_and_author(doc) }}</p>
     </header>
     {% if doc.hasImage %}
-    <img src="{{ asset(doc.image.path|apply_filter("preview")) }}" />
+    <div class="doc_image">
+        <img src="{{ asset(doc.image.path|apply_filter("preview")) }}" />
+        {% if doc.image.legend %}
+        <p class="legend overflowed">{{ doc.image.legend|ltc_shrink_link|raw }}</p>
+        {% endif %}
+    </div>
     {% endif %}
     {{ doc.summary|markdown }}
     <a class="more" href="{{ block("url") }}">Lire la suite</a>

@@ -40,6 +40,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     protected $tags;
     protected $publications;
     protected $documentRoot;
+    protected $importRoot;
 
     public function getOrder()
     {
@@ -57,6 +58,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $this->tags               = $container->get('ltc_import.unserializer')->unserialize(self::TAG_TABLE);
         $this->publications       = $container->get('ltc_import.unserializer')->unserialize(self::PUBLICATION_TABLE);
         $this->documentRoot       = $container->getParameter('document_root');
+        $this->importRoot         = $container->getParameter('kernel.root_dir').'/import';
     }
 
     public function load($manager)
@@ -100,8 +102,9 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
                 $o->setAuthorBio($a['qualite']);
             }
             if (isset($a['image'])) {
-                $image = $this->createImage($a['image'], $a['legende']);
-                $o->setImage($image);
+                if ($image = $this->createImage($a['image'], $a['legende'])) {
+                    $o->setImage($image);
+                }
             }
             if (isset($articleTags[$a['id']])) {
                 $o->setTags(new ArrayCollection($articleTags[$a['id']]));
@@ -156,10 +159,13 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 
     protected function createImage($filename, $legend)
     {
-        $fixturePath = __DIR__.'/../fixture.jpg';
-        $webPath = '/uploads/fixture.jpg';
+        $fixturePath = $this->importRoot.'/uploads/article/'.$filename;
+        $webPath = '/uploads/'.$filename;
         if (!file_exists($this->documentRoot.$webPath)) {
-            copy($fixturePath, $this->documentRoot.$webPath);
+            if (!@copy($fixturePath, $this->documentRoot.$webPath)) {
+                print 'Missing image '.$filename."\n";
+                return false;
+            }
         }
         $image = new Image();
         $image->setLegend($legend);

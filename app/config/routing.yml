@@ -11,11 +11,11 @@ ltc_article_admin:
 
 ltc_blog:
     resource: "@LtcBlog/Resources/config/routing.yml"
-    prefix: /blog
+    prefix: /table-ronde
 
 ltc_blog_admin:
     resource: "@LtcBlog/Resources/config/routing_admin.yml"
-    prefix: /admin/blog
+    prefix: /admin/table-ronde
 
 ltc_tag:
     resource: "@LtcTag/Resources/config/routing.yml"

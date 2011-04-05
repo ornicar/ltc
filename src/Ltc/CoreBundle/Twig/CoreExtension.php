@@ -16,7 +16,8 @@ class CoreExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            'ltc_date' => new Twig_Filter_Method($this, 'formatDate')
+            'ltc_date' => new Twig_Filter_Method($this, 'formatDate'),
+            'ltc_shrink_link' => new Twig_Filter_Method($this, 'shrinkLink')
         );
     }
 
@@ -33,6 +34,20 @@ class CoreExtension extends \Twig_Extension
             $date->format('d'),
             $months[$date->format('n')],
             $date->format('Y')
+        );
+    }
+
+    /**
+     * Replace urls with <a href="url">$name</a>
+     *
+     * @return null
+     **/
+    public function shrinkLink($text, $name = 'lien')
+    {
+        return preg_replace(
+            "#((http|https|ftp)://(\S*?\.\S*?))(\s|\;|\)|\]|\[|\{|\}|,|\"|'|:|\<|$|\.\s)#ie",
+            "'<a href=\"$1\">".$name."</a>$4'",
+            $text
         );
     }
 
