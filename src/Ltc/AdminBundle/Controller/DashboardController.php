@@ -10,4 +10,9 @@ class DashboardController extends Controller
     {
         return $this->render('LtcAdmin:Dashboard:index.html.twig');
     }
+
+    public function managerAction()
+    {
+        return $this->render('LtcAdmin:FileManager:manager.html.twig');
+    }
 }

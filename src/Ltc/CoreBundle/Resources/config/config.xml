@@ -7,6 +7,7 @@
     <services>
         <service id="ltc_core.twig.extension" class="Ltc\CoreBundle\Twig\CoreExtension" public="false">
             <tag name="twig.extension" />
+            <argument type="service" id="service_container" />
         </service>
         <service id="ltc_core.tag_wizard" class="Ltc\CoreBundle\TagWizard" public="true">
             <argument type="service" id="ltc_tag.repository.tag" />

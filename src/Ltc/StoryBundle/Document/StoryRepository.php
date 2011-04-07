@@ -32,6 +32,20 @@ class StoryRepository extends DocumentRepository
             ->getSingleResult();
     }
 
+    public function findOneRandom()
+    {
+        $ids = $this->createQueryBuilder()
+            ->select('id')
+            ->hydrate(false)
+            ->getQuery()
+            ->execute()
+            ->toArray();
+
+        $id = array_rand($ids);
+
+        return $this->findOneById($id);
+    }
+
     /**
      * Sets this story as featured, and unset the other ones
      *

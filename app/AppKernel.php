@@ -27,6 +27,7 @@ class AppKernel extends Kernel
 
             new Ltc\UserBundle\LtcUserBundle(),
             new Ltc\CommentBundle\LtcCommentBundle(),
+            new Ltc\MarkdownBundle\LtcMarkdownBundle(),
             new Ltc\CoreBundle\LtcCoreBundle(),
             new Ltc\DocBundle\LtcDocBundle(),
             new Ltc\BlogBundle\LtcBlogBundle(),

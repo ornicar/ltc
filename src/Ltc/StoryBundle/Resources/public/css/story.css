@@ -1,4 +1,10 @@
-.story_preview header {
+.story_preview .title {
     float: left;
-    margin-right: 2em;
+    margin-right: 1em;
+}
+.story_preview header {
+    width: 100%;
+}
+.story_preview .metadata {
+    color: #666;
 }

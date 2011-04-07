@@ -1,0 +1,13 @@
+#!/bin/sh
+
+echo "Build bootstrap"
+bin/build_bootstrap.php
+
+echo "Warmup cache"
+php app/console -e=prod cache:clear
+
+echo "Raise cache permissions"
+chmod -R 777 app/cache/prod
+
+echo "Clear APC cache opcode and user"
+php app/console --env=prod apc:clear

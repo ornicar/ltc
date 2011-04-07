@@ -9,6 +9,9 @@
             <tag name="twig.extension" />
             <argument type="service" id="ltc_core.twig.extension" />
         </service>
+        <service id="ltc_doc.security" class="Ltc\DocBundle\Security">
+            <argument type="service" id="security.context" />
+        </service>
     </services>
 
 </container>

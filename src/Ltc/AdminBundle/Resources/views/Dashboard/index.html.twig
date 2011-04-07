@@ -1,8 +1,117 @@
 {% extends "LtcAdmin::layout.html.twig" %}
 
 {% block content %}
-Comme il n'y a pas grand chose a afficher ici, je laisse la parole a la vache fortunee:
-<br />
-<pre class="cowsay">
+<h2>Ecrire du contenu web</h2>
+<h3>Syntaxe dite "Markdown"</h3>
+<h4>Sauts de ligne</h4>
+Retourner a la ligne n'a aucune incidence sur le rendu html : le retour a la ligne ne sera pas pris en compte.<br />
+En revanche, les paragraphes sont respectes.<br />
+Example, ce texte saisi :
+<pre>
+Premiere ligne.
+Deuxieme ligne.
+
+Troisieme ligne.
 </pre>
+Donnera ce rendu :
+<pre>
+Premiere ligne. Deuxieme ligne.
+
+Troisieme ligne.
+</pre>
+
+<h4>Titres</h4>
+Les titres ne servent pas qu'a embellir le texte,
+ils donnent une structure HTML au document,
+qui aide les moteurs de recherche a comprendre le texte.<br />
+<pre>
+## Titre de niveau 2
+
+### Titre de niveau 3
+
+#### Titre de niveau 4
+</pre>
+
+Les titres doivent former une arborescence. Ne passe jamais directement du niveau 2 au 4.<br />
+Le niveau 1 est reserve au titre de l'article, donc tu ne dois jamais l'utiliser dans le texte.
+
+<h4>Gras et italique</h4>
+<pre>
+**Ceci est affiche en gras, et interprete par les robots comme important**
+
+*Ceci est affiche en italique*
+</pre>
+
+<h4>Listes</h4>
+Si tu respectes les syntaxes de liste, je peux les styler differement sans avoir a modifier le texte.<br />
+Liste a puce :
+
+<pre>
+- Ceci
+- est
+- une liste
+</pre>
+
+Liste numerotee :
+
+<pre>
+1. Ceci
+2. est
+3. une liste ordonnee
+</pre>
+
+<h4>Trait de separation</h4>
+
+<pre>
+---
+</pre>
+
+<h4>Notes</h4>
+
+<pre>
+la définition des concepts[^1] 
+
+[^1]: Académie de Rouen, 2007 ; Duplessis et Ballarini-Santonocito, 2007 ; FADBEN, 2007 ; Duplessis, 2008-c
+</pre>
+
+<h4>Lien</h4>
+
+<pre>
+[Titre du lien](http://url.com)
+</pre>
+
+<h4>Inserer une image</h4>
+
+<pre>
+![Contenu alternatif](/uploads/image/sky.jpg)
+</pre>
+
+Le contenu alternatif est important, mais doit rester court...<br />
+
+Les champs textes qui supportent les images ont un bouton "Image" en haut a droite. Utilisation :<br />
+1. positionne le curseur dans le champs texte a l'endroit ou tu veux afficher l'image<br />
+2. clique le bouton image, une fenetre de gestionnaire de fichier apparait<br />
+3. selectionne le repertoire "image" a gauche<br />
+4. double-clique sur une image<br />
+
+Les images inserees dans les champs texte ne seront pas redimensionnees automatiquement.<br />
+C'est donc a toi de le faire, avant d'envoyer l'image.<br />
+
+<h4>Inserer un fichier a telecharger</h4>
+
+<pre>
+[Nom du fichier](/uploads/file/texte.odt)
+</pre>
+
+Les champs textes qui supportent les fichiers ont un bouton "Fichier" en haut a droite. Utilisation :<br />
+1. positionne le curseur dans le champs texte a l'endroit ou tu veux afficher le lien vers le fichier<br />
+2. clique le bouton fichier, une fenetre de gestionnaire de fichiers apparait<br />
+3. selectionne le repertoire "file" a gauche<br />
+4. double-clique sur un fichier<br />
+
+<h3>Essayer le rendu</h3>
+En tant qu'administrateur, tu peux afficher un article non publie sur le site.
+Utilise le lien "Voir sur le site", situe sur la page de modification de l'article.
+Je suggere d'ouvrir deux onglets de navigateur, un "admin" et un "site", afin d'enregistrer
+et tester regulierement le rendu.
 {% endblock %}

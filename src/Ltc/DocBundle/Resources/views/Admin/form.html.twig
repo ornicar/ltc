@@ -12,7 +12,7 @@
 </div>
 {% if form.has("category") %}
 <div>
-    {{ form_label(form.category, "Rubrique") }}
+    {{ form_label(form.category, "Deplacer vers") }}
     {{ form_field(form.category) }}
 </div>
 {% endif %}
@@ -23,7 +23,6 @@
     <div class="image_form">
         Image de l'article.
         <div>
-            {{ form_label(form.image.file, "Fichier") }}
             {{ form_field(form.image.file) }}
             {{ form_errors(form.image) }}
         </div>
@@ -35,21 +34,23 @@
 </section>
 <div>
     {{ form_label(form.summary, "Resume") }}
+    <div class="help">Restons simple, ici. Evite les titres et les listes</div>
     {{ form_field(form.summary, {"rows": 15}) }}
 </div>
-<div>
+<div class="with_image with_file">
     {{ form_label(form.body, "Texte") }}
+    <div class="help">Les images inserees ici ne seront pas redimensionnees.</div>
     {{ form_field(form.body, {"rows": 40}) }}
 </div>
 <div>
     {{ form_label(form.tags, "Tags") }}
     {{ form_field(form.tags, {"rows": 5}) }}
 </div>
-<div>
+<div class="with_file">
     {{ form_label(form.reference, "Reference") }}
     {{ form_field(form.reference, {"rows": 5}) }}
 </div>
-<div>
+<div class="with_file">
     {{ form_label(form.relatedPublications, "Publications liees") }}
     {{ form_field(form.relatedPublications, {"rows": 5}) }}
 </div>
@@ -70,8 +71,8 @@
     {{ form_field(form.publicationDate) }}
 </div>
 {% endif %}
-<div>
+<div class="with_file">
     {{ form_label(form.readMore, "Lire la suite") }}
-    {{ form_field(form.readMore, {"rows": 5}) }}
+    {{ form_field(form.readMore, {"rows": 7}) }}
 </div>
 {% endblock %}

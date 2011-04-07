@@ -2,7 +2,6 @@
 {% set categories = [
     categories[0],
     categories[2],
-    categories[4],
     categories[1],
     categories[3]
 ] %}
@@ -15,7 +14,7 @@
         {% include "LtcArticle:Article:smallList.html.twig" with {"docs": category["articles"] } %}
         <a class="all_others" href="{{ url }}">&gt; autres articles</a>
     </div>
-    {% if loop.index == 3 %}
+    {% if loop.index == 2 %}
     </div><div class="fourcol category_column">
     {% endif %}
 {% endfor %}

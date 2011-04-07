@@ -20,6 +20,9 @@
         </div>
 
         {% block javascripts %}
+        <script type="text/javascript">
+            var ltc_config = {{ ltc_js_config()|json_encode|raw }};
+        </script>
         <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.js"></script>!-->
         <script src="{{ asset("bundles/ltccore/vendor/jquery.min.js") }}"></script>
         {% endblock %}

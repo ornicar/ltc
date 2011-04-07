@@ -25,5 +25,6 @@ class MainMenu extends Menu
 
         $this->addChild('Actus', $router->generate('ltc_story_admin_story_list'));
         $this->addChild('Tags', $router->generate('ltc_tag_admin_index'));
+        $this->addChild('Fichiers', $router->generate('ltc_admin_manager'));
     }
 }

@@ -6,9 +6,8 @@ framework:
         #secret: see_config_local
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
     validation:    { enabled: true, annotations: true }
-    templating:    { engines: ['twig'] }
+    templating:    { engines: ['twig'], assets_version: 2 }
     document_root: %kernel.root_dir%/../web
-    #assets_version: 1
     session:
         default_locale: fr
         lifetime:       36000
@@ -131,8 +130,8 @@ knplabs_menu:
     twig: true
 
 knplabs_markdown:
-    parser: true
-    twig: true
+    parser:
+        service: markdown.parser.medium
 
 ltc_image:
     upload_dir: %kernel.root_dir%/../web/uploads

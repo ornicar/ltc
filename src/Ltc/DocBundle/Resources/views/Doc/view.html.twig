@@ -33,6 +33,12 @@
             <div class="soft">{{ doc.reference|markdown }}</div>
         </div>
         {% endif %}
+
+        {% if is_granted("ROLE_BACKEND") %}
+            <div class="backend meta_block">
+                <a href="{{ block("admin_url") }}">Admin : modifier</a>
+            </div>
+        {% endif %}
         {% endblock %}
     </div>
     <article class="eightcol last doc_view">
@@ -51,11 +57,11 @@
         <div class="summary">{{ doc.summary|markdown }}</div>
         <div class="body">{{ doc.body|markdown }}</div>
 
+        <hr />
         {% if doc.readMore %}
-        <div class="meta_block">
-            <span class="title">Lire la suite</span>
-            {{ doc.readMore|markdown }}
-        </div>
+        <span class="title">Lire la suite</span>
+        {{ doc.readMore|markdown }}
+        <hr />
         {% endif %}
 
         <span class="title">Discussion</span>

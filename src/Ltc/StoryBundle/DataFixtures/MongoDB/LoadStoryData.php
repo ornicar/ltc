@@ -35,11 +35,14 @@ class LoadStoryData extends AbstractFixture implements OrderedFixtureInterface, 
         foreach ($this->actus as $a) {
             $o = new Story();
             $o->setTitle($a['nom']);
-            $o->setUrl($a['url']);
+            $body = $a['description'];
+            if ($a['url']) {
+                $body .= sprintf(' [%s](%s)', 'Lire la suite...', $a['url']);
+            }
+            $o->setBody($body);
             if ($a['auteur']) {
                 $o->setAuthorName($a['auteur']);
             }
-            $o->setBody($a['description']);
             $o->setIsPublished(true);
             $o->setPublishedAt(new DateTime($a['created_at']));
             $o->setCreatedAt(new DateTime($a['created_at']));

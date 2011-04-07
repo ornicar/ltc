@@ -32,7 +32,6 @@ class LoadCategoryData extends AbstractFixture implements OrderedFixtureInterfac
         $this->create('Identité professionnelle');
         $this->create('Chantiers');
         $this->create('Outils');
-        $this->create('Visuels');
 
         $manager->flush();
     }

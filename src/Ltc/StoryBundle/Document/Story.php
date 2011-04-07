@@ -31,14 +31,6 @@ class Story
     protected $title;
 
     /**
-     * Full resource url
-     *
-     * @var string
-     * @mongodb:Field(type="string")
-     */
-    protected $url;
-
-    /**
      * Full text of the story
      *
      * @var string
@@ -111,23 +103,6 @@ class Story
     public function setIsFeatured($isFeatured)
     {
         $this->isFeatured = (bool) $isFeatured;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-
-    /**
-     * @param  string
-     * @return null
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
     }
 
     /**

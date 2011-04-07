@@ -19,4 +19,3 @@ if (typeof console == "undefined" || typeof console.log == "undefined") console 
 $.fn.orNot = function() {
     return this.length == 0 ? false: this;
 };
-

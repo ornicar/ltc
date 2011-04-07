@@ -1,1 +1,3 @@
 {% extends "LtcDoc:Doc:smallList.html.twig" %}
+
+{% block url %}{{ path("ltc_blog_entry_view", {"slug": doc.slug}) }}{% endblock %}

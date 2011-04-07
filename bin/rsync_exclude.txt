@@ -1,0 +1,14 @@
+/app/cache
+/app/logs
+/app/db
+/app/import
+/web/index_*
+/web/bundles
+#/web/uploads
+/web/imagine
+/vendor/zend/documentation/manual
+/vendor/zend/tests
+tags
+.git*
+.svn
+.thumbs

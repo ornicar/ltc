@@ -1,4 +1,4 @@
 {% extends "LtcArticle:ArticleAdmin:form.html.twig" %}
 
-{% block title %}Creer un article dans "{{ article.category.title }}"{% endblock %}
+{% block title %}Creer un article dans "{{ doc.category.title }}"{% endblock %}
 {% block action %}{{ path("ltc_article_admin_article_new", {"categorySlug": doc.category.slug}) }}{% endblock %}

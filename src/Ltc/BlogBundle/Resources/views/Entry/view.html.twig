@@ -8,3 +8,5 @@
 </div>
 {{ parent() }}
 {% endblock %}
+
+{% block admin_url %}{{ path("ltc_blog_admin_entry_edit", {"slug": doc.slug}) }}{% endblock %}

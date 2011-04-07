@@ -1,10 +1,8 @@
 <article class="story_preview">
-    <header>
-        <h2><a href="{{ story.url }}">{{ story.title }}</a></h2>
+    <header class="clearfix">
+        <span class="title">Actu</span>
+        <h2>{{ story.title }}</h2>
         <p class="metadata">{{ story.publishedAt|ltc_date }}</p>
     </header>
-    <div>
-        {{ story.body }}
-        <a class="more" href="{{ story.url }}">Lire la suite</a>
-    </div>
+    <div>{{ story.body|markdown }}</div>
 </article>

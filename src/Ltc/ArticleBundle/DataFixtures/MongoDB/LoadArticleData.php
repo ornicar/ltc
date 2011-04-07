@@ -22,14 +22,15 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     const TAG_TABLE         = 'pap_tag';
     const ARTICLE_TAG_TABLE = 'pap_article_tag';
     const PUBLICATION_TABLE = 'pap_publication';
-    const COMMENT_TABLE         = 'pap_comment';
+    const COMMENT_TABLE     = 'pap_comment';
+    const FILE_TABLE        = 'pap_fichier';
 
     protected $dossiers = array(
         1 => 'blog',
         2 => 'didactique-information',
         3 => 'identite-professionnelle',
         4 => 'outils',
-        5 => 'visuels',
+        5 => 'outils',
         6 => 'chantiers',
         99 => 'identite-professionnelle',
     );
@@ -46,6 +47,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     protected $publications;
     protected $documentRoot;
     protected $importRoot;
+    protected $importSerializer;
 
     public function getOrder()
     {
@@ -56,31 +58,35 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     {
         $this->userManager        = $container->get('fos_user.user_manager');
         $this->userRepository     = $container->get('ltc_user.repository.user');
-        $this->articles           = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TABLE);
         $this->categoryRepository = $container->get('ltc_article.repository.category');
         $this->articleRepository  = $container->get('ltc_article.repository.article');
         $this->tagRepository      = $container->get('ltc_tag.repository.tag');
-        $this->comments           = $container->get('ltc_import.unserializer')->unserialize(self::COMMENT_TABLE);
         $this->threadManager      = $container->get('fos_comment.manager.thread');
         $this->commentManager     = $container->get('fos_comment.manager.comment');
-        $this->articleTags        = $container->get('ltc_import.unserializer')->unserialize(self::ARTICLE_TAG_TABLE);
-        $this->tags               = $container->get('ltc_import.unserializer')->unserialize(self::TAG_TABLE);
-        $this->publications       = $container->get('ltc_import.unserializer')->unserialize(self::PUBLICATION_TABLE);
         $this->documentRoot       = $container->getParameter('document_root');
         $this->importRoot         = $container->getParameter('kernel.root_dir').'/import';
+        $this->importSerializer   = $container->get('ltc_import.unserializer');
     }
 
     public function load($manager)
     {
+        $this->comments           = $this->importSerializer->unserialize(self::COMMENT_TABLE);
+        $this->articles           = $this->importSerializer->unserialize(self::ARTICLE_TABLE);
+        $this->articleTags        = $this->importSerializer->unserialize(self::ARTICLE_TAG_TABLE);
+        $this->tags               = $this->importSerializer->unserialize(self::TAG_TABLE);
+        $this->publications       = $this->importSerializer->unserialize(self::PUBLICATION_TABLE);
+        $this->files              = $this->importSerializer->unserialize(self::FILE_TABLE);
+
         $articleTags = $this->prepareArticleTags();
 
         foreach ($this->dossiers as $slug) {
             $this->categoriesBySlug[$slug] = $this->categoryRepository->findOneBySlug($slug);
         }
         $categoriesBySlug = $this->categoryRepository->findAllIndexBySlug();
-        $usersByUsername = $this->userRepository->findAllIndexByUsernameCanonical();
-        $publications = $this->preparePublications();
-        $comments = $this->prepareComments();
+        $usersByUsername  = $this->userRepository->findAllIndexByUsernameCanonical();
+        $publications     = $this->preparePublications();
+        $comments         = $this->prepareComments();
+        $files            = $this->prepareFiles();
 
         foreach ($this->articles as $a) {
             if (in_array($a['id'], array(2347, 2337, 2363, 2356))) {
@@ -90,15 +96,21 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
                 continue;
             }
             $categorySlug = $this->dossiers[$a['dossier_id']];
-            $readMore = '';
             if ('blog' === $categorySlug) {
                 $o = new BlogEntry();
             } else {
                 $o = new Article();
                 $o->setCategory($categoriesBySlug[$categorySlug]);
                 $o->setPublicationDate($a['publication']);
-                if ($a['lien']) {
-                    $readMore .= sprintf('[%s](%s)%s', 'Voir la page de l\'article', $a['lien'], "\n");
+            }
+            $readMore = '';
+            if ($a['lien']) {
+                $readMore .= sprintf('* [%s](%s)%s', 'Voir la page de l\'article', $a['lien'], "\n");
+            }
+            if (isset($files[$a['id']])) {
+                foreach ($files[$a['id']] as $file) {
+                    $fileString = $this->createFile($file['fichier'], $file['fichier_name']);
+                    $readMore .= sprintf('* %s%s', $fileString, "\n");
                 }
             }
             $o->setReadMore($readMore);
@@ -191,6 +203,20 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         return $commentsById;
     }
 
+    protected function prepareFiles()
+    {
+        $filesById = array();
+        foreach ($this->files as $file) {
+            if (isset($filesById[$file['article_id']])) {
+                $filesById[$file['article_id']][] = $file;
+            } else {
+                $filesById[$file['article_id']] = array($file);
+            }
+        }
+
+        return $filesById;
+    }
+
     protected function preparePublications()
     {
         $publicationsById = array();
@@ -209,9 +235,11 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     protected function createImage($filename, $legend)
     {
         $fixturePath = $this->importRoot.'/uploads/article/'.$filename;
-        $webPath = '/uploads/'.$filename;
-        if (!file_exists($this->documentRoot.$webPath)) {
-            if (!@copy($fixturePath, $this->documentRoot.$webPath)) {
+        $webPath = '/uploads/image/'.$filename;
+        $absPath = $this->documentRoot.$webPath;
+        if (!file_exists($absPath)) {
+            @mkdir(dirname($absPath));
+            if (!@copy($fixturePath, $absPath)) {
                 print 'Missing image '.$filename."\n";
                 return false;
             }
@@ -221,5 +249,33 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $image->setPath($webPath);
 
         return $image;
+    }
+
+    protected function createFile($filename, $originalName)
+    {
+        $fixturePath = $this->importRoot.'/uploads/fichier/'.$filename;
+        $webPath = '/uploads/file/'.$this->sanitizeFilename($originalName);
+        $absPath = $this->documentRoot.$webPath;
+        if (!file_exists($absPath)) {
+            @mkdir(dirname($absPath));
+            if (!@copy($fixturePath, $absPath)) {
+                print 'Missing file '.$filename."\n";
+                return false;
+            }
+        }
+        $url = '/uploads/file/'.rawurlencode($this->sanitizeFilename($originalName));
+
+        return sprintf('[%s](%s)', $originalName, $url);
+    }
+
+    protected function sanitizeFilename($filename)
+    {
+        $replacements = array(
+            '’' => '\''
+        );
+
+        $filename = strtr($filename, $replacements);
+
+        return $filename;
     }
 }

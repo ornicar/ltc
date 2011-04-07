@@ -1,7 +1,7 @@
 <ul class="doc_small_list">
     {% for doc in docs %}
     <li>
-        <a href="#">{{ doc.shortTitle }}</a>
+        <a href="{{ block("url") }}">{{ doc.shortTitle }}</a>
         <p class="metadata">{{ ltc_doc_publication_date_and_author(doc) }}</p>
     </li>
     {% endfor %}
