@@ -36,6 +36,7 @@ class AppKernel extends Kernel
             new Ltc\ImageBundle\LtcImageBundle(),
             new Ltc\TagBundle\LtcTagBundle(),
             new Ltc\StoryBundle\LtcStoryBundle(),
+            new Ltc\CompatBundle\LtcCompatBundle(),
             new Ltc\ImportBundle\LtcImportBundle(),
             new Ltc\AdminBundle\LtcAdminBundle(),
         );

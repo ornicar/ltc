@@ -92,4 +92,18 @@ abstract class DocRepository extends DocumentRepository
             ->field('isPublished')->equals(true)
             ->sort('publishedAt', 'desc');
     }
+
+    /**
+     * Finds one article from a slug
+     * The slug property ain't necessarily unique!
+     *
+     * @return Article
+     **/
+    public function findOnePublishedBySlug($slug)
+    {
+        return $this->createPublishedQueryBuilder()
+            ->field('slug')->equals($slug)
+            ->getQuery()
+            ->getSingleResult();
+    }
 }

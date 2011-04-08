@@ -1,13 +1,15 @@
 #header {
     margin-bottom: 0px;
 }
+div.home_featured, div.home_banner {
+    background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
+}
 div.home_banner {
     padding: 20px;
     margin-bottom: 20px;
-    background: #e9e9d0 url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
+    background-color: #f9eded;
 }
 div.home_featured {
-    background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
     padding-bottom: 20px;
 }
 div.home_overview {
@@ -16,6 +18,8 @@ div.home_overview {
 
 div.category_column > div, div.tag_cloud_small, div.home_tags {
     margin-bottom: 20px;
+}
+div.category_column {
 }
 
 .tag_cloud_small, .lantenora_link {

@@ -1,14 +1,12 @@
 {% extends "LtcCore:Layout:base.html.twig" %}
 
+{% block meta_title %}{{ tag.title|capitalize }}{% endblock %}
+
 {% block content %}
 <div class="row">
     <div class="fourcol doc_metas">
         <div class="meta_block">
             <a href="{{ path("ltc_tag_cloud") }}">&lt; Retourner au nuage de tags</a>
-        </div>
-        <div class="meta_block">
-            <span class="title shy">Tags</span>
-            {% render "LtcTag:Tag:smallCloud" with {"numberOfTags": 50} %}
         </div>
     </div>
     <article class="eightcol last doc_list">

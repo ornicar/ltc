@@ -123,35 +123,6 @@ h3 {
     float: left;
     width: 700px
 }
-#sidebar {
-    float: left;
-    margin-left: 20px;
-    width: 240px
-}
-#sidebar h3 {
-    background-color: #BDDFF7;
-    padding: 5px
-}
-#sidebar p, #sidebar form {
-    background-color: #E7F1F7;
-    padding: 5px
-}
-#sidebar ul.navigation {
-    list-style-type:none;
-    margin:0 0 20px;
-    padding:0
-}
-#sidebar a {
-    background-color: #E7F1F7;
-    border-bottom: 1px solid #BDE0F7;
-    text-decoration: none;
-    display: block;
-    padding: 3px 5px
-}
-#sidebar a.active {
-    background-color: #CDEBF7;
-    font-weight: 700
-}
 
 /*** Text ***/
 p, form {
@@ -305,19 +276,6 @@ form .image_thumb {
 }
 form .image_form {
     margin: 20px 0 20px 220px;
-}
-#main form .column {
-    width: 329px;
-}
-#main form .column.left {
-    margin-right: 10px;
-}
-#main form .column.right {
-    margin-left: 10px;
-}
-#sidebar label, #sidebar input, #sidebar select {
-    font-size: 100%;
-    font-weight: 400;
 }
 pre {
     background: #f0f0f0;

@@ -40,6 +40,9 @@ fos_comment:
 fos_user_security:
     resource: "@FOSUser/Resources/config/routing/security.xml"
 
+ltc_compat_doc:
+    resource: "@LtcCompat/Resources/config/routing.yml"
+
 ltc_article:
     resource: "@LtcArticle/Resources/config/routing.yml"
 

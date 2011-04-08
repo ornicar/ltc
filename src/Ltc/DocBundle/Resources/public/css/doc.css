@@ -68,6 +68,12 @@ ul.doc_small_list li {
 .doc_view .body ol li {
     list-style: decimal inside;
 }
+.doc_view .body li ul, .dov_view .body li ol {
+    margin-top: 0;
+}
+.doc_view .body li li {
+    margin-left: 2em;
+}
 .doc_view .body h2 {
     font: 1.6em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
     color: #aa1010;
