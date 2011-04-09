@@ -163,11 +163,6 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         }
 
         $manager->flush();
-
-        // set the latest article as featured
-        $featured = $this->articleRepository->findPublished(1)->toArray();
-        $this->articleRepository->feature(reset($featured));
-        $manager->flush();
     }
 
     protected function prepareArticleTags()

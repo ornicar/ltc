@@ -145,6 +145,16 @@ ltc_config:
         model: Ltc\ConfigBundle\Document\Photo
         form:  Ltc\ConfigBundle\Form\PhotoForm
         title: Ailleurs
+    featured_story:
+        model: Ltc\ConfigBundle\Document\FeaturedStory
+        form:  Ltc\ConfigBundle\Form\FeaturedStoryForm
+        title: Actu Accueil
+        form_factory: ltc_config.form_factory.featured_story
+    featured_article:
+        model: Ltc\ConfigBundle\Document\FeaturedArticle
+        form:  Ltc\ConfigBundle\Form\FeaturedArticleForm
+        title: A propos de...
+        form_factory: ltc_config.form_factory.featured_article
 
 zend_cache:
     templates:

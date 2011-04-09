@@ -24,8 +24,8 @@ class Configuration
                 ->children()
                     ->scalarNode('model')->end()
                     ->scalarNode('form')->end()
-                    ->scalarNode('route')->end()
                     ->scalarNode('title')->end()
+                    ->scalarNode('form_factory')->end()
                 ->end()
             ->end()
         ;

@@ -1,0 +1,14 @@
+{% extends "LtcConfig:Admin:form.html.twig" %}
+
+{% block form_fields %}
+<div>
+    {{ form_label(form.title, "A propos de...") }}
+    {{ form_errors(form.title) }}
+    {{ form_field(form.title) }}
+</div>
+<div>
+    {{ form_label(form.article, "Article") }}
+    {{ form_errors(form.article) }}
+    {{ form_field(form.article) }}
+</div>
+{% endblock %}

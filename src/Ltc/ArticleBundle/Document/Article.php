@@ -11,7 +11,6 @@ use Ltc\DocBundle\Document\Doc;
  * )
  * @mongodb:Index(keys={"category.$id"="asc"})
  * @mongodb:Index(keys={"slug"="asc"})
- * @mongodb:Index(keys={"isFeatured"="desc"})
  */
 class Article extends Doc
 {
@@ -38,31 +37,6 @@ class Article extends Doc
      * @mongodb:Field(type="string")
      */
     protected $publicationDate;
-
-    /**
-     * Whether the article is featured or not
-     *
-     * @var bool
-     * @mongodb:Field(type="boolean")
-     */
-    protected $isFeatured = false;
-
-    /**
-     * @return bool
-     */
-    public function getIsFeatured()
-    {
-        return $this->isFeatured;
-    }
-
-    /**
-     * @param  bool
-     * @return null
-     */
-    public function setIsFeatured($isFeatured)
-    {
-        $this->isFeatured = (bool) $isFeatured;
-    }
 
     /**
      * Tells whether the doc has a manually set publication date in string format
@@ -116,5 +90,10 @@ class Article extends Doc
     public function getCommentIdentifier()
     {
         return $this->getCategory()->getSlug().'-'.$this->getSlug();
+    }
+
+    public function __toString()
+    {
+        return $this->getCategory()->getTitle().' - '.$this->getTitle();
     }
 }

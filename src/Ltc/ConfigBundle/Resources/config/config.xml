@@ -35,6 +35,21 @@
             <argument /> <!-- name -->
             <argument /> <!-- class -->
         </service>
+
+        <service
+            id="ltc_config.form_factory.featured_story"
+            parent="ltc_config.form_factory"
+            class="Ltc\ConfigBundle\FormFactory\FeaturedStoryFormFactory">
+            <call method="setStoryRepository"><argument type="service" id="ltc_story.repository.story" /></call>
+        </service>
+
+        <service
+            id="ltc_config.form_factory.featured_article"
+            parent="ltc_config.form_factory"
+            class="Ltc\ConfigBundle\FormFactory\FeaturedArticleFormFactory">
+            <call method="setArticleRepository"><argument type="service" id="ltc_article.repository.article" /></call>
+        </service>
+
     </services>
 
 </container>

@@ -34,10 +34,11 @@ class ArticleController extends Controller
 
     public function featuredAction()
     {
-        $article = $this->get('ltc_article.repository.article')->findOneFeatured();
+        $config = $this->get('ltc_config.manager')->getConfig('featured_article')->getDocument();
 
         return $this->render('LtcArticle:Article:featured.html.twig', array(
-            'doc' => $article
+            'doc' => $config->getArticle(),
+            'title' => $config->getTitle()
         ));
     }
 }

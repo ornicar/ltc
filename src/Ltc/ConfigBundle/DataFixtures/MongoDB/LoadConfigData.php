@@ -14,16 +14,20 @@ class LoadConfigData extends AbstractFixture implements OrderedFixtureInterface,
 {
     protected $configs;
     protected $documentRoot;
+    protected $storyRepository;
+    protected $articleRepository;
 
     public function getOrder()
     {
-        return 1;
+        return 70;
     }
 
     public function setContainer(ContainerInterface $container = null)
     {
         $this->configs = $container->get('ltc_config.manager')->getConfigs();
         $this->documentRoot = $container->getParameter('document_root');
+        $this->storyRepository = $container->get('ltc_story.repository.story');
+        $this->articleRepository = $container->get('ltc_article.repository.article');
     }
 
     public function load($manager)
@@ -35,9 +39,24 @@ class LoadConfigData extends AbstractFixture implements OrderedFixtureInterface,
                 $this->loadAuthor($document);
             } elseif ('photo' == $name) {
                 $this->loadPhoto($document);
+            } elseif ('featured_story' == $name) {
+                $this->loadFeaturedStory($document);
+            } elseif ('featured_article' == $name) {
+                $this->loadFeaturedArticle($document);
             }
         }
         $manager->flush();
+    }
+
+    protected function loadFeaturedStory($featuredStory)
+    {
+        $featuredStory->setStory($this->storyRepository->findOneBy(array()));
+    }
+
+    protected function loadFeaturedArticle($featuredArticle)
+    {
+        $featuredArticle->setArticle($this->articleRepository->findOneBy(array()));
+        $featuredArticle->setTitle('didactique');
     }
 
     protected function loadPhoto($photo)

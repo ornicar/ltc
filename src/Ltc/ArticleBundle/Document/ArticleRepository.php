@@ -28,7 +28,7 @@ class ArticleRepository extends DocRepository
      **/
     public function findPublishedByCategory(Category $category)
     {
-        return $this->createPublishedQueryBuilder()
+        return $this->createPublishedSortedQueryBuilder()
             ->field('category.$id')->equals(new MongoId($category->getId()))
             ->getQuery()
             ->execute();
@@ -41,7 +41,7 @@ class ArticleRepository extends DocRepository
      **/
     public function findLatestByCategory(Category $category, $limit)
     {
-        return $this->createPublishedQueryBuilder()
+        return $this->createPublishedSortedQueryBuilder()
             ->field('category.$id')->equals(new MongoId($category->getId()))
             ->limit($limit)
             ->getQuery()
@@ -63,28 +63,15 @@ class ArticleRepository extends DocRepository
     }
 
     /**
-     * Find one featured article
+     * Gets all published article sorted by their category
      *
-     * @return Article
+     * @return array
      **/
-    public function findOneFeatured()
+    public function findAllPublishedSortByCategory()
     {
-        return $this->createQueryBuilder()
-            ->sort('isFeatured', 'desc')
+        return $this->createPublishedQueryBuilder()
+            ->sort('category.$id', 'asc')
             ->getQuery()
-            ->getSingleResult();
-    }
-
-    /**
-     * Sets this article as featured, and unset the other ones
-     *
-     * @return null
-     **/
-    public function feature(Article $article)
-    {
-        foreach ($this->findAll() as $other) {
-            $other->setIsFeatured(false);
-        }
-        $article->setIsFeatured(true);
+            ->execute();
     }
 }

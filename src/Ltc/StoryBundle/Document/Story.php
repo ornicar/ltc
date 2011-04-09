@@ -10,7 +10,6 @@ use DateTime;
  *   repositoryClass="Ltc\StoryBundle\Document\StoryRepository"
  * )
  * @mongodb:Index(keys={"createdAt"="desc"})
- * @mongodb:Index(keys={"isFeatured"="desc"})
  */
 class Story
 {
@@ -79,31 +78,6 @@ class Story
      * @mongodb:Field(type="date")
      */
     protected $publishedAt;
-
-    /**
-     * Whether the story is featured or not
-     *
-     * @var bool
-     * @mongodb:Field(type="boolean")
-     */
-    protected $isFeatured = false;
-
-    /**
-     * @return bool
-     */
-    public function getIsFeatured()
-    {
-        return $this->isFeatured;
-    }
-
-    /**
-     * @param  bool
-     * @return null
-     */
-    public function setIsFeatured($isFeatured)
-    {
-        $this->isFeatured = (bool) $isFeatured;
-    }
 
     /**
      * @return string
@@ -248,5 +222,10 @@ class Story
     public function setCreatedAt(DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    public function __toString()
+    {
+        return (string) $this->getTitle();
     }
 }

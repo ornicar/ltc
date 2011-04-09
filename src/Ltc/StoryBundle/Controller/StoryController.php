@@ -9,8 +9,10 @@ class StoryController extends Controller
 {
     public function featuredAction()
     {
-        //$story = $this->get('ltc_story.repository.story')->findOneFeatured();
-        $story = $this->get('ltc_story.repository.story')->findOneRandom();
+        $story = $this->get('ltc_config.manager')->getConfig('featured_story')->getDocument()->getStory();
+        if (!$story) {
+            $story = $this->get('ltc_story.repository.story')->findOneBy(array());
+        }
 
         return $this->render('LtcStory:Story:featured.html.twig', array(
             'story' => $story

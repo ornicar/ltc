@@ -15,7 +15,7 @@ abstract class DocRepository extends DocumentRepository
      **/
     public function findPublishedByTag(Tag $tag)
     {
-        return $this->createPublishedQueryBuilder()
+        return $this->createPublishedSortedQueryBuilder()
             ->field('tags.$id')->equals($tag->getSlug())
             ->getQuery()
             ->execute();
@@ -42,7 +42,7 @@ abstract class DocRepository extends DocumentRepository
      **/
     public function findPublishedRelated(Doc $doc)
     {
-        return $this->createPublishedQueryBuilder()
+        return $this->createPublishedSortedQueryBuilder()
             ->field('tags.$id')->in($doc->getTagSlugs())
             ->field('_id')->notEqual($doc->getId())
             ->getQuery()
@@ -57,7 +57,7 @@ abstract class DocRepository extends DocumentRepository
      */
     public function findPublished($limit = null)
     {
-        $queryBuilder = $this->createPublishedQueryBuilder();
+        $queryBuilder = $this->createPublishedSortedQueryBuilder();
 
         if ($limit) {
             $queryBuilder->limit($limit);
@@ -75,7 +75,7 @@ abstract class DocRepository extends DocumentRepository
      **/
     public function findLatest($number)
     {
-        return $this->createPublishedQueryBuilder()
+        return $this->createPublishedSortedQueryBuilder()
             ->limit($number)
             ->getQuery()
             ->execute();
@@ -89,7 +89,17 @@ abstract class DocRepository extends DocumentRepository
     public function createPublishedQueryBuilder()
     {
         return $this->createQueryBuilder()
-            ->field('isPublished')->equals(true)
+            ->field('isPublished')->equals(true);
+    }
+
+    /**
+     * Creates a query builder for published docs
+     *
+     * @return null
+     **/
+    public function createPublishedSortedQueryBuilder()
+    {
+        return $this->createPublishedQueryBuilder()
             ->sort('publishedAt', 'desc');
     }
 

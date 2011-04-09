@@ -51,10 +51,5 @@ class LoadStoryData extends AbstractFixture implements OrderedFixtureInterface, 
         }
 
         $manager->flush();
-
-        // set the latest story as featured
-        $featured = $this->storyRepository->findAll()->toArray();
-        $this->storyRepository->feature(reset($featured));
-        $manager->flush();
     }
 }
