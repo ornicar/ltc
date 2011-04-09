@@ -141,6 +141,10 @@ ltc_config:
         model: Ltc\ConfigBundle\Document\Author
         form:  Ltc\ConfigBundle\Form\AuthorForm
         title: Auteur
+    photo:
+        model: Ltc\ConfigBundle\Document\Photo
+        form:  Ltc\ConfigBundle\Form\PhotoForm
+        title: Ailleurs
 
 zend_cache:
     templates:

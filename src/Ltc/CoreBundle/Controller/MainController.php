@@ -8,7 +8,9 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LtcCore:Main:index.html.twig');
+        return $this->render('LtcCore:Main:index.html.twig', array(
+            'photo' => $this->get('ltc_config.manager')->getConfig('photo')->getDocument()
+        ));
     }
 
     public function authorAction()

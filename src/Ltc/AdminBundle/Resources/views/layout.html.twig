@@ -24,7 +24,6 @@
             </ul>
         </div>
         {{ menu("ltc.admin.main") }}
-        {# <ul id="sub_nav"></ul> #}
     </div>
 
     <div id="content" class="{{ block("content_class") }}">
@@ -35,7 +34,7 @@
             <div class="warning message">{{ app.session.getFlash("warning") }}</div>
         {% endif %}
         {% if app.session.hasFlash("notice") %}
-            <div class="Notification message">{{ app.session.getFlash("notice") }}</div>
+            <div class="notification message">{{ app.session.getFlash("notice") }}</div>
         {% endif %}
         {% block content %}
         {% endblock %}

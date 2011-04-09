@@ -6,12 +6,17 @@
     {{ form_errors(form.title) }}
     {{ form_field(form.title) }}
 </div>
+<div>
+    {{ form_label(form.url, "Url") }}
+    {{ form_errors(form.url) }}
+    {{ form_field(form.url) }}
+</div>
 <section>
     {% if document.hasImage %}
         <img class="image_thumb" src="{{ asset(document.image.path|apply_filter("admin_medium")) }}" />
     {% endif %}
     <div class="image_form">
-        Photo de l'auteur.
+        Photo.
         <div>
             {{ form_field(form.image.file) }}
             {{ form_errors(form.image) }}
@@ -22,19 +27,4 @@
         </div>
     </div>
 </section>
-<div>
-    {{ form_label(form.summary, "Resume") }}
-    <div class="help">Restons simple, ici. Evite les titres et les listes</div>
-    {{ form_field(form.summary, {"rows": 15}) }}
-</div>
-<div class="with_image with_file">
-    {{ form_label(form.body, "Texte") }}
-    <div class="help">Les images inserees ici ne seront pas redimensionnees.</div>
-    {{ form_field(form.body, {"rows": 40}) }}
-</div>
-<div class="with_image with_file">
-    {{ form_label(form.publications, "Publications") }}
-    <div class="help">Les images inserees ici ne seront pas redimensionnees.</div>
-    {{ form_field(form.publications, {"rows": 30}) }}
-</div>
 {% endblock %}

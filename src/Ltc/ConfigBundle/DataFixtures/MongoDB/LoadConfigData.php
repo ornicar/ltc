@@ -33,31 +33,24 @@ class LoadConfigData extends AbstractFixture implements OrderedFixtureInterface,
             $manager->persist($document);
             if ('author' == $name) {
                 $this->loadAuthor($document);
+            } elseif ('photo' == $name) {
+                $this->loadPhoto($document);
             }
         }
         $manager->flush();
     }
 
+    protected function loadPhoto($photo)
+    {
+        $photo->setTitle('l\'Antenora');
+        $photo->setImage($this->createImage('Ouie-de-Babel-PA-9485-08-20_0317f1.jpg', 'Ouïe de la Grande ville'));
+        $photo->setUrl('http://esmeree.fr/lantenora');
+    }
+
     protected function loadAuthor($author)
     {
         $author->setTitle('Pascal Duplessis');
-
-        $filename = 'pascal-duplessis.jpg';
-        $fixturePath = __DIR__.'/../'.$filename;
-        $webPath = '/uploads/image/'.$filename;
-        $absPath = $this->documentRoot.$webPath;
-        if (!file_exists($absPath)) {
-            @mkdir(dirname($absPath));
-            if (!@copy($fixturePath, $absPath)) {
-                print 'Missing image '.$filename."\n";
-                return false;
-            }
-        }
-        $image = new Image();
-        $image->setLegend('Pascal Duplessis');
-        $image->setPath($webPath);
-        $author->setImage($image);
-
+        $author->setImage($this->createImage('pascal-duplessis.jpg', 'Pascal Duplessis'));
         $author->setSummary(<<<EOF
 Actuellement professeur-documentaliste et formateur à l'IUFM des Pays de la Loire, site d'Angers, je suis responsable des préparations aux CAPES interne et externe de Documentation.
 
@@ -123,5 +116,24 @@ EOF
 - **La fiche-concept en didactique de l’Information-documentation** : outil d’acculturation professionnelle, support pour la construction des connaissances ? Colloque international de l’ERTé, L’Education à la culture informationnelle, Lille, 16-17-18 octobre 2008}
 EOF
     );
+    }
+
+    protected function createImage($filename, $legend)
+    {
+        $fixturePath = __DIR__.'/../'.$filename;
+        $webPath = '/uploads/image/'.$filename;
+        $absPath = $this->documentRoot.$webPath;
+        if (!file_exists($absPath)) {
+            @mkdir(dirname($absPath));
+            if (!@copy($fixturePath, $absPath)) {
+                print 'Missing image '.$filename."\n";
+                return false;
+            }
+        }
+        $image = new Image();
+        $image->setLegend($legend);
+        $image->setPath($webPath);
+
+        return $image;
     }
 }

@@ -38,8 +38,9 @@
         </div>
 
         <span class="title">Ailleurs</span>
-        <a class="lantenora_link" href="http://esmeree.fr/lantenora"><img src="{{ asset("/uploads/fixture.jpg"|apply_filter("lantenora")) }}" alt="L'Antenota" /></a>
-        <a class="all_others" href="http://esmeree.fr/lantenora">&gt; L'Antenora</a>
+        <a href="{{ photo.url }}"><img src="{{ asset(photo.image.path|apply_filter("lantenora")) }}" alt="{{ photo.title}}" /></a>
+        <p class="metadata">{{ photo.image.legend }}</p>
+        <a class="all_others" href="{{ photo.url }}">&gt; {{ photo.title }}</a>
 
     </div>
 </div>
