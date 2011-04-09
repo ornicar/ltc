@@ -1,7 +1,7 @@
 body {
     background-color: #fff;
     color: #222;
-    border-top: 3px solid #aa1010;
+    border-top: 3px solid #991010;
     font: 100%/1.45 Helvetica, Arial, Verdana, sans-serif;
     font: 100%/1.45 Georgia, Serif;
     margin: 0;
@@ -33,11 +33,11 @@ a.more {
 }
 .title {
     font: 1.6em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
-    color: #aa1010;
+    color: #991010;
     line-height: 2;
 }
 .title a {
-    color: #aa1010;
+    color: #991010;
 }
 .title.big {
     font-size: 2.2em;

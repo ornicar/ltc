@@ -6,7 +6,7 @@ framework:
         #secret: see_config_local
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
     validation:    { enabled: true, annotations: true }
-    templating:    { engines: ['twig'], assets_version: 2 }
+    templating:    { engines: ['twig'], assets_version: 3 }
     document_root: %kernel.root_dir%/../web
     session:
         default_locale: fr
@@ -62,10 +62,10 @@ doctrine_mongo_db:
                 LtcDoc:
                 LtcArticle:
                 LtcBlog:
-                LtcPackage:
                 LtcImage:
                 LtcTag:
                 LtcStory:
+                LtcConfig:
 
 stof_doctrine_extensions:
     mongodb:
@@ -135,6 +135,12 @@ knplabs_markdown:
 
 ltc_image:
     upload_dir: %kernel.root_dir%/../web/uploads
+
+ltc_config:
+    author:
+        model: Ltc\ConfigBundle\Document\Author
+        form:  Ltc\ConfigBundle\Form\AuthorForm
+        title: Auteur
 
 zend_cache:
     templates:

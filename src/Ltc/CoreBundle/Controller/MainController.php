@@ -11,6 +11,13 @@ class MainController extends Controller
         return $this->render('LtcCore:Main:index.html.twig');
     }
 
+    public function authorAction()
+    {
+        return $this->render('LtcCore:Main:author.html.twig', array(
+            'author' => $this->get('ltc_config.manager')->getConfig('author')->getDocument()
+        ));
+    }
+
     public function archiveAction()
     {
         $blogEntries = $this->get('ltc_blog.repository.blog_entry')->findPublished();

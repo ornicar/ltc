@@ -32,11 +32,11 @@ class AppKernel extends Kernel
             new Ltc\DocBundle\LtcDocBundle(),
             new Ltc\BlogBundle\LtcBlogBundle(),
             new Ltc\ArticleBundle\LtcArticleBundle(),
-            new Ltc\PackageBundle\LtcPackageBundle(),
             new Ltc\ImageBundle\LtcImageBundle(),
             new Ltc\TagBundle\LtcTagBundle(),
             new Ltc\StoryBundle\LtcStoryBundle(),
             new Ltc\CompatBundle\LtcCompatBundle(),
+            new Ltc\ConfigBundle\LtcConfigBundle(),
             new Ltc\ImportBundle\LtcImportBundle(),
             new Ltc\AdminBundle\LtcAdminBundle(),
         );

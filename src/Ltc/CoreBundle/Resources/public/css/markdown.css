@@ -1,0 +1,49 @@
+.markdown ul li {
+    list-style: disc inside;
+}
+.markdown ol li {
+    list-style: decimal inside;
+}
+.markdown li ul, .dov_view .body li ol {
+    margin-top: 0;
+}
+.markdown li li {
+    margin-left: 2em;
+}
+.markdown h2 {
+    font: 1.6em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
+    color: #991010;
+    margin-top: 1em;
+}
+.markdown h3 {
+    font: 1.45em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
+    color: #303030;
+    margin-top: 1em;
+}
+.markdown h4 {
+    font-weight: bold;
+    color: #991010;
+    margin-top: 1em;
+}
+.markdown p, .markdown ul, .markdown ol {
+    margin-top: 1em;
+}
+.markdown hr {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    color: transparent;
+    border: none;
+    height: 3px;
+    background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
+}
+.markdown li p {
+    margin-top: 0;
+}
+.markdown sup {
+    margin: 0 4px;
+    text-decoration: underline;
+}
+.markdown img {
+    display: block;
+    text-align: middle;
+}

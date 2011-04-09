@@ -8,7 +8,7 @@
 }
 #header h1 a {
     font: 3.5em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
-    color: #aa1010;
+    color: #991010;
     font-weight: normal;
     text-decoration: none;
     line-height: 0.9;
@@ -28,6 +28,6 @@
     text-decoration: none;
 }
 #header .menu a:hover {
-    color: #aa1010;
+    color: #991010;
     text-decoration: underline;
 }

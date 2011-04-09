@@ -78,14 +78,6 @@ abstract class Doc
     protected $tags = array();
 
     /**
-     * Packages provided by the doc
-     *
-     * @var array
-     * @mongodb:EmbedMany(targetDocument="Ltc\PackageBundle\Document\Package")
-     */
-    protected $packages;
-
-    /**
      * Name of the author of this article
      *
      * @var string
@@ -335,22 +327,6 @@ abstract class Doc
         $this->slug = $slug;
     }
 
-    /**
-     * @return array
-     */
-    public function getPackages()
-    {
-        return $this->packages;
-    }
-
-    /**
-     * @param  array
-     * @return null
-     */
-    public function setPackages(array $packages)
-    {
-        $this->packages = $packages;
-    }
     /**
      * @return string
      */

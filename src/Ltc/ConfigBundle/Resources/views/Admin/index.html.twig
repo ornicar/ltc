@@ -1,0 +1,14 @@
+{% extends "LtcAdmin::layout.html.twig" %}
+
+{% block content %}
+<h1>Configuration</h1>
+<table>
+    <tbody>
+    {% for config in configs %}
+        <tr>
+            <td><a href="{{ path("ltc_config_admin_edit", {"name": config.name}) }}">{{ config.title }}</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

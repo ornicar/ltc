@@ -62,55 +62,6 @@ ul.doc_small_list li {
 .doc_view .body {
     margin-bottom: 2em;
 }
-.doc_view .body ul li {
-    list-style: disc inside;
-}
-.doc_view .body ol li {
-    list-style: decimal inside;
-}
-.doc_view .body li ul, .dov_view .body li ol {
-    margin-top: 0;
-}
-.doc_view .body li li {
-    margin-left: 2em;
-}
-.doc_view .body h2 {
-    font: 1.6em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
-    color: #aa1010;
-    margin-top: 1em;
-}
-.doc_view .body h3 {
-    font: 1.45em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
-    color: #303030;
-    margin-top: 1em;
-}
-.doc_view .body h4 {
-    font-weight: bold;
-    color: #aa1010;
-    margin-top: 1em;
-}
-.doc_view .body p, .doc_view .body ul, .doc_view .body ol {
-    margin-top: 1em;
-}
-.doc_view .body hr {
-    margin-top: 2em;
-    margin-bottom: 2em;
-    color: transparent;
-    border: none;
-    height: 3px;
-    background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
-}
-.doc_view .body li p {
-    margin-top: 0;
-}
-.doc_view .body sup {
-    margin: 0 4px;
-    text-decoration: underline;
-}
-.doc_view .body img {
-    display: block;
-    text-align: middle;
-}
 .meta_block {
     margin-bottom: 2em;
 }

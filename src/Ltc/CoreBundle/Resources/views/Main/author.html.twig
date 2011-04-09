@@ -1,0 +1,26 @@
+{% extends "LtcCore:Layout:base.html.twig" %}
+
+{% block meta_title %}{{ author.title }}{% endblock %}
+
+{% block content %}
+
+<div class="row author">
+
+    <div class="threecol">
+        <h1 class="title big">{{ author.title }}</h1>
+        {% if author.hasImage %}
+        <div class="author_image">
+            <img alt="{{ author.image.legend }}" src="{{ asset(author.image.path|apply_filter("preview")) }}" />
+        </div>
+        {% endif %}
+        <div class="mardown">{{ author.summary|markdown }}</div>
+    </div>
+    <div class="sixcol markdown">
+        {{ author.body|markdown }}
+    </div>
+    <div class="threecol last markdown">
+        {{ author.publications|markdown }}
+    </div>
+</div>
+
+{% endblock %}

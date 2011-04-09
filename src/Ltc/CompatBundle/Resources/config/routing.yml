@@ -1,0 +1,4 @@
+ltc_compat_doc:
+    pattern:  /{oldCategorySlug}/{slug}
+    defaults: { _controller: LtcCompat:Compat:doc }
+    requirements: { oldCategorySlug: (idoc|textes|invites|visuels) }

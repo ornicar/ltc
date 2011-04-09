@@ -29,6 +29,10 @@ ltc_story_admin:
     resource: "@LtcStory/Resources/config/routing_admin.yml"
     prefix: /admin/actus
 
+ltc_config_admin:
+    resource: "@LtcConfig/Resources/config/routing_admin.yml"
+    prefix: /admin/config
+
 fos_user_user:
     resource: "@FOSUser/Resources/config/routing/user.xml"
     prefix: /user

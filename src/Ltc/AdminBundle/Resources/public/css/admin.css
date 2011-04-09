@@ -204,7 +204,7 @@ form label {
 }
 form > div > label {
     font: 1.6em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
-    color: #aa1010;
+    color: #991010;
     line-height: 2;
     padding-bottom: 0;
 }
@@ -223,7 +223,7 @@ form input, form textarea, form select {
     padding: 0.4%;
 }
 form input[type=text], form textarea {
-    width: 100%;
+    width: 99%;
 }
 form .description {
     color: #777;

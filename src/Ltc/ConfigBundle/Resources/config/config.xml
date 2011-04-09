@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ltc_config.manager" class="Ltc\ConfigBundle\ConfigManager" public="true">
+            <argument /> <!-- configs -->
+        </service>
+
+        <service id="ltc_config.config" class="Ltc\ConfigBundle\Config" public="false" abstract="true">
+            <argument /> <!-- repository -->
+            <argument /> <!-- formFactory -->
+            <argument /> <!-- route -->
+            <argument /> <!-- title -->
+        </service>
+
+        <service
+            id="ltc_config.repository"
+            class="Doctrine\ODM\MongoDB\DocumentRepository"
+            factory-service="doctrine.odm.mongodb.document_manager"
+            factory-method="getRepository"
+            public="false"
+            abstract="true">
+            <argument /> <!-- model class -->
+        </service>
+
+        <service
+            id="ltc_config.form_factory"
+            class="Ltc\ConfigBundle\FormFactory"
+            public="false"
+            abstract="true">
+            <argument type="service" id="form.context" />
+            <argument /> <!-- name -->
+            <argument /> <!-- class -->
+        </service>
+    </services>
+
+</container>

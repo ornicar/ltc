@@ -5,3 +5,7 @@ homepage:
 ltc_archive:
     pattern:  /archives
     defaults: { _controller: LtcCore:Main:archive }
+
+ltc_author:
+    pattern:  /auteur
+    defaults: { _controller: LtcCore:Main:author }
