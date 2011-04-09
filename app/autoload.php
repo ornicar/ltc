@@ -24,6 +24,7 @@ $loader->registerNamespaces(array(
     'Sonata'                         => $srcDir,
     'Knplabs'                        => $srcDir,
     'Avalanche'                      => $srcDir,
+    'JMS'                            => $srcDir,
     'Bundle'                         => $srcDir,
 ));
 $loader->registerPrefixes(array(

@@ -55,3 +55,6 @@
 [submodule "src/Knplabs/Bundle/MarkdownBundle"]
 	path = src/Knplabs/Bundle/MarkdownBundle
 	url = git://github.com/knplabs/MarkdownBundle.git
+[submodule "src/JMS/DebuggingBundle"]
+	path = src/JMS/DebuggingBundle
+	url = git://github.com/schmittjoh/DebuggingBundle.git
