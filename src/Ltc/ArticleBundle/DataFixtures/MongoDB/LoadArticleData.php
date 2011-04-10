@@ -24,6 +24,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     const PUBLICATION_TABLE = 'pap_publication';
     const COMMENT_TABLE     = 'pap_comment';
     const FILE_TABLE        = 'pap_fichier';
+    const PAGE_TABLE        = 'dms_page_i18n';
 
     protected $dossiers = array(
         1 => 'blog',
@@ -44,6 +45,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
     protected $articles;
     protected $articleTags;
     protected $tags;
+    protected $pages;
     protected $publications;
     protected $documentRoot;
     protected $importRoot;
@@ -76,6 +78,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $this->tags               = $this->importSerializer->unserialize(self::TAG_TABLE);
         $this->publications       = $this->importSerializer->unserialize(self::PUBLICATION_TABLE);
         $this->files              = $this->importSerializer->unserialize(self::FILE_TABLE);
+        $this->pages              = $this->importSerializer->unserialize(self::PAGE_TABLE);
 
         $articleTags = $this->prepareArticleTags();
 
@@ -87,6 +90,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $publications     = $this->preparePublications();
         $comments         = $this->prepareComments();
         $files            = $this->prepareFiles();
+        $pageUrls         = $this->preparePageUrls();
 
         foreach ($this->articles as $a) {
             if (in_array($a['id'], array(2347, 2337, 2363, 2356))) {
@@ -117,7 +121,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             $o->setCreatedAt(new DateTime($a['created_at']));
             $o->setUpdatedAt(new DateTime($a['updated_at']));
             $o->setSummary($a['resume']);
-            $o->setBody($a['description']);
+            $o->setBody($this->fixMarkdownUrls($a['description'], $pageUrls));
             $o->setTitle($a['nom']);
             if (!empty($a['strip'])) {
                 $o->setSlug($a['strip']);
@@ -227,6 +231,18 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         return $publicationsById;
     }
 
+    protected function preparePageUrls()
+    {
+        $urls = array();
+        foreach ($this->pages as $page) {
+            if ($page['slug_ref_cache']) {
+                $urls[$page['id']] = $page['slug_ref_cache'];
+            }
+        }
+
+        return $urls;
+    }
+
     protected function createImage($filename, $legend)
     {
         $fixturePath = $this->importRoot.'/uploads/article/'.$filename;
@@ -272,5 +288,18 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $filename = strtr($filename, $replacements);
 
         return $filename;
+    }
+
+    protected function fixMarkdownUrls($text, array $pageUrls)
+    {
+        return preg_replace_callback('#\(page/(\d+)\)#', function($matches) use ($pageUrls) {
+            $pageId = $matches[1];
+            if (isset($pageUrls[$pageId])) {
+                $url = '/lestroiscouronnes/'.$pageUrls[$pageId];
+            } else {
+                $url = '#';
+            }
+            return sprintf('(%s)', $url);
+        }, $text);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ltc\MarkdownBundle\Command;
+namespace Ltc\CoreBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

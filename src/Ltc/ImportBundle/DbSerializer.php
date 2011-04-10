@@ -17,7 +17,8 @@ class DbSerializer
         'pap_fichier',
         'pap_publication',
         'pap_tag',
-        'lien'
+        'lien',
+        'dms_page_i18n'
     );
 
     public function __construct(MysqlDb $mysql, $path)

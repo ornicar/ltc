@@ -24,4 +24,11 @@ class CompatController extends Controller
 
         return new RedirectResponse($url);
     }
+
+    public function routeAction()
+    {
+        $route = $this->get('request')->attributes->get('redirect_route');
+
+        return new RedirectResponse($this->get('router')->generate($route));
+    }
 }
