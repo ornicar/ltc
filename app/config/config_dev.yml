@@ -9,10 +9,18 @@ web_profiler:
     toolbar: true
     intercept_redirects: false
 
-zend:
-    logger:
-        priority: notice
-        path:     %kernel.logs_dir%/%kernel.environment%.log
+#assetic:
+    #use_controller: true
 
-assetic:
-    use_controller: true
+monolog:
+    handlers:
+        main:
+            type:  stream
+            path:  %kernel.logs_dir%/%kernel.environment%.log
+            level: info
+
+jms_debugging:
+    # You can set this to true if you want to automatically retrieve help 
+    # messages for public exceptions. If you leave this set to false, you have
+    # to click the "search" button manually each time.
+    auto_help: false

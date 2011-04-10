@@ -1,15 +1,15 @@
 ltc_blog_admin_entry_list:
     pattern:  /
-    defaults: { _controller: LtcBlog:BlogAdmin:index }
+    defaults: { _controller: LtcBlogBundle:BlogAdmin:index }
 
 ltc_blog_admin_entry_new:
     pattern:  /nouveau-billet
-    defaults: { _controller: LtcBlog:BlogAdmin:new }
+    defaults: { _controller: LtcBlogBundle:BlogAdmin:new }
 
 ltc_blog_admin_entry_edit:
     pattern:  /{slug}
-    defaults: { _controller: LtcBlog:BlogAdmin:edit }
+    defaults: { _controller: LtcBlogBundle:BlogAdmin:edit }
 
 ltc_blog_admin_entry_delete:
     pattern:  /supprimer/{id}
-    defaults: { _controller: LtcBlog:BlogAdmin:delete }
+    defaults: { _controller: LtcBlogBundle:BlogAdmin:delete }

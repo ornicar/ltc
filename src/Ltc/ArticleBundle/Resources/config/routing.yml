@@ -1,7 +1,7 @@
 ltc_article_category_view:
     pattern:  /{slug}
-    defaults: { _controller: LtcArticle:Category:view }
+    defaults: { _controller: LtcArticleBundle:Category:view }
 
 ltc_article_article_view:
     pattern:  /{categorySlug}/{slug}
-    defaults: { _controller: LtcArticle:Article:view }
+    defaults: { _controller: LtcArticleBundle:Article:view }

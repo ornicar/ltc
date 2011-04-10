@@ -8,6 +8,6 @@ class LtcArticleBundle extends Bundle
 {
     public function getParent()
     {
-        return 'LtcDoc';
+        return 'LtcDocBundle';
     }
 }

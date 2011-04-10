@@ -1,4 +1,4 @@
-{% extends "LtcCore:Layout:base.html.twig" %}
+{% extends "LtcCoreBundle:Layout:base.html.twig" %}
 
 {% block meta_title %}{{ tag.title|capitalize }}{% endblock %}
 
@@ -14,7 +14,7 @@
             <h1 class="title long">Tag : {{ tag.title }}</h1>
             <p class="undertitle">{{ docs|length }} documents sont liés à ce tag</p>
         </header>
-        {% include "LtcDoc:Doc:list.html.twig" with {"docs": docs} %}
+        {% include "LtcDocBundle:Doc:list.html.twig" with {"docs": docs} %}
     </article>
 </div>
 {% endblock %}

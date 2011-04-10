@@ -12,7 +12,7 @@ class ArticleController extends Controller
     {
         $articles = $this->get('ltc_article.repository.article')->findPublishedByCategory($category);
 
-        return $this->render('LtcArticle:Article:listByCategory.html.twig', array(
+        return $this->render('LtcArticleBundle:Article:listByCategory.html.twig', array(
             'category' => $category,
             'docs'     => $articles
         ));
@@ -26,7 +26,7 @@ class ArticleController extends Controller
         }
         $related = $this->get('ltc_core.tag_wizard')->findRelatedDocs($article);
 
-        return $this->render('LtcArticle:Article:view.html.twig', array(
+        return $this->render('LtcArticleBundle:Article:view.html.twig', array(
             'doc'     => $article,
             'related' => $related
         ));
@@ -36,7 +36,7 @@ class ArticleController extends Controller
     {
         $config = $this->get('ltc_config.manager')->getConfig('featured_article')->getDocument();
 
-        return $this->render('LtcArticle:Article:featured.html.twig', array(
+        return $this->render('LtcArticleBundle:Article:featured.html.twig', array(
             'doc' => $config->getArticle(),
             'title' => $config->getTitle()
         ));

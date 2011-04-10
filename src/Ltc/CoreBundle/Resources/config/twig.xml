@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="ltc_core.twig.extension.core" class="Ltc\CoreBundle\Twig\CoreExtension" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="service_container" />
+        </service>
+        <service id="ltc_core.twig.extension.router" class="Ltc\CoreBundle\Twig\RouterExtension" public="false">
+            <tag name="twig.extension" />
+            <argument type="service" id="service_container" />
+        </service>
+        <service id="twig.extension.debug" class="Twig_Extensions_Extension_Debug" public="false">
+            <tag name="twig.extension" />
+        </service>
+        <service id="twig.extension.text" class="Twig_Extensions_Extension_Text" public="false">
+            <tag name="twig.extension" />
+        </service>
+    </services>
+
+</container>

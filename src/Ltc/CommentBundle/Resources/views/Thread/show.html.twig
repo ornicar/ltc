@@ -1,11 +1,11 @@
 <div class="fos_comment_thread_show">
-    {% include "FOSComment:Comment:new.html.twig" with {"form": form} %}
+    {% include "FOSCommentBundle:Comment:new.html.twig" with {"form": form} %}
 
     <div class="fos_comment_thread_comments">
-        {% render "FOSComment:Comment:tree" with {"thread": thread} %}
+        {% render "FOSCommentBundle:Comment:tree" with {"thread": thread} %}
     </div>
 
     <div class="fos_comment_reply_prototype">
-        {% include "FOSComment:Comment:reply.html.twig" with {"form": form} %}
+        {% include "FOSCommentBundle:Comment:reply.html.twig" with {"form": form} %}
     </div>
 </div>

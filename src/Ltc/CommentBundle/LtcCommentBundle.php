@@ -8,6 +8,6 @@ class LtcCommentBundle extends Bundle
 {
     public function getParent()
     {
-        return 'FOSComment';
+        return 'FOSCommentBundle';
     }
 }

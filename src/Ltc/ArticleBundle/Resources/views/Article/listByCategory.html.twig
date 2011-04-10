@@ -1,4 +1,4 @@
-{% extends "LtcCore:Layout:base.html.twig" %}
+{% extends "LtcCoreBundle:Layout:base.html.twig" %}
 
 {% block meta_title %}{{ category.title }}{% endblock %}
 
@@ -8,7 +8,7 @@
     </div>
     <div class="eightcol doc_list last">
         <h1 class="title big">{{ category.title }}</h1>
-        {% include "LtcDoc:Doc:list.html.twig" with {"docs": docs} %}
+        {% include "LtcDocBundle:Doc:list.html.twig" with {"docs": docs} %}
     </div>
 </div>
 {% endblock %}

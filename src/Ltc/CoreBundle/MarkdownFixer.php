@@ -1,10 +1,10 @@
 <?php
 
-namespace Ltc\MarkdownBundle;
+namespace Ltc\CoreBundle;
 
 use Closure;
 
-class Fixer
+class MarkdownFixer
 {
     public function fix($text)
     {

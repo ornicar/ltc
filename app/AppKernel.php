@@ -10,10 +10,10 @@ class AppKernel extends Kernel
         $bundles = array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
-            new Symfony\Bundle\ZendBundle\ZendBundle(),
             new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Symfony\Bundle\MonologBundle\MonologBundle(),
 
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
@@ -24,11 +24,10 @@ class AppKernel extends Kernel
             new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
             new Knplabs\Bundle\MarkdownBundle\KnplabsMarkdownBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
-            //new JMS\DebuggingBundle\JMSDebuggingBundle($this),
+            new JMS\DebuggingBundle\JMSDebuggingBundle($this),
 
             new Ltc\UserBundle\LtcUserBundle(),
             new Ltc\CommentBundle\LtcCommentBundle(),
-            new Ltc\MarkdownBundle\LtcMarkdownBundle(),
             new Ltc\CoreBundle\LtcCoreBundle(),
             new Ltc\DocBundle\LtcDocBundle(),
             new Ltc\BlogBundle\LtcBlogBundle(),

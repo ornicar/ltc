@@ -1,4 +1,4 @@
-{% extends "LtcDoc:Doc:preview.html.twig" %}
+{% extends "LtcDocBundle:Doc:preview.html.twig" %}
 
 {% block url %}
 {{ path("ltc_article_article_view", {"categorySlug": doc.category.slug, "slug": doc.slug}) }}

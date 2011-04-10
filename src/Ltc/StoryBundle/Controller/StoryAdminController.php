@@ -14,7 +14,7 @@ class StoryAdminController extends Controller
     {
         $stories = $this->get('ltc_story.repository.story')->findAll();
 
-        return $this->render('LtcStory:Admin:index.html.twig', array(
+        return $this->render('LtcStoryBundle:Admin:index.html.twig', array(
             'objects' => $stories
         ));
     }
@@ -34,7 +34,7 @@ class StoryAdminController extends Controller
             return new RedirectResponse($this->get('router')->generate('ltc_story_admin_story_list'));
         }
 
-        return $this->render('LtcStory:Admin:new.html.twig', array(
+        return $this->render('LtcStoryBundle:Admin:new.html.twig', array(
             'story' => $story,
             'form' => $form
         ));
@@ -53,7 +53,7 @@ class StoryAdminController extends Controller
             return new RedirectResponse($this->get('router')->generate('ltc_story_admin_story_list'));
         }
 
-        return $this->render('LtcStory:Admin:edit.html.twig', array(
+        return $this->render('LtcStoryBundle:Admin:edit.html.twig', array(
             'story' => $story,
             'form' => $form
         ));

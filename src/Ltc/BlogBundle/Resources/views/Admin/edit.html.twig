@@ -1,4 +1,4 @@
-{% extends "LtcBlog:Admin:form.html.twig" %}
+{% extends "LtcBlogBundle:Admin:form.html.twig" %}
 
 {% block title %}Modifier le billet{% endblock %}
 {% block action %}{{ path("ltc_blog_admin_entry_edit", {"slug": doc.slug}) }}{% endblock %}

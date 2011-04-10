@@ -20,6 +20,12 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
+    filters:
+        cssrewrite: ~
+        # closure:
+        #     jar: %kernel.root_dir%/java/compiler.jar
+        # yui_css:
+        #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
 
 avalanche_imagine:
     web_root:     %kernel.root_dir%/../web
@@ -54,18 +60,18 @@ doctrine_mongo_db:
         default:
             metadata_cache_driver: apc
             mappings:
-                FOSUser:
-                FOSComment:
-                StofDoctrineExtensions:
-                LtcUser:
-                LtcComment:
-                LtcDoc:
-                LtcArticle:
-                LtcBlog:
-                LtcImage:
-                LtcTag:
-                LtcStory:
-                LtcConfig:
+                FOSUserBundle:
+                FOSCommentBundle:
+                StofDoctrineExtensionsBundle:
+                LtcUserBundle:
+                LtcCommentBundle:
+                LtcDocBundle:
+                LtcArticleBundle:
+                LtcBlogBundle:
+                LtcImageBundle:
+                LtcTagBundle:
+                LtcStoryBundle:
+                LtcConfigBundle:
 
 stof_doctrine_extensions:
     mongodb:

@@ -1,54 +1,54 @@
 ltc_core:
-    resource: "@LtcCore/Resources/config/routing.yml"
+    resource: "@LtcCoreBundle/Resources/config/routing.yml"
 
 ltc_admin:
-    resource: "@LtcAdmin/Resources/config/routing.yml"
+    resource: "@LtcAdminBundle/Resources/config/routing.yml"
     prefix: /admin
 
 ltc_article_admin:
-    resource: "@LtcArticle/Resources/config/routing_admin.yml"
+    resource: "@LtcArticleBundle/Resources/config/routing_admin.yml"
     prefix: /admin/articles
 
 ltc_blog:
-    resource: "@LtcBlog/Resources/config/routing.yml"
+    resource: "@LtcBlogBundle/Resources/config/routing.yml"
     prefix: /table-ronde
 
 ltc_blog_admin:
-    resource: "@LtcBlog/Resources/config/routing_admin.yml"
+    resource: "@LtcBlogBundle/Resources/config/routing_admin.yml"
     prefix: /admin/table-ronde
 
 ltc_tag:
-    resource: "@LtcTag/Resources/config/routing.yml"
+    resource: "@LtcTagBundle/Resources/config/routing.yml"
     prefix: /tags
 
 ltc_tag_admin:
-    resource: "@LtcTag/Resources/config/routing_admin.yml"
+    resource: "@LtcTagBundle/Resources/config/routing_admin.yml"
     prefix: /admin/tags
 
 ltc_story_admin:
-    resource: "@LtcStory/Resources/config/routing_admin.yml"
+    resource: "@LtcStoryBundle/Resources/config/routing_admin.yml"
     prefix: /admin/actus
 
 ltc_config_admin:
-    resource: "@LtcConfig/Resources/config/routing_admin.yml"
+    resource: "@LtcConfigBundle/Resources/config/routing_admin.yml"
     prefix: /admin/config
 
 fos_user_user:
-    resource: "@FOSUser/Resources/config/routing/user.xml"
+    resource: "@FOSUserBundle/Resources/config/routing/user.xml"
     prefix: /user
 
 fos_comment:
-    resource: "@FOSComment/Resources/config/routing.yml"
+    resource: "@FOSCommentBundle/Resources/config/routing.yml"
     prefix: /comment
 
 fos_user_security:
-    resource: "@FOSUser/Resources/config/routing/security.xml"
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
 ltc_compat_doc:
-    resource: "@LtcCompat/Resources/config/routing.yml"
+    resource: "@LtcCompatBundle/Resources/config/routing.yml"
 
 ltc_article:
-    resource: "@LtcArticle/Resources/config/routing.yml"
+    resource: "@LtcArticleBundle/Resources/config/routing.yml"
 
 _imagine:
     resource: .

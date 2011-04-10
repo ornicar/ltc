@@ -1,7 +1,7 @@
 ltc_config_admin_index:
     pattern:  /
-    defaults: { _controller: LtcConfig:ConfigAdmin:index }
+    defaults: { _controller: LtcConfigBundle:ConfigAdmin:index }
 
 ltc_config_admin_edit:
     pattern:  /{name}
-    defaults: { _controller: LtcConfig:ConfigAdmin:edit }
+    defaults: { _controller: LtcConfigBundle:ConfigAdmin:edit }

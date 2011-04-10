@@ -1,15 +1,15 @@
 ltc_story_admin_story_list:
     pattern:  /
-    defaults: { _controller: LtcStory:StoryAdmin:index }
+    defaults: { _controller: LtcStoryBundle:StoryAdmin:index }
 
 ltc_story_admin_story_new:
     pattern:  /nouvelle-actu
-    defaults: { _controller: LtcStory:StoryAdmin:new }
+    defaults: { _controller: LtcStoryBundle:StoryAdmin:new }
 
 ltc_story_admin_story_edit:
     pattern:  /{id}
-    defaults: { _controller: LtcStory:StoryAdmin:edit }
+    defaults: { _controller: LtcStoryBundle:StoryAdmin:edit }
 
 ltc_story_admin_story_delete:
     pattern:  /supprimer/{id}
-    defaults: { _controller: LtcStory:StoryAdmin:delete }
+    defaults: { _controller: LtcStoryBundle:StoryAdmin:delete }

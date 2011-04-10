@@ -12,7 +12,7 @@ class ConfigAdminController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('LtcConfig:Admin:index.html.twig', array(
+        return $this->render('LtcConfigBundle:Admin:index.html.twig', array(
             'configs' => $this->get('ltc_config.manager')->getConfigs()
         ));
     }
@@ -33,7 +33,7 @@ class ConfigAdminController extends Controller
             )));
         }
 
-        return $this->render(sprintf('LtcConfig:Admin:edit_%s.html.twig', $name), array(
+        return $this->render(sprintf('LtcConfigBundle:Admin:edit_%s.html.twig', $name), array(
             'config'   => $config,
             'document' => $document,
             'form'     => $form

@@ -15,7 +15,7 @@ class ArticleAdminController extends Controller
     {
         $articles = $this->get('ltc_article.repository.article')->findByCategory($category);
 
-        return $this->render('LtcArticle:ArticleAdmin:listByCategory.html.twig', array(
+        return $this->render('LtcArticleBundle:ArticleAdmin:listByCategory.html.twig', array(
             'category' => $category,
             'objects' => $articles
         ));
@@ -45,7 +45,7 @@ class ArticleAdminController extends Controller
             )));
         }
 
-        return $this->render('LtcArticle:ArticleAdmin:new.html.twig', array(
+        return $this->render('LtcArticleBundle:ArticleAdmin:new.html.twig', array(
             'doc' => $article,
             'form' => $form
         ));
@@ -67,7 +67,7 @@ class ArticleAdminController extends Controller
             )));
         }
 
-        return $this->render('LtcArticle:ArticleAdmin:edit.html.twig', array(
+        return $this->render('LtcArticleBundle:ArticleAdmin:edit.html.twig', array(
             'doc' => $article,
             'form' => $form
         ));

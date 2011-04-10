@@ -1,7 +1,7 @@
 ltc_blog_entry_index:
     pattern:  /
-    defaults: { _controller: LtcBlog:Blog:index }
+    defaults: { _controller: LtcBlogBundle:Blog:index }
 
 ltc_blog_entry_view:
     pattern:  /{slug}
-    defaults: { _controller: LtcBlog:Blog:view }
+    defaults: { _controller: LtcBlogBundle:Blog:view }

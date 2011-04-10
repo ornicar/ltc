@@ -1,7 +1,7 @@
 ltc_tag_cloud:
     pattern:  /
-    defaults: { _controller: LtcTag:Tag:cloud }
+    defaults: { _controller: LtcTagBundle:Tag:cloud }
 
 ltc_tag_view:
     pattern:  /{slug}
-    defaults: { _controller: LtcTag:Tag:view }
+    defaults: { _controller: LtcTagBundle:Tag:view }

@@ -11,7 +11,7 @@ class TagController extends Controller
     {
         $tags = $this->get('ltc_tag.repository.tag')->findMorePopularSortBySlug($numberOfTags);
 
-        return $this->render('LtcTag:Tag:smallCloud.html.twig', array(
+        return $this->render('LtcTagBundle:Tag:smallCloud.html.twig', array(
             'tags' => $tags
         ));
     }
@@ -20,7 +20,7 @@ class TagController extends Controller
     {
         $tags = $this->get('ltc_tag.repository.tag')->findMorePopularSortBySlug(200);
 
-        return $this->render('LtcTag:Tag:cloud.html.twig', array(
+        return $this->render('LtcTagBundle:Tag:cloud.html.twig', array(
             'tags' => $tags
         ));
     }
@@ -33,7 +33,7 @@ class TagController extends Controller
         }
         $docs = $this->get('ltc_core.tag_wizard')->findDocsBoundToTag($tag);
 
-        return $this->render('LtcTag:Tag:view.html.twig', array(
+        return $this->render('LtcTagBundle:Tag:view.html.twig', array(
             'tag'  => $tag,
             'docs' => $docs
         ));

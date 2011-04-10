@@ -11,7 +11,7 @@ class BlogController extends Controller
     {
         $blogEntries = $this->get('ltc_blog.repository.blog_entry')->findPublished();
 
-        return $this->render('LtcBlog:Entry:index.html.twig', array(
+        return $this->render('LtcBlogBundle:Entry:index.html.twig', array(
             'docs' => $blogEntries
         ));
     }
@@ -20,7 +20,7 @@ class BlogController extends Controller
     {
         $blogEntries = $this->get('ltc_blog.repository.blog_entry')->findPublished($numberOfDocs);
 
-        return $this->render('LtcBlog:Entry:smallList.html.twig', array(
+        return $this->render('LtcBlogBundle:Entry:smallList.html.twig', array(
             'docs' => $blogEntries
         ));
     }
@@ -30,7 +30,7 @@ class BlogController extends Controller
         $blogEntry = $this->get('ltc_blog.repository.blog_entry')->findOneBySlug($slug);
         $related = $this->get('ltc_core.tag_wizard')->findRelatedDocs($blogEntry);
 
-        return $this->render('LtcBlog:Entry:view.html.twig', array(
+        return $this->render('LtcBlogBundle:Entry:view.html.twig', array(
             'doc'     => $blogEntry,
             'related' => $related
         ));

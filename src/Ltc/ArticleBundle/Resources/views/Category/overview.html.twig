@@ -11,7 +11,7 @@
     {% set url = path("ltc_article_category_view", {"slug": category["category"].slug}) %}
     <div>
         <h2 class="title"><a href="{{ url }}">{{ category["category"].title }}</a></h2>
-        {% include "LtcArticle:Article:smallList.html.twig" with {"docs": category["articles"] } %}
+        {% include "LtcArticleBundle:Article:smallList.html.twig" with {"docs": category["articles"] } %}
         <a class="all_others" href="{{ url }}">&gt; autres articles</a>
     </div>
     {% if loop.index == 2 %}

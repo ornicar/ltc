@@ -1,15 +1,15 @@
 homepage:
     pattern:  /
-    defaults: { _controller: LtcCore:Main:index }
+    defaults: { _controller: LtcCoreBundle:Main:index }
 
 ltc_archive:
     pattern:  /archives
-    defaults: { _controller: LtcCore:Main:archive }
+    defaults: { _controller: LtcCoreBundle:Main:archive }
 
 ltc_author:
     pattern:  /auteur
-    defaults: { _controller: LtcCore:Main:author }
+    defaults: { _controller: LtcCoreBundle:Main:author }
 
 ltc_feed:
     pattern:  /atom.xml
-    defaults: { _controller: LtcCore:Main:feed, _format: xml }
+    defaults: { _controller: LtcCoreBundle:Main:feed, _format: xml }

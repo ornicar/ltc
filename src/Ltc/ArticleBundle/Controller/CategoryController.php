@@ -18,7 +18,7 @@ class CategoryController extends Controller
             );
         }
 
-        return $this->render('LtcArticle:Category:overview.html.twig', array('categories' => $categories));
+        return $this->render('LtcArticleBundle:Category:overview.html.twig', array('categories' => $categories));
     }
 
     public function viewAction($slug)
@@ -28,7 +28,7 @@ class CategoryController extends Controller
             throw new NotFoundHttpException(sprintf('No category found with slug "%s"', $slug));
         }
 
-        return $this->forward('LtcArticle:Article:listByCategory', array(
+        return $this->forward('LtcArticleBundle:Article:listByCategory', array(
             'category' => $category
         ));
     }

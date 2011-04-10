@@ -1,4 +1,4 @@
-{% extends "LtcCore:Layout:root.html.twig" %}
+{% extends "LtcCoreBundle:Layout:root.html.twig" %}
 
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset("bundles/ltccore/css/reset.css") }}">
@@ -15,13 +15,13 @@
 
 {% block body %}
 
-{% include "LtcCore:Layout:header.html.twig" %}
+{% include "LtcCoreBundle:Layout:header.html.twig" %}
 
 <div id="main" role="main">
     {% block content %}{% endblock %}
 </div>
 
-{% include "LtcCore:Layout:footer.html.twig" %}
+{% include "LtcCoreBundle:Layout:footer.html.twig" %}
 
 {% endblock %}
 

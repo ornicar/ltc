@@ -1,6 +1,6 @@
 ltc_tag_admin_index:
     pattern:  /
-    defaults: { _controller: LtcTag:Admin:index }
+    defaults: { _controller: LtcTagBundle:Admin:index }
 ltc_tag_admin_view:
     pattern: /{slug}
-    defaults: { _constroller: LtcTag:Admin:view }
+    defaults: { _constroller: LtcTagBundle:Admin:view }

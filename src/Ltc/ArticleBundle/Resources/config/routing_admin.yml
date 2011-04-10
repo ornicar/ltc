@@ -1,15 +1,15 @@
 ltc_article_admin_article_delete:
     pattern:  /supprimer/{id}
-    defaults: { _controller: LtcArticle:ArticleAdmin:delete }
+    defaults: { _controller: LtcArticleBundle:ArticleAdmin:delete }
 
 ltc_article_admin_article_new:
     pattern:  /{categorySlug}/nouveau
-    defaults: { _controller: LtcArticle:ArticleAdmin:new }
+    defaults: { _controller: LtcArticleBundle:ArticleAdmin:new }
 
 ltc_article_admin_category_view:
     pattern:  /{slug}
-    defaults: { _controller: LtcArticle:CategoryAdmin:view }
+    defaults: { _controller: LtcArticleBundle:CategoryAdmin:view }
 
 ltc_article_admin_article_edit:
     pattern:  /{categorySlug}/{slug}
-    defaults: { _controller: LtcArticle:ArticleAdmin:edit }
+    defaults: { _controller: LtcArticleBundle:ArticleAdmin:edit }

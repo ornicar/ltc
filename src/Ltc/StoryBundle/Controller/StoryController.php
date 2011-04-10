@@ -14,7 +14,7 @@ class StoryController extends Controller
             $story = $this->get('ltc_story.repository.story')->findOneBy(array());
         }
 
-        return $this->render('LtcStory:Story:featured.html.twig', array(
+        return $this->render('LtcStoryBundle:Story:featured.html.twig', array(
             'story' => $story
         ));
     }

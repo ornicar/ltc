@@ -1,6 +1,6 @@
 ltc_admin_dashboard:
     pattern:  /
-    defaults: { _controller: LtcAdmin:Dashboard:index }
+    defaults: { _controller: LtcAdminBundle:Dashboard:index }
 ltc_admin_manager:
     pattern:  /manager
-    defaults: { _controller: LtcAdmin:Dashboard:manager }
+    defaults: { _controller: LtcAdminBundle:Dashboard:manager }

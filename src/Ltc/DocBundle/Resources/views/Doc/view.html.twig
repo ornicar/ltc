@@ -1,8 +1,8 @@
-{% extends "LtcCore:Layout:base.html.twig" %}
+{% extends "LtcCoreBundle:Layout:base.html.twig" %}
 
 {% block stylesheets %}
 {{ parent() }}
-<link rel="stylesheet" href="{{ asset("bundles/ltccomment/css/comment.css") }}">
+<link rel="stylesheet" href="{{ asset("bundles/ltccommentBundle/css/comment.css") }}">
 {% endblock %}
 
 {% block content %}
@@ -12,12 +12,12 @@
 
         <div class="meta_block nice_list small">
             <span class="title shy">Tags</span>
-            {% include "LtcTag:Tag:list.html.twig" with {"tags": doc.tags} %}
+            {% include "LtcTagBundle:Tag:list.html.twig" with {"tags": doc.tags} %}
         </div>
 
         <div class="meta_block nice_list small">
             <span class="title shy">Articles corrélés</span>
-            {% include "LtcDoc:Doc:linkList.html.twig" with {"docs": related} %}
+            {% include "LtcDocBundle:Doc:linkList.html.twig" with {"docs": related} %}
         </div>
 
         {% if doc.relatedPublications %}
@@ -65,7 +65,7 @@
         {% endif %}
 
         <span class="title">Discussion</span>
-        {% render "FOSComment:Thread:show" with {"identifier": doc.commentIdentifier} %}
+        {% render "FOSCommentBundle:Thread:show" with {"identifier": doc.commentIdentifier} %}
     </article>
 
 </div>
@@ -73,6 +73,6 @@
 
 {% block javascripts %}
 {{ parent() }}
-<script type="text/javascript" src="{{ asset("bundles/ltccomment/js/jquery.form.js") }}"></script>
-<script type="text/javascript" src="{{ asset("bundles/ltccomment/js/form.js") }}"></script>
+<script type="text/javascript" src="{{ asset("bundles/ltccommentBundle/js/jquery.form.js") }}"></script>
+<script type="text/javascript" src="{{ asset("bundles/ltccommentBundle/js/form.js") }}"></script>
 {% endblock %}

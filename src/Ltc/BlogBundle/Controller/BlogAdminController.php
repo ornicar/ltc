@@ -14,7 +14,7 @@ class BlogAdminController extends Controller
     {
         $blogEntries = $this->get('ltc_blog.repository.blog_entry')->findAll();
 
-        return $this->render('LtcBlog:Admin:index.html.twig', array(
+        return $this->render('LtcBlogBundle:Admin:index.html.twig', array(
             'objects' => $blogEntries
         ));
     }
@@ -35,7 +35,7 @@ class BlogAdminController extends Controller
             return new RedirectResponse($this->get('router')->generate('ltc_blog_admin_entry_list'));
         }
 
-        return $this->render('LtcBlog:Admin:new.html.twig', array(
+        return $this->render('LtcBlogBundle:Admin:new.html.twig', array(
             'doc' => $blogEntry,
             'form' => $form
         ));
@@ -55,7 +55,7 @@ class BlogAdminController extends Controller
             return new RedirectResponse($this->get('router')->generate('ltc_blog_admin_entry_list'));
         }
 
-        return $this->render('LtcBlog:Admin:edit.html.twig', array(
+        return $this->render('LtcBlogBundle:Admin:edit.html.twig', array(
             'doc' => $blogEntry,
             'form' => $form
         ));

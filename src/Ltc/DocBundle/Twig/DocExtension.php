@@ -53,9 +53,9 @@ class DocExtension extends \Twig_Extension
     public function getController(Doc $doc)
     {
         if ($doc instanceof Article) {
-            return 'LtcArticle:Article';
+            return 'LtcArticleBundle:Article';
         } elseif ($doc instanceof BlogEntry) {
-            return 'LtcBlog:Entry';
+            return 'LtcBlogBundle:Entry';
         }
     }
 

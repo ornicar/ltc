@@ -11,7 +11,7 @@ class AdminController extends Controller
     {
         $tags = $this->get('ltc_tag.repository.tag')->findAll();
 
-        return $this->render('LtcTag:Admin:index.html.twig', array(
+        return $this->render('LtcTagBundle:Admin:index.html.twig', array(
             'tags' => $tags
         ));
     }
