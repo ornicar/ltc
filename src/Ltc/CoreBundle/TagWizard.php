@@ -4,9 +4,7 @@ namespace Ltc\CoreBundle;
 
 use Ltc\TagBundle\Document\Tag;
 use Ltc\TagBundle\Document\TagRepository;
-use Ltc\ArticleBundle\Document\Article;
 use Ltc\ArticleBundle\Document\ArticleRepository;
-use Ltc\BlogBundle\Document\BlogEntry;
 use Ltc\BlogBundle\Document\BlogEntryRepository;
 use Ltc\DocBundle\Document\Doc;
 

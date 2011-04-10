@@ -26,6 +26,7 @@ class CoreExtension extends Twig_Extension
     {
         $mappings = array(
             'ltc_js_config' => 'getJsConfig',
+            'ltc_doc_url' => 'getDocUrl'
         );
 
         $functions = array();

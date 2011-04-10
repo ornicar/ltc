@@ -58,3 +58,6 @@
 [submodule "src/JMS/DebuggingBundle"]
 	path = src/JMS/DebuggingBundle
 	url = git://github.com/schmittjoh/DebuggingBundle.git
+[submodule "vendor/twig-extensions"]
+	path = vendor/twig-extensions
+	url = git://github.com/fabpot/Twig-extensions.git

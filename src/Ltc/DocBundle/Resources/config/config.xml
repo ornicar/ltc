@@ -7,7 +7,7 @@
     <services>
         <service id="ltc_doc.twig.extension" class="Ltc\DocBundle\Twig\DocExtension" public="false">
             <tag name="twig.extension" />
-            <argument type="service" id="ltc_core.twig.extension" />
+            <argument type="service" id="ltc_core.twig.extension.core" />
         </service>
         <service id="ltc_doc.security" class="Ltc\DocBundle\Security">
             <argument type="service" id="security.context" />

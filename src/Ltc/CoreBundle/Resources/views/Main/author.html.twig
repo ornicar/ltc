@@ -5,20 +5,19 @@
 {% block content %}
 
 <div class="row author">
-
-    <div class="threecol">
-        <h1 class="title big">{{ author.title }}</h1>
-        {% if author.hasImage %}
-        <div class="author_image">
-            <img alt="{{ author.image.legend }}" src="{{ asset(author.image.path|apply_filter("preview")) }}" />
-        </div>
-        {% endif %}
-        <div class="mardown">{{ author.summary|markdown }}</div>
+    {% if author.hasImage %}
+    <div class="author_image">
+        <img alt="{{ author.image.legend }}" src="{{ asset(author.image.path|apply_filter("preview")) }}" />
     </div>
-    <div class="sixcol markdown">
+    {% endif %}
+    <h1 class="title big">{{ author.title }}</h1>
+    <div class="mardown">{{ author.summary|markdown }}</div>
+</div>
+<div class="row">
+    <div class="eightcol markdown">
         {{ author.body|markdown }}
     </div>
-    <div class="threecol last markdown">
+    <div class="fourcol last markdown">
         {{ author.publications|markdown }}
     </div>
 </div>

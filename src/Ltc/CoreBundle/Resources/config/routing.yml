@@ -9,3 +9,7 @@ ltc_archive:
 ltc_author:
     pattern:  /auteur
     defaults: { _controller: LtcCore:Main:author }
+
+ltc_feed:
+    pattern:  /atom.xml
+    defaults: { _controller: LtcCore:Main:feed, _format: xml }

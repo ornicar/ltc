@@ -20,20 +20,18 @@ class MainController extends Controller
         ));
     }
 
+    public function feedAction()
+    {
+        return $this->render('LtcCore:Main:feed.xml.twig', array(
+            'docs' => $this->get('ltc_core.doc_provider')->getPublishedDocsSortByPublishedAt(100)
+        ));
+    }
+
     public function archiveAction()
     {
-        $blogEntries = $this->get('ltc_blog.repository.blog_entry')->findPublished();
-        $categories = array();
-        foreach ($this->get('ltc_article.repository.category')->findAll() as $category) {
-            $categories[$category->getSlug()] = array(
-                'category' => $category,
-                'articles' => $this->get('ltc_article.repository.article')->findPublishedByCategory($category)
-            );
-        }
-
         return $this->render('LtcCore:Main:archive.html.twig', array(
-            'blogEntries' => $blogEntries,
-            'categories' => $categories
+            'blogEntries' => $this->get('ltc_blog.repository.blog_entry')->findPublished(),
+            'categories' => $this->get('ltc_core.doc_provider')->getPublishedArticlesCategorized()
         ));
     }
 }

@@ -2,6 +2,7 @@
     background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
     padding-bottom: 20px;
     margin-bottom: 20px;
+    position: relative;
 }
 #header h1 {
     margin-top: 35px;
@@ -30,4 +31,9 @@
 #header .menu a:hover {
     color: #991010;
     text-decoration: underline;
+}
+.rss_link {
+    position: absolute;
+    top: 22px;
+    right: 0;
 }
