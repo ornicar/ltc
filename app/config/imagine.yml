@@ -1,0 +1,20 @@
+avalanche_imagine:
+    web_root:     %kernel.root_dir%/../web
+    cache_prefix: imagine
+    driver:       gd
+    filters:
+        admin_medium:
+            type:    thumbnail
+            options: { size: [200, 150], mode: inset }
+        admin_small:
+            type:    thumbnail
+            options: { size: [100, 50], mode: inset }
+        preview:
+            type:    thumbnail
+            options: { size: [252, 350], mode: inset }
+        doc_view:
+            type:    thumbnail
+            options: { size: [351, 500], mode: inset }
+        lantenora:
+            type:    thumbnail
+            options: { size: [351, 900], mode: inset }

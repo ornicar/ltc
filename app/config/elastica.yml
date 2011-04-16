@@ -1,0 +1,18 @@
+foq_elastica:
+    clients:
+        default:
+            host: localhost
+            port: 9200
+    default_client: default
+    indexes:
+        default:
+            client: default
+            types:
+                doc:
+                    mappings:
+                        title:
+                            type: string
+                            boost: 5
+                            store: no
+    default_index: default
+

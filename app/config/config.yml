@@ -1,9 +1,14 @@
+imports:
+    - { resource: imagine.yml }
+    - { resource: elastica.yml }
+    - { resource: config_local.yml }
+
 framework:
     charset:       UTF-8
     error_handler: null
     csrf_protection:
         enabled: true
-        #secret: see_config_local
+        #secret: see config local
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
     validation:    { enabled: true, annotations: true }
     templating:    { engines: ['twig'], assets_version: 3 }
@@ -26,27 +31,6 @@ assetic:
         #     jar: %kernel.root_dir%/java/compiler.jar
         # yui_css:
         #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
-
-avalanche_imagine:
-    web_root:     %kernel.root_dir%/../web
-    cache_prefix: imagine
-    driver:       gd
-    filters:
-        admin_medium:
-            type:    thumbnail
-            options: { size: [200, 150], mode: inset }
-        admin_small:
-            type:    thumbnail
-            options: { size: [100, 50], mode: inset }
-        preview:
-            type:    thumbnail
-            options: { size: [252, 350], mode: inset }
-        doc_view:
-            type:    thumbnail
-            options: { size: [351, 500], mode: inset }
-        lantenora:
-            type:    thumbnail
-            options: { size: [351, 900], mode: inset }
 
 doctrine_mongo_db:
     connections:
@@ -126,10 +110,10 @@ fos_comment:
             comment: fos_comment.spam_detection.comment.akismet
     akismet:
         url: http://esmeree.fr/
-        #api_key: see_config_local
+        #api_key: see config local
 
 apc:
-    host: http://ltc
+    #host: see config local
     web_dir: %kernel.root_dir%/../web
 
 knplabs_menu:
@@ -173,6 +157,3 @@ zend_cache:
                     automatic_serialization: true
             backend:
                 name: Apc
-
-imports:
-    - { resource: config_local.yml }

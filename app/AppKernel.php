@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
             new FOQ\TyperBundle\FOQTyperBundle(),
+            new FOQ\ElasticaBundle\FOQElasticaBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Bundle\ApcBundle\ApcBundle(),
             new Bundle\ZendCacheBundle\ZendCacheBundle(),
