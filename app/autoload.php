@@ -12,7 +12,6 @@ $loader->registerNamespaces(array(
     'Doctrine\\Common'               => $vendorDir.'/doctrine-common/lib',
     'Doctrine\\MongoDB'              => $vendorDir.'/doctrine-mongodb/lib',
     'Doctrine\\ODM\\MongoDB'         => $vendorDir.'/doctrine-mongodb-odm/lib',
-    'Doctrine\\ODM\\MongoDB'         => $vendorDir.'/doctrine-mongodb-odm/lib',
     'Gedmo'                          => $vendorDir.'/doctrine-extensions/lib',
     'Zend'                           => $vendorDir.'/zend/library',
     'Assetic'                        => $vendorDir.'/assetic/src',
