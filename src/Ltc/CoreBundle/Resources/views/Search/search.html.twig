@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block meta_title %}Rechercher{% endblock %}
+
+{% block content %}
+
+<div class="row search">
+    <h1 class="title big">Rechercher</h1>
+    {% include "LtcCoreBundle:Search:form.html.twig" %}
+    {% block results %}{% endblock %}
+</div>
+
+{% endblock %}

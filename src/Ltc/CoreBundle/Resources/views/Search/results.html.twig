@@ -1,0 +1,18 @@
+{% extends "LtcCoreBundle:Search:search.html.twig" %}
+
+{% block meta_title %}Rechercher "{{ query }}"{% endblock %}
+
+{% block results %}
+
+<div class="results">
+<p>{{ results.count }} document{{ results.count > 1 ? "s" : "" }} trouves</p>
+<ol>
+    {% for doc in results %}
+    <li>
+        <a href="{{ block("url") }}">{{ doc.shortTitle }}</a>
+        <p class="metadata">{{ ltc_doc_publication_date_and_author(doc) }}</p>
+    </li>
+    {% endfor %}
+</div>
+
+{% endblock %}

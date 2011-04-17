@@ -6,14 +6,15 @@
 
     <services>
 
-        <!--<service id="ltc_core.search.finder" class="Ltc\CoreBundle\Search\Finder">-->
-            <!--<argument type="service" id="foq_elastica.index.default.food" />-->
-            <!--<argument type="service" id="ltc_core.search_mapper.food" />-->
-        <!--</service>-->
+        <service id="ltc_core.search_finder" class="Ltc\CoreBundle\Search\Finder">
+            <argument type="service" id="foq_elastica.index.doc" />
+            <argument type="service" id="ltc_core.search_mapper.doc" />
+        </service>
 
-        <!--<service id="ltc_core.search_mapper.food" class="FOQ\ElasticaBundle\Mapper\DoctrineMapper" public="false">-->
-            <!--<argument type="service" id="ltc_core.food.repository.food" />-->
-        <!--</service>-->
+        <service id="ltc_core.search_mapper.doc" class="Ltc\CoreBundle\Search\DocMapper" public="false">
+            <argument type="service" id="ltc_blog.repository.blog_entry" />
+            <argument type="service" id="ltc_article.repository.article" />
+        </service>
 
     </services>
 

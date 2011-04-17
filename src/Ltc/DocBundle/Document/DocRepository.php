@@ -116,4 +116,17 @@ abstract class DocRepository extends DocumentRepository
             ->getQuery()
             ->getSingleResult();
     }
+
+    /**
+     * Finds published documents with the given ids
+     *
+     * @return array
+     **/
+    public function findPublishedByIds(array $ids)
+    {
+        return $this->createPublishedQueryBuilder()
+            ->field('id')->in($ids)
+            ->getQuery()
+            ->execute();
+    }
 }

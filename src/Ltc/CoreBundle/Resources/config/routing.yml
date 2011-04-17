@@ -13,3 +13,7 @@ ltc_author:
 ltc_feed:
     pattern:  /atom.xml
     defaults: { _controller: LtcCoreBundle:Main:feed, _format: xml }
+
+ltc_search:
+    pattern:  /rechercher
+    defaults: { _controller: LtcCoreBundle:Search:search }

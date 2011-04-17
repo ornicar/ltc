@@ -15,5 +15,6 @@ class LtcCoreExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('config.xml');
         $loader->load('twig.xml');
+        $loader->load('search.xml');
     }
 }

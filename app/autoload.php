@@ -34,6 +34,6 @@ $loader->registerPrefixes(array(
 $loader->register();
 
 // because of doctrine-extensions
-require_once $vendorDir.'/doctrine-common/lib/Doctrine/Common/ClassLoader.php';
-$classLoader = new \Doctrine\Common\ClassLoader('Doctrine');
+set_include_path($vendorDir.'/doctrine-extensions/lib'.PATH_SEPARATOR. get_include_path());
+$classLoader = new \Doctrine\Common\ClassLoader('Gedmo');
 $classLoader->register();

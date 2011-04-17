@@ -1,36 +1,22 @@
 <?php
 
-namespace Bundle\ExerciseCom\FoodBundle\Search;
+namespace Ltc\CoreBundle\Search;
 
 use FOQ\ElasticaBundle\Paginator\DoctrinePaginatorAdapter;
 use FOQ\ElasticaBundle\MapperInterface;
 use Zend\Paginator\Paginator;
-use Elastica_Type;
+use Elastica_Index;
 use Elastica_Query;
 
 class Finder
 {
-    protected $type;
+    protected $index;
     protected $mapper;
 
-    public function __construct(Elastica_Type $type, MapperInterface $mapper)
+    public function __construct(Elastica_Index $index, MapperInterface $mapper)
     {
-        $this->type   = $type;
+        $this->index   = $index;
         $this->mapper = $mapper;
-    }
-
-    /**
-     * Search for a query string in the food type
-     *
-     * @return array of Food documents
-     **/
-    public function quickFind($query, $limit)
-    {
-        $queryObject = new Elastica_Query(new Elastica_Query_QueryString($query));
-        $queryObject->setLimit($limit);
-        $results = $this->type->search($query)->getResults();
-
-        return $this->mapper->fromElasticaObjects($results);
     }
 
     /**
@@ -41,7 +27,7 @@ class Finder
     public function findPaginated($query)
     {
 		$query = Elastica_Query::create($query);
-		$paginatorAdapter = new DoctrinePaginatorAdapter($this->type, $query, $this->mapper);
+		$paginatorAdapter = new DoctrinePaginatorAdapter($this->index, $query, $this->mapper);
 		$paginator = new Paginator($paginatorAdapter);
 
 		return $paginator;
