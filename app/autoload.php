@@ -32,3 +32,8 @@ $loader->registerPrefixes(array(
     'Elastica_'        => $vendorDir.'/elastica/lib',
 ));
 $loader->register();
+
+// because of doctrine-extensions
+require_once $vendorDir.'/doctrine-common/lib/Doctrine/Common/ClassLoader.php';
+$classLoader = new \Doctrine\Common\ClassLoader('Doctrine');
+$classLoader->register();
