@@ -361,6 +361,18 @@ abstract class Doc
     }
 
     /**
+     * Gets the tags separated by commas
+     *
+     * @return string
+     **/
+    public function getTagsAsString()
+    {
+        return implode(', ', array_map(function($tag) {
+            return $tag->getTitle();
+        }, $this->getTags()->toArray()));
+    }
+
+    /**
      * @param  Collection
      * @return null
      */

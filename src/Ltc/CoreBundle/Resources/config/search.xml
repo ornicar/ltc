@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <!--<service id="ltc_core.search.finder" class="Ltc\CoreBundle\Search\Finder">-->
+            <!--<argument type="service" id="foq_elastica.index.default.food" />-->
+            <!--<argument type="service" id="ltc_core.search_mapper.food" />-->
+        <!--</service>-->
+
+        <!--<service id="ltc_core.search_mapper.food" class="FOQ\ElasticaBundle\Mapper\DoctrineMapper" public="false">-->
+            <!--<argument type="service" id="ltc_core.food.repository.food" />-->
+        <!--</service>-->
+
+    </services>
+
+</container>

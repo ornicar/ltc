@@ -1,4 +1,4 @@
-{% extends "LtcCoreBundle:Layout:root.html.twig" %}
+{% extends "::root.html.twig" %}
 
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset("bundles/ltccore/css/reset.css") }}">
@@ -15,18 +15,19 @@
 
 {% block body %}
 
-{% include "LtcCoreBundle:Layout:header.html.twig" %}
+{% include "::header.html.twig" %}
 
 <div id="main" role="main">
     {% block content %}{% endblock %}
 </div>
 
-{% include "LtcCoreBundle:Layout:footer.html.twig" %}
+{% include "::footer.html.twig" %}
 
 {% endblock %}
 
 {% block javascripts %}
 {{ parent() }}
+<script type="text/javascript" src="{{ asset("bundles/ltccore/vendor/jquery.lazyload.js") }}"></script>
 <script type="text/javascript" src="{{ asset("bundles/ltccore/js/front.js") }}"></script>
 <!-- <script>
     var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];

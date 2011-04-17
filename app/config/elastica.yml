@@ -5,14 +5,26 @@ foq_elastica:
             port: 9200
     default_client: default
     indexes:
-        default:
+        doc:
             client: default
             types:
-                doc:
+                blog:
                     mappings:
-                        title:
-                            type: string
-                            boost: 5
-                            store: no
-    default_index: default
-
+                        title: { boost: 8 }
+                        summary: { boost: 2 }
+                        body: 
+                        tagsAsString: { boost: 3 }
+                        authorName: 
+                        authorBio: 
+                        reference:
+                article:
+                    mappings:
+                        title: { boost: 8 }
+                        categoryTitle: { boost: 2 }
+                        summary: { boost: 2 }
+                        body: 
+                        tagsAsString: { boost: 3 }
+                        authorName: 
+                        authorBio: 
+                        reference:
+    default_index: doc

@@ -82,6 +82,11 @@ class Article extends Doc
         $this->category = $category;
     }
 
+    public function getCategoryTitle()
+    {
+        return $this->getCategory()->getTitle();
+    }
+
     /**
      * Gets a unique comment identifier, usable as a slug
      *
