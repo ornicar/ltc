@@ -29,7 +29,8 @@ class CategoryController extends Controller
         }
 
         return $this->forward('LtcArticleBundle:Article:listByCategory', array(
-            'category' => $category
+            'category' => $category,
+            'page' => $this->get('request')->query->get('page', 1)
         ));
     }
 }

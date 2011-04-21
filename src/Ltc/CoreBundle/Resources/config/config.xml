@@ -15,6 +15,9 @@
             <argument type="service" id="ltc_article.repository.article" />
             <argument type="service" id="ltc_article.repository.category" />
         </service>
+        <service id="ltc_core.paginator_factory" class="Ltc\CoreBundle\PaginatorFactory" public="true">
+            <argument type="collection" /> <!-- options -->
+        </service>
     </services>
 
 </container>

@@ -1,6 +1,6 @@
 {% extends "::base.html.twig" %}
 
-{% block meta_title %}Table Ronde{% endblock %}
+{% block meta_title %}Table Ronde, page {{ docs.pages.current }}{% endblock %}
 
 {% block content %}
 <div class="row">
@@ -10,7 +10,7 @@
         <header>
             <h1 class="title big">Table ronde</h1>
         </header>
-        {% include "LtcDocBundle:Doc:list.html.twig" with {"docs": docs} %}
+        {% include "LtcDocBundle:Doc:paginatedList.html.twig" with {"docs": docs, "url": path("ltc_blog_entry_index")} %}
     </article>
 </div>
 {% endblock %}

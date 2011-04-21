@@ -4,15 +4,17 @@
 
 {% block results %}
 
-<div class="results">
-<p>{{ results.count }} document{{ results.count > 1 ? "s" : "" }} trouves</p>
-<ol>
-    {% for doc in results %}
-    <li>
-        <a href="{{ block("url") }}">{{ doc.shortTitle }}</a>
-        <p class="metadata">{{ ltc_doc_publication_date_and_author(doc) }}</p>
-    </li>
-    {% endfor %}
+<div class="results infinitescroll">
+<p class="metadata">{{ results.totalItemCount }} document{{ results.totalItemCount > 1 ? "s" : "" }} trouve{{ results.totalItemCount > 1 ? "s" : "" }}</p>
+{% set pagination %}{% include "LtcCoreBundle::pagination.html.twig" with {"pager": results.pages, "url": path("ltc_search", {"q": query})} %}{% endset %}
+{{ pagination|raw }}
+{% for doc in results %}
+<div class="result paginated_item">
+    <a href="{{ ltc_doc_path(doc) }}">{{ doc.shortTitle }}</a>
+    <p class="metadata">{{ ltc_doc_category_title(doc) }} - {{ ltc_doc_publication_date_and_author(doc) }}</p>
+</div>
+{% endfor %}
+{{ pagination|raw }}
 </div>
 
 {% endblock %}

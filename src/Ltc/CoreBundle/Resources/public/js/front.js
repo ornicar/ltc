@@ -10,6 +10,13 @@ $(function() {
 
     $('.js_email').text(['pascal', 'Duplessis@', 'aol.com'].join(''));
 
+    $('.infinitescroll').infinitescroll({
+        navSelector: "div.pagination",
+        nextSelector: "div.pagination a.next",
+        itemSelector: ".infinitescroll .paginated_item",
+        loadingText: "Chargement des articles suivants...",
+        donetext: "Fin de la liste des articles"
+    });
 });
 
 if (typeof console == "undefined" || typeof console.log == "undefined") console = {

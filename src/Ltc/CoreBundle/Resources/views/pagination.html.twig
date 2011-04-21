@@ -1,0 +1,29 @@
+{% if pager.pageCount > 1 %}
+    <div class="pagination">
+    {% set baseUrl = "?" in url ? url~"&page=" : url~"?page=" %}
+    {% spaceless %}
+    {% if pager.first is defined and pager.first != pager.current %}
+    <a class="first" href="{{ baseUrl }}{{ pager.first }}">{% trans "Premiere" %}</a>
+    {% else %}
+    <span class="first">{% trans "Premiere" %}</span>
+    {% endif %} |
+    {% if pager.previous is defined %}
+    <a class="previous" href="{{ baseUrl }}{{ pager.previous }}">{% trans "Precedente" %}</a>
+    {% else %}
+    <span class="previous">{% trans "Precedente" %}</span>
+    {% endif %} |
+    {% for page in pager.pagesInRange %}
+        {% if page == pager.current %}
+            <span class="current">{{ page }}</span>
+        {% else %}
+            <a href="{{ baseUrl }}{{ page }}">{{ page }}</a>
+        {% endif %} |
+    {% endfor %}
+    {% if pager.next is defined %}
+    <a class="next" href="{{ baseUrl }}{{ pager.next }}">{% trans "Suivante" %}</a>
+    {% else %}
+    <span class="next">{% trans "Suivante" %}</span>
+    {% endif %}
+    {% endspaceless %}
+    </div>
+{% endif %}

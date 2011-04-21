@@ -1,0 +1,6 @@
+{% set pagination %}{% include "LtcCoreBundle::pagination.html.twig" with {"pager": docs.pages, "url": url} %}{% endset %}
+<div class="infinitescroll">
+{{ pagination|raw }}
+{% include "LtcDocBundle:Doc:list.html.twig" with {"docs": docs} %}
+{{ pagination|raw }}
+</div>

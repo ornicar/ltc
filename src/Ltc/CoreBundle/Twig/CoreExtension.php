@@ -7,6 +7,9 @@ use Twig_Extension;
 use Twig_Filter_Method;
 use Twig_Function_Method;
 use DateTime;
+use Ltc\DocBundle\Document\Doc;
+use Ltc\ArticleBundle\Document\Article;
+use Ltc\BlogBundle\Document\BlogEntry;
 
 class CoreExtension extends Twig_Extension
 {
@@ -26,7 +29,7 @@ class CoreExtension extends Twig_Extension
     {
         $mappings = array(
             'ltc_js_config' => 'getJsConfig',
-            'ltc_doc_url' => 'getDocUrl'
+            'ltc_doc_category_title' => 'getDocCategoryTitle'
         );
 
         $functions = array();
@@ -49,6 +52,22 @@ class CoreExtension extends Twig_Extension
             'ltc_shrink_link' => new Twig_Filter_Method($this, 'shrinkLink'),
             'ltc_comment' => new Twig_Filter_Method($this, 'formatComment')
         );
+    }
+
+    /**
+     * Gets the category title of articles, or the name of the blog
+     *
+     * @return string
+     **/
+    public function getDocCategoryTitle(Doc $doc)
+    {
+        if ($doc instanceof BlogEntry) {
+            return "Table ronde";
+        } elseif ($doc instanceof Article) {
+            return $doc->getCategory()->getTitle();
+        } else {
+            throw new \InvalidArgumentException(get_class($doc));
+        }
     }
 
     /**

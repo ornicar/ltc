@@ -14,6 +14,7 @@ $loader->registerNamespaces(array(
     'Doctrine\\ODM\\MongoDB'         => $vendorDir.'/doctrine-mongodb-odm/lib',
     'Gedmo'                          => $vendorDir.'/doctrine-extensions/lib',
     'Zend'                           => $vendorDir.'/zend/library',
+    'ZendPaginatorAdapter'           => $vendorDir.'/zend-paginator-adapter/src',
     'Assetic'                        => $vendorDir.'/assetic/src',
     'Imagine'                        => $vendorDir.'/imagine/lib',
     'Monolog'                        => $vendorDir.'/monolog/src',

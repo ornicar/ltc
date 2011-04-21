@@ -70,3 +70,6 @@
 [submodule "vendor/elastica"]
 	path = vendor/elastica
 	url = git://github.com/ruflin/Elastica
+[submodule "vendor/zend-paginator-adapter"]
+	path = vendor/zend-paginator-adapter
+	url = git://github.com/ornicar/ZendPaginatorAdapter.git

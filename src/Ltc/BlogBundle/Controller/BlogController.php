@@ -3,16 +3,18 @@
 namespace Ltc\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class BlogController extends Controller
 {
     public function indexAction()
     {
-        $blogEntries = $this->get('ltc_blog.repository.blog_entry')->findPublished();
+        $paginator = $this->get('ltc_core.paginator_factory')->paginate(
+            $this->get('ltc_blog.repository.blog_entry')->createPublishedSortedQueryBuilder(),
+            $this->get('request')->query->get('page', 1)
+        );
 
         return $this->render('LtcBlogBundle:Entry:index.html.twig', array(
-            'docs' => $blogEntries
+            'docs' => $paginator
         ));
     }
 

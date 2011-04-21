@@ -28,10 +28,20 @@ class ArticleRepository extends DocRepository
      **/
     public function findPublishedByCategory(Category $category)
     {
-        return $this->createPublishedSortedQueryBuilder()
-            ->field('category.$id')->equals(new MongoId($category->getId()))
+        return $this->createPublishedSortedByCategoryQueryBuilder($category)
             ->getQuery()
             ->execute();
+    }
+
+    /**
+     * Return a query builder for the published articles bound to this category
+     *
+     * @return Builder
+     **/
+    public function createPublishedSortedByCategoryQueryBuilder(Category $category)
+    {
+        return $this->createPublishedSortedQueryBuilder()
+            ->field('category.$id')->equals(new MongoId($category->getId()));
     }
 
     /**

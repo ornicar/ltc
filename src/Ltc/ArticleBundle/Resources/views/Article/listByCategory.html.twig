@@ -8,7 +8,7 @@
     </div>
     <div class="eightcol doc_list last">
         <h1 class="title big">{{ category.title }}</h1>
-        {% include "LtcDocBundle:Doc:list.html.twig" with {"docs": docs} %}
+        {% include "LtcDocBundle:Doc:paginatedList.html.twig" with {"docs": docs, "url": path("ltc_article_category_view", {"slug": category.slug})} %}
     </div>
 </div>
 {% endblock %}
