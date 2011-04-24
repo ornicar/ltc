@@ -25,7 +25,7 @@ class Configuration
                     ->scalarNode('model')->end()
                     ->scalarNode('form')->end()
                     ->scalarNode('title')->end()
-                    ->scalarNode('form_factory')->end()
+                    ->scalarNode('form_type')->end()
                 ->end()
             ->end()
         ;

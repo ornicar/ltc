@@ -73,3 +73,6 @@
 [submodule "vendor/zend-paginator-adapter"]
 	path = vendor/zend-paginator-adapter
 	url = git://github.com/ornicar/ZendPaginatorAdapter.git
+[submodule "src/Symfony/Bundle/DoctrineFixturesBundle"]
+	path = src/Symfony/Bundle/DoctrineFixturesBundle
+	url = git://github.com/symfony/DoctrineFixturesBundle

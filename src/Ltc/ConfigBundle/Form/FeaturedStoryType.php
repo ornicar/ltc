@@ -2,15 +2,20 @@
 
 namespace Ltc\ConfigBundle\Form;
 
-use Symfony\Component\Form\Form;
-use Symfony\Component\Form\ChoiceField;
-use Ltc\StoryBundle\Document\StoryRepository;
-use Ltc\CoreBundle\Form\ValueTransformer\DoctrineObjectTransformer;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilder;
 
-class FeaturedStoryForm extends Form
+class FeaturedStoryType extends AbstractType
 {
-    public function configure()
+    public function buildForm(FormBuilder $builder, array $options)
     {
+    }
+
+    public function getDefaultOptions(array $options)
+    {
+        return array(
+            'data_class' => 'Ltc\ConfigBundle\Document\FeaturedStory',
+        );
     }
 
     public function setStoryRepository(StoryRepository $storyRepository)

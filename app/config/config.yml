@@ -131,20 +131,22 @@ ltc_config:
         model: Ltc\ConfigBundle\Document\Author
         form:  Ltc\ConfigBundle\Form\AuthorForm
         title: Auteur
+        form_type: ltc_config.form_type.author
     photo:
         model: Ltc\ConfigBundle\Document\Photo
         form:  Ltc\ConfigBundle\Form\PhotoForm
         title: Ailleurs
+        form_type: ltc_config.form_type.photo
     featured_story:
         model: Ltc\ConfigBundle\Document\FeaturedStory
         form:  Ltc\ConfigBundle\Form\FeaturedStoryForm
         title: Actu Accueil
-        form_factory: ltc_config.form_factory.featured_story
+        form_type: ltc_config.form_type.featured_story
     featured_article:
         model: Ltc\ConfigBundle\Document\FeaturedArticle
         form:  Ltc\ConfigBundle\Form\FeaturedArticleForm
         title: A propos de...
-        form_factory: ltc_config.form_factory.featured_article
+        form_type: ltc_config.form_type.featured_article
 
 zend_cache:
     templates:

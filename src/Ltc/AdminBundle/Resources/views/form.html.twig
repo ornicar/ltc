@@ -9,12 +9,14 @@ ou <a href="{{ block("list_url") }}">retourner a la liste</a>
 <h1>{{ block("title") }}</h1>
 
 <form action="{{ block("action") }}" {{ form_enctype(form) }} method="post" novalidate>
+    {#
     {% if form.hasErrors %}
         <div class="error message">{{ form_errors(form) }}</div>
     {% endif %}
+    #}
     <div>{{ block("form_actions") }}</div>
     {{ block("form_fields") }}
-    {{ form_hidden(form) }}
+    {{ form_rest(form) }}
     <div>{{ block("form_actions") }}</div>
 </form>
 {% endblock %}

@@ -3,11 +3,12 @@
 namespace Ltc\ConfigBundle;
 
 use Doctrine\ODM\MongoDB\DocumentRepository;
+use Symfony\Component\Form\FormTypeInterface;
 
 class Config
 {
     protected $repository;
-    protected $formFactory;
+    protected $formType;
     protected $name;
     protected $title;
 
@@ -16,12 +17,12 @@ class Config
      *
      * @return null
      **/
-    public function __construct(DocumentRepository $repository, FormFactory $formFactory, $name, $title)
+    public function __construct(DocumentRepository $repository, FormTypeInterface $formType, $name, $title)
     {
-        $this->repository  = $repository;
-        $this->formFactory = $formFactory;
-        $this->name        = $name;
-        $this->title       = $title;
+        $this->repository = $repository;
+        $this->formType   = $formType;
+        $this->name       = $name;
+        $this->title      = $title;
     }
 
     public function getName()
@@ -34,9 +35,9 @@ class Config
         return $this->title;
     }
 
-    public function getForm()
+    public function getFormType()
     {
-        return $this->formFactory->create();
+        return $this->formType;
     }
 
     public function getDocument()

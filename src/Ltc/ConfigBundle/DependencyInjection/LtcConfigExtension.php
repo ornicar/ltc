@@ -28,20 +28,10 @@ class LtcConfigExtension extends Extension
             $repoDef = $container->setDefinition($repoId, new DefinitionDecorator('ltc_config.repository'));
             $repoDef->replaceArgument(0, $options['model']);
 
-            if (isset($options['form_factory'])) {
-                $formFactoryId = $options['form_factory'];
-                $formFactoryDef = $container->getDefinition($formFactoryId);
-            } else {
-                $formFactoryId  = 'ltc_config.form_factory.'.$name;
-                $formFactoryDef = $container->setDefinition($formFactoryId, new DefinitionDecorator('ltc_config.form_factory'));
-            }
-            $formFactoryDef->replaceArgument(1, $name);
-            $formFactoryDef->replaceArgument(2, $options['form']);
-
             $configId = 'ltc_config.'.$name;
             $configDef = $container->setDefinition($configId, new DefinitionDecorator('ltc_config.config'));
             $configDef->replaceArgument(0, new Reference($repoId));
-            $configDef->replaceArgument(1, new Reference($formFactoryId));
+            $configDef->replaceArgument(1, new Reference($options['form_type']));
             $configDef->replaceArgument(2, $name);
             $configDef->replaceArgument(3, $options['title']);
             $referenceMap[$name] = new Reference($configId);
