@@ -9,21 +9,31 @@ foq_elastica:
             client: default
             types:
                 blog:
+                    doctrine:
+                        driver: mongodb
+                        model: Ltc\BlogBundle\Document\BlogEntry
+                        provider:
+                            query_builder_method: createPublishedQueryBuilder
                     mappings:
                         title: { boost: 8 }
                         summary: { boost: 2 }
                         body: 
-                        tagsAsString: { boost: 3 }
+                        tags: { boost: 4 }
                         authorName: 
                         authorBio: 
                         reference:
                 article:
+                    doctrine:
+                        driver: mongodb
+                        model: Ltc\ArticleBundle\Document\Article
+                        provider:
+                            query_builder_method: createPublishedQueryBuilder
                     mappings:
                         title: { boost: 8 }
                         categoryTitle: { boost: 2 }
                         summary: { boost: 2 }
                         body: 
-                        tagsAsString: { boost: 3 }
+                        tags: { boost: 4 }
                         authorName: 
                         authorBio: 
                         reference:

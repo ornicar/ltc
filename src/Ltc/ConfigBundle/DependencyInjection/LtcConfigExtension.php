@@ -26,7 +26,7 @@ class LtcConfigExtension extends Extension
         foreach ($config as $name => $options) {
             $repoId  = 'ltc_config.repository.'.$name;
             $repoDef = $container->setDefinition($repoId, new DefinitionDecorator('ltc_config.repository'));
-            $repoDef->setArgument(0, $options['model']);
+            $repoDef->replaceArgument(0, $options['model']);
 
             if (isset($options['form_factory'])) {
                 $formFactoryId = $options['form_factory'];
@@ -35,18 +35,18 @@ class LtcConfigExtension extends Extension
                 $formFactoryId  = 'ltc_config.form_factory.'.$name;
                 $formFactoryDef = $container->setDefinition($formFactoryId, new DefinitionDecorator('ltc_config.form_factory'));
             }
-            $formFactoryDef->setArgument(1, $name);
-            $formFactoryDef->setArgument(2, $options['form']);
+            $formFactoryDef->replaceArgument(1, $name);
+            $formFactoryDef->replaceArgument(2, $options['form']);
 
             $configId = 'ltc_config.'.$name;
             $configDef = $container->setDefinition($configId, new DefinitionDecorator('ltc_config.config'));
-            $configDef->setArgument(0, new Reference($repoId));
-            $configDef->setArgument(1, new Reference($formFactoryId));
-            $configDef->setArgument(2, $name);
-            $configDef->setArgument(3, $options['title']);
+            $configDef->replaceArgument(0, new Reference($repoId));
+            $configDef->replaceArgument(1, new Reference($formFactoryId));
+            $configDef->replaceArgument(2, $name);
+            $configDef->replaceArgument(3, $options['title']);
             $referenceMap[$name] = new Reference($configId);
         }
 
-        $container->getDefinition('ltc_config.manager')->setArgument(0, $referenceMap);
+        $container->getDefinition('ltc_config.manager')->replaceArgument(0, $referenceMap);
     }
 }

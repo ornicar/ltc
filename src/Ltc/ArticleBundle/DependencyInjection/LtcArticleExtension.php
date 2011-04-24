@@ -15,6 +15,5 @@ class LtcArticleExtension extends Extension
 
         $loader->load('repository.xml');
         $loader->load('config.xml');
-        $loader->load('search.xml');
     }
 }

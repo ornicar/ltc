@@ -20,6 +20,6 @@ class LtcImageExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('config.xml');
 
-        $container->getDefinition('ltc_image.uploader')->setArgument(1, $config['upload_dir']);
+        $container->getDefinition('ltc_image.uploader')->replaceArgument(1, $config['upload_dir']);
     }
 }

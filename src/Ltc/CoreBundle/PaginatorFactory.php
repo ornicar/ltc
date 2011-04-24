@@ -5,7 +5,7 @@ namespace Ltc\CoreBundle;
 use Doctrine\ODM\MongoDB\Query\Builder as QueryBuilder;
 use ZendPaginatorAdapter\DoctrineMongoDBAdapter;
 use Zend\Paginator\Paginator;
-use Symfony\Component\HttpKernel\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Paginates queries
@@ -55,7 +55,7 @@ class PaginatorFactory
         $options = array_merge($this->options, $options);
         $paginator->setItemCountPerPage($options['item_count_per_page']);
         $paginator->setPageRange($options['page_range']);
-        if ($page > $paginator->count()) {
+        if ($page > 1 && $page > $paginator->count()) {
             throw new NotFoundHttpException('No more items');
         }
         $paginator->setCurrentPageNumber($page);
