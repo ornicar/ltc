@@ -83,4 +83,9 @@ class Tag
     {
         $this->docCount = $docCount;
     }
+
+	public function __toString()
+	{
+		return $this->getTitle();
+	}
 }

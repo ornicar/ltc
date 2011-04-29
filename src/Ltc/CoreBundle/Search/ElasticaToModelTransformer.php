@@ -2,17 +2,12 @@
 
 namespace Ltc\CoreBundle\Search;
 
-use FOQ\ElasticaBundle\MapperInterface;
+use FOQ\ElasticaBundle\Transformer\ElasticaToModelTransformerInterface;
 use Ltc\BlogBundle\Document\BlogEntryRepository;
 use Ltc\ArticleBundle\Document\ArticleRepository;
 use Ltc\DocBundle\Document\Doc;
 
-/**
- * Maps Elastica documents with Doctrine objects
- * This mapper assumes an exact match between
- * elastica documents ids and doctrine object ids
- */
-class DocMapper implements MapperInterface
+class ElasticaToModelTransformer implements ElasticaToModelTransformerInterface
 {
     protected $blogEntryRepository = null;
     protected $articleRepository = null;
@@ -29,12 +24,9 @@ class DocMapper implements MapperInterface
      *
      * @return array
      **/
-    public function fromElasticaObjects(array $elasticaObjects)
+    public function transform(array $elasticaObjects)
     {
-        $idsByType = array(
-            'blog' => array(),
-            'article' => array()
-        );
+        $idsByType = array('blog' => array(), 'article' => array());
         foreach ($elasticaObjects as $elasticaObject) {
             $idsByType[$elasticaObject->getType()][] = $elasticaObject->getId();
         }
@@ -53,5 +45,4 @@ class DocMapper implements MapperInterface
 
         return $docs;
     }
-
 }

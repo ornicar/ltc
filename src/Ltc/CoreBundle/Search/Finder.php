@@ -3,7 +3,7 @@
 namespace Ltc\CoreBundle\Search;
 
 use FOQ\ElasticaBundle\Paginator\DoctrinePaginatorAdapter;
-use FOQ\ElasticaBundle\MapperInterface;
+use FOQ\ElasticaBundle\Transformer\ElasticaToModelTransformerInterface;
 use Zend\Paginator\Paginator;
 use Elastica_Index;
 use Elastica_Query;
@@ -11,12 +11,12 @@ use Elastica_Query;
 class Finder
 {
     protected $index;
-    protected $mapper;
+    protected $transformer;
 
-    public function __construct(Elastica_Index $index, MapperInterface $mapper)
+    public function __construct(Elastica_Index $index, ElasticaToModelTransformerInterface $transformer)
     {
-        $this->index   = $index;
-        $this->mapper = $mapper;
+        $this->index       = $index;
+        $this->transformer = $transformer;
     }
 
     /**
@@ -27,7 +27,7 @@ class Finder
     public function findPaginated($query)
     {
 		$query = Elastica_Query::create($query);
-		$paginatorAdapter = new DoctrinePaginatorAdapter($this->index, $query, $this->mapper);
+		$paginatorAdapter = new DoctrinePaginatorAdapter($this->index, $query, $this->transformer);
 		$paginator = new Paginator($paginatorAdapter);
 
 		return $paginator;

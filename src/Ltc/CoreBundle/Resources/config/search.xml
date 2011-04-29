@@ -6,12 +6,12 @@
 
     <services>
 
-        <service id="ltc_core.search_finder" class="Ltc\CoreBundle\Search\Finder">
+        <service id="ltc_core.search.finder" class="Ltc\CoreBundle\Search\Finder">
             <argument type="service" id="foq_elastica.index.doc" />
-            <argument type="service" id="ltc_core.search_mapper.doc" />
+            <argument type="service" id="ltc_core.search.elastica_to_model_transformer.doc" />
         </service>
 
-        <service id="ltc_core.search_mapper.doc" class="Ltc\CoreBundle\Search\DocMapper" public="false">
+        <service id="ltc_core.search.elastica_to_model_transformer.doc" class="Ltc\CoreBundle\Search\ElasticaToModelTransformer" public="false">
             <argument type="service" id="ltc_blog.repository.blog_entry" />
             <argument type="service" id="ltc_article.repository.article" />
         </service>
