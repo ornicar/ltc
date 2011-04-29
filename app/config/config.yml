@@ -6,16 +6,15 @@ imports:
 framework:
     charset:       UTF-8
     error_handler: null
+    #secret: see config local
     csrf_protection:
         enabled: true
-        #secret: see config local
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
     validation:    { enabled: true, annotations: true }
     templating:    { engines: ['twig'], assets_version: 3 }
-    document_root: %kernel.root_dir%/../web
     session:
         default_locale: fr
-        lifetime:       36000
+        lifetime:       136000
         auto_start:     true
 
 twig:
@@ -97,6 +96,8 @@ fos_user:
     class:
         model:
             user: Ltc\UserBundle\Document\User
+    service:
+        mailer: fos_user.mailer.noop
 
 fos_comment:
     db_driver: mongodb

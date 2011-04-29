@@ -3,14 +3,14 @@
     {% set baseUrl = "?" in url ? url~"&page=" : url~"?page=" %}
     {% spaceless %}
     {% if pager.first is defined and pager.first != pager.current %}
-    <a class="first" href="{{ baseUrl }}{{ pager.first }}">{% trans "Premiere" %}</a>
+    <a class="first" href="{{ baseUrl }}{{ pager.first }}">Premiere</a>
     {% else %}
-    <span class="first">{% trans "Premiere" %}</span>
+    <span class="first">Premiere</span>
     {% endif %} |
     {% if pager.previous is defined %}
-    <a class="previous" href="{{ baseUrl }}{{ pager.previous }}">{% trans "Precedente" %}</a>
+    <a class="previous" href="{{ baseUrl }}{{ pager.previous }}">Precedente</a>
     {% else %}
-    <span class="previous">{% trans "Precedente" %}</span>
+    <span class="previous">Precedente</span>
     {% endif %} |
     {% for page in pager.pagesInRange %}
         {% if page == pager.current %}
@@ -20,9 +20,9 @@
         {% endif %} |
     {% endfor %}
     {% if pager.next is defined %}
-    <a class="next" href="{{ baseUrl }}{{ pager.next }}">{% trans "Suivante" %}</a>
+    <a class="next" href="{{ baseUrl }}{{ pager.next }}">Suivante</a>
     {% else %}
-    <span class="next">{% trans "Suivante" %}</span>
+    <span class="next">Suivante</span>
     {% endif %}
     {% endspaceless %}
     </div>

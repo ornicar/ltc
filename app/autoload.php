@@ -3,9 +3,10 @@
 $vendorDir = realpath(__DIR__.'/../vendor');
 $srcDir = realpath(__DIR__.'/../src');
 
-use Symfony\Component\ClassLoader\UniversalClassLoader;
+require $vendorDir.'/symfony/src/Symfony/Component/ClassLoader/ApcUniversalClassLoader.php';
+use Symfony\Component\ClassLoader\ApcUniversalClassLoader;
 
-$loader = new UniversalClassLoader();
+$loader = new ApcUniversalClassLoader('ltc.cl.');
 $loader->registerNamespaces(array(
     'Symfony'                        => array($vendorDir.'/symfony/src', $srcDir),
     'Doctrine\\Common\\DataFixtures' => $vendorDir.'/doctrine-data-fixtures/lib',
