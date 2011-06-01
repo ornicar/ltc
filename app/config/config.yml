@@ -31,7 +31,7 @@ assetic:
         # yui_css:
         #     jar: %kernel.root_dir%/java/yuicompressor-2.4.2.jar
 
-doctrine_mongo_db:
+doctrine_mongodb:
     connections:
         default:
             server: mongodb://localhost:27017
