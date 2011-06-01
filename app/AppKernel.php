@@ -26,7 +26,6 @@ class AppKernel extends Kernel
             new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
             new Knplabs\Bundle\MarkdownBundle\KnplabsMarkdownBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
-            new JMS\DebuggingBundle\JMSDebuggingBundle($this),
 
             new Ltc\UserBundle\LtcUserBundle(),
             new Ltc\CommentBundle\LtcCommentBundle(),
@@ -45,6 +44,7 @@ class AppKernel extends Kernel
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
+            $bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this);
         }
 
         return $bundles;

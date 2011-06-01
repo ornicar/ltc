@@ -7,7 +7,10 @@ echo "Warmup cache"
 php app/console -e=prod cache:clear
 
 echo "Raise cache permissions"
-chmod -R 777 app/cache/prod
+chmod -R 777 app/cache/prod app/logs
 
 echo "Clear APC cache opcode and user"
 php app/console --env=prod apc:clear
+
+echo "Creating assets symlinks"
+php app/console --env=prod assets:install web --symlink
