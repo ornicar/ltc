@@ -3,6 +3,7 @@
     padding-bottom: 20px;
     margin-bottom: 20px;
     position: relative;
+	display: block;
 }
 #header h1 {
     margin-top: 35px;
