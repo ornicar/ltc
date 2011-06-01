@@ -1,12 +1,6 @@
-/* The 1140px Grid by Andy Taylor – http://cssgrid.net – http://www.twitter.com/andytlr – http://www.catchingzebra.com */
-
 .container {
 padding-left: 20px;
 padding-right: 20px;
-text-align: center;
-}
-.container * {
-text-align: left;
 }
 
 .row {
