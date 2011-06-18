@@ -76,6 +76,9 @@
 [submodule "src/Symfony/Bundle/DoctrineFixturesBundle"]
 	path = src/Symfony/Bundle/DoctrineFixturesBundle
 	url = git://github.com/symfony/DoctrineFixturesBundle
+[submodule "src/Symfony/Bundle/DoctrineMongoDBBundle"]
+	path = src/Symfony/Bundle/DoctrineMongoDBBundle
+	url = git://github.com/symfony/DoctrineMongoDBBundle
 [submodule "src/Symfony/Bundle/AsseticBundle"]
 	path = src/Symfony/Bundle/AsseticBundle
 	url = git://github.com/symfony/AsseticBundle
