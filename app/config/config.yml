@@ -5,13 +5,13 @@ imports:
 
 framework:
     charset:       UTF-8
-    error_handler: null
     #secret: see config local
     csrf_protection:
         enabled: true
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
-    validation:    { enabled: true, annotations: true }
+    validation:    { enable_annotations: true }
     templating:    { engines: ['twig'], assets_version: 3 }
+    form:          true
     session:
         default_locale: fr
         lifetime:       136000
