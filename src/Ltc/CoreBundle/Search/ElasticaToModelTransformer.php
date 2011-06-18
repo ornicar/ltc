@@ -7,6 +7,9 @@ use Ltc\BlogBundle\Document\BlogEntryRepository;
 use Ltc\ArticleBundle\Document\ArticleRepository;
 use Ltc\DocBundle\Document\Doc;
 
+/**
+ * Deals with blog entries and articles
+ */
 class ElasticaToModelTransformer implements ElasticaToModelTransformerInterface
 {
     protected $blogEntryRepository = null;
@@ -21,6 +24,9 @@ class ElasticaToModelTransformer implements ElasticaToModelTransformerInterface
     /**
      * Transforms an array of elastica objects into an array of
      * model objects fetched from the doctrine repository
+     *
+     * Objects can be both blog entries and articles
+     * so we need to sort them out
      *
      * @return array
      **/

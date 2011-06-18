@@ -7,10 +7,15 @@ foq_elastica:
     indexes:
         doc:
             client: default
+            type_prototype:
+                doctrine:
+                    driver: mongodb
+                    provider:
+                    finder:
+                    listener:
             types:
                 blog:
                     doctrine:
-                        driver: mongodb
                         model: Ltc\BlogBundle\Document\BlogEntry
                         provider:
                             query_builder_method: createPublishedQueryBuilder
@@ -24,7 +29,6 @@ foq_elastica:
                         reference:
                 article:
                     doctrine:
-                        driver: mongodb
                         model: Ltc\ArticleBundle\Document\Article
                         provider:
                             query_builder_method: createPublishedQueryBuilder
