@@ -34,8 +34,3 @@ $loader->registerPrefixes(array(
     'Elastica_'        => $vendorDir.'/elastica/lib',
 ));
 $loader->register();
-
-// because of doctrine-extensions
-//set_include_path($vendorDir.'/doctrine-extensions/lib'.PATH_SEPARATOR. get_include_path());
-//$classLoader = new \Doctrine\Common\ClassLoader('Gedmo');
-//$classLoader->register();
