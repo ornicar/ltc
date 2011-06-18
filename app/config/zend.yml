@@ -1,0 +1,11 @@
+zend_cache:
+    templates:
+        ltc_article.provider:
+            frontendBackendAutoload: true
+            frontend:
+                name: Core
+                options:
+                    lifetime: 99999999
+                    automatic_serialization: true
+            backend:
+                name: Apc

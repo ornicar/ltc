@@ -1,0 +1,21 @@
+doctrine_mongodb:
+    connections:
+        default:
+            server: mongodb://localhost:27017
+            options:
+                connect: true
+                persist: ltc
+    default_database: ltc_%kernel.environment%
+    document_managers:
+        default:
+            metadata_cache_driver: apc
+            auto_mapping: true
+
+stof_doctrine_extensions:
+    mongodb:
+        default:
+            sluggable: true
+            translatable: false
+            timestampable: true
+            loggable: false
+            tree: false

@@ -1,0 +1,6 @@
+fos_user:
+    db_driver: mongodb
+    firewall_name: main
+    user_class: Ltc\UserBundle\Document\User
+    service:
+        mailer: fos_user.mailer.noop

@@ -1,0 +1,13 @@
+fos_comment:
+    db_driver: mongodb
+    class:
+        model:
+            comment: Ltc\CommentBundle\Document\Comment
+    service:
+        form_factory:
+            comment: ltc_comment.form_factory.comment
+        spam_detection:
+            comment: fos_comment.spam_detection.comment.akismet
+    akismet:
+        url: http://esmeree.fr/
+        #api_key: see config local
