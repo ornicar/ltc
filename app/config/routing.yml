@@ -33,16 +33,13 @@ ltc_config_admin:
     resource: "@LtcConfigBundle/Resources/config/routing_admin.yml"
     prefix: /admin/config
 
-fos_user_user:
-    resource: "@FOSUserBundle/Resources/config/routing/user.xml"
-    prefix: /user
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /security
 
 fos_comment:
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
     prefix: /comment
-
-fos_user_security:
-    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 
 ltc_compat_doc:
     resource: "@LtcCompatBundle/Resources/config/routing.yml"

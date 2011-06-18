@@ -1,6 +1,6 @@
 security:
     role_hierarchy:
-        ROLE_SUPERADMIN: [ROLE_ALLOWED_TO_SWITCH, ROLE_BACKEND]
+        ROLE_SUPER_ADMIN: [ROLE_ALLOWED_TO_SWITCH, ROLE_BACKEND]
     providers:
         fos_user_provider:
             id: fos_user.user_manager
