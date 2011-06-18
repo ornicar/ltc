@@ -7,5 +7,7 @@
 /bin/deploy*
 /web/uploads
 /web/imagine
+/web/css
+/web/js
 /dump
 .thumbs

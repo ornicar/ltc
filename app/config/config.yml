@@ -4,6 +4,7 @@ imports:
     - { resource: user.yml }
     - { resource: security.yml }
     - { resource: doctrine.yml }
+    - { resource: assetic.yml }
     - { resource: comment.yml }
     - { resource: zend.yml }
     - { resource: ltc.yml }
@@ -22,19 +23,12 @@ framework:
         default_locale: fr
         lifetime:       136000
         auto_start:     true
+        name:     ltc
+    translator: { fallback: fr }
 
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
-
-assetic:
-    debug:          %kernel.debug%
-    use_controller: false
-    filters:
-        yui_css:
-            jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
-        yui_js:
-            jar: "%kernel.root_dir%/Resources/java/yuicompressor.jar"
 
 apc:
     #host: see config local

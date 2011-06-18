@@ -1,16 +1,22 @@
 {% extends "::root.html.twig" %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/reset.css") }}">
-<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/font.css") }}">
-<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/grid.css") }}">
-<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/core.css") }}">
-<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/markdown.css") }}">
-<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/header.css") }}">
-<link rel="stylesheet" href="{{ asset("bundles/ltccore/css/footer.css") }}">
-<link rel="stylesheet" href="{{ asset("bundles/ltcdoc/css/doc.css") }}">
-<link rel="stylesheet" href="{{ asset("bundles/ltctag/css/tag.css") }}">
-<link rel="stylesheet" href="{{ asset("bundles/ltcstory/css/story.css") }}">
+    {% stylesheets
+        '@LtcCoreBundle/Resources/css/reset.css'
+        '@LtcCoreBundle/Resources/css/font.css'
+        '@LtcCoreBundle/Resources/css/grid.css'
+        '@LtcCoreBundle/Resources/css/core.css'
+        '@LtcCoreBundle/Resources/css/markdown.css'
+        '@LtcCoreBundle/Resources/css/header.css'
+        '@LtcCoreBundle/Resources/css/footer.css'
+        '@LtcCoreBundle/Resources/css/home.css'
+        '@LtcDocBundle/Resources/css/doc.css'
+        '@LtcTagBundle/Resources/css/tag.css'
+        '@LtcStoryBundle/Resources/css/story.css'
+        '@LtcCommentBundle/Resources/css/comment.css'
+        filter="yui_css" %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
 {% endblock %}
 
 {% block body %}
@@ -26,9 +32,14 @@
 {% endblock %}
 
 {% block javascripts %}
-{{ parent() }}
-<script type="text/javascript" src="{{ asset("bundles/ltccore/vendor/jquery.infinitescroll.min.js") }}"></script>
-<script type="text/javascript" src="{{ asset("bundles/ltccore/js/front.js") }}"></script>
+    <script type="text/javascript">var ltc_config = {{ ltc_js_config()|json_encode|raw }};</script>
+    {% javascripts
+        '@LtcCoreBundle/Resources/vendor/jquery.min.js'
+        '@LtcCoreBundle/Resources/vendor/jquery.infinitescroll.js'
+        '@LtcCoreBundle/Resources/js/front.js'
+        filter="yui_js" %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 <!-- <script>
     var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;

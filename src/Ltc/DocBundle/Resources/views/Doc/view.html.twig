@@ -1,10 +1,5 @@
 {% extends "::base.html.twig" %}
 
-{% block stylesheets %}
-{{ parent() }}
-<link rel="stylesheet" href="{{ asset("bundles/ltccommentBundle/css/comment.css") }}">
-{% endblock %}
-
 {% block content %}
 <div class="row">
     <div class="fourcol doc_metas">
@@ -72,7 +67,11 @@
 {% endblock %}
 
 {% block javascripts %}
-{{ parent() }}
-<script type="text/javascript" src="{{ asset("bundles/ltccommentBundle/js/jquery.form.js") }}"></script>
-<script type="text/javascript" src="{{ asset("bundles/ltccommentBundle/js/form.js") }}"></script>
+    {{ parent() }}
+    {% javascripts
+        '@LtcCommentBundle/Resources/vendor/jquery.form.js'
+        '@LtcCommentBundle/Resources/js/form.js'
+        filter="yui_js" %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
