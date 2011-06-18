@@ -15,13 +15,14 @@ $(function() {
             nextSelector: "div.pagination a.next",
             itemSelector: ".infinitescroll .paginated_item",
             loadingText: "Chargement des articles suivants...",
-            donetext: "Fin de la liste des articles"
-        });
+            donetext: "Fin de la liste des articles."
+        }).find('div.pagination').hide();
     });
 });
 
 if (typeof console == "undefined" || typeof console.log == "undefined") console = {
-    log: function() {}
+    log: function() {},
+    debug: function() {}
 };
 
 $.fn.orNot = function() {

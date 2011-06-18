@@ -22,6 +22,9 @@
     color: #888;
     text-decoration: underline;
 }
+.doc_image img {
+    margin-bottom: 0;
+}
 
 ul.doc_small_list li {
     margin-bottom: 1em;

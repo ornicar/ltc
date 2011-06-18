@@ -73,7 +73,7 @@ a.more {
 .nice_list li {
     color: #aaa;
     list-style: disc outside;
-    margin-left: 1.5em;
+    margin: 0.5em 0 0.5em 1.5em;
 }
 .author_image {
     float: left;
