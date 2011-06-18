@@ -3,9 +3,10 @@
 namespace Ltc\ConfigBundle\Document;
 
 use Ltc\ArticleBundle\Document\Article;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @mongodb:Document
+ * @MongoDB\Document
  */
 class FeaturedArticle
 {
@@ -13,7 +14,7 @@ class FeaturedArticle
      * Unique ID
      *
      * @var string
-     * @mongodb:Id()
+     * @MongoDB\Id()
      */
     protected $id;
 
@@ -21,7 +22,7 @@ class FeaturedArticle
      * Article
      *
      * @var Article
-     * @mongodb:ReferenceOne(targetDocument="Ltc\ArticleBundle\Document\Article")
+     * @MongoDB\ReferenceOne(targetDocument="Ltc\ArticleBundle\Document\Article")
      */
     protected $article;
 
@@ -29,7 +30,7 @@ class FeaturedArticle
      * Title
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $title;
 

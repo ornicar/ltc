@@ -4,11 +4,12 @@ namespace Ltc\ImageBundle\Document;
 
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
  * An image in the web dir.
  *
- * @mongodb:EmbeddedDocument
+ * @MongoDB\EmbeddedDocument
  */
 class Image
 {
@@ -16,7 +17,7 @@ class Image
      * Relative web path
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $path;
 
@@ -24,7 +25,7 @@ class Image
      * Textual legend, can be used as image alternative
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $legend;
 

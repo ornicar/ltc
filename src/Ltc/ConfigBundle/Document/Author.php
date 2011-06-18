@@ -3,9 +3,10 @@
 namespace Ltc\ConfigBundle\Document;
 
 use Ltc\ImageBundle\Document\Image;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @mongodb:Document
+ * @MongoDB\Document
  */
 class Author
 {
@@ -13,7 +14,7 @@ class Author
      * Unique ID
      *
      * @var string
-     * @mongodb:Id()
+     * @MongoDB\Id()
      */
     protected $id;
 
@@ -21,7 +22,7 @@ class Author
      * Title
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      * @assert:NotBlank
      * @assert:MinLength(3)
      * @assert:MaxLength(300)
@@ -32,7 +33,7 @@ class Author
      * Short summary
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $summary;
 
@@ -40,7 +41,7 @@ class Author
      * Full text of the article
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $body;
 
@@ -48,7 +49,7 @@ class Author
      * Full text of publications
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $publications;
 
@@ -56,7 +57,7 @@ class Author
      * Main image of the article
      *
      * @var Image
-     * @mongodb:EmbedOne(targetDocument="Ltc\ImageBundle\Document\Image")
+     * @MongoDB\EmbedOne(targetDocument="Ltc\ImageBundle\Document\Image")
      */
     protected $image;
 

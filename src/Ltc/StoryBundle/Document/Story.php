@@ -3,13 +3,14 @@
 namespace Ltc\StoryBundle\Document;
 
 use DateTime;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @mongodb:Document(
+ * @MongoDB\Document(
  *   collection="story",
  *   repositoryClass="Ltc\StoryBundle\Document\StoryRepository"
  * )
- * @mongodb:Index(keys={"createdAt"="desc"})
+ * @MongoDB\Index(keys={"createdAt"="desc"})
  */
 class Story
 {
@@ -17,7 +18,7 @@ class Story
      * Unique ID
      *
      * @var string
-     * @mongodb:Id()
+     * @MongoDB\Id()
      */
     protected $id;
 
@@ -25,7 +26,7 @@ class Story
      * Story title. Should be unique.
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $title;
 
@@ -33,7 +34,7 @@ class Story
      * Full text of the story
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $body;
 
@@ -41,7 +42,7 @@ class Story
      * Name of the author of this story
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $authorName;
 
@@ -49,7 +50,7 @@ class Story
      * Creation date
      *
      * @var DateTime
-     * @mongodb:Field(type="date")
+     * @MongoDB\Field(type="date")
      * @gedmo:Timestampable(on="create")
      */
     protected $createdAt;
@@ -58,7 +59,7 @@ class Story
      * Update date
      *
      * @var DateTime
-     * @mongodb:Field(type="date")
+     * @MongoDB\Field(type="date")
      * @gedmo:Timestampable(on="update")
      */
     protected $updatedAt;
@@ -67,7 +68,7 @@ class Story
      * Whether the story is published or not
      *
      * @var bool
-     * @mongodb:Field(type="boolean")
+     * @MongoDB\Field(type="boolean")
      */
     protected $isPublished;
 
@@ -75,7 +76,7 @@ class Story
      * Publication date
      *
      * @var DateTime
-     * @mongodb:Field(type="date")
+     * @MongoDB\Field(type="date")
      */
     protected $publishedAt;
 

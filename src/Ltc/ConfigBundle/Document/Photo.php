@@ -3,9 +3,10 @@
 namespace Ltc\ConfigBundle\Document;
 
 use Ltc\ImageBundle\Document\Image;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @mongodb:Document
+ * @MongoDB\Document
  */
 class Photo
 {
@@ -13,7 +14,7 @@ class Photo
      * Unique ID
      *
      * @var string
-     * @mongodb:Id()
+     * @MongoDB\Id()
      */
     protected $id;
 
@@ -21,7 +22,7 @@ class Photo
      * Title
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      * @assert:NotBlank
      * @assert:MinLength(3)
      * @assert:MaxLength(300)
@@ -32,7 +33,7 @@ class Photo
      * Main image of the article
      *
      * @var Image
-     * @mongodb:EmbedOne(targetDocument="Ltc\ImageBundle\Document\Image")
+     * @MongoDB\EmbedOne(targetDocument="Ltc\ImageBundle\Document\Image")
      */
     protected $image;
 
@@ -40,7 +41,7 @@ class Photo
      * Url
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      * @assert:NotBlank
      * @assert:MinLength(3)
      * @assert:MaxLength(300)

@@ -3,13 +3,14 @@
 namespace Ltc\BlogBundle\Document;
 
 use Ltc\DocBundle\Document\Doc;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @mongodb:Document(
+ * @MongoDB\Document(
  *   collection="blog_entry",
  *   repositoryClass="Ltc\BlogBundle\Document\BlogEntryRepository"
  * )
- * @mongodb:UniqueIndex(keys={"slug"="asc"})
+ * @MongoDB\UniqueIndex(keys={"slug"="asc"})
  */
 class BlogEntry extends Doc
 {
@@ -17,7 +18,7 @@ class BlogEntry extends Doc
      * Overrides Doc.slug to give it sluggable options
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      * @gedmo:Slug(unique="true", updatable="true")
      */
     protected $slug;
@@ -26,7 +27,7 @@ class BlogEntry extends Doc
      * Overrides Doc.title to give it sluggable options
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      * @gedmo:Sluggable
      */
     protected $title;

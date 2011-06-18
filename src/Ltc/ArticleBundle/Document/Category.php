@@ -4,14 +4,15 @@ namespace Ltc\ArticleBundle\Document;
 
 use DateTime;
 use Gedmo\Sluggable\Util\Urlizer;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @mongodb:Document(
+ * @MongoDB\Document(
  *   collection="category",
  *   repositoryClass="Ltc\ArticleBundle\Document\CategoryRepository"
  * )
- * @mongodb:UniqueIndex(keys={"slug"="asc"}, options={"unique"="true", "dropDups"="true"})
- * @mongodb:Index(keys={"position"="asc"})
+ * @MongoDB\UniqueIndex(keys={"slug"="asc"}, options={"unique"="true", "dropDups"="true"})
+ * @MongoDB\Index(keys={"position"="asc"})
  */
 class Category
 {
@@ -19,7 +20,7 @@ class Category
      * Unique ID
      *
      * @var string
-     * @mongodb:Id()
+     * @MongoDB\Id()
      */
     protected $id;
 
@@ -27,7 +28,7 @@ class Category
      * Creation date
      *
      * @var DateTime
-     * @mongodb:Field(type="date")
+     * @MongoDB\Field(type="date")
      * @gedmo:Timestampable(on="create")
      */
     protected $createdAt;
@@ -36,7 +37,7 @@ class Category
      * Update date
      *
      * @var DateTime
-     * @mongodb:Field(type="date")
+     * @MongoDB\Field(type="date")
      * @gedmo:Timestampable(on="update")
      */
     protected $updatedAt;
@@ -45,7 +46,7 @@ class Category
      * Title
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $title;
 
@@ -53,7 +54,7 @@ class Category
      * Unique slug of the category
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $slug;
 
@@ -61,7 +62,7 @@ class Category
      * Second title, generally longer
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $subtitle;
 
@@ -69,7 +70,7 @@ class Category
      * What this category is about
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $summary;
 
@@ -77,7 +78,7 @@ class Category
      * Used to order categories. The lower, the upper.
      *
      * @var int
-     * @mongodb:Field(type="int")
+     * @MongoDB\Field(type="int")
      */
     protected $position;
 

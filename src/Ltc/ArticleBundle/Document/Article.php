@@ -3,14 +3,15 @@
 namespace Ltc\ArticleBundle\Document;
 
 use Ltc\DocBundle\Document\Doc;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @mongodb:Document(
+ * @MongoDB\Document(
  *   collection="article",
  *   repositoryClass="Ltc\ArticleBundle\Document\ArticleRepository"
  * )
- * @mongodb:Index(keys={"category.$id"="asc"})
- * @mongodb:Index(keys={"slug"="asc"})
+ * @MongoDB\Index(keys={"category.$id"="asc"})
+ * @MongoDB\Index(keys={"slug"="asc"})
  */
 class Article extends Doc
 {
@@ -18,7 +19,7 @@ class Article extends Doc
      * Category
      *
      * @var Category
-     * @mongodb:ReferenceOne(targetDocument="Ltc\ArticleBundle\Document\Category")
+     * @MongoDB\ReferenceOne(targetDocument="Ltc\ArticleBundle\Document\Category")
      */
     protected $category;
 
@@ -26,7 +27,7 @@ class Article extends Doc
      * Overrides Doc.slug to give it sluggable options
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $slug;
 
@@ -34,7 +35,7 @@ class Article extends Doc
      * Arbitrary publication date in string format
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $publicationDate;
 

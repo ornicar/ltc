@@ -4,18 +4,25 @@ namespace Ltc\CommentBundle\Document;
 
 use FOS\CommentBundle\Document\Comment as BaseComment;
 use DateTime;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @mongodb:Document(
+ * @MongoDB\Document(
  *   collection="comment"
  * )
  */
 class Comment extends BaseComment
 {
     /**
+     * @var string
+     * @MongoDB\Id
+     */
+    protected $id;
+
+    /**
      * The author name
      *
-     * @mongodb:String
+     * @MongoDB\String
      * @var string
      */
     protected $authorName = 'Anonyme';

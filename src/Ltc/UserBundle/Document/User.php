@@ -3,10 +3,10 @@
 namespace Ltc\UserBundle\Document;
 
 use FOS\UserBundle\Document\User as BaseUser;
-use MongoId;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @mongodb:Document(
+ * @MongoDB\Document(
  *   collection="user",
  *   repositoryClass="Ltc\UserBundle\Document\UserRepository"
  * )
@@ -18,8 +18,8 @@ class User extends BaseUser
     /**
      * Id
      *
-     * @var MongoId
-     * @mongodb:Id
+     * @var string
+     * @MongoDB\Id
      */
     protected $id = null;
 }

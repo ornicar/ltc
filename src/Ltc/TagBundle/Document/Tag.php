@@ -2,12 +2,14 @@
 
 namespace Ltc\TagBundle\Document;
 
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
 /**
- * @mongodb:Document(
+ * @MongoDB\Document(
  *   collection="tag",
  *   repositoryClass="Ltc\TagBundle\Document\TagRepository"
  * )
- * @mongodb:Index(keys={"docCount"="desc"})
+ * @MongoDB\Index(keys={"docCount"="desc"})
  */
 class Tag
 {
@@ -15,7 +17,7 @@ class Tag
      * Unique ID
      *
      * @var string
-     * @mongodb:Id(strategy="none")
+     * @MongoDB\Id(strategy="none")
      */
     protected $slug;
 
@@ -23,7 +25,7 @@ class Tag
      * Tag title. Should be unique.
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $title;
 
@@ -32,7 +34,7 @@ class Tag
      * Denormalized value.
      *
      * @var int
-     * @mongodb:Field(type="int")
+     * @MongoDB\Field(type="int")
      */
     protected $docCount;
 

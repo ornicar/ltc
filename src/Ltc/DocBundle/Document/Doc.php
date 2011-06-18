@@ -6,13 +6,14 @@ use Ltc\ImageBundle\Document\Image;
 use DateTime;
 use Gedmo\Sluggable\Util\Urlizer;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
- * @mongodb:MappedSuperclass
- * @mongodb:Indexes({
- *   @mongodb:Index(keys={"createdAt"="desc"}),
- *   @mongodb:Index(keys={"isPublished"="desc"}),
- *   @mongodb:Index(keys={"tags"="asc"})
+ * @MongoDB\MappedSuperclass
+ * @MongoDB\Indexes({
+ *   @MongoDB\Index(keys={"createdAt"="desc"}),
+ *   @MongoDB\Index(keys={"isPublished"="desc"}),
+ *   @MongoDB\Index(keys={"tags"="asc"})
  * })
  */
 abstract class Doc
@@ -21,7 +22,7 @@ abstract class Doc
      * Unique ID
      *
      * @var string
-     * @mongodb:Id()
+     * @MongoDB\Id()
      */
     protected $id;
 
@@ -29,7 +30,7 @@ abstract class Doc
      * Creation date
      *
      * @var DateTime
-     * @mongodb:Field(type="date")
+     * @MongoDB\Field(type="date")
      * @gedmo:Timestampable(on="create")
      */
     protected $createdAt;
@@ -38,7 +39,7 @@ abstract class Doc
      * Update date
      *
      * @var DateTime
-     * @mongodb:Field(type="date")
+     * @MongoDB\Field(type="date")
      * @gedmo:Timestampable(on="update")
      */
     protected $updatedAt;
@@ -47,7 +48,7 @@ abstract class Doc
      * Title
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      * @assert:NotBlank
      * @assert:MinLength(3)
      * @assert:MaxLength(300)
@@ -65,7 +66,7 @@ abstract class Doc
      * Short summary
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $summary;
 
@@ -73,7 +74,7 @@ abstract class Doc
      * Tags
      *
      * @var array
-     * @mongodb:ReferenceMany(targetDocument="Ltc\TagBundle\Document\Tag", sort={"_id"="asc"})
+     * @MongoDB\ReferenceMany(targetDocument="Ltc\TagBundle\Document\Tag", sort={"_id"="asc"})
      */
     protected $tags = array();
 
@@ -81,7 +82,7 @@ abstract class Doc
      * Name of the author of this article
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $authorName;
 
@@ -89,7 +90,7 @@ abstract class Doc
      * Bio of the author of this article
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $authorBio;
 
@@ -97,7 +98,7 @@ abstract class Doc
      * Whether the document is published or not
      *
      * @var bool
-     * @mongodb:Field(type="boolean")
+     * @MongoDB\Field(type="boolean")
      */
     protected $isPublished;
 
@@ -105,7 +106,7 @@ abstract class Doc
      * Publication date
      *
      * @var DateTime
-     * @mongodb:Field(type="date")
+     * @MongoDB\Field(type="date")
      */
     protected $publishedAt;
 
@@ -113,7 +114,7 @@ abstract class Doc
      * Full text of the article
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $body;
 
@@ -121,7 +122,7 @@ abstract class Doc
      * Main image of the article
      *
      * @var Image
-     * @mongodb:EmbedOne(targetDocument="Ltc\ImageBundle\Document\Image")
+     * @MongoDB\EmbedOne(targetDocument="Ltc\ImageBundle\Document\Image")
      */
     protected $image;
 
@@ -129,7 +130,7 @@ abstract class Doc
      * Related publications in text format
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $relatedPublications;
 
@@ -137,7 +138,7 @@ abstract class Doc
      * Reference
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $reference;
 
@@ -145,7 +146,7 @@ abstract class Doc
      * More links and files text block
      *
      * @var string
-     * @mongodb:Field(type="string")
+     * @MongoDB\Field(type="string")
      */
     protected $readMore;
 
