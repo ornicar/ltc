@@ -153,13 +153,12 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
                 $thread->setIdentifier($o->getCommentIdentifier());
                 $manager->persist($thread);
                 foreach ($comments[$a['id']] as $commentArray) {
-                    $comment = $this->commentManager->createComment();
+                    $comment = $this->commentManager->createComment($thread);
                     $comment->setBody($commentArray['description']);
                     $comment->setCreatedAt(new DateTime($commentArray['created_at']));
                     if (isset($commentArray['author'])) {
                         $comment->setAuthorName($commentArray['author']);
                     }
-                    $comment->setThread($thread);
                     $this->commentManager->addComment($comment);
                 }
             }

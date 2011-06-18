@@ -32,7 +32,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface, C
         $user->setEmail('thibault.duplessis@gmail.com');
         $user->setPlainPassword('pass');
         $user->setEnabled(true);
-        $user->addRole(User::ROLE_SUPERADMIN);
+        $user->addRole(User::ROLE_SUPER_ADMIN);
         $this->userManager->updateUser($user);
 
         $user = $this->userManager->createUser();
