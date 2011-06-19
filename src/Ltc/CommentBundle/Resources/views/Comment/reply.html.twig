@@ -4,11 +4,6 @@
     <h3>En réponse à <span class="fos_comment_reply_name_placeholder"></span></h3>
 {% endblock %}
 
-{% block fos_comment_form_fields %}
-    {{ parent() }}
-    <input type="hidden" name="reply_to" value="" />
-{% endblock %}
-
 {% block fos_comment_form_submit %}
     <input type="button" value="Annuler" class="fos_comment_reply_cancel" />
     {{ parent() }}

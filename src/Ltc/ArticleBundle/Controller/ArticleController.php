@@ -24,6 +24,9 @@ class ArticleController extends Controller
     public function viewAction($categorySlug, $slug)
     {
         $article = $this->get('ltc_article.provider')->findArticle($categorySlug, $slug);
+        if (!$blogEntry) {
+            throw new NotFoundHttpException();
+        }
         if (!$this->get('ltc_doc.security')->canSee($article)) {
             throw new NotFoundHttpException('Insufficients privileges to see unpublished article');
         }

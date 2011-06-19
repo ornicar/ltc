@@ -12,6 +12,7 @@ div.fos_comment_comment_replies {
 }
 div.fos_comment_comment_reply {
     text-align: right;
+    margin: -1em 0 2em 0;
 }
 div.fos_comment_comment_reply.replying {
     text-align: left;
@@ -38,6 +39,9 @@ div.fos_comment_thread_show > form.fos_comment_comment_form {
 form.fos_comment_comment_form.processing {
     opacity: 0.5;
 }
+form.fos_comment_comment_form h3 {
+    margin-top: 0;
+}
 form.fos_comment_comment_form label.author_name {
     margin-top: 3px;
     float:left;
@@ -49,7 +53,7 @@ form.fos_comment_comment_form label.author_name input {
     width: 300px;
 }
 form.fos_comment_comment_form textarea {
-    width: 100%;
+    width: 99.8%;
     height: 8em;
     border: 1px solid #808080;
 }

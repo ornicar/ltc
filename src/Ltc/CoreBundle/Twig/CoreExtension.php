@@ -75,15 +75,14 @@ class CoreExtension extends Twig_Extension
      *
      * @return string
      **/
-    public function formatDate(DateTime $date)
+    public function formatDate(DateTime $date = null)
     {
+        if (!$date) {
+            return '-';
+        }
         $months = array('', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre');
 
-        return sprintf('%d %s %d',
-            $date->format('d'),
-            $months[$date->format('n')],
-            $date->format('Y')
-        );
+        return sprintf('%d %s %d', $date->format('d'), $months[$date->format('n')], $date->format('Y'));
     }
 
     /**

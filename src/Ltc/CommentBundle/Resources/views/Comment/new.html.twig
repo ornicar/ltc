@@ -1,14 +1,11 @@
-<form class="fos_comment_comment_form" action="{{ path("fos_comment_comment_create") }}" method="POST">
+<form class="fos_comment_comment_form" action="{{ path("fos_comment_comment_create", { "threadIdentifier": thread.identifier }) }}" method="POST">
 
     {% block fos_comment_form_title %}{% endblock %}
 
     {% block fos_comment_form_fields %}
-        <textarea name="{{ form.body.name }}"></textarea>
-        <label class="author_name">Auteur :
-            <input type="text" name="{{ form.authorName.name }}" value="{{ form.authorName.displayedData }}" />
-        </label>
-        <input type="hidden" name="{{ form.thread.name }}" value="{{ form.thread.displayedData }}" />
-        {{ form_hidden(form) }}
+        {{ form_widget(form.body) }}
+        <label class="author_name">Auteur : {{ form_widget(form.authorName) }}</label>
+        {{ form_rest(form) }}
     {% endblock %}
 
     <div class="fos_comment_submit">

@@ -151,7 +151,7 @@ EOF
         }
         $image = new Image();
         $image->setLegend($legend);
-        $image->setPath($webPath);
+        $image->upload($filename, 'images');
 
         return $image;
     }

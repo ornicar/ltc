@@ -3,9 +3,10 @@ fos_comment:
     class:
         model:
             comment: Ltc\CommentBundle\Document\Comment
+    form:
+        comment:
+            type: ltc_comment.comment
     service:
-        form_factory:
-            comment: ltc_comment.form_factory.comment
         spam_detection:
             comment: fos_comment.spam_detection.comment.akismet
     akismet:

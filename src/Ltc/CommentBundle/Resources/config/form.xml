@@ -5,7 +5,9 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="ltc_comment.form_factory.comment" class="Ltc\CommentBundle\FormFactory\CommentFormFactory" parent="fos_comment.form_factory.comment.default" />
+        <service id="ltc_comment.form_type" class="Ltc\CommentBundle\Form\CommentFormType">
+            <tag name="form.type" alias="ltc_comment.comment" />
+        </service>
     </services>
 
 </container>

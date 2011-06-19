@@ -1,6 +1,6 @@
 <div class="fos_comment_comment_show" id="{{ comment.id }}">
     <div class="metadata">
-        {{ comment.createdAt|ltc_date }}, par <strong>{{ comment.authorName|default("Anonyme") }}</strong>
+        {{ comment.createdAt|ltc_date }}, par <strong class="author_name">{{ comment.authorName|default("Anonyme") }}</strong>
     </div>
     <div class="fos_comment_comment_body">{{ comment.body|ltc_comment|raw }}</div>
     <div class="fos_comment_comment_reply">
