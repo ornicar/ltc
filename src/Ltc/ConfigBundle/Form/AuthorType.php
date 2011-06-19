@@ -16,7 +16,7 @@ class AuthorType extends AbstractType
             ->add('body', 'textarea')
             ->add('summary', 'textarea')
             ->add('publications', 'textarea')
-            ->add('image', new ImageType());
+            ->add('image', 'ltc_image');
     }
 
     public function getDefaultOptions(array $options)

@@ -20,9 +20,7 @@ abstract class DocFormType extends AbstractType
             ->add('authorBio')
             ->add('relatedPublications', 'textarea')
             ->add('readMore', 'textarea')
-            ->add('image', 'ltc_image', array(
-                'filesystem' => 'images'
-            ))
+            ->add('image', 'ltc_image')
         ;
     }
 }

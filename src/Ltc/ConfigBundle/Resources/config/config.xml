@@ -28,15 +28,8 @@
 
         <service id="ltc_config.form_type.author" class="Ltc\ConfigBundle\Form\AuthorType" public="false" />
         <service id="ltc_config.form_type.photo" class="Ltc\ConfigBundle\Form\PhotoType" public="false" />
-
-        <service id="ltc_config.form_type.featured_story" class="Ltc\ConfigBundle\Form\FeaturedStoryType" public="false">
-            <argument type="service" id="ltc_story.repository.story" />
-        </service>
-
-        <service id="ltc_config.form_type.featured_article" class="Ltc\ConfigBundle\Form\FeaturedArticleType" public="false">
-            <argument type="service" id="ltc_article.repository.article" />
-        </service>
-
+        <service id="ltc_config.form_type.featured_story" class="Ltc\ConfigBundle\Form\FeaturedStoryType" public="false" />
+        <service id="ltc_config.form_type.featured_article" class="Ltc\ConfigBundle\Form\FeaturedArticleType" public="false" />
     </services>
 
 </container>

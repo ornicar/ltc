@@ -13,8 +13,8 @@
     <div class="image_form">
         Photo de l'auteur.
         <div>
-            {{ form_widget(form.image.file) }}
-            {{ form_errors(form.image) }}
+            {{ form_widget(form.image.uploadedFile) }}
+            {{ form_errors(form.image.uploadedFile) }}
         </div>
         <div>
             {{ form_label(form.image.legend, "Legende") }}

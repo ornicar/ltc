@@ -26,10 +26,7 @@ class Image extends LtcFile
     /**
      * Overwrite validation constraint
      *
-     * @Assert\File(maxSize="4M",mimeTypes={
-     *     "image/jpeg",
-     *     "image/png"
-     * })
+     * @Assert\File(maxSize="4M",mimeTypes={"image/jpeg","image/png"})
      */
     protected $file;
 

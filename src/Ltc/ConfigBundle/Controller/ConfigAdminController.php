@@ -22,8 +22,7 @@ class ConfigAdminController extends Controller
         $this->get('ltc_admin.menu.main')->getChild('Config')->setIsCurrent(true);
         $config = $this->get('ltc_config.manager')->getConfig($name);
         $document = $config->getDocument();
-        $form = $this->get('form.factory')->create($config->getFormType());
-        $form->setData($document);
+        $form = $this->get('form.factory')->create($config->getFormType(), $document);
 
         $request = $this->get('request');
         if ($request->getMethod() == 'POST') {

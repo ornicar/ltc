@@ -9,6 +9,7 @@ class FeaturedStoryType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
+        $builder->add('story');
     }
 
     public function getDefaultOptions(array $options)
@@ -16,14 +17,5 @@ class FeaturedStoryType extends AbstractType
         return array(
             'data_class' => 'Ltc\ConfigBundle\Document\FeaturedStory',
         );
-    }
-
-    public function setStoryRepository(StoryRepository $storyRepository)
-    {
-        $field = new ChoiceField('story', array(
-            'choices' => $storyRepository->findAll()->toArray()
-        ));
-        $field->setValueTransformer(new DoctrineObjectTransformer($storyRepository));
-        $this->add($field);
     }
 }

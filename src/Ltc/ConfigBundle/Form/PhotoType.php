@@ -13,7 +13,7 @@ class PhotoType extends AbstractType
     {
         $builder
             ->add('title', 'text')
-            ->add('image', new ImageType())
+            ->add('image', 'ltc_image')
             ->add('url', 'text');
     }
 

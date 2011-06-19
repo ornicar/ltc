@@ -18,6 +18,7 @@ class LtcImageFormType extends AbstractType
     {
         return array(
             'data_class' => 'Ltc\ImageBundle\Document\Image',
+            'filesystem' => 'images'
         );
     }
 
