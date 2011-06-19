@@ -37,7 +37,7 @@ class BlogAdminController extends Controller
 
         return $this->render('LtcBlogBundle:Admin:new.html.twig', array(
             'doc' => $blogEntry,
-            'form' => $form->createFoView()
+            'form' => $form->createView()
         ));
     }
 

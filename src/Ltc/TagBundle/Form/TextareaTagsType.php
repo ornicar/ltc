@@ -37,7 +37,7 @@ class TextareaTagsType extends AbstractType
 
     public function getName()
     {
-        return 'textarea_tags';
+        return 'ltc_tags';
     }
 
     public function getDefaultOptions(array $options)
