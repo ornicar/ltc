@@ -5,6 +5,7 @@ namespace Ltc\StoryBundle\Document;
 use DateTime;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @MongoDB\Document(
@@ -27,6 +28,9 @@ class Story
      * Story title. Should be unique.
      *
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\MinLength(3)
+     * @Assert\MaxLength(300)
      * @MongoDB\Field(type="string")
      */
     protected $title;
@@ -35,6 +39,8 @@ class Story
      * Full text of the story
      *
      * @var string
+     * @Assert\NotBlank()
+     * @Assert\MinLength(3)
      * @MongoDB\Field(type="string")
      */
     protected $body;

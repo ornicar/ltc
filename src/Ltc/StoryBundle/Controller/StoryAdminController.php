@@ -7,6 +7,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Ltc\StoryBundle\Document\Story;
 use Ltc\StoryBundle\Form\StoryForm;
+use Ltc\StoryBundle\Form\StoryFormType;
 
 class StoryAdminController extends Controller
 {
@@ -24,39 +25,38 @@ class StoryAdminController extends Controller
         $this->get('ltc_admin.menu.main')->getChild('Actus')->setIsCurrent(true);
         $story = new Story();
 
-        $form = $this->createForm();
-        $form->bind($this->get('request'), $story);
+        $form = $this->get('form.factory')->create(new StoryFormType(), $story);
+        $request = $this->get('request');
+        if ('POST' === $request->getMethod()) {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $this->get('doctrine.odm.mongodb.document_manager')->persist($story);
+                $this->save();
 
-        if ($form->isValid()) {
-            $this->get('doctrine.odm.mongodb.document_manager')->persist($story);
-            $this->save();
-
-            return new RedirectResponse($this->get('router')->generate('ltc_story_admin_story_list'));
+                return new RedirectResponse($this->get('router')->generate('ltc_story_admin_story_list'));
+            }
         }
 
-        return $this->render('LtcStoryBundle:Admin:new.html.twig', array(
-            'story' => $story,
-            'form' => $form
-        ));
+        return $this->render('LtcStoryBundle:Admin:new.html.twig', array('story' => $story, 'form' => $form->createView()));
     }
 
     public function editAction($id)
     {
         $story = $this->get('ltc_story.repository.story')->find($id);
+        if (!$story) throw new NotFoundHttpException();
         $this->get('ltc_admin.menu.main')->getChild('Actus')->setIsCurrent(true);
-        $form = $this->createForm();
-        $form->bind($this->get('request'), $story);
+        $form = $this->get('form.factory')->create(new StoryFormType(), $story);
+        $request = $this->get('request');
+        if ('POST' === $request->getMethod()) {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $this->save();
 
-        if ($form->isValid()) {
-            $this->save($form);
-
-            return new RedirectResponse($this->get('router')->generate('ltc_story_admin_story_list'));
+                return new RedirectResponse($this->get('router')->generate('ltc_story_admin_story_list'));
+            }
         }
 
-        return $this->render('LtcStoryBundle:Admin:edit.html.twig', array(
-            'story' => $story,
-            'form' => $form
-        ));
+        return $this->render('LtcStoryBundle:Admin:edit.html.twig', array('story' => $story, 'form' => $form->createView()));
     }
 
     public function deleteAction($id)

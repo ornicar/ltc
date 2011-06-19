@@ -18,7 +18,8 @@
     {{ form_label(form.body, "Texte") }}
     Ici tu peux utiliser du markdown pour faire des liens.
     Mieux vaut eviter les titres et les listes.
-    {{ form_widget(form.body, {"rows": 10}) }}
+    {{ form_widget(form.body, {"attr": {"rows": 10}}) }}
+    {{ form_errors(form.body) }}
 </div>
 <section>
     Uniquement en cas d'un auteur invite.
@@ -27,8 +28,4 @@
         {{ form_widget(form.authorName) }}
     </div>
 </section>
-<div>
-    {{ form_label(form.url, "Lien") }}
-    {{ form_widget(form.url) }}
-</div>
 {% endblock %}
