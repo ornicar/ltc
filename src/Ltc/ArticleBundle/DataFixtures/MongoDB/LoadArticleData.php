@@ -93,6 +93,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         $pageUrls         = $this->preparePageUrls();
 
         foreach ($this->articles as $a) {
+            print('.');
             if (in_array($a['id'], array(2347, 2337, 2363, 2356))) {
                 $a['dossier_id'] = 99;
             }
@@ -121,7 +122,12 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             $o->setCreatedAt(new DateTime($a['created_at']));
             $o->setUpdatedAt(new DateTime($a['updated_at']));
             $o->setSummary($a['resume']);
-            $o->setBody($this->fixMarkdownUrls($a['description'], $pageUrls));
+            $body = $a['description'];
+            $body = str_replace("\n", "\n\n", $body);
+            $body = strip_tags($body);
+            $body = html_entity_decode($body, ENT_COMPAT, 'UTF-8');
+            $body = $this->fixMarkdownUrls($body, $pageUrls);
+            $o->setBody($body);
             $o->setTitle($a['nom']);
             if (!empty($a['strip'])) {
                 $o->setSlug($a['strip']);
