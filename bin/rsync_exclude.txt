@@ -4,7 +4,9 @@
 /app/import
 /web/index_*
 /web/bundles
-#/web/uploads
+/web/uploads
+/web/css
+/web/js
 /web/imagine
 /vendor/zend/documentation/manual
 /vendor/zend/tests

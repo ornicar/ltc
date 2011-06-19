@@ -3,6 +3,7 @@
 /app/logs/*
 /app/bootstrap*
 /app/db
+/app/dump
 /app/import
 /bin/deploy*
 /web/uploads

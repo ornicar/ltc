@@ -1,5 +1,12 @@
 #!/bin/sh
 
+echo "Initialize filesystem"
+mkdir -p app/cache/prod app/logs web/uploads 
+if [ "$(ls -A app/cache/prod/)" ]; then
+    rm -r app/cache/prod/*
+fi
+chmod 777 app/cache/prod app/logs web/uploads 
+
 echo "Build bootstrap"
 bin/build_bootstrap.php
 
@@ -14,3 +21,9 @@ php app/console --env=prod apc:clear
 
 echo "Creating assets symlinks"
 php app/console --env=prod assets:install web --symlink
+
+echo -e "\n--- Dumping assetic assets"
+php app/console --env=prod assetic:dump
+
+echo -e "\n--- Populating elasticsearch indexes"
+php app/console --env=prod foq:elastica:populate
