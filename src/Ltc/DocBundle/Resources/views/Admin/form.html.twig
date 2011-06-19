@@ -10,7 +10,7 @@
     {{ form_widget(form.isPublished) }}
     {{ form_label(form.isPublished, "Visible sur le site") }}
 </div>
-{% if form.has("category") %}
+{% if form.category is defined %}
 <div>
     {{ form_label(form.category, "Deplacer vers") }}
     {{ form_widget(form.category) }}
@@ -35,24 +35,24 @@
 <div>
     {{ form_label(form.summary, "Resume") }}
     <div class="help">Restons simple, ici. Evite les titres et les listes</div>
-    {{ form_widget(form.summary, {"rows": 15}) }}
+    {{ form_widget(form.summary, {"attr": {"rows": 15}}) }}
 </div>
 <div class="with_image with_file">
     {{ form_label(form.body, "Texte") }}
     <div class="help">Les images inserees ici ne seront pas redimensionnees.</div>
-    {{ form_widget(form.body, {"rows": 40}) }}
+    {{ form_widget(form.body, {"attr": {"rows": 40}}) }}
 </div>
 <div>
     {{ form_label(form.tags, "Tags") }}
-    {{ form_widget(form.tags, {"rows": 5}) }}
+    {{ form_widget(form.tags, {"attr": {"rows": 5}}) }}
 </div>
 <div class="with_file">
     {{ form_label(form.reference, "Reference") }}
-    {{ form_widget(form.reference, {"rows": 5}) }}
+    {{ form_widget(form.reference, {"attr": {"rows": 5}}) }}
 </div>
 <div class="with_file">
     {{ form_label(form.relatedPublications, "Publications liees") }}
-    {{ form_widget(form.relatedPublications, {"rows": 5}) }}
+    {{ form_widget(form.relatedPublications, {"attr": {"rows": 5}}) }}
 </div>
 <section>
     Uniquement en cas d'un auteur invite.
@@ -65,7 +65,7 @@
         {{ form_widget(form.authorBio) }}
     </div>
 </section>
-{% if form.has("publicationDate") %}
+{% if form.publicationDate is defined %}
 <div>
     {{ form_label(form.publicationDate, "Date de publication") }}
     {{ form_widget(form.publicationDate) }}
@@ -73,6 +73,6 @@
 {% endif %}
 <div class="with_file">
     {{ form_label(form.readMore, "Lire la suite") }}
-    {{ form_widget(form.readMore, {"rows": 7}) }}
+    {{ form_widget(form.readMore, {"attr": {"rows": 7}}) }}
 </div>
 {% endblock %}

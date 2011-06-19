@@ -57,6 +57,7 @@ class FileUploadListener implements EventSubscriberInterface
         }
 
         $path = $this->uploader->upload($data->getUploadedFile(), $this->filesystem);
+
         $data->upload($path, $this->filesystemName);
     }
 }

@@ -197,7 +197,9 @@ abstract class Doc
      */
     public function setImage(Image $image)
     {
-        $this->image = $image;
+        if ($image->getPath()) {
+            $this->image = $image;
+        }
     }
 
     /**

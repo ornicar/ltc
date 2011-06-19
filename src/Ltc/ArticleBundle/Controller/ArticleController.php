@@ -24,7 +24,7 @@ class ArticleController extends Controller
     public function viewAction($categorySlug, $slug)
     {
         $article = $this->get('ltc_article.provider')->findArticle($categorySlug, $slug);
-        if (!$blogEntry) {
+        if (!$article) {
             throw new NotFoundHttpException();
         }
         if (!$this->get('ltc_doc.security')->canSee($article)) {

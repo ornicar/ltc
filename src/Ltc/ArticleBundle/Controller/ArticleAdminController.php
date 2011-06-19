@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Ltc\ArticleBundle\Document\Category;
 use Ltc\ArticleBundle\Form\ArticleForm;
 use Ltc\ArticleBundle\Document\Article;
+use Ltc\ArticleBundle\Form\ArticleFormType;
 
 class ArticleAdminController extends Controller
 {
@@ -30,47 +31,39 @@ class ArticleAdminController extends Controller
         $this->get('ltc_admin.menu.main')->getChild($category->getTitle())->setIsCurrent(true);
         $article = new Article();
         $article->setCategory($category);
+        $form = $this->get('form.factory')->create(new ArticleFormType(false), $article);
+        $request = $this->get('request');
+        if ('POST' === $request->getMethod()) {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $this->get('doctrine.odm.mongodb.document_manager')->persist($article);
+                $this->save();
 
-        $form = $this->createForm();
-        unset($form['category']);
-        $form->bind($this->get('request'), $article);
-
-        if ($form->isValid()) {
-            $this->get('doctrine.odm.mongodb.document_manager')->persist($article);
-            $form['image']->upload($this->get('ltc_image.uploader'));
-            $this->save();
-
-            return new RedirectResponse($this->get('router')->generate('ltc_article_admin_category_view', array(
-                'slug' => $categorySlug
-            )));
+                return new RedirectResponse($this->get('router')->generate('ltc_article_admin_category_view', array('slug' => $categorySlug)));
+            }
         }
 
-        return $this->render('LtcArticleBundle:ArticleAdmin:new.html.twig', array(
-            'doc' => $article,
-            'form' => $form
-        ));
+        return $this->render('LtcArticleBundle:ArticleAdmin:new.html.twig', array('doc' => $article, 'form' => $form->createView()));
     }
 
     public function editAction($categorySlug, $slug)
     {
         $article = $this->get('ltc_article.provider')->findArticle($categorySlug, $slug);
+        if (!$article) throw new NotFoundHttpException();
         $this->get('ltc_admin.menu.main')->getChild($article->getCategory()->getTitle())->setIsCurrent(true);
-        $form = $this->createForm();
-        $form->bind($this->get('request'), $article);
+        $form = $this->get('form.factory')->create(new ArticleFormType(true), $article);
+        $request = $this->get('request');
+        if ('POST' === $request->getMethod()) {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $this->save();
+                $categorySlug = $article->getCategory()->getSlug();
 
-        if ($form->isValid()) {
-            $form['image']->upload($this->get('ltc_image.uploader'));
-            $this->save($form);
-
-            return new RedirectResponse($this->get('router')->generate('ltc_article_admin_category_view', array(
-                'slug' => $article->getCategory()->getSlug()
-            )));
+                return new RedirectResponse($this->get('router')->generate('ltc_article_admin_category_view', array('slug' => $categorySlug)));
+            }
         }
 
-        return $this->render('LtcArticleBundle:ArticleAdmin:edit.html.twig', array(
-            'doc' => $article,
-            'form' => $form
-        ));
+        return $this->render('LtcArticleBundle:ArticleAdmin:edit.html.twig', array('doc' => $article, 'form' => $form->createView()));
     }
 
     public function deleteAction($id)
