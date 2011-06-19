@@ -256,7 +256,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
         }
         $image = new Image();
         $image->setLegend($legend);
-        $image->setPath($webPath);
+        $image->upload($filename, 'images');
 
         return $image;
     }

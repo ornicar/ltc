@@ -4,6 +4,7 @@ namespace Ltc\StoryBundle\Document;
 
 use DateTime;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @MongoDB\Document(
@@ -51,7 +52,7 @@ class Story
      *
      * @var DateTime
      * @MongoDB\Field(type="date")
-     * @gedmo:Timestampable(on="create")
+     * @Gedmo\Timestampable(on="create")
      */
     protected $createdAt;
 
@@ -60,7 +61,7 @@ class Story
      *
      * @var DateTime
      * @MongoDB\Field(type="date")
-     * @gedmo:Timestampable(on="update")
+     * @Gedmo\Timestampable(on="update")
      */
     protected $updatedAt;
 

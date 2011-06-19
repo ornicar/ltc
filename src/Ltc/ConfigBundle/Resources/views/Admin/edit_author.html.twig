@@ -8,7 +8,7 @@
 </div>
 <section>
     {% if document.hasImage %}
-        <img class="image_thumb" src="{{ asset(document.image.path|apply_filter("admin_medium")) }}" />
+        <img class="image_thumb" src="{{ asset(document.image|ltc_file|apply_filter("admin_medium")) }}" />
     {% endif %}
     <div class="image_form">
         Photo de l'auteur.

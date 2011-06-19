@@ -1,0 +1,13 @@
+knplabs_gaufrette:
+    adapters:
+        files_adapter:
+            local:
+                directory: %kernel.root_dir%/../web/uploads/file
+        images_adapter:
+            local:
+                directory: %kernel.root_dir%/../web/uploads/image
+    filesystems:
+        uploads:
+            adapter: files_adapter
+        images:
+            adapter: images_adapter

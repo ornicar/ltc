@@ -94,13 +94,4 @@ class ArticleAdminController extends Controller
         $this->get('doctrine.odm.mongodb.document_manager')->flush();
         $this->get('session')->setFlash('notice', 'Modifications enregistrees');
     }
-
-    protected function createForm()
-    {
-        $form = ArticleForm::create($this->get('form.context'), 'article');
-        $form->addCategoryChoice($this->get('ltc_article.repository.category'));
-        $form->addTags($this->get('ltc_tag.repository.tag'));
-
-        return $form;
-    }
 }

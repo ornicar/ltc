@@ -4,75 +4,75 @@
 <div>
     {{ form_label(form.title, "Titre") }}
     {{ form_errors(form.title) }}
-    {{ form_field(form.title) }}
+    {{ form_widget(form.title) }}
 </div>
 <div class="inline_label">
-    {{ form_field(form.isPublished) }}
+    {{ form_widget(form.isPublished) }}
     {{ form_label(form.isPublished, "Visible sur le site") }}
 </div>
 {% if form.has("category") %}
 <div>
     {{ form_label(form.category, "Deplacer vers") }}
-    {{ form_field(form.category) }}
+    {{ form_widget(form.category) }}
 </div>
 {% endif %}
 <section>
     {% if doc.hasImage %}
-        <img class="image_thumb" src="{{ asset(doc.image.path|apply_filter("admin_medium")) }}" />
+        <img class="image_thumb" src="{{ asset(doc.image|ltc_file|apply_filter("admin_medium")) }}" />
     {% endif %}
     <div class="image_form">
         Image de l'article.
         <div>
-            {{ form_field(form.image.file) }}
+            {{ form_widget(form.image.uploadedFile) }}
             {{ form_errors(form.image) }}
         </div>
         <div>
             {{ form_label(form.image.legend, "Legende") }}
-            {{ form_field(form.image.legend) }}
+            {{ form_widget(form.image.legend) }}
         </div>
     </div>
 </section>
 <div>
     {{ form_label(form.summary, "Resume") }}
     <div class="help">Restons simple, ici. Evite les titres et les listes</div>
-    {{ form_field(form.summary, {"rows": 15}) }}
+    {{ form_widget(form.summary, {"rows": 15}) }}
 </div>
 <div class="with_image with_file">
     {{ form_label(form.body, "Texte") }}
     <div class="help">Les images inserees ici ne seront pas redimensionnees.</div>
-    {{ form_field(form.body, {"rows": 40}) }}
+    {{ form_widget(form.body, {"rows": 40}) }}
 </div>
 <div>
     {{ form_label(form.tags, "Tags") }}
-    {{ form_field(form.tags, {"rows": 5}) }}
+    {{ form_widget(form.tags, {"rows": 5}) }}
 </div>
 <div class="with_file">
     {{ form_label(form.reference, "Reference") }}
-    {{ form_field(form.reference, {"rows": 5}) }}
+    {{ form_widget(form.reference, {"rows": 5}) }}
 </div>
 <div class="with_file">
     {{ form_label(form.relatedPublications, "Publications liees") }}
-    {{ form_field(form.relatedPublications, {"rows": 5}) }}
+    {{ form_widget(form.relatedPublications, {"rows": 5}) }}
 </div>
 <section>
     Uniquement en cas d'un auteur invite.
     <div>
         {{ form_label(form.authorName, "Auteur") }}
-        {{ form_field(form.authorName) }}
+        {{ form_widget(form.authorName) }}
     </div>
     <div>
         {{ form_label(form.authorBio, "Qualite") }}
-        {{ form_field(form.authorBio) }}
+        {{ form_widget(form.authorBio) }}
     </div>
 </section>
 {% if form.has("publicationDate") %}
 <div>
     {{ form_label(form.publicationDate, "Date de publication") }}
-    {{ form_field(form.publicationDate) }}
+    {{ form_widget(form.publicationDate) }}
 </div>
 {% endif %}
 <div class="with_file">
     {{ form_label(form.readMore, "Lire la suite") }}
-    {{ form_field(form.readMore, {"rows": 7}) }}
+    {{ form_widget(form.readMore, {"rows": 7}) }}
 </div>
 {% endblock %}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="ltc_file.uploader" class="Ltc\FileBundle\Uploader" public="false" />
+
+        <service id="ltc_file.form_type.ltc_file" class="Ltc\FileBundle\Form\LtcFileFormType">
+            <argument type="service" id="ltc_file.uploader" />
+            <argument type="service" id="knplabs_gaufrette.filesystem_map" />
+            <tag name="form.type" alias="ltc_file" />
+        </service>
+
+        <service id="ltc_file.twig_extension.ltc_file" class="Ltc\FileBundle\Twig\LtcFileExtension" public="false">
+            <argument /> <!-- filesystem web paths -->
+            <tag name="twig.extension" />
+        </service>
+
+    </services>
+
+</container>

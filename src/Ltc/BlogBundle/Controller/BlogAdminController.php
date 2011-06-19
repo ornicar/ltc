@@ -7,6 +7,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Ltc\BlogBundle\Form\BlogEntryForm;
 use Ltc\BlogBundle\Document\BlogEntry;
+use Ltc\BlogBundle\Form\BlogEntryFormType;
 
 class BlogAdminController extends Controller
 {
@@ -23,41 +24,42 @@ class BlogAdminController extends Controller
     {
         $this->get('ltc_admin.menu.main')->getChild('Table ronde')->setIsCurrent(true);
         $blogEntry = new BlogEntry();
+        $form = $this->get('form.factory')->create(new BlogEntryFormType(), $blogEntry);
+        if ('POST' === $request->getMethod()) {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $this->get('doctrine.odm.mongodb.document_manager')->persist($blogEntry);
+                $this->save();
 
-        $form = $this->createForm();
-        $form->bind($this->get('request'), $blogEntry);
-
-        if ($form->isValid()) {
-            $this->get('doctrine.odm.mongodb.document_manager')->persist($blogEntry);
-            $form['image']->upload($this->get('ltc_image.uploader'));
-            $this->save();
-
-            return new RedirectResponse($this->get('router')->generate('ltc_blog_admin_entry_list'));
+                return new RedirectResponse($this->get('router')->generate('ltc_blog_admin_entry_list'));
+            }
         }
 
         return $this->render('LtcBlogBundle:Admin:new.html.twig', array(
             'doc' => $blogEntry,
-            'form' => $form
+            'form' => $form->createFoView()
         ));
     }
 
     public function editAction($slug)
     {
-        $blogEntry = $this->get('ltc_blog.repository.blog_entry')->findOneBySlug($slug);
         $this->get('ltc_admin.menu.main')->getChild('Table ronde')->setIsCurrent(true);
-        $form = $this->createForm();
-        $form->bind($this->get('request'), $blogEntry);
+        $blogEntry = $this->get('ltc_blog.repository.blog_entry')->findOneBySlug($slug);
+        if (!$blogEntry) throw new NotFoundHttpException();
+        $form = $this->get('form.factory')->create(new BlogEntryFormType(), $blogEntry);
+        $request = $this->get('request');
+        if ('POST' === $request->getMethod()) {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $this->save();
 
-        if ($form->isValid()) {
-            $form['image']->upload($this->get('ltc_image.uploader'));
-            $this->save($form);
-
-            return new RedirectResponse($this->get('router')->generate('ltc_blog_admin_entry_list'));
+                return new RedirectResponse($this->get('router')->generate('ltc_blog_admin_entry_list'));
+            }
         }
 
         return $this->render('LtcBlogBundle:Admin:edit.html.twig', array(
             'doc' => $blogEntry,
-            'form' => $form
+            'form' => $form->createView()
         ));
     }
 
@@ -79,13 +81,5 @@ class BlogAdminController extends Controller
         $this->get('ltc_tag.denormalizer')->denormalize();
         $this->get('doctrine.odm.mongodb.document_manager')->flush();
         $this->get('session')->setFlash('notice', 'Modifications enregistrees');
-    }
-
-    protected function createForm()
-    {
-        $form = BlogEntryForm::create($this->get('form.context'), 'doc');
-        $form->addTags($this->get('ltc_tag.repository.tag'));
-
-        return $form;
     }
 }

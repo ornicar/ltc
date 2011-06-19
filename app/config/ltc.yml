@@ -20,5 +20,7 @@ ltc_config:
         title: A propos de...
         form_type: ltc_config.form_type.featured_article
 
-ltc_image:
-    upload_dir: %kernel.root_dir%/../web/uploads
+ltc_file:
+    filesystem_web_path:
+        files: /uploads/file
+        images: /uploads/image

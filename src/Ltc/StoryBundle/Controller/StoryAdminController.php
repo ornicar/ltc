@@ -74,11 +74,4 @@ class StoryAdminController extends Controller
         $this->get('doctrine.odm.mongodb.document_manager')->flush();
         $this->get('session')->setFlash('notice', 'Modifications enregistrees');
     }
-
-    protected function createForm()
-    {
-        $form = StoryForm::create($this->get('form.context'), 'story');
-
-        return $form;
-    }
 }

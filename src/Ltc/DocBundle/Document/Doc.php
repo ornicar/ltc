@@ -7,6 +7,8 @@ use DateTime;
 use Gedmo\Sluggable\Util\Urlizer;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @MongoDB\MappedSuperclass
@@ -31,7 +33,7 @@ abstract class Doc
      *
      * @var DateTime
      * @MongoDB\Field(type="date")
-     * @gedmo:Timestampable(on="create")
+     * @Gedmo\Timestampable(on="create")
      */
     protected $createdAt;
 
@@ -40,7 +42,7 @@ abstract class Doc
      *
      * @var DateTime
      * @MongoDB\Field(type="date")
-     * @gedmo:Timestampable(on="update")
+     * @Gedmo\Timestampable(on="update")
      */
     protected $updatedAt;
 
@@ -49,9 +51,9 @@ abstract class Doc
      *
      * @var string
      * @MongoDB\Field(type="string")
-     * @assert:NotBlank
-     * @assert:MinLength(3)
-     * @assert:MaxLength(300)
+     * @Assert\NotBlank()
+     * @Assert\MinLength(3)
+     * @Assert\MaxLength(300)
      */
     protected $title;
 
@@ -205,7 +207,7 @@ abstract class Doc
      */
     public function hasImage()
     {
-        return $this->getImage() && $this->getImage()->getPath();
+        return null !== $this->getImage();
     }
 
     /**

@@ -11,7 +11,7 @@
 {% block table_row %}
 <td>
 {% if object.hasImage %}
-<a href="{{ block("edit_url") }}"><img class="image_thumb" src="{{ asset(object.image.path|apply_filter("admin_small")) }}" /></a>
+<a href="{{ block("edit_url") }}"><img class="image_thumb" src="{{ asset(object.image|ltc_file|apply_filter("admin_small")) }}" /></a>
 {% endif %}
 </td>
 <td><a href="{{ block("edit_url") }}">{{ object.title }}</a></td>

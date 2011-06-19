@@ -4,6 +4,7 @@ namespace Ltc\BlogBundle\Document;
 
 use Ltc\DocBundle\Document\Doc;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @MongoDB\Document(
@@ -19,7 +20,7 @@ class BlogEntry extends Doc
      *
      * @var string
      * @MongoDB\Field(type="string")
-     * @gedmo:Slug(unique="true", updatable="true")
+     * @Gedmo\Slug(unique="true", updatable="true")
      */
     protected $slug;
 
@@ -28,7 +29,7 @@ class BlogEntry extends Doc
      *
      * @var string
      * @MongoDB\Field(type="string")
-     * @gedmo:Sluggable
+     * @Gedmo\Sluggable
      */
     protected $title;
 

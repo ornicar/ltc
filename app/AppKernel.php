@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new Bundle\ZendCacheBundle\ZendCacheBundle(),
             new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
             new Knplabs\Bundle\MarkdownBundle\KnplabsMarkdownBundle(),
+            new Knplabs\Bundle\GaufretteBundle\KnplabsGaufretteBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
 
             new Ltc\UserBundle\LtcUserBundle(),
@@ -33,6 +34,7 @@ class AppKernel extends Kernel
             new Ltc\DocBundle\LtcDocBundle(),
             new Ltc\BlogBundle\LtcBlogBundle(),
             new Ltc\ArticleBundle\LtcArticleBundle(),
+            new Ltc\FileBundle\LtcFileBundle(),
             new Ltc\ImageBundle\LtcImageBundle(),
             new Ltc\TagBundle\LtcTagBundle(),
             new Ltc\StoryBundle\LtcStoryBundle(),

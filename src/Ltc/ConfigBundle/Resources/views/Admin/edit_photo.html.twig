@@ -4,26 +4,26 @@
 <div>
     {{ form_label(form.title, "Nom") }}
     {{ form_errors(form.title) }}
-    {{ form_field(form.title) }}
+    {{ form_widget(form.title) }}
 </div>
 <div>
     {{ form_label(form.url, "Url") }}
     {{ form_errors(form.url) }}
-    {{ form_field(form.url) }}
+    {{ form_widget(form.url) }}
 </div>
 <section>
     {% if document.hasImage %}
-        <img class="image_thumb" src="{{ asset(document.image.path|apply_filter("admin_medium")) }}" />
+        <img class="image_thumb" src="{{ asset(document.image|ltc_file|apply_filter("admin_medium")) }}" />
     {% endif %}
     <div class="image_form">
         Photo.
         <div>
-            {{ form_field(form.image.file) }}
+            {{ form_widget(form.image.file) }}
             {{ form_errors(form.image) }}
         </div>
         <div>
             {{ form_label(form.image.legend, "Legende") }}
-            {{ form_field(form.image.legend) }}
+            {{ form_widget(form.image.legend) }}
         </div>
     </div>
 </section>

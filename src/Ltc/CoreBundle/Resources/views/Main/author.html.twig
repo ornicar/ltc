@@ -7,7 +7,7 @@
 <div class="row author">
     {% if author.hasImage %}
     <div class="author_image">
-        <img alt="{{ author.image.legend }}" src="{{ asset(author.image.path|apply_filter("preview")) }}" />
+        <img alt="{{ author.image.legend }}" src="{{ asset(author.image|ltc_file|apply_filter("preview")) }}" />
     </div>
     {% endif %}
     <h1 class="title big">{{ author.title }}</h1>

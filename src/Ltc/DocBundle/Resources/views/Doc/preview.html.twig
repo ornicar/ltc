@@ -5,7 +5,7 @@
     </header>
     {% if doc.hasImage %}
     <div class="doc_image">
-        <img src="{{ asset(doc.image.path|apply_filter("preview")) }}" />
+        <img src="{{ asset(doc.image|ltc_file|apply_filter("preview")) }}" />
         {% if doc.image.legend %}
         <p class="legend overflowed">{{ doc.image.legend|ltc_shrink_link|raw }}</p>
         {% endif %}

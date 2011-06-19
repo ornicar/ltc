@@ -19,6 +19,8 @@ $loader->registerNamespaces(array(
     'Assetic'                        => $vendorDir.'/assetic/src',
     'Imagine'                        => $vendorDir.'/imagine/lib',
     'Monolog'                        => $vendorDir.'/monolog/src',
+    'Metadata'                       => $vendorDir.'/metadata/src',
+    'Gaufrette'                      => $vendorDir.'/gaufrette/src',
     'Ltc'                            => $srcDir,
     'FOS'                            => $srcDir,
     'FOQ'                            => $srcDir,

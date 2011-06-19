@@ -34,7 +34,7 @@
         </div>
 
         <span class="title">Ailleurs</span>
-        <a href="{{ photo.url }}"><img src="{{ asset(photo.image.path|apply_filter("lantenora")) }}" alt="{{ photo.title}}" /></a>
+        <a href="{{ photo.url }}"><img src="{{ asset(photo.image|ltc_file|apply_filter("lantenora")) }}" alt="{{ photo.title}}" /></a>
         <p class="metadata">{{ photo.image.legend }}</p>
         <a class="all_others" href="{{ photo.url }}">&gt; {{ photo.title }}</a>
 

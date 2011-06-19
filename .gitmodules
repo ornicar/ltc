@@ -82,3 +82,12 @@
 [submodule "src/Symfony/Bundle/AsseticBundle"]
 	path = src/Symfony/Bundle/AsseticBundle
 	url = git://github.com/symfony/AsseticBundle
+[submodule "vendor/metadata"]
+	path = vendor/metadata
+	url = git://github.com/schmittjoh/metadata.git
+[submodule "vendor/gaufrette"]
+	path = vendor/gaufrette
+	url = git://github.com/knplabs/Gaufrette.git
+[submodule "src/Knplabs/Bundle/GaufretteBundle"]
+	path = src/Knplabs/Bundle/GaufretteBundle
+	url = git://github.com/knplabs/GaufretteBundle.git

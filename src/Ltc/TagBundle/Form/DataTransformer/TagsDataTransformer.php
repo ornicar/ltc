@@ -1,30 +1,30 @@
 <?php
 
-namespace Ltc\TagBundle\Form\ValueTransformer;
+namespace Ltc\TagBundle\Form\DataTransformer;
 
-use Symfony\Component\Form\ValueTransformer\ValueTransformerInterface;
-use Symfony\Component\Form\Configurable;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Ltc\TagBundle\Document\TagRepository;
+use Symfony\Component\Form\DataTransformerInterface;
 
 /**
  * Transforms between a doctrine object and an id
  *
  * @author Thibault Duplessis <thibault.duplessis@gmail.com>
  */
-class TagsValueTransformer extends Configurable implements ValueTransformerInterface
+class TagsDataTransformer implements DataTransformerInterface
 {
     /**
-     * Object repository
-     *
      * @var TagRepository
      */
-    protected $repository = null;
+    protected $repository;
 
-    public function __construct(TagRepository $repository)
+    protected $separator;
+
+    public function __construct(TagRepository $repository, $separator = ', ')
     {
         $this->repository = $repository;
+        $this->separator = $separator;
     }
 
     /**
@@ -42,7 +42,7 @@ class TagsValueTransformer extends Configurable implements ValueTransformerInter
             $value = $value->toArray();
         }
 
-        return implode(', ', array_map(function($tag) { return $tag->getTitle(); }, $value));
+        return implode($this->separator, array_map(function($tag) { return $tag->getTitle(); }, $value));
     }
 
     /**
@@ -53,7 +53,7 @@ class TagsValueTransformer extends Configurable implements ValueTransformerInter
      */
     public function reverseTransform($value)
     {
-        $titles = array_filter(array_map('trim', explode(',', $value)));
+        $titles = array_filter(array_map('trim', explode(trim($this->separator), $value)));
         $tags = $this->repository->findByTitlesOrCreate($titles)->toArray();
 
         return new ArrayCollection($tags);

@@ -5,6 +5,7 @@ namespace Ltc\ArticleBundle\Document;
 use DateTime;
 use Gedmo\Sluggable\Util\Urlizer;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @MongoDB\Document(
@@ -29,7 +30,7 @@ class Category
      *
      * @var DateTime
      * @MongoDB\Field(type="date")
-     * @gedmo:Timestampable(on="create")
+     * @Gedmo\Timestampable(on="create")
      */
     protected $createdAt;
 
@@ -38,7 +39,7 @@ class Category
      *
      * @var DateTime
      * @MongoDB\Field(type="date")
-     * @gedmo:Timestampable(on="update")
+     * @Gedmo\Timestampable(on="update")
      */
     protected $updatedAt;
 

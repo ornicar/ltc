@@ -2,25 +2,19 @@
 
 namespace Ltc\ImageBundle\Document;
 
-use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
+use Ltc\FileBundle\Document\LtcFile;
 
 /**
- * An image in the web dir.
+ * An image in a filesystem
  *
  * @MongoDB\EmbeddedDocument
  */
-class Image
+class Image extends LtcFile
 {
-    /**
-     * Relative web path
-     *
-     * @var string
-     * @MongoDB\Field(type="string")
-     */
-    protected $path;
-
     /**
      * Textual legend, can be used as image alternative
      *
@@ -30,39 +24,14 @@ class Image
     protected $legend;
 
     /**
-     * Uploaded file
-     * Not persisted: it's used in form and validation only
+     * Overwrite validation constraint
      *
-     * @var File
-     * @assert:File(maxSize="4M",mimeTypes={
+     * @Assert\File(maxSize="4M",mimeTypes={
      *     "image/jpeg",
      *     "image/png"
      * })
      */
-    public $file;
-
-    public function __construct()
-    {
-        $this->thumbnails = new ArrayCollection();
-    }
-
-    /**
-     * Gets the uploaded file path (which is not persisted, it's just for form purpose)
-     *
-     * @return string
-     **/
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * @param string $file
-     */
-    public function setFile($file)
-    {
-        $this->file = $file;
-    }
+    protected $file;
 
     /**
      * @return string
@@ -79,22 +48,5 @@ class Image
     public function setLegend($legend)
     {
         $this->legend = $legend;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * @param  string
-     * @return null
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
     }
 }

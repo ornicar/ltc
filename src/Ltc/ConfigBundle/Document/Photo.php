@@ -4,6 +4,7 @@ namespace Ltc\ConfigBundle\Document;
 
 use Ltc\ImageBundle\Document\Image;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @MongoDB\Document
@@ -23,9 +24,9 @@ class Photo
      *
      * @var string
      * @MongoDB\Field(type="string")
-     * @assert:NotBlank
-     * @assert:MinLength(3)
-     * @assert:MaxLength(300)
+     * @Assert\NotBlank
+     * @Assert\MinLength(3)
+     * @Assert\MaxLength(300)
      */
     protected $title;
 
@@ -42,9 +43,9 @@ class Photo
      *
      * @var string
      * @MongoDB\Field(type="string")
-     * @assert:NotBlank
-     * @assert:MinLength(3)
-     * @assert:MaxLength(300)
+     * @Assert\NotBlank
+     * @Assert\MinLength(3)
+     * @Assert\MaxLength(300)
      */
     protected $url;
 

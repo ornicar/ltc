@@ -6,6 +6,14 @@ show_run()
     $*
 }
 
+echo "--- Initialize filesystem"
+show_run mkdir -p app/cache/dev app/cache/test app/logs web/uploads 
+for env in "dev" "test"; do
+    if [ "$(ls -A app/cache/$env/)" ]; then
+        show_run rm -r app/cache/$env/*
+    fi
+done
+
 echo -e "\n--- Building bootstrap"
 show_run "bin/build_bootstrap.php"
 
