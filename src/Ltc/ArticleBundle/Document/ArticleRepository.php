@@ -51,9 +51,21 @@ class ArticleRepository extends DocRepository
      **/
     public function findLatestByCategory(Category $category, $limit)
     {
-        return $this->createPublishedSortedQueryBuilder()
-            ->field('category.$id')->equals(new MongoId($category->getId()))
+        return $this->createPublishedSortedByCategoryQueryBuilder($category)
             ->limit($limit)
+            ->getQuery()
+            ->execute();
+    }
+
+    /**
+     * Finds published documents by category
+     * and only loads the titles and slugs
+     *
+     * @return array of partially hydrated document proxies
+     */
+    public function findPublishedTitleAndSlugByCategory(Category $category)
+    {
+        return $this->createPublishedSortedByCategoryQueryBuilder($category)
             ->getQuery()
             ->execute();
     }

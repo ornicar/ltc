@@ -53,7 +53,7 @@ abstract class DocRepository extends DocumentRepository
     /**
      * Find published documents
      *
-     * @return void
+     * @return array
      */
     public function findPublished($limit = null)
     {
@@ -64,6 +64,20 @@ abstract class DocRepository extends DocumentRepository
         }
 
         return $queryBuilder
+            ->getQuery()
+            ->execute();
+    }
+
+    /**
+     * Finds published documents
+     * and only loads the titles and slugs
+     *
+     * @return array of partially hydrated document proxies
+     */
+    public function findPublishedTitleAndSlug()
+    {
+        return $this->createPublishedSortedQueryBuilder()
+            ->select('title', 'slug')
             ->getQuery()
             ->execute();
     }

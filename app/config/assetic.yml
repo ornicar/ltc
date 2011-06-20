@@ -1,6 +1,5 @@
 assetic:
-    debug:          %kernel.debug%
-    #debug:          false
+    debug:          true
     use_controller: false
     filters:
         yui_css:

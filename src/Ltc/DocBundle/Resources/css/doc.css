@@ -42,7 +42,7 @@ ul.doc_small_list li {
 .doc_list .doc_preview_with_metas div.metas {
     position: absolute;
     width: 355px;
-    left: -395px;
+    left: -400px;
     text-align: right;
 }
 .doc_list .doc_preview_with_metas div.metas .metadata {
@@ -67,4 +67,35 @@ ul.doc_small_list li {
 }
 .meta_block {
     margin-bottom: 2em;
+}
+.hidden_list {
+    position: relative;
+}
+.hidden_list_container {
+    float: left;
+    display: inline;
+}
+.hidden_list .trigger {
+    padding: 0 19px 1em 0;
+    background: url('/bundles/ltccore/img/arrow_down.png') no-repeat;
+    background-position: right +2px;
+}
+.hidden_list .trigger:hover {
+    text-decoration: none;
+}
+.hidden_list .article_link_list {
+    position: absolute;
+    top: 2em;
+    left: -99999px;
+    background: white;
+    z-index: 999;
+    padding: 0.5em;
+    border: 1px solid #a0a0a0;
+    font-size: 90%;
+    -moz-box-shadow:6px 6px 9px #999999;
+	-webkit-box-shadow:6px 6px 9px #999999;
+	box-shadow:6px 6px 9px #999999;
+}
+.hidden_list_container:hover .article_link_list {
+    left: 0px;
 }

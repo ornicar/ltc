@@ -4,8 +4,7 @@
 
 {% block content %}
 <div class="row">
-    <div class="fourcol blockcol">
-    </div>
+    {% include "LtcDocBundle:Doc:hiddenList.html.twig" with {"docs": allDocs} %}
     <article class="eightcol last doc_list">
         <header>
             <h1 class="title big">Table ronde</h1>

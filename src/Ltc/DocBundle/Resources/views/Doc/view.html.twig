@@ -16,7 +16,7 @@
         </div>
 
         {% if doc.relatedPublications %}
-        <div class="meta_block">
+        <div class="meta_block small">
             <span class="title shy">Publications liées</span>
             {{ doc.relatedPublications|markdown }}
         </div>
@@ -71,7 +71,7 @@
     {% javascripts
         '@LtcCommentBundle/Resources/vendor/jquery.form.js'
         '@LtcCommentBundle/Resources/js/form.js'
-        filter="yui_js" %}
+        filter="?yui_js" %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

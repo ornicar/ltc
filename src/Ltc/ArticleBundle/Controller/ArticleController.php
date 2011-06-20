@@ -14,10 +14,12 @@ class ArticleController extends Controller
             $this->get('ltc_article.repository.article')->createPublishedSortedByCategoryQueryBuilder($category),
             $page
         );
+        $all = $this->get('ltc_article.repository.article')->findPublishedTitleAndSlugByCategory($category);
 
         return $this->render('LtcArticleBundle:Article:listByCategory.html.twig', array(
             'category' => $category,
-            'docs'     => $paginator
+            'docs'     => $paginator,
+            'allDocs'  => $all
         ));
     }
 

@@ -94,12 +94,12 @@ class DocExtension extends \Twig_Extension
         return $date;
     }
 
-    public function getPublicationDateAndAuthor(Doc $doc, $separator = ', ')
+    public function getPublicationDateAndAuthor(Doc $doc)
     {
         $string = $this->getPublicationDate($doc);
         $author = $author = $this->getAuthor($doc);
         if (!empty($author)) {
-            $string .= sprintf('%spar %s', $separator, $author);
+            $string = sprintf('%s<br />%s', $author, $string);
         }
 
         return $string;

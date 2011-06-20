@@ -1,3 +1,6 @@
 imports:
     - { resource: config.yml }
     - { resource: config_prod_local.yml }
+
+assetic:
+    debug: false
