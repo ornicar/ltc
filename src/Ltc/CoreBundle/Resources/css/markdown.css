@@ -45,6 +45,5 @@
 }
 .markdown img {
     display: block;
-    text-align: middle;
-    margin-bottom: 1em;
+    margin: 0 auto 1em auto;
 }
