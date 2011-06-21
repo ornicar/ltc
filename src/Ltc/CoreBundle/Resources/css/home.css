@@ -1,19 +1,26 @@
-body.home #header {
-    margin-bottom: 0px;
-}
 body.home div.home_featured, div.home_banner {
     background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
-}
-body.home div.home_banner {
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #f9eded;
 }
 body.home div.home_featured {
     padding-bottom: 20px;
 }
 body.home div.home_overview {
     margin-top: 20px;
+}
+
+body.home .side_search {
+    margin-top: 0.9em;
+    margin-bottom: 2em;
+}
+body.home .side_story {
+    margin-bottom: 1em;
+}
+body.home .story_preview .title {
+    float: left;
+    margin-right: 1em;
+}
+body.home .story_preview .metadata {
+    color: #666;
 }
 
 body.home div.category_column > div, div.tag_cloud_small, div.home_tags {

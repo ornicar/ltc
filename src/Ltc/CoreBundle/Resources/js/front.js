@@ -1,12 +1,4 @@
 $(function() {
-
-    $('div.home_overview div.category_column:first > div').each(function(index) {
-        $twin = $('div.home_overview div.category_column:eq(1) > div').eq(index);
-        maxHeight = Math.max($(this).height(), $twin.height());
-        $(this).height(maxHeight);
-        $twin.height(maxHeight);
-    });
-
     $('.js_email').text(['pascal', 'Duplessis@', 'aol.com'].join(''));
 
     $('.infinitescroll').each(function() {

@@ -6,26 +6,31 @@
 
 {% block content %}
 
-<div class="row home_banner_wrap">
-    <div class="home_banner">{% render "LtcStoryBundle:Story:featured" %}</div>
-</div>
-
-<div class="row home_featured">
+<div class="row">
     <div class="eightcol">
-        {% render "LtcArticleBundle:Article:featured" %}
+
+        <div class="home_featured">
+            {% render "LtcArticleBundle:Article:featured" %}
+        </div>
+
+        <div class="home_overview">
+            {% render "LtcArticleBundle:Category:overview" %}
+        </div>
+
     </div>
     <div class="fourcol last">
+
+        <div class="side_search small_search">
+            {% include "LtcCoreBundle:Search:form.html.twig" %}
+        </div>
+
+        <div class="side_story">
+            {% render "LtcStoryBundle:Story:featured" %}
+        </div>
+
         <span class="title"><a href="{{ path("ltc_blog_entry_index") }}">Table ronde</a></span>
-        {% render "LtcBlogBundle:Blog:smallList" with {"numberOfDocs": 5} %}
+        {% render "LtcBlogBundle:Blog:smallList" with {"numberOfDocs": 4} %}
         <a class="all_others" href="{{ path("ltc_blog_entry_index") }}">&gt; autres articles</a>
-    </div>
-</div>
-
-<div class="row home_overview">
-
-    {% render "LtcArticleBundle:Category:overview" %}
-
-    <div class="fourcol last">
 
         <div class="home_tags">
             <span class="title"><a href="{{ path("ltc_tag_cloud") }}">Tags</a></span>

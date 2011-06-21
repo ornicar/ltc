@@ -1,12 +1,7 @@
 {# reorder for 2-columns display #}
-{% set categories = [
-    categories[0],
-    categories[2],
-    categories[1],
-    categories[3]
-] %}
 
-<div class="fourcol category_column">
+<div class="row">
+<div class="sixcol category_column">
 {% for category in categories %}
     {% set url = path("ltc_article_category_view", {"slug": category["category"].slug}) %}
     <div>
@@ -15,7 +10,12 @@
         <a class="all_others" href="{{ url }}">&gt; autres articles</a>
     </div>
     {% if loop.index == 2 %}
-    </div><div class="fourcol category_column">
+    </div></div>
+    <div class="row">
+    <div class="sixcol category_column">
+    {% else %}
+    </div><div class="sixcol last category_column">
     {% endif %}
 {% endfor %}
+</div>
 </div>

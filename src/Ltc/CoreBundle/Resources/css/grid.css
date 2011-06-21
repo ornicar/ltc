@@ -11,11 +11,11 @@ overflow: hidden;
 }
 
 .fillcol {
-    background: #dddddd;
-    min-height: 600px;
+background: #dddddd;
+min-height: 600px;
 }
 .blockcol {
-    min-height: 1px;
+min-height: 1px;
 }
 .onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
 margin-right: 3.8%;

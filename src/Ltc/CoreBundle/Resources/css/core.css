@@ -79,15 +79,21 @@ a.more {
     float: left;
     margin-right: 2em;
 }
-#main form.search input.query {
+body.search form.search input.query {
     width: 70%;
     font-size: 1.5em;
     padding: 0.2em 0.3em;
 }
-#main form.search input.submit {
+body.search form.search input.submit {
     font-size: 1.5em;
     padding: 0.2em 0.3em;
 }
-.search .result {
+body.search .search .result {
     margin-top: 1em;
+}
+.small_search input {
+    padding: 0.2em 0.3em;
+}
+.small_search input.query {
+    width: 60%;
 }
