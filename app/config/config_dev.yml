@@ -9,8 +9,9 @@ web_profiler:
     toolbar: true
     intercept_redirects: false
 
-#assetic:
-    #use_controller: true
+assetic:
+    debug: true
+    use_controller: true
 
 monolog:
     handlers:

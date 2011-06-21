@@ -1,5 +1,5 @@
 assetic:
-    debug:          true
+    debug:          false
     use_controller: false
     filters:
         yui_css:
