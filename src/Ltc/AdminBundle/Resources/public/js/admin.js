@@ -1,13 +1,4 @@
 $(function() {
-    if ($('pre.cowsay').length) {
-        $.ajax("http://lichess.org/fortune.php?cowsay=1", {
-            dataType: "jsonp",
-            success: function(text) {
-                $('pre.cowsay').text(text);
-            }
-        });
-    }
-
     $('a.confirm').click(function() {
         return confirm($(this).text() + ' ?');
     });
@@ -31,6 +22,15 @@ $(function() {
                 return '[nom](' + url + ')';
             });
         }));
+    });
+
+    $('textarea.textarea_tags').each(function() {
+        var $self = $(this);
+        $.get($self.data('url'), function(tags) {
+            $self.autocomplete({
+                source: tags
+            });
+        }, 'json');
     });
 });
 

@@ -44,7 +44,7 @@
 </div>
 <div>
     {{ form_label(form.tags, "Tags") }}
-    {{ form_widget(form.tags, {"attr": {"rows": 5}}) }}
+    {% include "LtcTagBundle:Admin:widget.html.twig" %}
 </div>
 <div class="with_file">
     {{ form_label(form.reference, "Reference") }}

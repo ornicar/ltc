@@ -31,7 +31,6 @@ $loader->registerNamespaces(array(
     'Bundle'                         => $srcDir,
 ));
 $loader->registerPrefixes(array(
-    'Twig_Extensions_' => $vendorDir.'/twig-extensions/lib',
     'Twig_'            => $vendorDir.'/twig/lib',
     'Elastica_'        => $vendorDir.'/elastica/lib',
 ));

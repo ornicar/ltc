@@ -37,6 +37,7 @@
     background: url(data:image/png;base64,R0lGODlhSAABAIAAAP///2ZmZiH5BAEHAAAALAAAAABIAAEAAAINDG54kLwNn1TU1XhXAQA7) bottom repeat-x;
 }
 .markdown li p {
+    display: inline;
     margin-top: 0;
 }
 .markdown sup {

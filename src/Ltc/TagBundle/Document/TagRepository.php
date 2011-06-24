@@ -16,9 +16,25 @@ class TagRepository extends DocumentRepository
     public function findAll()
     {
         return $this->createQueryBuilder()
-            ->sort('_id', 'asc')
+            ->sort('slug', 'asc')
             ->getQuery()
             ->execute();
+    }
+
+    /**
+     * Gets the list of tag titles
+     *
+     * @return array of strings
+     */
+    public function findAllTitles()
+    {
+        $tags = $this->createQueryBuilder()
+            ->select('title')
+            ->hydrate(false)
+            ->getQuery()
+            ->execute();
+
+        return array_map(function(array $tag) { return $tag['title']; }, $tags);
     }
 
     /**
