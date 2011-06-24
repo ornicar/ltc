@@ -2,7 +2,7 @@
 
 namespace Ltc\ImportBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\Output;
 use Ltc\ImportBundle\DbSerializer;
 use Ltc\ImportBundle\MysqlDb;
 
-class SerializeDbCommand extends Command
+class SerializeDbCommand extends ContainerAwareCommand
 {
     /**
      * @see Command
@@ -39,7 +39,7 @@ class SerializeDbCommand extends Command
             $input->getArgument('username'),
             $input->getArgument('password')
         );
-        $path = $this->container->getParameter('kernel.root_dir').'/db';
+        $path = $this->getContainer()->getParameter('kernel.root_dir').'/db';
         @mkdir($path);
 
         $serializer = new DbSerializer($mysql, $path);

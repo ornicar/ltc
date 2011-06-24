@@ -2,13 +2,13 @@
 
 namespace Ltc\CoreBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Ltc\CoreBundle\MarkdownFixer;
 
-class FixMarkdownCommand extends Command
+class FixMarkdownCommand extends ContainerAwareCommand
 {
     /**
      * @see Command
@@ -37,15 +37,15 @@ class FixMarkdownCommand extends Command
             print ',';
         }
         $output->writeLn('Flushing');
-        $this->container->get('doctrine.odm.mongodb.document_manager')->flush();
+        $this->getContainer()->get('doctrine.odm.mongodb.document_manager')->flush();
         $output->writeLn('Done');
     }
 
     protected function getDocs()
     {
         return array_merge(
-            $this->container->get('ltc_article.repository.article')->findAll()->toArray(),
-            $this->container->get('ltc_blog.repository.blog_entry')->findAll()->toArray()
+            $this->getContainer()->get('ltc_article.repository.article')->findAll()->toArray(),
+            $this->getContainer()->get('ltc_blog.repository.blog_entry')->findAll()->toArray()
         );
     }
 }
