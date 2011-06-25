@@ -44,7 +44,7 @@ class TextareaTagsType extends AbstractType
     {
         $options = parent::getDefaultOptions($options);
 
-        $options['list_separator'] = ',';
+        $options['list_separator'] = ', ';
 
         return $options;
     }

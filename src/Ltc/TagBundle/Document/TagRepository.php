@@ -84,7 +84,8 @@ class TagRepository extends DocumentRepository
         $tags = $this->createQueryBuilder()
             ->field('title')->in($titles)
             ->getQuery()
-            ->execute();
+            ->execute()
+            ->toArray();
 
         foreach ($titles as $title) {
             foreach ($tags as $tag) {
@@ -95,6 +96,7 @@ class TagRepository extends DocumentRepository
 
             $tag = $this->create($title);
             $this->dm->persist($tag);
+            $tags[] = $tag;
         }
 
         return $tags;
