@@ -1,10 +1,7 @@
 ltc_tag_admin_index:
     pattern:  /
     defaults: { _controller: LtcTagBundle:Admin:index }
-ltc_tag_admin_view:
-    pattern: /{slug}
-    defaults: { _constroller: LtcTagBundle:Admin:view }
 ltc_tag_admin_list:
     pattern: /list.{_format}
-    defaults: { _format: json }
+    defaults: { _controller: LtcTagBundle:Admin:list, _format: json }
     requirements: { _format: json }

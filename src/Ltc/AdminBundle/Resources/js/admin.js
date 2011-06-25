@@ -27,9 +27,7 @@ $(function() {
     $('textarea.textarea_tags').each(function() {
         var $self = $(this);
         $.get($self.data('url'), function(tags) {
-            $self.autocomplete({
-                source: tags
-            });
+            $self.autocomplete(tags);
         }, 'json');
     });
 });

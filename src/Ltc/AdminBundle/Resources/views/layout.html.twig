@@ -1,20 +1,24 @@
 {% extends "::root.html.twig" %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="{{ asset("bundles/ltcadmin/css/admin.css") }}">
+{{ parent() }}
+    {% stylesheets
+        '@LtcAdminBundle/Resources/autocomplete/jquery.autocomplete.css'
+        '@LtcAdminBundle/Resources/css/admin.css'
+        filter="?yui_css" %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 {% endblock %}
 
 {% block javascripts %}
 {{ parent() }}
     {% javascripts
         '@LtcCoreBundle/Resources/vendor/jquery.min.js'
-        '@LtcCoreBundle/Resources/vendor/jquery.infinitescroll.js'
-        '@LtcCoreBundle/Resources/js/front.js'
+        '@LtcAdminBundle/Resources/autocomplete/jquery.autocomplete.min.js'
+        '@LtcAdminBundle/Resources/js/admin.js'
         filter="?yui_js" %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-<script src="{{ asset("bundles/ltccore/vendor/jquery-ui.min.js") }}"></script>
-<script src="{{ asset("bundles/ltcadmin/js/admin.js") }}"></script>
 {% endblock %}
 
 {% block meta_title %}Admin{% endblock %}

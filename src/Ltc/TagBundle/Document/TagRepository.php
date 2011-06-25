@@ -32,9 +32,10 @@ class TagRepository extends DocumentRepository
             ->select('title')
             ->hydrate(false)
             ->getQuery()
-            ->execute();
+            ->execute()
+            ->toArray();
 
-        return array_map(function(array $tag) { return $tag['title']; }, $tags);
+        return array_map(function(array $tag) { return $tag['title']; }, array_values($tags));
     }
 
     /**
