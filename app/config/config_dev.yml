@@ -11,7 +11,7 @@ web_profiler:
 
 assetic:
     debug: true
-    #use_controller: true
+    use_controller: true
 
 monolog:
     handlers:

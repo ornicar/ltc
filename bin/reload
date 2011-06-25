@@ -34,8 +34,5 @@ show_run "php app/console apc:clear"
 echo -e "\n--- Creating assets symlinks"
 show_run php app/console assets:install web --symlink
 
-echo -e "\n--- Dumping assetic assets"
-show_run "php app/console --env=dev assetic:dump"
-
 echo -e "\n--- Populating elasticsearch indexes"
 show_run "php app/console --env=dev foq:elastica:populate"
