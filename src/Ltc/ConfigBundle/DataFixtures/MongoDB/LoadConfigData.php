@@ -56,7 +56,7 @@ class LoadConfigData extends AbstractFixture implements OrderedFixtureInterface,
     protected function loadFeaturedArticle($featuredArticle)
     {
         $featuredArticle->setArticle($this->articleRepository->findOneBy(array()));
-        $featuredArticle->setTitle('didactique');
+        $featuredArticle->setTitle('A propos de... Didactique');
     }
 
     protected function loadPhoto($photo)
