@@ -1,3 +1,6 @@
 imports:
     - { resource: config.yml }
     - { resource: config_prod_local.yml }
+
+framework:
+    exception_controller: LtcCoreBundle:Exception:show

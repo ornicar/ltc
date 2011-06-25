@@ -42,7 +42,6 @@ class AppKernel extends Kernel
             new Ltc\ConfigBundle\LtcConfigBundle(),
             new Ltc\ImportBundle\LtcImportBundle(),
             new Ltc\AdminBundle\LtcAdminBundle(),
-            new Ltc\NotFoundBundle\LtcNotFoundBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
