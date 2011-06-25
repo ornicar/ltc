@@ -27,7 +27,13 @@ $(function() {
     $('textarea.textarea_tags').each(function() {
         var $self = $(this);
         $.get($self.data('url'), function(tags) {
-            $self.autocomplete(tags);
+            $self.autocomplete(tags, {
+                multiple: true,
+                mustMatch: false,
+                autoFill: true,
+                multipleSeparator: ",",
+                highlightItem: true
+            });
         }, 'json');
     });
 });
