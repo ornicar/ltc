@@ -9,6 +9,6 @@ _profiler:
 _main:
     resource: routing.yml
 
-_assetic:
-    resource: .
-    type:     assetic
+#_assetic:
+    #resource: .
+    #type:     assetic

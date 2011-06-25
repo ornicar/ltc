@@ -24,7 +24,7 @@ framework:
         default_locale: fr
         lifetime:       136000
         auto_start:     true
-        name:     ltc
+        name:     ltc2
     translator: { fallback: fr }
 
 twig:
