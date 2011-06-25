@@ -5,17 +5,15 @@ namespace Ltc\CoreBundle\Twig;
 use Twig_Extension;
 use Twig_Function_Method;
 use Ltc\DocBundle\Document\Doc;
-use Ltc\ArticleBundle\Document\Article;
-use Ltc\BlogBundle\Document\BlogEntry;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Ltc\CoreBundle\Router\DocRouter;
 
 class RouterExtension extends Twig_Extension
 {
-    protected $urlGenerator;
+    protected $router;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator)
+    public function __construct(DocRouter $router)
     {
-        $this->urlGenerator = $urlGenerator;
+        $this->router = $router;
     }
 
     /**
@@ -45,7 +43,7 @@ class RouterExtension extends Twig_Extension
      **/
     public function getDocPath(Doc $doc)
     {
-        return $this->generateForDoc($doc, false);
+        return $this->router->getDocPath($doc);
     }
 
     /**
@@ -55,22 +53,7 @@ class RouterExtension extends Twig_Extension
      **/
     public function getDocUrl(Doc $doc)
     {
-        return $this->generateForDoc($doc, true);
-    }
-
-    protected function generateForDoc(Doc $doc, $absolute)
-    {
-        $params = array('slug' => $doc->getSlug());
-        if ($doc instanceof BlogEntry) {
-            $route = 'ltc_blog_entry_view';
-        } elseif ($doc instanceof Article) {
-            $route = 'ltc_article_article_view';
-            $params['categorySlug'] = $doc->getCategory()->getSlug();
-        } else {
-            throw new \InvalidArgumentException(get_class($doc));
-        }
-
-        return $this->urlGenerator->generate($route, $params, $absolute);
+        return $this->router->getDocUrl($doc);
     }
 
     /**

@@ -6,6 +6,7 @@ use Symfony\Component\DependencyInjection\ContainerAware;
 use Symfony\Component\HttpKernel\Exception\FlattenException;
 use Symfony\Component\HttpKernel\Log\DebugLoggerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ExceptionController extends ContainerAware
 {
@@ -20,28 +21,21 @@ class ExceptionController extends ContainerAware
      */
     public function showAction(FlattenException $exception, DebugLoggerInterface $logger = null, $format = 'html')
     {
-        $this->container->get('request')->setRequestFormat($format);
+        $request = $this->container->get('request');
+        $request->setRequestFormat($format);
 
         $code = $exception->getStatusCode();
-        $params = array(
-            'status_code'    => $code,
-            'status_text'    => Response::$statusTexts[$code],
-        );
         $templating = $this->container->get('templating');
 
         if(404 == $code) {
-            if($this->container->get('request')->isXmlHttpRequest()) {
-                $response = new Response('You should not do that.');
-            } else {
-                $response = $templating->renderResponse('LtcCoreBundle:Exception:notFound.html.twig', $params);
+            if ($doc = $this->container->get('ltc_core.not_found_search')->findGoodMatch($request)) {
+                $url = $this->container->get('ltc_core.doc_router')->getDocPath($doc);
+
+                return new RedirectResponse($url);
             }
+            $response = $templating->renderResponse('LtcCoreBundle:Exception:notFound.html.twig');
         } else {
-            if($this->container->get('request')->isXmlHttpRequest()) {
-                $response = new Response('Something went terribly wrong.');
-            } else {
-                $params['url'] = !empty($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : $_SERVER['REQUEST_URI'];
-                $response = $templating->renderResponse('LtcCoreBundle:Exception:error.html.twig', $params);
-            }
+            $response = $templating->renderResponse('LtcCoreBundle:Exception:error.html.twig');
         }
         $response->setStatusCode($code);
         $response->headers->replace($exception->getHeaders());

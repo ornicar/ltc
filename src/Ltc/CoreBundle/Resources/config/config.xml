@@ -22,6 +22,9 @@
         <service id="ltc_core.paginator_factory" class="Ltc\CoreBundle\PaginatorFactory" public="true">
             <argument type="collection" /> <!-- options -->
         </service>
+        <service id="ltc_core.doc_router" class="Ltc\CoreBundle\Router\DocRouter" public="true">
+            <argument type="service" id="router" />
+        </service>
     </services>
 
 </container>

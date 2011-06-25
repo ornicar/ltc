@@ -16,6 +16,16 @@
             <argument type="service" id="ltc_article.repository.article" />
         </service>
 
+        <service id="ltc_core.not_found_search" class="Ltc\CoreBundle\Search\NotFoundSearch" public="true">
+            <argument type="service" id="ltc_core.single_match_finder" />
+            <argument>50</argument>
+        </service>
+
+        <service id="ltc_core.single_match_finder" class="Ltc\CoreBundle\Search\SingleMatchFinder" public="false">
+            <argument type="service" id="foq_elastica.index.doc" />
+            <argument type="service" id="ltc_core.search.elastica_to_model_transformer.doc" />
+        </service>
+
     </services>
 
 </container>

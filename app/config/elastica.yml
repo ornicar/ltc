@@ -21,6 +21,7 @@ foq_elastica:
                             query_builder_method: createPublishedQueryBuilder
                     mappings:
                         title: { boost: 8 }
+                        slug: { boost: 8 }
                         summary: { boost: 2 }
                         body: 
                         tags: { boost: 4 }
@@ -34,6 +35,7 @@ foq_elastica:
                             query_builder_method: createPublishedQueryBuilder
                     mappings:
                         title: { boost: 8 }
+                        slug: { boost: 8 }
                         categoryTitle: { boost: 2 }
                         summary: { boost: 2 }
                         body: 
