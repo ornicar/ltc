@@ -2,20 +2,20 @@
 
 namespace Ltc\CoreBundle\Twig;
 
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Twig_Extension;
 use Twig_Function_Method;
 use Ltc\DocBundle\Document\Doc;
 use Ltc\ArticleBundle\Document\Article;
 use Ltc\BlogBundle\Document\BlogEntry;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class RouterExtension extends Twig_Extension
 {
     protected $urlGenerator;
 
-    public function __construct(ContainerInterface $container)
+    public function __construct(UrlGeneratorInterface $urlGenerator)
     {
-        $this->urlGenerator = $container->get('router')->getGenerator();
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
