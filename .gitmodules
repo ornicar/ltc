@@ -88,3 +88,6 @@
 [submodule "src/Knplabs/Bundle/GaufretteBundle"]
 	path = src/Knplabs/Bundle/GaufretteBundle
 	url = git://github.com/knplabs/GaufretteBundle.git
+[submodule "src/Sensio/Bundle/GeneratorBundle"]
+	path = src/Sensio/SensioGeneratorBundle
+	url = git://github.com/sensio/Bundle/GeneratorBundle.git

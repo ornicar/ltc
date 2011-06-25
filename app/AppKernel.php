@@ -42,11 +42,13 @@ class AppKernel extends Kernel
             new Ltc\ConfigBundle\LtcConfigBundle(),
             new Ltc\ImportBundle\LtcImportBundle(),
             new Ltc\AdminBundle\LtcAdminBundle(),
+            new Ltc\NotFoundBundle\LtcNotFoundBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this);
+            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
         }
 
         return $bundles;
@@ -55,10 +57,5 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load(__DIR__.'/config/config_'.$this->getEnvironment().'.yml');
-    }
-
-    public function registerRootDir()
-    {
-        return __DIR__;
     }
 }

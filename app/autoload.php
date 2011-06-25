@@ -28,6 +28,7 @@ $loader->registerNamespaces(array(
     'Knplabs'                        => $srcDir,
     'Avalanche'                      => $srcDir,
     'JMS'                            => $srcDir,
+    'Sensio'                         => $srcDir,
     'Bundle'                         => $srcDir,
 ));
 $loader->registerPrefixes(array(
