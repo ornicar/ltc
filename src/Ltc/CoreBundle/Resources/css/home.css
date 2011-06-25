@@ -13,7 +13,15 @@ body.home .side_search {
     margin-bottom: 2em;
 }
 body.home .side_story {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
+    margin-right: 9px;
+    background: #f9eddd;
+    padding: 1em;
+    border: 1px solid #a0a0a0;
+    font-size: 90%;
+    -moz-box-shadow:5px 6px 9px #999999;
+	-webkit-box-shadow:5px 6px 9px #999999;
+	box-shadow:5px 6px 9px #999999;
 }
 body.home .story_preview .title {
     float: left;

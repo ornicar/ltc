@@ -84,6 +84,9 @@ body.search form.search input.query {
     font-size: 1.5em;
     padding: 0.2em 0.3em;
 }
+input.query.hinted {
+    color: #888;
+}
 body.search form.search input.submit {
     font-size: 1.5em;
     padding: 0.2em 0.3em;
@@ -95,5 +98,5 @@ body.search .search .result {
     padding: 0.2em 0.3em;
 }
 .small_search input.query {
-    width: 60%;
+    width: 85%;
 }

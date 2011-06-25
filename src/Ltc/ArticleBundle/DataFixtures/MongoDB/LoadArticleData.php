@@ -297,7 +297,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
 
     protected function fixMarkdownUrls($text, array $pageUrls)
     {
-        return preg_replace_callback('#\(page/(\d+)\)#', function($matches) use ($pageUrls) {
+        $text = preg_replace_callback('#\(page/(\d+)\)#', function($matches) use ($pageUrls) {
             $pageId = $matches[1];
             if (isset($pageUrls[$pageId])) {
                 $url = '/lestroiscouronnes/'.$pageUrls[$pageId];
@@ -306,5 +306,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             }
             return sprintf('(%s)', $url);
         }, $text);
+
+        return $text;
     }
 }

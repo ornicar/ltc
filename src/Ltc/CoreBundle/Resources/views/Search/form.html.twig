@@ -1,4 +1,4 @@
 <form class="search" action="{{ path("ltc_search") }}" method="get">
-    <input class="query" name="q" value="{{ app.request.query.get("q") }}" />
-    <input class="submit" type="submit" value="Rechercher" />
+    <input class="query hint_me" data-hint="Rechercher" name="q" value="{{ app.request.query.get("q") }}" />
+    <input class="submit" type="submit" value="&rarr;" />
 </form>

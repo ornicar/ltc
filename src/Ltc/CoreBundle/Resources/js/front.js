@@ -10,6 +10,8 @@ $(function() {
             donetext: "Fin de la liste des articles."
         }).find('div.pagination').hide();
     });
+
+    $('input.hint_me').hints();
 });
 
 if (typeof console == "undefined" || typeof console.log == "undefined") console = {
