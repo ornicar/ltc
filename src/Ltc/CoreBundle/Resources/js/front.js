@@ -1,5 +1,6 @@
 $(function() {
-    $('.js_email').text(['pascal', 'Duplessis@', 'aol.com'].join(''));
+    var email = ['pascal', 'Duplessis@', 'aol.com'].join('');
+    $('.js_email').text(email).attr('href', 'mailto:'+email);
 
     $('.infinitescroll').each(function() {
         $(this).infinitescroll({
