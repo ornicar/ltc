@@ -4,7 +4,7 @@
 <div class="row">
     <div class="fourcol">
         <div class="meta_block">
-            <a href="{{ path("ltc_blog_entry_index") }}">
+            <a href="{{ path("homepage") }}">
                 &lt; Retour à l'accueil
             </a>
         </div>
@@ -13,7 +13,7 @@
             {% include "LtcStoryBundle:Story:linkList.html.twig" with {"stories": stories} %}
         </div>
     </div>
-    <article class="eightcol last markdown story_view">
+    <article class="eightcol last markdown story_view readable">
         <header>
             <h1 class="title long">{{ story.title }}</h1>
             <p class="metadata">{{ story.authorName}} {{ story.publishedAt|ltc_date }}</p>

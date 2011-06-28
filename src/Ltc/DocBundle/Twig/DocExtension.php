@@ -99,7 +99,7 @@ class DocExtension extends \Twig_Extension
         $string = $this->getPublicationDate($doc);
         $author = $author = $this->getAuthor($doc);
         if (!empty($author)) {
-            $string = sprintf('%s<br />%s', $author, $string);
+            $string = sprintf('%s, %s', $author, $string);
         }
 
         return $string;
