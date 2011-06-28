@@ -39,7 +39,7 @@ class LoadStoryData extends AbstractFixture implements OrderedFixtureInterface, 
             if ($a['url']) {
                 $body .= sprintf(' [%s](%s)', 'Lire la suite...', $a['url']);
             }
-            $o->setBody($body);
+            $o->setSummary($body);
             if ($a['auteur']) {
                 $o->setAuthorName($a['auteur']);
             }

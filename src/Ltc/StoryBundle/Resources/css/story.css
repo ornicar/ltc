@@ -1,0 +1,22 @@
+.side_story {
+    margin-bottom: 1.5em;
+    margin-right: 9px;
+    background: #f9eddd;
+    padding: 1em;
+    border: 1px solid #a0a0a0;
+    font-size: 90%;
+    -moz-box-shadow:5px 6px 9px #999999;
+	-webkit-box-shadow:5px 6px 9px #999999;
+	box-shadow:5px 6px 9px #999999;
+}
+.story_preview .title {
+    float: left;
+    margin-right: 1em;
+}
+.story_preview .metadata {
+    color: #666;
+}
+.story_view .summary {
+    font-style: italic;
+    margin-bottom: 2em;
+}

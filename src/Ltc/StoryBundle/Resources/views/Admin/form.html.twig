@@ -10,15 +10,17 @@
     {{ form_errors(form.title) }}
     {{ form_widget(form.title) }}
 </div>
-<div class="inline_label">
-    {{ form_widget(form.isPublished) }}
-    {{ form_label(form.isPublished, "Visible sur le site") }}
+<div>
+    {{ form_label(form.summary, "Resume") }}
+    <div class="help">Ici tu peux utiliser du markdown pour faire des liens.
+    Mieux vaut eviter les titres et les listes.</div>
+    {{ form_widget(form.summary, {"attr": {"rows": 5}}) }}
+    {{ form_errors(form.summary) }}
 </div>
 <div>
     {{ form_label(form.body, "Texte") }}
-    Ici tu peux utiliser du markdown pour faire des liens.
-    Mieux vaut eviter les titres et les listes.
-    {{ form_widget(form.body, {"attr": {"rows": 10}}) }}
+    <div class="help">Ici tu peux utiliser du markdown pour faire des liens, des titres et des listes.</div>
+    {{ form_widget(form.body, {"attr": {"rows": 15}}) }}
     {{ form_errors(form.body) }}
 </div>
 <section>

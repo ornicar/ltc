@@ -11,7 +11,7 @@ class StoryFormType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('isPublished')
+            ->add('summary', 'textarea')
             ->add('body', 'textarea')
             ->add('authorName')
         ;

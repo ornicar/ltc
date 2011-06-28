@@ -1,0 +1,5 @@
+<ul class="article_link_list">
+{% for story in stories %}
+    <li><a href="{{ path('ltc_story_view', {"slug": story.slug}) }}">{{ story.title }}</a></li>
+{% endfor %}
+</ul>

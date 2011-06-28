@@ -26,7 +26,6 @@ framework:
         auto_start:     true
         name:     ltc2
     translator: { fallback: fr }
-    exception_controller: LtcCoreBundle:Exception:show
 
 twig:
     debug:            %kernel.debug%

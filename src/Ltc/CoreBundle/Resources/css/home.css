@@ -12,25 +12,6 @@ body.home .side_search {
     margin-top: 0.9em;
     margin-bottom: 2em;
 }
-body.home .side_story {
-    margin-bottom: 1.5em;
-    margin-right: 9px;
-    background: #f9eddd;
-    padding: 1em;
-    border: 1px solid #a0a0a0;
-    font-size: 90%;
-    -moz-box-shadow:5px 6px 9px #999999;
-	-webkit-box-shadow:5px 6px 9px #999999;
-	box-shadow:5px 6px 9px #999999;
-}
-body.home .story_preview .title {
-    float: left;
-    margin-right: 1em;
-}
-body.home .story_preview .metadata {
-    color: #666;
-}
-
 body.home div.category_column > div, div.tag_cloud_small, div.home_tags {
     margin-bottom: 20px;
 }

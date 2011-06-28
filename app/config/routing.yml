@@ -25,6 +25,10 @@ ltc_tag_admin:
     resource: "@LtcTagBundle/Resources/config/routing_admin.yml"
     prefix: /admin/tags
 
+ltc_story:
+    resource: "@LtcStoryBundle/Resources/config/routing.yml"
+    prefix: /actu
+
 ltc_story_admin:
     resource: "@LtcStoryBundle/Resources/config/routing_admin.yml"
     prefix: /admin/actus

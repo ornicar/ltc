@@ -5,6 +5,7 @@ namespace Ltc\StoryBundle\Document;
 use DateTime;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -13,6 +14,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *   repositoryClass="Ltc\StoryBundle\Document\StoryRepository"
  * )
  * @MongoDB\Index(keys={"createdAt"="desc"})
+ * @MongoDB\Index(keys={"publishedAt"="desc"})
+ * @MongoDB\UniqueIndex(keys={"slug"="asc"})
  */
 class Story
 {
@@ -32,15 +35,33 @@ class Story
      * @Assert\MinLength(3)
      * @Assert\MaxLength(300)
      * @MongoDB\Field(type="string")
+     * @Gedmo\Sluggable
      */
     protected $title;
+
+    /**
+     * Url friendly slug based on title
+     *
+     * @var string
+     * @MongoDB\Field(type="string")
+     * @Gedmo\Slug(unique="true", updatable="true")
+     */
+    protected $slug;
+
+    /**
+     * Short summary
+     *
+     * @var string
+     * @Assert\NotBlank()
+     * @Assert\MinLength(8)
+     * @MongoDB\Field(type="string")
+     */
+    protected $summary;
 
     /**
      * Full text of the story
      *
      * @var string
-     * @Assert\NotBlank()
-     * @Assert\MinLength(3)
      * @MongoDB\Field(type="string")
      */
     protected $body;
@@ -77,7 +98,7 @@ class Story
      * @var bool
      * @MongoDB\Field(type="boolean")
      */
-    protected $isPublished;
+    protected $isPublished = true;
 
     /**
      * Publication date
@@ -157,6 +178,40 @@ class Story
     /**
      * @return string
      */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param  string
+     * @return null
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param  string
+     * @return null
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
+
+    /**
+     * @return string
+     */
     public function getBody()
     {
         return $this->body;
@@ -230,6 +285,16 @@ class Story
     public function setCreatedAt(DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * Gets a unique comment identifier, usable as a slug
+     *
+     * @return string
+     **/
+    public function getCommentIdentifier()
+    {
+        return 'actu-'.$this->getSlug();
     }
 
     public function __toString()

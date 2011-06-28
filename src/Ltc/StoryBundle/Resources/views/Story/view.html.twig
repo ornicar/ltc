@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block content %}
+<div class="row">
+    <div class="fourcol">
+        <div class="meta_block">
+            <a href="{{ path("ltc_blog_entry_index") }}">
+                &lt; Retour à l'accueil
+            </a>
+        </div>
+        <div class="meta_block nice_list small">
+            <span class="title shy">Toutes les actus</span>
+            {% include "LtcStoryBundle:Story:linkList.html.twig" with {"stories": stories} %}
+        </div>
+    </div>
+    <article class="eightcol last markdown story_view">
+        <header>
+            <h1 class="title long">{{ story.title }}</h1>
+            <p class="metadata">{{ story.authorName}} {{ story.publishedAt|ltc_date }}</p>
+        </header>
+        <div class="summary">{{ story.summary|markdown }}</div>
+        <div class="body">{{ story.body|markdown }}</div>
+
+        <span class="title">Discussion</span>
+        {% render "FOSCommentBundle:Thread:show" with {"identifier": story.commentIdentifier} %}
+    </article>
+
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts
+        '@LtcCommentBundle/Resources/vendor/jquery.form.js'
+        '@LtcCommentBundle/Resources/js/form.js'
+        filter="?yui_js" %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

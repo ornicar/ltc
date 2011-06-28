@@ -14,8 +14,17 @@ class StoryController extends Controller
             $story = $this->get('ltc_story.repository.story')->findOneBy(array());
         }
 
-        return $this->render('LtcStoryBundle:Story:featured.html.twig', array(
-            'story' => $story
-        ));
+        return $this->render('LtcStoryBundle:Story:featured.html.twig', array('story' => $story));
+    }
+
+    public function viewAction($slug)
+    {
+        $story = $this->get('ltc_story.repository.story')->findOneBySlug($slug);
+        if (!$story) {
+            throw new NotFoundHttpException();
+        }
+        $stories = $this->get('ltc_story.repository.story')->findAllSortedByPublishedAt();
+
+        return $this->render('LtcStoryBundle:Story:view.html.twig', array('story' => $story, 'stories' => $stories));
     }
 }
