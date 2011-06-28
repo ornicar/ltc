@@ -32,12 +32,6 @@
         {% render "LtcBlogBundle:Blog:smallList" with {"numberOfDocs": 4} %}
         <a class="all_others" href="{{ path("ltc_blog_entry_index") }}">&gt; autres articles</a>
 
-        <div class="home_tags">
-            <span class="title"><a href="{{ path("ltc_tag_cloud") }}">Tags</a></span>
-            {% render "LtcTagBundle:Tag:smallCloud" with {"numberOfTags": 20} %}
-            <a class="all_others" href="{{ path("ltc_tag_cloud") }}">&gt; autres tags</a>
-        </div>
-
         <span class="title">Ailleurs</span>
         <a href="{{ photo.url }}"><img src="{{ asset(photo.image|ltc_file|apply_filter("lantenora")) }}" alt="{{ photo.title}}" /></a>
         <p class="metadata">{{ photo.image.legend }}</p>
@@ -45,6 +39,12 @@
         <br />
         <a class="all_others" href="http://esmeree.fr/blanc-cerf">&gt; Le Blanc Cerf</a>
 
+
+        <div class="home_tags">
+            <span class="title"><a href="{{ path("ltc_tag_cloud") }}">Tags</a></span>
+            {% render "LtcTagBundle:Tag:smallCloud" with {"numberOfTags": 20} %}
+            <a class="all_others" href="{{ path("ltc_tag_cloud") }}">&gt; autres tags</a>
+        </div>
     </div>
 </div>
 
