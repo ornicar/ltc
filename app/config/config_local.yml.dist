@@ -5,6 +5,5 @@ framework:
 apc:
     host: http://ltc
 
-fos_comment:
-    akismet:
-        api_key: s3cr3t
+ornicar_akismet:
+    api_key: s3cr3t

@@ -29,6 +29,7 @@ $loader->registerNamespaces(array(
     'Avalanche'                      => $srcDir,
     'JMS'                            => $srcDir,
     'Sensio'                         => $srcDir,
+    'Ornicar'                        => $srcDir,
     'Bundle'                         => $srcDir,
 ));
 $loader->registerPrefixes(array(

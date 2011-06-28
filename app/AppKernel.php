@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\CommentBundle\FOSCommentBundle(),
             new FOQ\TyperBundle\FOQTyperBundle(),
             new FOQ\ElasticaBundle\FOQElasticaBundle(),
+            new Ornicar\AkismetBundle\OrnicarAkismetBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Bundle\ApcBundle\ApcBundle(),
             new Bundle\ZendCacheBundle\ZendCacheBundle(),

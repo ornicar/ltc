@@ -8,6 +8,7 @@ imports:
     - { resource: comment.yml }
     - { resource: zend.yml }
     - { resource: gaufrette.yml }
+    - { resource: akismet.yml }
     - { resource: ltc.yml }
     - { resource: config_local.yml }
 

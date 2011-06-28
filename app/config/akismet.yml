@@ -1,0 +1,5 @@
+ornicar_akismet:
+    url:                http://esmeree.fr/
+    service:            ornicar_akismet.akismet_real
+    throw_exceptions:   false
+    #api_key: see config local
