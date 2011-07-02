@@ -27,7 +27,7 @@
 	url = git://github.com/l3pp4rd/DoctrineExtensions.git
 [submodule "src/Stof/DoctrineExtensionsBundle"]
 	path = src/Stof/DoctrineExtensionsBundle
-	url = git://github.com/stof/DoctrineExtensionsBundle.git
+	url = git://github.com/stof/StofDoctrineExtensionsBundle.git
 [submodule "src/Bundle/ApcBundle"]
 	path = src/Bundle/ApcBundle
 	url = git://github.com/ornicar/ApcBundle.git
@@ -36,13 +36,13 @@
 	url = git://github.com/knplabs/MenuBundle.git
 [submodule "src/FOS/UserBundle"]
     path = src/FOS/UserBundle
-    url = git://github.com/FriendsOfSymfony/UserBundle.git
+    url = git://github.com/FriendsOfSymfony/FOSUserBundle.git
 [submodule "src/FOS/CommentBundle"]
     path = src/FOS/CommentBundle
-    url = git://github.com/FriendsOfSymfony/CommentBundle.git
+    url = git://github.com/FriendsOfSymfony/FOSCommentBundle.git
 [submodule "src/FOQ/TyperBundle"]
 	path = src/FOQ/TyperBundle
-	url = git://github.com/ornicar/TyperBundle
+	url = git://github.com/ornicar/FOQTyperBundle
 [submodule "vendor/imagine"]
 	path = vendor/imagine
 	url = git://github.com/avalanche123/Imagine.git
@@ -62,7 +62,7 @@
 	path = vendor/monolog
 	url = git://github.com/Seldaek/monolog.git
 [submodule "src/FOQ/ElasticaBundle"]
-	path = src/FOQ/ElasticaBundle
+	path = src/FOQ/FOQElasticaBundle
 	url = git://github.com/Exercise/ElasticaBundle
 [submodule "vendor/elastica"]
 	path = vendor/elastica
@@ -93,7 +93,7 @@
 	url = git://github.com/sensio/SensioGeneratorBundle.git
 [submodule "src/Ornicar/AkismetBundle"]
 	path = src/Ornicar/AkismetBundle
-	url = git://github.com/ornicar/AkismetBundle.git
+	url = git://github.com/ornicar/OrnicarAkismetBundle.git
 [submodule "src/Ornicar/InsaneMarkdownBundle"]
 	path = src/Ornicar/InsaneMarkdownBundle
 	url = git://github.com/ornicar/OrnicarInsaneMarkdownBundle.git
