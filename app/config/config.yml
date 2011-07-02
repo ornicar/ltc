@@ -28,6 +28,13 @@ framework:
         name:     ltc2
     translator: { fallback: fr }
 
+monolog:
+    handlers:
+        main:
+            type:  stream
+            path:  %kernel.logs_dir%/%kernel.environment%.log
+            level: warning
+
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
@@ -39,6 +46,5 @@ apc:
 knplabs_menu:
     twig: true
 
-knplabs_markdown:
-    parser:
-        service: markdown.parser.medium
+ornicar_insane_markdown:
+    path: /usr/bin/markdown

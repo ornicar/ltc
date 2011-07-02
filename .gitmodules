@@ -94,3 +94,6 @@
 [submodule "src/Ornicar/AkismetBundle"]
 	path = src/Ornicar/AkismetBundle
 	url = git://github.com/ornicar/AkismetBundle.git
+[submodule "src/Ornicar/InsaneMarkdownBundle"]
+	path = src/Ornicar/InsaneMarkdownBundle
+	url = git://github.com/ornicar/OrnicarInsaneMarkdownBundle.git
