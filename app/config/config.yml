@@ -6,7 +6,6 @@ imports:
     - { resource: doctrine.yml }
     - { resource: assetic.yml }
     - { resource: comment.yml }
-    - { resource: zend.yml }
     - { resource: gaufrette.yml }
     - { resource: akismet.yml }
     - { resource: ltc.yml }

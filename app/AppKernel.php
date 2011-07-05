@@ -17,7 +17,6 @@ class AppKernel extends Kernel
 
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new Bundle\ApcBundle\ApcBundle(),
-            new Bundle\ZendCacheBundle\ZendCacheBundle(),
             new FOQ\ElasticaBundle\FOQElasticaBundle(),
             new FOQ\TyperBundle\FOQTyperBundle(),
             new FOS\CommentBundle\FOSCommentBundle(),
