@@ -47,4 +47,4 @@ knplabs_menu:
     twig: true
 
 ornicar_insane_markdown:
-    path: /usr/bin/markdown
+    path: /usr/local/bin/markdown

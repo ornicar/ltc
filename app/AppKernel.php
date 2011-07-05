@@ -11,23 +11,23 @@ class AppKernel extends Kernel
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\DoctrineMongoDBBundle\DoctrineMongoDBBundle(),
-            new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle(),
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
 
-            new FOS\UserBundle\FOSUserBundle(),
-            new FOS\CommentBundle\FOSCommentBundle(),
-            new FOQ\TyperBundle\FOQTyperBundle(),
-            new FOQ\ElasticaBundle\FOQElasticaBundle(),
-            new Ornicar\AkismetBundle\OrnicarAkismetBundle(),
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
             new Bundle\ApcBundle\ApcBundle(),
             new Bundle\ZendCacheBundle\ZendCacheBundle(),
-            new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
-            new Ornicar\InsaneMarkdownBundle\OrnicarInsaneMarkdownBundle(),
+            new FOQ\ElasticaBundle\FOQElasticaBundle(),
+            new FOQ\TyperBundle\FOQTyperBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
             new Knplabs\Bundle\GaufretteBundle\KnplabsGaufretteBundle(),
-            new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),
+            new Knplabs\Bundle\MenuBundle\KnplabsMenuBundle(),
+            new Ornicar\AkismetBundle\OrnicarAkismetBundle(),
+            new Ornicar\InsaneMarkdownBundle\OrnicarInsaneMarkdownBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
             new Ltc\UserBundle\LtcUserBundle(),
             new Ltc\CommentBundle\LtcCommentBundle(),
@@ -47,8 +47,8 @@ class AppKernel extends Kernel
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-            $bundles[] = new JMS\DebuggingBundle\JMSDebuggingBundle($this);
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Symfony\Bundle\DoctrineFixturesBundle\DoctrineFixturesBundle();
         }
 
         return $bundles;

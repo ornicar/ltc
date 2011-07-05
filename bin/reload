@@ -1,23 +1,20 @@
 #!/bin/sh
 
-show_run()
-{
+# Shows a command and executes it
+show_run() {
     echo "    $ $*"
-    $*
+    result=$($*)
+    if [ -z $? ]; then
+        echo "--- FAIL"
+        echo $result
+        exit 1
+    fi
 }
 
-echo "--- Initialize filesystem"
-show_run mkdir -p app/cache/dev app/cache/test app/logs web/uploads 
-for env in "dev" "test"; do
-    if [ "$(ls -A app/cache/$env/)" ]; then
-        show_run rm -r app/cache/$env/*
-    fi
-done
-
 echo -e "\n--- Building bootstrap"
-show_run "bin/build_bootstrap.php"
+show_run "vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php"
 
-for environment in dev ; do
+for environment in dev; do
     echo -e "\n--- warming up $environment cache"
     show_run "php app/console --env=$environment cache:clear"
 
@@ -31,8 +28,7 @@ done
 echo -e "\n--- Clearing APC cache"
 show_run "php app/console apc:clear"
 
-echo -e "\n--- Creating assets symlinks"
-show_run php app/console assets:install web --symlink
-
 echo -e "\n--- Populating elasticsearch indexes"
 show_run "php app/console --env=dev foq:elastica:populate"
+
+echo "All set!"
