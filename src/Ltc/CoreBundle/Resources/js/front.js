@@ -4,12 +4,12 @@ $(function() {
 
     $('.infinitescroll').each(function() {
         $(this).infinitescroll({
-            navSelector: "div.pagination",
-            nextSelector: "div.pagination a.next",
+            navSelector: "div.pager",
+            nextSelector: "div.pager a.next",
             itemSelector: ".infinitescroll .paginated_item",
             loadingText: "Chargement des articles suivants...",
             donetext: "Fin de la liste des articles."
-        }).find('div.pagination').hide();
+        }).find('div.pager').hide();
     });
 
     $('input.hint_me').hints();

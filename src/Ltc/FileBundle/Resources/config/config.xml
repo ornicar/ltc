@@ -10,7 +10,7 @@
 
         <service id="ltc_file.form_type.ltc_file" class="Ltc\FileBundle\Form\LtcFileFormType">
             <argument type="service" id="ltc_file.uploader" />
-            <argument type="service" id="knplabs_gaufrette.filesystem_map" />
+            <argument type="service" id="knp_gaufrette.filesystem_map" />
             <tag name="form.type" alias="ltc_file" />
         </service>
 

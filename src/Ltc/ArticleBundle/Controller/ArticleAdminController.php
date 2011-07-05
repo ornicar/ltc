@@ -28,7 +28,6 @@ class ArticleAdminController extends Controller
         if (!$category) {
             throw new NotFoundHttpException(sprintf('No category found with slug "%s"', $categorySlug));
         }
-        $this->get('ltc_admin.menu.main')->getChild($category->getTitle())->setIsCurrent(true);
         $article = new Article();
         $article->setCategory($category);
         $form = $this->get('form.factory')->create(new ArticleFormType(false), $article);
@@ -50,7 +49,6 @@ class ArticleAdminController extends Controller
     {
         $article = $this->get('ltc_article.provider')->findArticle($categorySlug, $slug);
         if (!$article) throw new NotFoundHttpException();
-        $this->get('ltc_admin.menu.main')->getChild($article->getCategory()->getTitle())->setIsCurrent(true);
         $form = $this->get('form.factory')->create(new ArticleFormType(true), $article);
         $request = $this->get('request');
         if ('POST' === $request->getMethod()) {

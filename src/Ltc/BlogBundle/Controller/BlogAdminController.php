@@ -22,7 +22,6 @@ class BlogAdminController extends Controller
 
     public function newAction()
     {
-        $this->get('ltc_admin.menu.main')->getChild('Table ronde')->setIsCurrent(true);
         $blogEntry = new BlogEntry();
         $form = $this->get('form.factory')->create(new BlogEntryFormType(), $blogEntry);
         if ('POST' === $request->getMethod()) {
@@ -43,7 +42,6 @@ class BlogAdminController extends Controller
 
     public function editAction($slug)
     {
-        $this->get('ltc_admin.menu.main')->getChild('Table ronde')->setIsCurrent(true);
         $blogEntry = $this->get('ltc_blog.repository.blog_entry')->findOneBySlug($slug);
         if (!$blogEntry) throw new NotFoundHttpException();
         $form = $this->get('form.factory')->create(new BlogEntryFormType(), $blogEntry);

@@ -3,8 +3,8 @@
 namespace Ltc\CoreBundle;
 
 use Doctrine\ODM\MongoDB\Query\Builder as QueryBuilder;
-use ZendPaginatorAdapter\DoctrineMongoDBAdapter;
-use Zend\Paginator\Paginator;
+use Pagerfanta\Adapter\DoctrineODMMongoDBAdapter;
+use Pagerfanta\Pagerfanta;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -18,8 +18,7 @@ class PaginatorFactory
      * @var array
      */
     protected $options = array(
-        'item_count_per_page' => 10,
-        'page_range' => 5
+        'item_count_per_page' => 10
     );
 
     /**
@@ -39,7 +38,7 @@ class PaginatorFactory
      **/
     public function paginate(QueryBuilder $queryBuilder, $page)
     {
-        $paginator = new Paginator(new DoctrineMongoDBAdapter($queryBuilder));
+        $paginator = new Pagerfanta(new DoctrineODMMongoDBAdapter($queryBuilder));
         $this->configurePaginator($paginator, $page);
 
         return $paginator;
@@ -50,14 +49,10 @@ class PaginatorFactory
      *
      * @return null
      **/
-    public function configurePaginator(Paginator $paginator, $page, array $options = array())
+    public function configurePaginator(Pagerfanta $paginator, $page, array $options = array())
     {
         $options = array_merge($this->options, $options);
-        $paginator->setItemCountPerPage($options['item_count_per_page']);
-        $paginator->setPageRange($options['page_range']);
-        if ($page > 1 && $page > $paginator->count()) {
-            throw new NotFoundHttpException('No more items');
-        }
-        $paginator->setCurrentPageNumber($page);
+        $paginator->setMaxPerPage($options['item_count_per_page']);
+        $paginator->setCurrentPage($page);
     }
 }

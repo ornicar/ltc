@@ -34,7 +34,7 @@
                 <li><a href="{{ path("homepage") }}">Site</a></li>
             </ul>
         </div>
-        {{ menu("ltc.admin.main") }}
+        {% include "LtcAdminBundle::menu.html.twig" with {"current": block('menu')} %}
     </div>
 
     <div id="content" class="{{ block("content_class") }}">

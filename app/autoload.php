@@ -25,8 +25,10 @@ $loader->registerNamespaces(array(
     'WhiteOctober'                   => $bundleDir,
     'FOS'                            => $bundleDir,
     'FOQ'                            => $bundleDir,
+    'Knp'                            => $bundleDir,
     'Avalanche'                      => $bundleDir,
     'Stof'                           => $bundleDir,
+    'Bundle'                         => $bundleDir,
 ));
 $loader->registerPrefixes(array(
     'Twig_'            => $vendorDir.'/twig/lib',

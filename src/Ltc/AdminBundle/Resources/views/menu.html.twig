@@ -1,0 +1,11 @@
+<ul id="main_nav">
+    <li{{ 'home' == current ? ' class="current"' : '' }}><a href="{{ path("ltc_admin_dashboard") }}">Admin</a></li>
+    <li{{ 'blog' == current ? ' class="current"' : '' }}><a href="{{ path("ltc_blog_admin_entry_list") }}">Table Ronde</a></li>
+    {% for slug, title in ltc_article_categories_infos() %}
+        <li{{ slug == current ? ' class="current"' : '' }}><a href="{{ path("ltc_article_admin_category_view", {"slug": slug}) }}">{{ title }}</a></li>
+    {% endfor %}
+    <li{{ 'story' == current ? ' class="current"' : '' }}><a href="{{ path("ltc_story_admin_story_list") }}">Actus</a></li>
+    <li{{ 'tag' == current ? ' class="current"' : '' }}><a href="{{ path("ltc_tag_admin_index") }}">Tags</a></li>
+    <li{{ 'config' == current ? ' class="current"' : '' }}><a href="{{ path("ltc_config_admin_index") }}">Config</a></li>
+    <li{{ 'manager' == current ? ' class="current"' : '' }}><a href="{{ path("ltc_admin_manager") }}">Fichiers</a></li>
+</ul>

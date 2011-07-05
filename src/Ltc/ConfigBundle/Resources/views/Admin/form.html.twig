@@ -1,5 +1,7 @@
 {% extends "LtcAdminBundle::form.html.twig" %}
 
+{% block menu %}config{% endblock %}
+
 {% block list_url %}{{ path("ltc_config_admin_index") }}{% endblock %}
 
 {% block title %}{{ config.title }}{% endblock %}

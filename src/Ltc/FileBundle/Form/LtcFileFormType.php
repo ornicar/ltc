@@ -5,7 +5,7 @@ namespace Ltc\FileBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
 use Gaufrette\Filesystem;
-use Knplabs\Bundle\GaufretteBundle\FilesystemMap;
+use Knp\Bundle\GaufretteBundle\FilesystemMap;
 use Ltc\FileBundle\Uploader;
 use Ltc\FileBundle\Form\EventListener\FileUploadListener;
 

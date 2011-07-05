@@ -1,5 +1,7 @@
 {% extends "LtcDocBundle:Admin:list.html.twig" %}
 
+{% block menu %}{{ category.slug }}{% endblock %}
+
 {% block new_link %}
 <a href="{{ path("ltc_article_admin_article_new", {"categorySlug": category.slug}) }}">Nouvel article</a>
 {% endblock %}

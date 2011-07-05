@@ -1,5 +1,7 @@
 {% extends "LtcAdminBundle::layout.html.twig" %}
 
+{% block menu %}manager{% endblock %}
+
 {% block content %}
 <iframe class="file_manager full_height" src="{{ asset("manager/browse.php") }}"></iframe>
 {% endblock %}

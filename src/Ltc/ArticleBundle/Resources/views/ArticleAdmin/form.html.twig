@@ -1,5 +1,7 @@
 {% extends "LtcDocBundle:Admin:form.html.twig" %}
 
+{% block menu %}{{ doc.category.slug }}{% endblock %}
+
 {% block list_url %}
 {{ path("ltc_article_admin_category_view", {"slug": doc.category.slug}) }}
 {% endblock %}

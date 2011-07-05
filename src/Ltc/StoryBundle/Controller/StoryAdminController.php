@@ -22,7 +22,6 @@ class StoryAdminController extends Controller
 
     public function newAction()
     {
-        $this->get('ltc_admin.menu.main')->getChild('Actus')->setIsCurrent(true);
         $story = new Story();
 
         $form = $this->get('form.factory')->create(new StoryFormType(), $story);
@@ -44,7 +43,6 @@ class StoryAdminController extends Controller
     {
         $story = $this->get('ltc_story.repository.story')->find($id);
         if (!$story) throw new NotFoundHttpException();
-        $this->get('ltc_admin.menu.main')->getChild('Actus')->setIsCurrent(true);
         $form = $this->get('form.factory')->create(new StoryFormType(), $story);
         $request = $this->get('request');
         if ('POST' === $request->getMethod()) {

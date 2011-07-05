@@ -19,7 +19,6 @@ class ConfigAdminController extends Controller
 
     public function editAction($name)
     {
-        $this->get('ltc_admin.menu.main')->getChild('Config')->setIsCurrent(true);
         $config = $this->get('ltc_config.manager')->getConfig($name);
         $document = $config->getDocument();
         $form = $this->get('form.factory')->create($config->getFormType(), $document);

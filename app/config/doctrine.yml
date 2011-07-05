@@ -15,7 +15,4 @@ stof_doctrine_extensions:
     mongodb:
         default:
             sluggable: true
-            translatable: false
             timestampable: true
-            loggable: false
-            tree: false
