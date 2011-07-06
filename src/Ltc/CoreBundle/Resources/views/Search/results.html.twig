@@ -5,7 +5,7 @@
 {% block results %}
 
 <div class="results infinitescroll">
-<p class="metadata">{{ results.totalItemCount }} document{{ results.totalItemCount > 1 ? "s" : "" }} trouve{{ results.totalItemCount > 1 ? "s" : "" }}</p>
+<p class="metadata">{{ results.nbResults }} document{{ results.nbResults > 1 ? "s" : "" }} trouve{{ results.nbResults > 1 ? "s" : "" }}</p>
 <div class="pager">{{ pagerfanta(results, 'default') }}</div>
 {% for doc in results %}
 <div class="result paginated_item">

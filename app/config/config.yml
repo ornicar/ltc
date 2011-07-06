@@ -42,5 +42,6 @@ apc:
     #host: see config local
     web_dir: %kernel.root_dir%/../web
 
-ornicar_insane_markdown:
-    path: /usr/local/bin/markdown
+knp_markdown:
+    parser:
+        service: markdown.parser.medium

@@ -110,6 +110,6 @@
     git=git://github.com/knplabs/KnpGaufretteBundle.git
     target=/bundles/Knp/Bundle/GaufretteBundle
 
-[InsaneMarkdownBundle]
-    git=git://github.com/ornicar/OrnicarInsaneMarkdownBundle.git
-    target=/bundles/Ornicar/InsaneMarkdownBundle
+[MarkdownBundle]
+    git=git://github.com/knplabs/KnpMarkdownBundle.git
+    target=/bundles/Knp/Bundle/MarkdownBundle

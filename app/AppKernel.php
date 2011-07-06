@@ -23,7 +23,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
             new Ornicar\AkismetBundle\OrnicarAkismetBundle(),
-            new Ornicar\InsaneMarkdownBundle\OrnicarInsaneMarkdownBundle(),
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
