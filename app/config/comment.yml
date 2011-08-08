@@ -3,6 +3,7 @@ fos_comment:
     class:
         model:
             comment: Ltc\CommentBundle\Document\Comment
+            thread: Ltc\CommentBundle\Document\Thread
     form:
         comment:
             type: ltc_comment.comment
