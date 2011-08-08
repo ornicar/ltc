@@ -23,4 +23,9 @@ abstract class DocFormType extends AbstractType
             ->add('image', 'ltc_image')
         ;
     }
+
+    public function getName()
+    {
+        return 'doc';
+    }
 }

@@ -19,4 +19,9 @@ class CommentFormType extends BaseCommentFormType
 
         $builder->add('authorName', 'text');
     }
+
+    public function getName()
+    {
+        return 'comment';
+    }
 }
