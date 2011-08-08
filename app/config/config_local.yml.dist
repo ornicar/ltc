@@ -1,6 +1,5 @@
 framework:
-    csrf_protection:
-        secret: s3cr3t
+    secret: s3cr3t
 
 apc:
     host: http://ltc
