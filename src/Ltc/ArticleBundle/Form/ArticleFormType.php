@@ -24,4 +24,9 @@ class ArticleFormType extends DocFormType
             $builder->add('category');
         }
     }
+
+    public function getName()
+    {
+        return 'article';
+    }
 }
