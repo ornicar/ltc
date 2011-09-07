@@ -164,7 +164,7 @@ abstract class Doc
      *
      * @return string
      **/
-    abstract public function getCommentIdentifier();
+    abstract public function getCommentThreadId();
 
     /**
      * @return string

@@ -3,7 +3,6 @@
 
 [twig]
     git=git://github.com/fabpot/Twig.git
-    version=v1.1.0
 
 [monolog]
     git=git://github.com/Seldaek/monolog.git
@@ -16,7 +15,6 @@
 
 [doctrine-mongodb-odm]
     git=git://github.com/ornicar/mongodb-odm.git
-    version=annotations
 
 [doctrine-data-fixtures]
 	git=git://github.com/doctrine/data-fixtures.git

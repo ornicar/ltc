@@ -28,6 +28,30 @@ class Comment extends BaseComment
     protected $authorName = 'Anonyme';
 
     /**
+     * The thread
+     *
+     * @MongoDB\ReferenceOne(targetDocument="Ltc\CommentBundle\Document\Thread")
+     * @var Thread
+     */
+    protected $thread;
+
+    /**
+     * @return Thread
+     */
+    public function getThread()
+    {
+        return $this->thread;
+    }
+
+    /**
+     * @param Thread
+     */
+    public function setThread($thread)
+    {
+        $this->thread = $thread;
+    }
+
+    /**
      * Get authorName
      * @return string
      */

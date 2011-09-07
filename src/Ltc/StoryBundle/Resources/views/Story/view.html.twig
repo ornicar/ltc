@@ -22,7 +22,7 @@
         <div class="body">{{ story.body|markdown }}</div>
 
         <span class="title">Discussion</span>
-        {% render "FOSCommentBundle:Thread:show" with {"identifier": story.commentIdentifier} %}
+        {% render "FOSCommentBundle:Thread:show" with {"id": story.commentThreadId} %}
     </article>
 
 </div>

@@ -23,4 +23,9 @@ class PhotoType extends AbstractType
             'data_class' => 'Ltc\ConfigBundle\Document\Photo',
         );
     }
+
+    public function getName()
+    {
+        return 'photo';
+    }
 }

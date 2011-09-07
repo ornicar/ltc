@@ -93,7 +93,7 @@ class Article extends Doc
      *
      * @return string
      **/
-    public function getCommentIdentifier()
+    public function getCommentThreadId()
     {
         return $this->getCategory()->getSlug().'-'.$this->getSlug();
     }

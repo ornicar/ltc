@@ -25,4 +25,9 @@ class AuthorType extends AbstractType
             'data_class' => 'Ltc\ConfigBundle\Document\Author',
         );
     }
+
+    public function getName()
+    {
+        return 'author';
+    }
 }

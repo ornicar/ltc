@@ -16,4 +16,9 @@ class StoryFormType extends AbstractType
             ->add('authorName')
         ;
     }
+
+    public function getName()
+    {
+        return 'story';
+    }
 }

@@ -1,5 +1,5 @@
 <div class="fos_comment_thread_show">
-    {% include "FOSCommentBundle:Comment:new.html.twig" with {"form": form} %}
+    {% include "FOSCommentBundle:Comment:new.html.twig" with {"form": newCommentForm} %}
 
     <div class="fos_comment_thread_comments">
         {% render "FOSCommentBundle:Comment:tree" with {"thread": thread} %}

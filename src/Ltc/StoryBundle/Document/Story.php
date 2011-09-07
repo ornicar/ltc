@@ -292,7 +292,7 @@ class Story
      *
      * @return string
      **/
-    public function getCommentIdentifier()
+    public function getCommentThreadId()
     {
         return 'actu-'.$this->getSlug();
     }

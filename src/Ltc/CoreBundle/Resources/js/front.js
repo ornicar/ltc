@@ -5,7 +5,7 @@ $(function() {
     $('.infinitescroll').each(function() {
         $(this).infinitescroll({
             navSelector: "div.pager",
-            nextSelector: "div.pager a.next",
+            nextSelector: "div.pager a:last",
             itemSelector: ".infinitescroll .paginated_item",
             loadingText: "Chargement des articles suivants...",
             donetext: "Fin de la liste des articles."

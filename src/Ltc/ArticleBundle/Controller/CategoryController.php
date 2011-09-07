@@ -28,9 +28,16 @@ class CategoryController extends Controller
             throw new NotFoundHttpException(sprintf('No category found with slug "%s"', $slug));
         }
 
-        return $this->forward('LtcArticleBundle:Article:listByCategory', array(
+        $paginator = $this->get('ltc_core.paginator_factory')->paginate(
+            $this->get('ltc_article.repository.article')->createPublishedSortedByCategoryQueryBuilder($category),
+            $this->get('request')->query->get('page', 1)
+        );
+        $all = $this->get('ltc_article.repository.article')->findPublishedTitleAndSlugByCategory($category);
+
+        return $this->render('LtcArticleBundle:Article:listByCategory.html.twig', array(
             'category' => $category,
-            'page' => $this->get('request')->query->get('page', 1)
+            'docs'     => $paginator,
+            'allDocs'  => $all
         ));
     }
 }

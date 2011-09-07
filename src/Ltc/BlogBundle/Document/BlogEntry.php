@@ -48,7 +48,7 @@ class BlogEntry extends Doc
      *
      * @return string
      **/
-    public function getCommentIdentifier()
+    public function getCommentThreadId()
     {
         return 'table-ronde-'.$this->getSlug();
     }

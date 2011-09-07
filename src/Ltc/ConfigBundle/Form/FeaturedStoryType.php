@@ -18,4 +18,9 @@ class FeaturedStoryType extends AbstractType
             'data_class' => 'Ltc\ConfigBundle\Document\FeaturedStory',
         );
     }
+
+    public function getName()
+    {
+        return 'story';
+    }
 }

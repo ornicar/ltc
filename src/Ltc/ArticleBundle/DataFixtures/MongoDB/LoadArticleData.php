@@ -156,7 +156,7 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             }
             if (isset($comments[$a['id']])) {
                 $thread = $this->threadManager->createThread();
-                $thread->setIdentifier($o->getCommentIdentifier());
+                $thread->setId($o->getCommentThreadId());
                 $manager->persist($thread);
                 foreach ($comments[$a['id']] as $commentArray) {
                     $comment = $this->commentManager->createComment($thread);

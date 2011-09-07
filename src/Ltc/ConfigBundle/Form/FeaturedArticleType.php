@@ -19,4 +19,9 @@ class FeaturedArticleType extends AbstractType
             'data_class' => 'Ltc\ConfigBundle\Document\FeaturedArticle',
         );
     }
+
+    public function getName()
+    {
+        return 'article';
+    }
 }

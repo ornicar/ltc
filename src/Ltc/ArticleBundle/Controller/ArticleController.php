@@ -8,21 +8,6 @@ use Ltc\ArticleBundle\Document\Category;
 
 class ArticleController extends Controller
 {
-    public function listByCategoryAction(Category $category, $page)
-    {
-        $paginator = $this->get('ltc_core.paginator_factory')->paginate(
-            $this->get('ltc_article.repository.article')->createPublishedSortedByCategoryQueryBuilder($category),
-            $page
-        );
-        $all = $this->get('ltc_article.repository.article')->findPublishedTitleAndSlugByCategory($category);
-
-        return $this->render('LtcArticleBundle:Article:listByCategory.html.twig', array(
-            'category' => $category,
-            'docs'     => $paginator,
-            'allDocs'  => $all
-        ));
-    }
-
     public function viewAction($categorySlug, $slug)
     {
         $article = $this->get('ltc_article.provider')->findArticle($categorySlug, $slug);
