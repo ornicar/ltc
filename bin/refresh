@@ -1,29 +1,15 @@
-#!/bin/sh
+#!/usr/bin/env php
+<?php
 
-echo "Initialize filesystem"
-mkdir -p app/cache/prod app/logs web/uploads 
-if [ "$(ls -A app/cache/prod/)" ]; then
-    rm -r app/cache/prod/*
-fi
-chmod 777 app/cache/prod app/logs web/uploads 
+require_once __DIR__.'/base_script.php';
 
-echo "Build bootstrap"
-bin/build_bootstrap.php
+show_action("Refresh prod");
 
-echo "Warmup cache"
-php app/console -e=prod cache:clear
-
-echo "Raise cache permissions"
-chmod -R 777 app/cache/prod app/logs
-
-echo "Clear APC cache opcode and user"
-php app/console --env=prod apc:clear
-
-echo "Creating assets symlinks"
-php app/console --env=prod assets:install web --symlink
-
-echo -e "\n--- Dumping assetic assets"
-php app/console --env=prod assetic:dump
-
-echo -e "\n--- Populating elasticsearch indexes"
-php app/console --env=prod foq:elastica:populate
+show_run("Building bootstrap", "vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php");
+foreach (array('app') as $app) {
+	show_run("Warming up $app cache", "php $app/console --env=prod cache:clear");
+	show_run("Raising $app permissions", "chmod -R 777 $app/cache/prod");
+}
+show_run("Clearing APC cache", "php app/console --env=prod apc:clear");
+show_run("Dumping assets", "php app/console --env=prod assetic:dump");
+show_run("Populating elasticsearch indexes", "php app/console --env=prod foq:elastica:populate");

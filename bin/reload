@@ -1,34 +1,20 @@
-#!/bin/sh
+#!/usr/bin/env php
+<?php
 
-# Shows a command and executes it
-show_run() {
-    echo "    $ $*"
-    result=$($*)
-    if [ -z $? ]; then
-        echo "--- FAIL"
-        echo $result
-        exit 1
-    fi
+require_once __DIR__.'/base_script.php';
+
+show_action("Reload dev");
+
+show_run("Building bootstrap", "vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php");
+
+foreach (array('dev') as $environment) {
+    show_run("Warming up app $environment cache", "php app/console --env=$environment cache:clear");
+    show_run("Loading app $environment fixtures", "php app/console --env=$environment doctrine:mongodb:fixtures:load");
+    show_run("Creating app $environment MongoDB indexes", "php app/console --env=$environment doctrine:mongodb:schema:create --index");
 }
 
-echo -e "\n--- Building bootstrap"
-show_run "vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php"
+show_run("Populating elasticsearch indexes", "php app/console --env=dev foq:elastica:populate");
+show_run("Clearing APC cache", "php app/console apc:clear");
+show_run("Dumping assets", "php app/console assetic:dump");
 
-for environment in dev; do
-    echo -e "\n--- warming up $environment cache"
-    show_run "php app/console --env=$environment cache:clear"
-
-    echo -e "\n--- Loading $environment fixtures"
-    show_run "php app/console --env=$environment doctrine:mongodb:fixtures:load"
-
-    echo -e "\n--- Creating $environment MongoDB indexes"
-    show_run "php app/console --env=$environment doctrine:mongodb:schema:create --index"
-done
-
-echo -e "\n--- Clearing APC cache"
-show_run "php app/console apc:clear"
-
-echo -e "\n--- Populating elasticsearch indexes"
-show_run "php app/console --env=dev foq:elastica:populate"
-
-echo "All set!"
+echo "\nAll set!";

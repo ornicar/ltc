@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Ltc\BlogBundle\Form\BlogEntryForm;
 use Ltc\BlogBundle\Document\BlogEntry;
 use Ltc\BlogBundle\Form\BlogEntryFormType;
+use Symfony\Component\HttpFoundation\Request;
 
 class BlogAdminController extends Controller
 {
@@ -20,7 +21,7 @@ class BlogAdminController extends Controller
         ));
     }
 
-    public function newAction()
+    public function newAction(Request $request)
     {
         $blogEntry = new BlogEntry();
         $form = $this->get('form.factory')->create(new BlogEntryFormType(), $blogEntry);

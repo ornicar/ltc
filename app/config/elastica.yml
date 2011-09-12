@@ -13,6 +13,19 @@ foq_elastica:
                     provider:
                     finder:
                     listener:
+            settings: 
+                index: 
+                    analysis: 
+                        analyzer: 
+                            my_analyzer: 
+                                type: custom
+                                tokenizer: lowercase
+                                filter   : [my_ngram]
+                        filter: 
+                            my_ngram: 
+                                type: "nGram"
+                                min_gram: 3
+                                max_gram: 5
             types:
                 blog:
                     doctrine:
@@ -20,10 +33,10 @@ foq_elastica:
                         provider:
                             query_builder_method: createPublishedQueryBuilder
                     mappings:
-                        title: { boost: 8 }
-                        slug: { boost: 8 }
-                        summary: { boost: 2 }
-                        body: 
+                        title: { boost: 8, analyzer: my_analyzer }
+                        slug: { boost: 8, analyzer: my_analyzer }
+                        summary: { boost: 2, analyzer: my_analyzer }
+                        body: { boost: 1, analyzer: my_analyzer }
                         tags: { boost: 4 }
                         authorName: 
                         authorBio: 
@@ -34,11 +47,11 @@ foq_elastica:
                         provider:
                             query_builder_method: createPublishedQueryBuilder
                     mappings:
-                        title: { boost: 8 }
-                        slug: { boost: 8 }
-                        categoryTitle: { boost: 2 }
-                        summary: { boost: 2 }
-                        body: 
+                        title: { boost: 8, analyzer: my_analyzer }
+                        slug: { boost: 8, analyzer: my_analyzer }
+                        categoryTitle: { boost: 2, analyzer: my_analyzer }
+                        summary: { boost: 2, analyzer: my_analyzer }
+                        body: { boost: 1, analyzer: my_analyzer }
                         tags: { boost: 4 }
                         authorName: 
                         authorBio: 
