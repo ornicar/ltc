@@ -22,6 +22,6 @@ class FeaturedArticleType extends AbstractType
 
     public function getName()
     {
-        return 'article';
+        return 'featured_article';
     }
 }

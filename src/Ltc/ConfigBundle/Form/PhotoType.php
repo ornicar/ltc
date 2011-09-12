@@ -26,6 +26,6 @@ class PhotoType extends AbstractType
 
     public function getName()
     {
-        return 'photo';
+        return 'article';
     }
 }

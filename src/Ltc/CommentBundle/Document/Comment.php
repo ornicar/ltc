@@ -28,10 +28,10 @@ class Comment extends BaseComment
     protected $authorName = 'Anonyme';
 
     /**
-     * The thread
+     * Thread of this comment
      *
-     * @MongoDB\ReferenceOne(targetDocument="Ltc\CommentBundle\Document\Thread")
      * @var Thread
+     * @MongoDB\ReferenceOne(targetDocument="MyProject\MyBundle\Document\Thread")
      */
     protected $thread;
 
@@ -44,9 +44,10 @@ class Comment extends BaseComment
     }
 
     /**
-     * @param Thread
+     * @param Thread $thread
+     * @return null
      */
-    public function setThread($thread)
+    public function setThread(Thread $thread)
     {
         $this->thread = $thread;
     }

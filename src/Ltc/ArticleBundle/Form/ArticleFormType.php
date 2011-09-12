@@ -24,4 +24,9 @@ class ArticleFormType extends DocFormType
             $builder->add('category', null, array('label' => "Déplacer vers"));
         }
     }
+
+    public function getName()
+    {
+        return 'article';
+    }
 }

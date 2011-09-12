@@ -21,6 +21,6 @@ class FeaturedStoryType extends AbstractType
 
     public function getName()
     {
-        return 'story';
+        return 'featured_story';
     }
 }
