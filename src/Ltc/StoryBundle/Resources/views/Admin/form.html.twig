@@ -6,30 +6,31 @@
 {{ path("ltc_story_admin_story_list") }}
 {% endblock %}
 
+{% block delete_url %}
+{{ path("ltc_story_admin_story_delete", {"id": object.id}) }}
+{% endblock %}
+
 {% block form_fields %}
-<div>
-    {{ form_label(form.title, "Titre") }}
-    {{ form_errors(form.title) }}
-    {{ form_widget(form.title) }}
-</div>
-<div>
-    {{ form_label(form.summary, "Resume") }}
-    <div class="help">Ici tu peux utiliser du markdown pour faire des liens.
-    Mieux vaut eviter les titres et les listes.</div>
-    {{ form_widget(form.summary, {"attr": {"rows": 5}}) }}
-    {{ form_errors(form.summary) }}
-</div>
-<div>
-    {{ form_label(form.body, "Texte") }}
-    <div class="help">Ici tu peux utiliser du markdown pour faire des liens, des titres et des listes.</div>
-    {{ form_widget(form.body, {"attr": {"rows": 15}}) }}
-    {{ form_errors(form.body) }}
-</div>
-<section>
-    Uniquement en cas d'un auteur invite.
-    <div>
-        {{ form_label(form.authorName, "Auteur") }}
-        {{ form_widget(form.authorName) }}
+{{ form_row(form.title) }}
+<fieldset>
+    <legend>Textes :</legend>
+    <div class="clearfix">
+        {{ form_label(form.summary) }}
+        <div class="input">
+            {{ form_widget(form.summary, {"attr": {"rows": 10}}) }}
+            {{ form_errors(form.summary) }}
+        </div>
     </div>
-</section>
+    <div class="clearfix with_image with_file">
+        {{ form_label(form.body) }}
+        <div class="input">
+            {{ form_widget(form.body, {"attr": {"rows": 22}}) }}
+            {{ form_errors(form.body) }}
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Invité :</legend>
+    {{ form_row(form.authorName) }}
+</fieldset>
 {% endblock %}

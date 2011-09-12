@@ -12,11 +12,11 @@ class AuthorType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('title', 'text')
-            ->add('body', 'textarea')
-            ->add('summary', 'textarea')
-            ->add('publications', 'textarea')
-            ->add('image', 'ltc_image');
+            ->add('title', 'text', array('label' => "Nom"))
+            ->add('body', 'textarea', array('label' => "Texte"))
+            ->add('summary', 'textarea', array('label' => "Résumé"))
+            ->add('publications', 'textarea', array('label' => "Publications"))
+            ->add('image', 'ltc_image', array('label' => "Image"));
     }
 
     public function getDefaultOptions(array $options)

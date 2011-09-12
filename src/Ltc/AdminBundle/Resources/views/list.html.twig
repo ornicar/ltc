@@ -1,16 +1,20 @@
 {% extends "LtcAdminBundle::layout.html.twig" %}
 
 {% block content %}
-<div class="actions">
+<div>
+    <h1>
+        {{ block("title") }}
+        <small>{{ block("subtitle") }}</small>
+    </h1>
+</div>
+<div class="well">
     {{ block("new_link") }}
 </div>
-<h1>{{ block("title") }}</h1>
-<table>
+<table class="zebra-striped">
     {% for tag in ['thead', 'tfoot'] %}
     <{{ tag }}>
         <tr>
             {{ block("table_headers") }}
-            <td></td>
         </tr>
     </{{ tag }}>
     {% endfor %}
@@ -18,7 +22,6 @@
     {% for object in objects %}
         <tr>
             {{ block("table_row") }}
-            <td><a class="confirm" href="{{ block("delete_url") }}">Supprimer</a></td>
         </tr>
     {% endfor %}
     </tbody>

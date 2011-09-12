@@ -1,30 +1,14 @@
 {% extends "LtcConfigBundle:Admin:form.html.twig" %}
 
 {% block form_fields %}
-<div>
-    {{ form_label(form.title, "Nom") }}
-    {{ form_errors(form.title) }}
-    {{ form_widget(form.title) }}
-</div>
-<div>
-    {{ form_label(form.url, "Url") }}
-    {{ form_errors(form.url) }}
-    {{ form_widget(form.url) }}
-</div>
-<section>
+{{ form_row(form.title) }}
+{{ form_row(form.url) }}
+<fieldset>
     {% if document.hasImage %}
         <img class="image_thumb" src="{{ asset(document.image|ltc_file|apply_filter("admin_medium")) }}" />
     {% endif %}
-    <div class="image_form">
-        Photo.
-        <div>
-            {{ form_widget(form.image.uploadedFile) }}
-            {{ form_errors(form.image.uploadedFile) }}
-        </div>
-        <div>
-            {{ form_label(form.image.legend, "Legende") }}
-            {{ form_widget(form.image.legend) }}
-        </div>
-    </div>
-</section>
+    <legend>Image :</legend>
+    {{ form_row(form.image.uploadedFile) }}
+    {{ form_row(form.image.legend) }}
+</fieldset>
 {% endblock %}

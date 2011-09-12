@@ -5,3 +5,7 @@
 {% block list_url %}
 {{ path("ltc_article_admin_category_view", {"slug": doc.category.slug}) }}
 {% endblock %}
+
+{% block delete_url %}
+{{ path("ltc_article_admin_article_delete", {"id": object.id}) }}
+{% endblock %}

@@ -111,3 +111,6 @@
 [MarkdownBundle]
     git=git://github.com/knplabs/KnpMarkdownBundle.git
     target=/bundles/Knp/Bundle/MarkdownBundle
+
+[bootstrap]
+    git=git://github.com/twitter/bootstrap.git

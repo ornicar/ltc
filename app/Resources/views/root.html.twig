@@ -10,9 +10,7 @@
     </head>
 
     <body class="{{ block("body_class") }}">
-        <div id="screen" class="container">
-            {% block body %}{% endblock %}
-        </div>
+        {% block body %}{% endblock %}
 
         {% block javascripts %}{% endblock %}
     </body>

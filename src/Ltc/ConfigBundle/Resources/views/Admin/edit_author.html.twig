@@ -1,40 +1,37 @@
 {% extends "LtcConfigBundle:Admin:form.html.twig" %}
 
 {% block form_fields %}
-<div>
-    {{ form_label(form.title, "Nom") }}
-    {{ form_errors(form.title) }}
-    {{ form_widget(form.title) }}
-</div>
-<section>
+{{ form_row(form.title) }}
+<fieldset>
     {% if document.hasImage %}
         <img class="image_thumb" src="{{ asset(document.image|ltc_file|apply_filter("admin_medium")) }}" />
     {% endif %}
-    <div class="image_form">
-        Photo de l'auteur.
-        <div>
-            {{ form_widget(form.image.uploadedFile) }}
-            {{ form_errors(form.image.uploadedFile) }}
-        </div>
-        <div>
-            {{ form_label(form.image.legend, "Legende") }}
-            {{ form_widget(form.image.legend) }}
+    <legend>Image :</legend>
+    {{ form_row(form.image.uploadedFile) }}
+    {{ form_row(form.image.legend) }}
+</fieldset>
+<fieldset>
+    <legend>Textes :</legend>
+    <div class="clearfix">
+        {{ form_label(form.summary) }}
+        <div class="input">
+            {{ form_widget(form.summary, {"attr": {"rows": 10}}) }}
+            {{ form_errors(form.summary) }}
         </div>
     </div>
-</section>
-<div>
-    {{ form_label(form.summary, "Resume") }}
-    <div class="help">Restons simple, ici. Evite les titres et les listes</div>
-    {{ form_widget(form.summary, {"rows": 15}) }}
-</div>
-<div class="with_image with_file">
-    {{ form_label(form.body, "Texte") }}
-    <div class="help">Les images inserees ici ne seront pas redimensionnees.</div>
-    {{ form_widget(form.body, {"rows": 40}) }}
-</div>
-<div class="with_image with_file">
-    {{ form_label(form.publications, "Publications") }}
-    <div class="help">Les images inserees ici ne seront pas redimensionnees.</div>
-    {{ form_widget(form.publications, {"rows": 30}) }}
-</div>
+    <div class="clearfix with_image with_file">
+        {{ form_label(form.body) }}
+        <div class="input">
+            {{ form_widget(form.body, {"attr": {"rows": 22}}) }}
+            {{ form_errors(form.body) }}
+        </div>
+    </div>
+    <div class="clearfix with_file">
+        {{ form_label(form.publications) }}
+        <div class="input">
+            {{ form_widget(form.publications, {"attr": {"rows": 22}}) }}
+            {{ form_errors(form.publications) }}
+        </div>
+    </div>
+</fieldset>
 {% endblock %}

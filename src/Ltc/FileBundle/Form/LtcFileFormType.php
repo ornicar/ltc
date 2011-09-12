@@ -40,7 +40,7 @@ class LtcFileFormType extends AbstractType
         $listener = new FileUploadListener($this->uploader, $filesystem, $options['filesystem']);
 
         $builder
-            ->add('uploadedFile', 'file')
+            ->add('uploadedFile', 'file', array('label' => "Fichier"))
             ->addEventSubscriber($listener)
         ;
     }

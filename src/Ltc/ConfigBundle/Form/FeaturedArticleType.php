@@ -9,8 +9,8 @@ class FeaturedArticleType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $builder->add('title', 'text');
-        $builder->add('article');
+        $builder->add('title', 'text', array('label' => "Accroche"));
+        $builder->add('article', null, array('label' => "Article"));
     }
 
     public function getDefaultOptions(array $options)

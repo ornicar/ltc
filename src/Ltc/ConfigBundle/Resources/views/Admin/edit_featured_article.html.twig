@@ -1,14 +1,6 @@
 {% extends "LtcConfigBundle:Admin:form.html.twig" %}
 
 {% block form_fields %}
-<div>
-    {{ form_label(form.title, "Accroche") }}
-    {{ form_errors(form.title) }}
-    {{ form_widget(form.title) }}
-</div>
-<div>
-    {{ form_label(form.article, "Article") }}
-    {{ form_errors(form.article) }}
-    {{ form_widget(form.article) }}
-</div>
+{{ form_row(form.title) }}
+{{ form_row(form.article) }}
 {% endblock %}

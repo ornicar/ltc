@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
 {{ parent() }}
+    <link rel="stylesheet" href="{{ asset("bootstrap/bootstrap-1.2.0.min.css") }}" />
     {% stylesheets
         '@LtcAdminBundle/Resources/autocomplete/jquery.autocomplete.css'
         '@LtcAdminBundle/Resources/css/admin.css'
@@ -24,39 +25,42 @@
 {% block meta_title %}Admin{% endblock %}
 
 {% block body %}
-<div id="page">
-    <div id="header">
-        <div id="title_and_user_links">
-            <h1><a href="{{ path("ltc_admin_dashboard") }}">Les Trois Couronnes</a></h1>
-            <ul>
-                <li class="username">{{ app.user.username }}</li>
-                <li><a href="{{ path("fos_user_security_logout") }}">Deconnexion</a></li>
-                <li><a href="{{ path("homepage") }}">Site</a></li>
+<div id="header" class="topbar">
+    <div class="topbar-inner">
+        <div class="container">
+            <h3><a href="{{ path("ltc_admin_dashboard") }}">LTC</a></h3>
+            <ul class="nav">
+                {% include "LtcAdminBundle::menu.html.twig" with {"current": block('menu')} %}
+            </ul>
+            <ul class="nav secondary-nav">
+                <li class="dropdown">
+                <a href="#" class="username">{{ app.user.username }}</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path("fos_user_security_logout") }}">Deconnexion</a></li>
+                    <li><a href="{{ path("homepage") }}">Site</a></li>
+                </ul>
             </ul>
         </div>
-        {% include "LtcAdminBundle::menu.html.twig" with {"current": block('menu')} %}
     </div>
+</div>
 
-    <div id="content" class="{{ block("content_class") }}">
-        {% if app.session.hasFlash("error") %}
-            <div class="error message">{{ app.session.getFlash("error") }}</div>
-        {% endif %}
-        {% if app.session.hasFlash("warning") %}
-            <div class="warning message">{{ app.session.getFlash("warning") }}</div>
-        {% endif %}
-        {% if app.session.hasFlash("notice") %}
-            <div class="notification message">{{ app.session.getFlash("notice") }}</div>
-        {% endif %}
-        {% block content %}
-        {% endblock %}
-    </div>
+<div id="content" class="container {{ block("content_class") }}">
+    {% if app.session.hasFlash("error") %}
+        <div class="alert-message error"><a class="close" href="#">x</a><p><strong>Damned !</strong> {{ app.session.getFlash("error") }}<p></div>
+    {% endif %}
+    {% if app.session.hasFlash("warning") %}
+        <div class="alert-message warning"><a class="close" href="#">x</a><p><strong>Pour info</strong> {{ app.session.getFlash("warning") }}<p></div>
+    {% endif %}
+    {% if app.session.hasFlash("notice") %}
+        <div class="alert-message success"><a class="close" href="#">x</a><p><strong>Yep !</strong> {{ app.session.getFlash("notice") }}<p></div>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</div>
 
-    <div id="footer">
-        <ul>
-            <li>Les Trois Couronnes - Administration</li>
-            <li>&copy; Pascal Duplessis</li>
-        </ul>
-    </div>
+<div id="footer">
+    Les Trois Couronnes - Administration
+    &copy; Pascal Duplessis
 </div>
 <script>var ltc_config = {{ ltc_js_config() | json_encode | raw }};</script>
 {% endblock %}

@@ -57,7 +57,10 @@ class ArticleAdminController extends Controller
                 $this->save();
                 $categorySlug = $article->getCategory()->getSlug();
 
-                return new RedirectResponse($this->get('router')->generate('ltc_article_admin_category_view', array('slug' => $categorySlug)));
+                return new RedirectResponse($this->get('router')->generate('ltc_article_admin_article_edit', array(
+                    'categorySlug' => $article->getCategory()->getSlug(),
+                    'slug' => $article->getSlug()
+                )));
             }
         }
 

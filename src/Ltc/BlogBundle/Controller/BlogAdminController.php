@@ -52,7 +52,9 @@ class BlogAdminController extends Controller
             if ($form->isValid()) {
                 $this->save();
 
-                return new RedirectResponse($this->get('router')->generate('ltc_blog_admin_entry_list'));
+                return new RedirectResponse($this->get('router')->generate('ltc_blog_admin_entry_edit', array(
+                    'slug' => $blogEntry->getSlug()
+                )));
             }
         }
 

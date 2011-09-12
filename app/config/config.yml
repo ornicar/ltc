@@ -37,6 +37,8 @@ monolog:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    form:
+        resources: ['::adminFormTheme.html.twig']
 
 apc:
     #host: see config local

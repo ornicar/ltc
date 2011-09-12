@@ -50,7 +50,7 @@ class StoryAdminController extends Controller
             if ($form->isValid()) {
                 $this->save();
 
-                return new RedirectResponse($this->get('router')->generate('ltc_story_admin_story_list'));
+                return new RedirectResponse($this->get('router')->generate('ltc_story_admin_story_edit', array('id' => $story->getId())));
             }
         }
 

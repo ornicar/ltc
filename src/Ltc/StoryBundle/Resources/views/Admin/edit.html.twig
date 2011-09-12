@@ -2,3 +2,8 @@
 
 {% block title %}Modifier l'actu{% endblock %}
 {% block action %}{{ path("ltc_story_admin_story_edit", {"id": story.id}) }}{% endblock %}
+
+{% block form_actions %}
+{{ parent() }}
+<a class="btn" href="{{ path("ltc_story_view", {"slug": story.slug}) }}">Voir sur le site</a>
+{% endblock %}

@@ -3,11 +3,15 @@
 {% block menu %}story{% endblock %}
 
 {% block new_link %}
-<a href="{{ path("ltc_story_admin_story_new") }}">Nouvelle actu</a>
+<a class="btn primary" href="{{ path("ltc_story_admin_story_new") }}">Nouvelle actu</a>
 {% endblock %}
 
 {% block title %}
-{{ objects|length }} Actus
+Actus
+{% endblock %}
+
+{% block subtitle %}
+{{ objects|length }} actus
 {% endblock %}
 
 {% block table_headers %}
@@ -22,8 +26,4 @@
 <td>{{ object.authorName }}</td>
 <td>{{ object.isPublished ? "&#9679;" : "" }}</td>
 <td>{{ object.createdAt|date }}</td>
-{% endblock %}
-
-{% block delete_url %}
-{{ path("ltc_story_admin_story_delete", {"id": object.id}) }}
 {% endblock %}

@@ -18,10 +18,10 @@ class ArticleFormType extends DocFormType
     {
         parent::buildForm($builder, $options);
 
-        $builder->add('publicationDate');
+        $builder->add('publicationDate', null, array('label' => "Date de publication"));
 
         if ($this->showCategory) {
-            $builder->add('category');
+            $builder->add('category', null, array('label' => "Déplacer vers"));
         }
     }
 }

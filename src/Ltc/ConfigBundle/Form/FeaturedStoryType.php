@@ -9,7 +9,7 @@ class FeaturedStoryType extends AbstractType
 {
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $builder->add('story');
+        $builder->add('story', null, array('label' => "Actu"));
     }
 
     public function getDefaultOptions(array $options)

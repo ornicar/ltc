@@ -12,12 +12,12 @@ $(function() {
     $('form .with_image, form .with_file').each(function() {
         var $textarea = $(this).find('textarea');
         $(this).prepend($tools = $('<div class="tools">'));
-        $(this).hasClass('with_image') && $tools.append($('<a>image</a>').click(function() {
+        $(this).hasClass('with_image') && $tools.append($('<a class="btn small">image</a>').click(function() {
             insertFromKcfinder($textarea, function(url) {
                 return '![legende](' + url + ')';
             });
         }));
-        $(this).hasClass('with_file') && $tools.append($('<a>fichier</a>').click(function() {
+        $(this).hasClass('with_file') && $tools.append($('<a class="btn small">fichier</a>').click(function() {
             insertFromKcfinder($textarea, function(url) {
                 return '[nom](' + url + ')';
             });

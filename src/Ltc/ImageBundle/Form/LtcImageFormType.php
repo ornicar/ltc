@@ -10,7 +10,7 @@ class LtcImageFormType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('legend', 'text')
+            ->add('legend', 'text', array('label' => "Légende"))
         ;
     }
 

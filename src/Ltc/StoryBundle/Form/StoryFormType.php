@@ -10,10 +10,10 @@ class StoryFormType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('summary', 'textarea')
-            ->add('body', 'textarea')
-            ->add('authorName')
+            ->add('title', null, array('label' => "Titre"))
+            ->add('summary', 'textarea', array('label' => "Résumé"))
+            ->add('body', 'textarea', array('label' => "Texte"))
+            ->add('authorName', null, array('label' => "Nom de l'auteur"))
         ;
     }
 

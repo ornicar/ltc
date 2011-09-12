@@ -12,7 +12,7 @@ class PhotoType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-            ->add('title', 'text')
+            ->add('title', 'text', array('label' => "Nom"))
             ->add('image', 'ltc_image')
             ->add('url', 'text');
     }

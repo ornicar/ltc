@@ -1,8 +1,10 @@
 {% extends "LtcAdminBundle::layout.html.twig" %}
 
+{% form_theme form '::adminFormTheme.html.twig' %}
+
 {% block form_actions %}
-<button type="submit" name="submit" class="submit">Enregistrer</button>
-ou <a href="{{ block("list_url") }}">retourner a la liste</a>
+<button type="submit" name="submit" class="btn primary submit">Enregistrer</button>
+<a class="btn" href="{{ block("list_url") }}">Retourner a la liste</a>
 {% endblock %}
 
 {% block content %}
@@ -14,9 +16,13 @@ ou <a href="{{ block("list_url") }}">retourner a la liste</a>
         <div class="error message">{{ form_errors(form) }}</div>
     {% endif %}
     #}
-    <div>{{ block("form_actions") }}</div>
+    <div class="actions">
+        {{ block("form_actions") }}
+    </div>
     {{ block("form_fields") }}
     {{ form_rest(form) }}
-    <div>{{ block("form_actions") }}</div>
+    <div class="actions">
+        {{ block("form_actions") }}
+    </div>
 </form>
 {% endblock %}

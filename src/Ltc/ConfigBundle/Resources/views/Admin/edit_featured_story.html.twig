@@ -1,9 +1,5 @@
 {% extends "LtcConfigBundle:Admin:form.html.twig" %}
 
 {% block form_fields %}
-<div>
-    {{ form_label(form.story, "Actu") }}
-    {{ form_errors(form.story) }}
-    {{ form_widget(form.story) }}
-</div>
+{{ form_row(form.story) }}
 {% endblock %}

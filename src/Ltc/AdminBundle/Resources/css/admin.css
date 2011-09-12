@@ -1,281 +1,28 @@
-/*** Reset ***/
-html, body, div, span, h1, h2, p, a, form, label, table, tbody,
-tfoot, thead, tr, th, td, ul, li {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-weight: inherit;
-    font-style: inherit;
-    font-size: 100%;
-    font-family: inherit;
-    vertical-align: baseline;
-
+body > div.container {
+    margin-top: 60px;
 }
-body {
-    line-height: 1;
-    background: #FFF;
-    color: #333;
-    font: 13px/1.5 Arial, sans-serif;
-}
-a {
-    color: #2A5DB0;
-    cursor: pointer;
+body > div.container.full_screen {
+    width: 100%;
+    margin-top: 40px;
 }
 
-/*** Page ***/
-#page {
-    margin: 0 auto
-}
-#header li, .pagination li, #footer li {
-    display: inline;
-    list-style: none;
-    margin-left: 0;
-}
-
-/*** Header ***/
-#header {
-    background-color: #992020;
-    overflow: hidden;
-    padding: 5px 0 0 0
-}
-#header #title_and_user_links {
-    overflow: hidden;
-    margin: 10px auto;
-    width: 1000px
-}
-#title_and_user_links h1 {
-    float: left;
-    margin: 0 10px;
-    color: #FFF;
-    font-size: 25px;
-    width: 740px
-}
-#title_and_user_links ul {
-    float: right;
-}
-#title_and_user_links li {
-    margin-left: 1em;
-}
-#title_and_user_links a {
-    color: #FFF;
-    text-decoration: none
-}
-#title_and_user_links li.username {
-    color: #fff;
-    font-weight: bold;
-}
-#main_nav, #sub_nav {
-    margin: 0 auto;
-    width: 980px
-}
-#main_nav a {
-    background-color: #cc5020;
-    color: #FFF;
-    padding: 2px 0.5em;
-    text-decoration: none
-}
-#main_nav .current a {
-    background-color: #fff;
-    color: #222;
-}
-#header #sub_nav {
-    height: 20px;
-    background-color: #aaaa70;
-    padding: 10px 10px 0;
-    width: 980px
-}
-#sub_nav a {
-    padding: 3px 0.5em;
-    text-decoration: none
-}
-#sub_nav .current a {
-    background-color: #FFF
+input, select, textarea {
+    width: 99%;
 }
 
 /*** Content ***/
-#content {
-    margin: 10px auto;
-    overflow: hidden;
-    width: 1000px;
-    min-height: 400px;
-}
-#login_page #content {
-    width: 400px
-}
-#content.full_screen {
-    width: 100%;
-    margin: 0;
-}
-h1 {
-    font-size: 23px;
-    margin: 10px 0
-}
-h2 {
-    font-size: 23px;
-    margin: 10px 0
-}
-h3 {
-    font-size: 16px;
-    margin: 5px 0 0
-}
-#main {
-    float: left;
-    width: 700px
-}
-
-/*** Text ***/
-p, form {
-    margin-bottom: 20px
-}
-
-/*** Table ***/
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-bottom: 10px;
-    width: 100%
-}
-table a {
-    text-decoration: none;
-}
-table a:hover {
-    text-decoration: underline;
-}
-thead, tfoot {
-    background-color: #DEDEDE;
-    border: 1px solid #BBB
-}
-td, th {
-    padding: 5px 10px;
-    text-align: left;
-    vertical-align: middle;
-}
-tfoot td {
-    font-weight: 400
-}
-tbody td {
-    border-bottom: 1px solid #DDD;
-    border-left: 1px solid #DDD;
-    border-right: 1px solid #DDD
-}
-.last_row td {
-    background-color: #F7F7F7;
-    border-bottom: 1px solid #BBB;
-    font-weight: 700
-}
-tbody td.numeric {
-    text-align: right
-}
-.pagination {
-    margin-bottom: 10px;
-    text-align: right
-}
-.pagination li.disabled {
-    color: #BBB
-}
-
-/*** Messages ***/
-.message {
-    padding: 5px;
-    text-align: center;
-    margin-bottom: 10px
-}
-.error.message {
-    background-color: #FBE3E4;
-    border: 1px solid #FBC2C4;
-    color: #D12F19
-}
-.warning.message {
-    background-color: #FFFF99;
-    border: 1px solid #FFFF33;
-}
-.notification.message {
-    background-color: #B5FFB1;
-    border: 1px solid #87FF69;
-}
-
-/*** Form ***/
-form label {
-    display: block;
-    font-size: 14px;
-    font-weight: 700;
-    padding-bottom: 2px;
-}
-form > div > label {
-    font: 1.6em "OFL Sorts Mill Goudy","Palatino","Georgia",serif;
-    color: #991010;
-    line-height: 2;
-    padding-bottom: 0;
-}
-form label .error {
-    color: red;
-    font-size: 13px;
-    font-weight: 400;
-}
-form label.inline, form .inline_label label {
-    display: inline;
-    font-size: inherit;
-    font-weight: 400;
-}
-form input, form textarea, form select {
-    font-size: 13px;
-    padding: 0.4%;
-}
-form input[type=text], form textarea {
-    width: 99%;
-}
-form .description {
-    color: #777;
-}
-form > div {
-    margin-bottom: 30px;
-}
-form button.submit {
-    font-size: 13px;
-    padding: 3px 0.5em;
-    margin:10px 15px 0 0;
-}
-form .column {
-    display: inline;
-    float: left;
-    width: 470px;
-}
-form section {
-    padding: 0.5em 1em;
-    background: #f0f0f0;
-    margin-bottom: 30px;
-}
-form div ul li {
-    list-style: none;
-    color: red;
+form .image_thumb {
+    border: 1px inset #888;
+    margin-left: 150px;
+    margin-bottom: 1em;
 }
 form .tools {
     float: right;
-    margin-top: 20px;
 }
-form .tools a {
-    padding: 3px 7px;
-    background: #888;
-    color: #fff;
-    font-weight: bold;
-    margin-left: 10px;
-}
-form .help {
-    color: #888;
-    font-style: italic;
-}
-div.actions {
-    margin: 15px 10px 0 0;
-    float: right;
-}
-form .image_thumb {
-    margin-top: 0.3em;
-    float: left;
-    border: 1px inset #888;
-}
-form .image_form {
-    margin: 20px 0 20px 220px;
+form .tools .btn.small {
+    padding: 3px 9px;
+    margin-bottom: -4px;
+    margin-right: 3px;
 }
 pre {
     background: #f0f0f0;
@@ -286,14 +33,6 @@ pre {
     width: 100%;
     height: 500px;
     border: none;
-}
-
-/*** Footer ***/
-#footer {
-    background-color: #E6EFFF;
-    margin-bottom: 10px;
-    padding: 10px;
-    text-align: center;
 }
 
 .ac_results {
@@ -343,4 +82,10 @@ pre {
 .ac_over {
 	background-color: #0A246A;
 	color: white;
+}
+
+#footer {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
 }

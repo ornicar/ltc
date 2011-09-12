@@ -4,5 +4,5 @@
 {% block action %}{{ path("ltc_blog_admin_entry_edit", {"slug": doc.slug}) }}{% endblock %}
 {% block form_actions %}
 {{ parent() }}
-ou <a href="{{ path("ltc_blog_entry_view", {"slug": doc.slug}) }}">Voir sur le site</a>
+<a class="btn" href="{{ path("ltc_blog_entry_view", {"slug": doc.slug}) }}">Voir sur le site</a>
 {% endblock %}

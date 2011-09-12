@@ -3,17 +3,17 @@
 {% block menu %}{{ category.slug }}{% endblock %}
 
 {% block new_link %}
-<a href="{{ path("ltc_article_admin_article_new", {"categorySlug": category.slug}) }}">Nouvel article</a>
+<a class="btn primary" href="{{ path("ltc_article_admin_article_new", {"categorySlug": category.slug}) }}">Nouvel article</a>
 {% endblock %}
 
 {% block title %}
-{{ objects|length }} {{ category.title }}
+{{ category.title }}
+{% endblock %}
+
+{% block subtitle %}
+{{ objects|length }} articles
 {% endblock %}
 
 {% block edit_url %}
 {{ path("ltc_article_admin_article_edit", {"categorySlug": object.category.slug, "slug": object.slug}) }}
-{% endblock %}
-
-{% block delete_url %}
-{{ path("ltc_article_admin_article_delete", {"id": object.id}) }}
 {% endblock %}
