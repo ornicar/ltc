@@ -29,9 +29,10 @@
     {{ block("well") }}
     <ul class="sortable">
         {% for article in articles %}
-        <li>
+        <li class="clearfix">
             <input type="hidden" name="sort_id[]" value="{{ article.id }}" />
-            {{ article.title }}
+            <strong>{{ article.publishedAt|ltc_date }}</strong>
+            <span>{{ article.title }}</span>
         </li>
         {% endfor %}
     </ul>

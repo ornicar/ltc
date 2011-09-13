@@ -19,6 +19,13 @@ ul.sortable > li {
     padding: 9px;
     border-radius: 3px 3px 3px 3px;*
 }
+ul.sortable > li > strong {
+    float: left;
+    width: 150px;
+}
+ul.sortable > li > span {
+    margin-left: 5px;
+}
 
 .zebra-striped tbody tr:hover td {
   background-color: #fefbf3;
