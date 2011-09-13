@@ -13,7 +13,7 @@ class BlogController extends Controller
             $this->get('ltc_blog.repository.blog_entry')->createPublishedSortedQueryBuilder(),
             $this->get('request')->query->get('page', 1)
         );
-        $all = $this->get('ltc_blog.repository.blog_entry')->findPublishedTitleAndSlug();
+        $all = $this->get('ltc_blog.repository.blog_entry')->findPublished();
 
         return $this->render('LtcBlogBundle:Entry:index.html.twig', array(
             'docs' => $paginator,

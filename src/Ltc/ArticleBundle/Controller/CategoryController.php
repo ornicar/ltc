@@ -32,7 +32,7 @@ class CategoryController extends Controller
             $this->get('ltc_article.repository.article')->createPublishedSortedByCategoryQueryBuilder($category),
             $this->get('request')->query->get('page', 1)
         );
-        $all = $this->get('ltc_article.repository.article')->findPublishedTitleAndSlugByCategory($category);
+        $all = $this->get('ltc_article.repository.article')->findPublishedByCategory($category);
 
         return $this->render('LtcArticleBundle:Article:listByCategory.html.twig', array(
             'category' => $category,
