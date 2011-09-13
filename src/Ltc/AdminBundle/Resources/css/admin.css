@@ -1,3 +1,7 @@
+.container {
+    width: 1000px;
+}
+
 body > div.container {
     margin-top: 60px;
 }

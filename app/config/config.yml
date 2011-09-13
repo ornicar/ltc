@@ -18,7 +18,7 @@ framework:
         enabled: true
     router:        { resource: "%kernel.root_dir%/config/routing.yml" }
     validation:    { enable_annotations: true }
-    templating:    { engines: ['twig'], assets_version: 8 }
+    templating:    { engines: ['twig'], assets_version: 9 }
     form:          true
     session:
         default_locale: fr
