@@ -22,12 +22,10 @@
         </div>
         {% endif %}
 
-        {% if doc.reference %}
         <div class="meta_block small overflowed">
             <span class="title shy">Référence documentographique</span>
-            <div class="soft">{{ doc.reference|markdown }}</div>
+            <div class="soft">{{ doc.reference|markdown }} {{ ltc_doc_url(doc) }}</div>
         </div>
-        {% endif %}
 
         {% if is_granted("ROLE_BACKEND") %}
             <div class="backend meta_block">

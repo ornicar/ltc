@@ -143,4 +143,18 @@ abstract class DocRepository extends DocumentRepository
             ->getQuery()
             ->execute();
     }
+
+    /**
+     * Remove all esmeree urls from reference blocks
+     */
+    public function removeUrlsFromReferences()
+    {
+        foreach ($this->findAll() as $doc) {
+            $ref = $doc->getReference();
+            if (strpos($ref, 'http://esmeree.fr')) {
+                $ref = preg_replace('#'.preg_quote('http://esmeree.fr', '#').'[^\s]+#', '', $ref);
+                $doc->setReference($ref);
+            }
+        }
+    }
 }
