@@ -7,8 +7,17 @@ $(function() {
         $(this).parent().remove();
     });
 
-    $('.sortable').sortable({
+    if ($('ul.sortable').length) {
+        $('ul.sortable').sortable({});
+    }
+
+    $("body").bind("click", function (e) {
+        $('.dropdown-toggle').parent("li").removeClass("open");
     });
+    $(".dropdown-toggle").click(function (e) {
+        var $li = $(this).parent("li").toggleClass('open');
+        return false;
+    }); 
 
     if ($fullHeight = $('.full_height').orNot()) {
         $(window).resize(function() {
