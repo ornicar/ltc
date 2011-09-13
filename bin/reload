@@ -8,9 +8,9 @@ show_action("Reload dev");
 show_run("Building bootstrap", "vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php");
 
 foreach (array('dev') as $environment) {
-    show_run("Warming up app $environment cache", "php app/console --env=$environment cache:clear");
-    show_run("Loading app $environment fixtures", "php app/console --env=$environment doctrine:mongodb:fixtures:load");
-    show_run("Creating app $environment MongoDB indexes", "php app/console --env=$environment doctrine:mongodb:schema:create --index");
+    show_run("Warming up app $environment cache", "php app/console --env=$environment cache:clear -v");
+    show_run("Loading app $environment fixtures", "php app/console --env=$environment doctrine:mongodb:fixtures:load -v");
+    show_run("Creating app $environment MongoDB indexes", "php app/console --env=$environment doctrine:mongodb:schema:create --index -v");
 }
 
 show_run("Populating elasticsearch indexes", "php app/console --env=dev foq:elastica:populate");

@@ -17,6 +17,7 @@ class ArticleRepository extends DocRepository
         return $this->createQueryBuilder()
             ->field('category.$id')->equals(new MongoId($category->getId()))
             ->sort('position', 'asc')
+            ->sort('publishedAt', 'desc')
             ->getQuery()
             ->execute();
     }
@@ -42,7 +43,8 @@ class ArticleRepository extends DocRepository
     {
         return $this->createPublishedQueryBuilder()
             ->field('category.$id')->equals(new MongoId($category->getId()))
-            ->sort('position', 'asc');
+            ->sort('position', 'asc')
+            ->sort('publishedAt', 'desc');
     }
 
     /**
