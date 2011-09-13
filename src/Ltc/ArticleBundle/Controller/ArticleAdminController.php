@@ -9,6 +9,7 @@ use Ltc\ArticleBundle\Document\Category;
 use Ltc\ArticleBundle\Form\ArticleForm;
 use Ltc\ArticleBundle\Document\Article;
 use Ltc\ArticleBundle\Form\ArticleFormType;
+use Symfony\Component\HttpFoundation\Request;
 
 class ArticleAdminController extends Controller
 {
@@ -86,6 +87,6 @@ class ArticleAdminController extends Controller
         $this->get('doctrine.odm.mongodb.document_manager')->flush();
         $this->get('ltc_tag.denormalizer')->denormalize();
         $this->get('doctrine.odm.mongodb.document_manager')->flush();
-        $this->get('session')->setFlash('notice', 'Modifications enregistrees');
+        $this->get('session')->setFlash('notice', 'Modifications enregistrées');
     }
 }

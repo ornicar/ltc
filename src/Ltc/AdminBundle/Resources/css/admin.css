@@ -6,6 +6,18 @@ body > div.container.full_screen {
     margin-top: 40px;
 }
 
+ul.sortable {
+    margin: 0;
+}
+ul.sortable > li {
+    list-style: none;
+    margin: 4px 0;
+    padding: 9px 9px;
+    border: 1px solid #d0d0d0;
+    background: #f4f4f4;
+    cursor: move;
+}
+
 input, select, textarea {
     width: 99%;
 }

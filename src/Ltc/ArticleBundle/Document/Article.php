@@ -10,7 +10,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
  *   collection="article",
  *   repositoryClass="Ltc\ArticleBundle\Document\ArticleRepository"
  * )
- * @MongoDB\Index(keys={"category.$id"="asc"})
+ * @MongoDB\Index(keys={"category.$id"="asc", "position"="asc"})
  * @MongoDB\Index(keys={"slug"="asc"})
  */
 class Article extends Doc
@@ -38,6 +38,30 @@ class Article extends Doc
      * @MongoDB\Field(type="string")
      */
     protected $publicationDate;
+
+    /**
+     * The less, the higher
+     *
+     * @var int
+     * @MongoDB\Field(type="int")
+     */
+    protected $position;
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
 
     /**
      * Tells whether the doc has a manually set publication date in string format

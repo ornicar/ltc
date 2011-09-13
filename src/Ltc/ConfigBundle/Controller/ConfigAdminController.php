@@ -28,7 +28,7 @@ class ConfigAdminController extends Controller
             $form->bindRequest($request);
             if ($form->isValid()) {
                 $this->get('doctrine.odm.mongodb.document_manager')->flush();
-                $this->get('session')->setFlash('notice', 'Modifications enregistrees');
+                $this->get('session')->setFlash('notice', 'Modifications enregistrées');
 
                 return new RedirectResponse($this->get('router')->generate('ltc_config_admin_edit', array(
                     'name' => $name

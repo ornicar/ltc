@@ -3,6 +3,13 @@ $(function() {
         return confirm($(this).text() + ' ?');
     });
 
+    $('.alert-message .close').click(function() {
+        $(this).parent().remove();
+    });
+
+    $('.sortable').sortable({
+    });
+
     if ($fullHeight = $('.full_height').orNot()) {
         $(window).resize(function() {
             $fullHeight.height($(window).height() - $('#header').height());

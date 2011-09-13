@@ -81,6 +81,6 @@ class BlogAdminController extends Controller
         $this->get('doctrine.odm.mongodb.document_manager')->flush();
         $this->get('ltc_tag.denormalizer')->denormalize();
         $this->get('doctrine.odm.mongodb.document_manager')->flush();
-        $this->get('session')->setFlash('notice', 'Modifications enregistrees');
+        $this->get('session')->setFlash('notice', 'Modifications enregistrées');
     }
 }

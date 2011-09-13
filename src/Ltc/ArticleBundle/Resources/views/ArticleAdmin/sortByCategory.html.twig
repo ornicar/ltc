@@ -1,0 +1,40 @@
+{% extends "LtcAdminBundle::layout.html.twig" %}
+
+{% block menu %}{{ category.slug }}{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    {% javascripts
+        '@LtcAdminBundle/Resources/jquery-ui/js/jquery-ui-1.8.16.custom.min.js'
+        filter="?yui_js" %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block well %}
+<div class="well">
+    <button class="btn primary" href="{{ path("ltc_article_admin_category_sort", {"slug": category.slug}) }}">Enregistrer</button>
+    <a class="btn" href="{{ path("ltc_article_admin_category_view", {"slug": category.slug}) }}">Retourner a la liste</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>
+        Ordonner les articles
+        <small>{{ category.title }}</small>
+    </h1>
+</div>
+<form method="post" action="{{ path("ltc_article_admin_category_sort", {"slug": category.slug}) }}">
+    {{ block("well") }}
+    <ul class="sortable">
+        {% for article in articles %}
+        <li>
+            <input type="hidden" name="sort_id[]" value="{{ article.id }}" />
+            {{ article.title }}
+        </li>
+        {% endfor %}
+    </ul>
+    {{ block("well") }}
+</form>
+{% endblock %}

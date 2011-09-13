@@ -70,6 +70,6 @@ class StoryAdminController extends Controller
     protected function save()
     {
         $this->get('doctrine.odm.mongodb.document_manager')->flush();
-        $this->get('session')->setFlash('notice', 'Modifications enregistrees');
+        $this->get('session')->setFlash('notice', 'Modifications enregistrées');
     }
 }

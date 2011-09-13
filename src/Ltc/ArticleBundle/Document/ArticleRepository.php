@@ -16,7 +16,7 @@ class ArticleRepository extends DocRepository
     {
         return $this->createQueryBuilder()
             ->field('category.$id')->equals(new MongoId($category->getId()))
-            ->sort('createdAt', 'desc')
+            ->sort('position', 'asc')
             ->getQuery()
             ->execute();
     }
@@ -40,8 +40,9 @@ class ArticleRepository extends DocRepository
      **/
     public function createPublishedSortedByCategoryQueryBuilder(Category $category)
     {
-        return $this->createPublishedSortedQueryBuilder()
-            ->field('category.$id')->equals(new MongoId($category->getId()));
+        return $this->createPublishedQueryBuilder()
+            ->field('category.$id')->equals(new MongoId($category->getId()))
+            ->sort('position', 'asc');
     }
 
     /**
@@ -82,18 +83,5 @@ class ArticleRepository extends DocRepository
             ->field('slug')->equals($slug)
             ->getQuery()
             ->getSingleResult();
-    }
-
-    /**
-     * Gets all published article sorted by their category
-     *
-     * @return array
-     **/
-    public function findAllPublishedSortByCategory()
-    {
-        return $this->createPublishedQueryBuilder()
-            ->sort('category.$id', 'asc')
-            ->getQuery()
-            ->execute();
     }
 }

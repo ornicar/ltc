@@ -2,8 +2,9 @@
 
 {% block menu %}{{ category.slug }}{% endblock %}
 
-{% block new_link %}
+{% block well %}
 <a class="btn primary" href="{{ path("ltc_article_admin_article_new", {"categorySlug": category.slug}) }}">Nouvel article</a>
+<a class="btn" href="{{ path("ltc_article_admin_category_sort", {"slug": category.slug}) }}">Ordonner les articles</a>
 {% endblock %}
 
 {% block title %}

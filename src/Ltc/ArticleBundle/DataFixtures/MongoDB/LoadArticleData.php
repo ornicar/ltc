@@ -122,6 +122,9 @@ class LoadArticleData extends AbstractFixture implements OrderedFixtureInterface
             $o->setCreatedAt(new DateTime($a['created_at']));
             $o->setUpdatedAt(new DateTime($a['updated_at']));
             $o->setSummary($a['resume']);
+            if (method_exists($o, 'setPosition')) {
+                $o->setPosition($a['rank']);
+            }
             $body = $a['description'];
             $body = str_replace("\n", "\n\n", $body);
             $body = strip_tags($body);

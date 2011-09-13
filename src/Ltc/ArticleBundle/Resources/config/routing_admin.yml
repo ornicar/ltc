@@ -10,6 +10,10 @@ ltc_article_admin_category_view:
     pattern:  /{slug}
     defaults: { _controller: LtcArticleBundle:CategoryAdmin:view }
 
+ltc_article_admin_category_sort:
+    pattern:  /{slug}/sort
+    defaults: { _controller: LtcArticleBundle:CategoryAdmin:sort }
+
 ltc_article_admin_article_edit:
     pattern:  /{categorySlug}/{slug}
     defaults: { _controller: LtcArticleBundle:ArticleAdmin:edit }

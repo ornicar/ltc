@@ -31,7 +31,7 @@ class Comment extends BaseComment
      * Thread of this comment
      *
      * @var Thread
-     * @MongoDB\ReferenceOne(targetDocument="MyProject\MyBundle\Document\Thread")
+     * @MongoDB\ReferenceOne(targetDocument="Ltc\CommentBundle\Document\Thread")
      */
     protected $thread;
 
