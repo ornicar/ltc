@@ -11,3 +11,37 @@
     </div>
 {% endspaceless %}
 {% endblock field_row %}
+
+{% block choice_widget %}
+{% spaceless %}
+    {% if expanded %}
+        <div {{ block('widget_container_attributes') }}>
+            <ul class="inputs-list">
+            {% for child in form %}
+                <li>
+                    <label>
+                        {{ form_widget(child) }}
+                        <span> {{ child.vars.label }}</span>
+                    </label>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    {% else %}
+    <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+        {% if empty_value is not none %}
+            <option value="">{{ empty_value|trans }}</option>
+        {% endif %}
+        {% if preferred_choices|length > 0 %}
+            {% set options = preferred_choices %}
+            {{ block('widget_choice_options') }}
+            {% if choices|length > 0 %}
+                <option disabled="disabled">{{ separator }}</option>
+            {% endif %}
+        {% endif %}
+        {% set options = choices %}
+        {{ block('widget_choice_options') }}
+    </select>
+    {% endif %}
+{% endspaceless %}
+{% endblock choice_widget %}

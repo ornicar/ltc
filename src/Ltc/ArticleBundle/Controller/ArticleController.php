@@ -24,14 +24,4 @@ class ArticleController extends Controller
             'related' => $related
         ));
     }
-
-    public function featuredAction()
-    {
-        $config = $this->get('ltc_config.manager')->getConfig('featured_article')->getDocument();
-
-        return $this->render('LtcArticleBundle:Article:featured.html.twig', array(
-            'doc' => $config->getArticle(),
-            'title' => $config->getTitle()
-        ));
-    }
 }

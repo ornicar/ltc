@@ -10,7 +10,16 @@ class FeaturedArticleType extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder->add('title', 'text', array('label' => "Accroche"));
+        $builder->add('switch', 'choice', array(
+            'choices' => array(
+                'article' => 'Article',
+                'blog' => 'Table Ronde'
+            ),
+            'label' => "Switch",
+            'expanded' => true
+        ));
         $builder->add('article', null, array('label' => "Article"));
+        $builder->add('blogEntry', null, array('label' => "Table Ronde"));
     }
 
     public function getDefaultOptions(array $options)

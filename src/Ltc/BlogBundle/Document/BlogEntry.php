@@ -52,4 +52,14 @@ class BlogEntry extends Doc
     {
         return 'table-ronde-'.$this->getSlug();
     }
+
+    /**
+     * to string
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return 'Table Ronde - '.$this->getTitle();
+    }
 }
