@@ -79,7 +79,7 @@ class Provider
         }
         $article = $this->articleRepository->findOneByCategoryAndSlug($category, $articleSlug);
         if (!$article) {
-            throw new NotFoundHttpException(sprintf('No article found for category "%s" and slug "%s"', $category->getSlug(), $slug));
+            throw new NotFoundHttpException(sprintf('No article found for category "%s" and slug "%s"', $category->getSlug(), $articleSlug));
         }
 
         return $article;

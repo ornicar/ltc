@@ -1,10 +1,6 @@
-ltc_compat_doc:
-    pattern:  /idoc/{oldCategorySlug}/{slug}
-    defaults: { _controller: LtcCompat:Compat:doc }
-    requirements: { oldCategorySlug: (blog|textes|invites|outils|visuels|chantiers) }
 ltc_compat_author:
     pattern: /pascal-duplessis
-    defaults: { _controller: LtcCompat:Compat:route, redirect_route: ltc_author }
+    defaults: { _controller: LtcCompatBundle:Compat:route, redirect_route: ltc_author }
 ltc_compat_idoc:
     pattern: /idoc
-    defaults: { _controller: LtcCompat:Compat:route, redirect_route: homepage }
+    defaults: { _controller: LtcCompatBundle:Compat:route, redirect_route: homepage }

@@ -14,7 +14,7 @@
         <updated>{{ doc.publishedAt|date("c")|raw }}</updated>
         <id>{{ ltc_doc_url(doc) }}</id>
         <link rel="alternate">{{ ltc_doc_url(doc) }}</link>
-        <summary>{{ doc.summary|truncate(500, true, " [...]")}}</summary>
+        <summary>{{ doc.summary }}</summary>
     </entry>
     {% endfor %}
 </feed>
