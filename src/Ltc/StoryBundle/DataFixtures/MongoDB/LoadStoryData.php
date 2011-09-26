@@ -43,8 +43,6 @@ class LoadStoryData extends AbstractFixture implements OrderedFixtureInterface, 
             if ($a['auteur']) {
                 $o->setAuthorName($a['auteur']);
             }
-            $o->setIsPublished(true);
-            $o->setPublishedAt(new DateTime($a['created_at']));
             $o->setCreatedAt(new DateTime($a['created_at']));
             $o->setUpdatedAt(new DateTime($a['updated_at']));
             $manager->persist($o);

@@ -1,7 +1,7 @@
 <article class="story_preview">
     <header class="clearfix">
         <h2><a href="{{ path('ltc_story_view', {"slug": story.slug}) }}">{{ story.title }}</a></h2>
-        <p class="metadata">{{ story.publishedAt|ltc_date }}</p>
+        <p class="metadata">{{ story.authorName }}, {{ story.createdAt|ltc_date }}</p>
     </header>
     <div>{{ story.summary|markdown }}</div>
     {% if story.body %}

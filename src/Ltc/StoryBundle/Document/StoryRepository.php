@@ -20,14 +20,14 @@ class StoryRepository extends DocumentRepository
     }
 
     /**
-     * Gets all actus ordered by publishedAt desc
+     * Gets all actus ordered by createdAt desc
      *
      * @return array of Actu
      **/
-    public function findAllSortedByPublishedAt()
+    public function findAllSortedByCreatedAt()
     {
         return $this->createQueryBuilder()
-            ->sort('publishedAt', 'desc')
+            ->sort('createdAt', 'desc')
             ->getQuery()
             ->execute();
     }

@@ -14,7 +14,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *   repositoryClass="Ltc\StoryBundle\Document\StoryRepository"
  * )
  * @MongoDB\Index(keys={"createdAt"="desc"})
- * @MongoDB\Index(keys={"publishedAt"="desc"})
  * @MongoDB\UniqueIndex(keys={"slug"="asc"})
  */
 class Story
@@ -93,69 +92,11 @@ class Story
     protected $updatedAt;
 
     /**
-     * Whether the story is published or not
-     *
-     * @var bool
-     * @MongoDB\Field(type="boolean")
-     */
-    protected $isPublished = true;
-
-    /**
-     * Publication date
-     *
-     * @var DateTime
-     * @MongoDB\Field(type="date")
-     */
-    protected $publishedAt;
-
-    /**
      * @return string
      */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isPublished()
-    {
-        return $this->isPublished;
-    }
-
-    public function getIsPublished()
-    {
-        return $this->isPublished();
-    }
-
-    /**
-     * @param  bool
-     * @return null
-     */
-    public function setIsPublished($isPublished)
-    {
-        $this->isPublished = (bool) $isPublished;
-        if ($isPublished && !$this->getPublishedAt()) {
-            $this->setPublishedAt(new DateTime());
-        }
-    }
-
-    /**
-     * @return DateTime
-     */
-    public function getPublishedAt()
-    {
-        return $this->publishedAt;
-    }
-
-    /**
-     * @param  DateTime
-     * @return null
-     */
-    public function setPublishedAt(DateTime $publishedAt)
-    {
-        $this->publishedAt = $publishedAt;
     }
 
     /**
