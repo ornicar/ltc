@@ -37,6 +37,9 @@
 [gaufrette]
     git=git://github.com/knplabs/Gaufrette.git
 
+[buzz]
+    git=git://github.com/kriswallsmith/Buzz.git
+
 [doctrine-extensions]
 	git=git://github.com/l3pp4rd/DoctrineExtensions.git
 

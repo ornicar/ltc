@@ -3,6 +3,15 @@ div.fos_comment_thread_show {
 div.fos_comment_comment_show .metadata {
     font-size: 100%;
     color: #808080;
+    border-top: 1px solid #e0e0e0;
+    background: #f4f4f4;
+    padding-left: 1em;
+    margin-bottom: 0.5em;
+}
+div.fos_comment_comment_show .metadata a.delete {
+    float: right;
+    margin-right: 1em;
+    font-size: 0.8em;
 }
 div.fos_comment_comment_body {
     line-height: 1.5em;
@@ -12,13 +21,15 @@ div.fos_comment_comment_replies {
 }
 div.fos_comment_comment_reply {
     text-align: right;
-    margin: -1em 0 2em 0;
+    margin: 0.2em 0 2em 0;
 }
 div.fos_comment_comment_reply.replying {
     text-align: left;
     margin: 1em 0;
     padding: 1em 20px;
     background: #d6d6d6;
+}
+div.fos_comment_comment_show {
 }
 button.fos_comment_comment_reply_show_form {
     padding: 2px 5px;

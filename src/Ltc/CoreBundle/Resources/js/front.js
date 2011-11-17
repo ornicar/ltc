@@ -13,6 +13,10 @@ $(function() {
     });
 
     $('input.hint_me').hints();
+
+    $('.fos_comment_thread_show').delegate('.confirm', 'click', function() {
+        return confirm($(this).text() + ' ?');
+    });
 });
 
 if (typeof console == "undefined" || typeof console.log == "undefined") console = {

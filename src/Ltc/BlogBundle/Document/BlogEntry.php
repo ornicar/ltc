@@ -20,7 +20,7 @@ class BlogEntry extends Doc
      *
      * @var string
      * @MongoDB\Field(type="string")
-     * @Gedmo\Slug(unique="true", updatable="true")
+     * @Gedmo\Slug(unique="true", updatable="true", fields={"title"})
      */
     protected $slug;
 
@@ -29,7 +29,6 @@ class BlogEntry extends Doc
      *
      * @var string
      * @MongoDB\Field(type="string")
-     * @Gedmo\Sluggable
      */
     protected $title;
 

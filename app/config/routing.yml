@@ -43,6 +43,10 @@ fos_user_security:
 fos_comment:
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
     prefix: /comment
+ltc_comment_delete:
+    pattern:        /comment/delete/{commentId}
+    defaults:
+        _controller: LtcCommentBundle:CommentDelete:delete
 
 ltc_compat_doc:
     resource: "@LtcCompatBundle/Resources/config/routing.yml"

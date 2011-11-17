@@ -36,6 +36,22 @@ class Comment extends BaseComment
     protected $thread;
 
     /**
+     * @MongoDB\Field(type="boolean")
+     * @var boolean
+     */
+    protected $isDeleted = false;
+
+    public function isDeleted()
+    {
+        return $this->isDeleted;
+    }
+
+    public function delete()
+    {
+        $this->isDeleted = true;
+    }
+
+    /**
      * @return Thread
      */
     public function getThread()

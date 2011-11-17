@@ -19,6 +19,7 @@ $loader->registerNamespaces(array(
     'Pagerfanta'                     => $vendorDir.'/pagerfanta/src',
     'Gedmo'                          => $vendorDir.'/doctrine-extensions/lib',
     'Imagine'                        => $vendorDir.'/imagine/lib',
+    'Buzz'                           => $vendorDir.'/buzz/lib',
     'Gaufrette'                      => $vendorDir.'/gaufrette/src',
     'Ornicar'                        => $bundleDir,
     'Sensio'                         => $bundleDir,

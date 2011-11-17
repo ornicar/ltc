@@ -14,7 +14,7 @@ assetic:
     use_controller: false
 
 ornicar_akismet:
-    service:            ornicar_akismet.akismet_stub
+    service:            ornicar_akismet.akismet_real
 
 monolog:
     handlers:

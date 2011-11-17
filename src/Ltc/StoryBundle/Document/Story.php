@@ -34,7 +34,6 @@ class Story
      * @Assert\MinLength(3)
      * @Assert\MaxLength(300)
      * @MongoDB\Field(type="string")
-     * @Gedmo\Sluggable
      */
     protected $title;
 
@@ -43,7 +42,7 @@ class Story
      *
      * @var string
      * @MongoDB\Field(type="string")
-     * @Gedmo\Slug(unique="true", updatable="true")
+     * @Gedmo\Slug(unique="true", updatable="true", fields={"title"})
      */
     protected $slug;
 

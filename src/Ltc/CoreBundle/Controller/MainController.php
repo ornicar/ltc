@@ -4,6 +4,7 @@ namespace Ltc\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ltc\ArticleBundle\Document\Article;
+use Symfony\Component\HttpFoundation\Response;
 
 class MainController extends Controller
 {
@@ -40,7 +41,9 @@ class MainController extends Controller
     {
         $config = $this->get('ltc_config.manager')->getConfig('featured_article')->getDocument();
         $doc = $config->getChosenDoc();
-        if ($doc instanceof Article) {
+        if (null === $doc) {
+          return new Response("No featured doc");
+        } elseif ($doc instanceof Article) {
             $template = 'LtcArticleBundle:Article:featured.html.twig';
         } else {
             $template = 'LtcBlogBundle:Entry:featured.html.twig';

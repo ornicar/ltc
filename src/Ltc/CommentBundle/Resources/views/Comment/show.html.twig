@@ -1,10 +1,21 @@
 <div class="fos_comment_comment_show" id="{{ comment.id }}">
     <div class="metadata">
+        {% if not comment.deleted and is_granted('ROLE_MODERATE_COMMENT') %}
+            <a class="delete confirm" href="{{ path('ltc_comment_delete', { "commentId": comment.id }) }}">Supprimer</a>
+        {% endif %}
         {{ comment.createdAt|ltc_date }}, par <strong class="author_name">{{ comment.authorName|default("Anonyme") }}</strong>
     </div>
-    <div class="fos_comment_comment_body">{{ comment.body|ltc_comment|raw }}</div>
+    <div class="fos_comment_comment_body">
+      {% if comment.deleted %}
+        [ Ce commentaire a été supprimé ]
+      {% else %}
+        {{ comment.body|ltc_comment|raw }}
+      {% endif %}
+    </div>
     <div class="fos_comment_comment_reply">
+      {% if not comment.deleted %}
         <button data-id="{{ comment.id }}" data-name="{{ comment.authorName }}" class="fos_comment_comment_reply_show_form">Répondre</button>
+      {% endif %}
     </div>
     <div class="fos_comment_comment_replies">
         {% include "FOSCommentBundle:Comment:tree.html.twig" with {"nodes": children|default([])} %}

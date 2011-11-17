@@ -19,7 +19,7 @@
   </testsuites>
 
   <php>
-      <server name="KERNEL_DIR" value="/home/thib/data/workspace/ltc/app" />
+      <server name="KERNEL_DIR" value="/home/thib/ltc/app" />
   </php>
 
   <filter>
