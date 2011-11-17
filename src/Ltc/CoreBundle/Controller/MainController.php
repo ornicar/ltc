@@ -42,7 +42,7 @@ class MainController extends Controller
         $config = $this->get('ltc_config.manager')->getConfig('featured_article')->getDocument();
         $doc = $config->getChosenDoc();
         if (null === $doc) {
-          return new Response("No featured doc");
+            return new Response("No featured doc");
         } elseif ($doc instanceof Article) {
             $template = 'LtcArticleBundle:Article:featured.html.twig';
         } else {

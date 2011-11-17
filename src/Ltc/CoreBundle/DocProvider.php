@@ -55,7 +55,7 @@ class DocProvider
             return $a->getPublishedAt() < $b->getPublishedAt();
         });
 
-        return array_slice($docs, $limit);
+        return array_slice($docs, 0, $limit);
     }
 
     /**
