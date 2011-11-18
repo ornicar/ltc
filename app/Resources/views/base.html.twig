@@ -38,22 +38,11 @@
     <footer id="footer">
         <div class="row">
             <div class="sixcol blockcol small_search">
-                {% block footer_search %}
-                    <p class="title">Rechercher</p>
-                    {% include "LtcCoreBundle:Search:form.html.twig" %}
-                {% endblock %}
-            </div>
-            {% include "::menu.html.twig" with {"lastcol": "fourcol"} %}
-        </div>
-        <div class="row">
-            <div class="right">
                 Les Trois Couronnes - &copy; 2011 Pascal Duplessis<br />
-                <a class="js_email"></a>
-            </div>
-            <div class="letd">
-                Réalisation : <a href="http://github.com/ornicar">Thibault Duplessis</a><br />
+                <a class="js_email"></a><br /><br />
                 Ce site est OpenSource : <a href="http://github.com/ornicar/ltc">Voir le code</a>
             </div>
+            {% include "::menu.html.twig" with {"lastcol": "fourcol"} %}
         </div>
     </footer>
 </div>

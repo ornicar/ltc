@@ -24,7 +24,7 @@ class StoryController extends Controller
         if (!$story) {
             throw new NotFoundHttpException();
         }
-        $stories = $this->get('ltc_story.repository.story')->findAllSortedByCreatedAt();
+        $stories = $this->get('ltc_story.repository.story')->findAll();
 
         return $this->render('LtcStoryBundle:Story:view.html.twig', array('story' => $story, 'stories' => $stories));
     }
