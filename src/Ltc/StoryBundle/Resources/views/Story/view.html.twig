@@ -3,11 +3,6 @@
 {% block content %}
 <div class="row">
     <div class="fourcol">
-        <div class="meta_block">
-            <a href="{{ path("homepage") }}">
-                &lt; Retour à l'accueil
-            </a>
-        </div>
         <div class="meta_block nice_list small">
             <span class="title shy">Toutes les actus</span>
             {% include "LtcStoryBundle:Story:linkList.html.twig" with {"stories": stories} %}

@@ -1,3 +1,7 @@
 ltc_story_view:
     pattern:  /{slug}
     defaults: { _controller: LtcStoryBundle:Story:view }
+
+ltc_story_list:
+    pattern:  /
+    defaults: { _controller: LtcStoryBundle:Story:list }

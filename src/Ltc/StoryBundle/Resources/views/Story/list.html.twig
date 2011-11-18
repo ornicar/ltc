@@ -1,0 +1,21 @@
+{% extends "::base.html.twig" %}
+
+{% block meta_title %}Archives{% endblock %}
+
+{% block content %}
+
+<div class="row archive">
+    <h1 class="title big">Actus</h1>
+    <div class="archive_category nice_list">
+        <ul class="article_link_list">
+            {% for story in stories %}
+            <li>
+                <a href="{{ path("ltc_story_view", {"slug": story.slug}) }}">{{ story.title }}</a>
+                <p class="metadata">{{ story.authorName }}, {{ story.createdAt|ltc_date }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

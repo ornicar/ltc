@@ -7,4 +7,13 @@
     {% if story.body %}
         <a href="{{ path('ltc_story_view', {"slug": story.slug}) }}">Lire la suite...</a>
     {% endif %}
+
+    {% for story in stories %}
+    <ul class="recent_stories">
+        <li>
+            <a href="{{ path("ltc_story_view", {"slug": story.slug}) }}">{{ story.title }}</a>
+        </li>
+    </ul>
+    {% endfor %}
+    <a class="all_others" href="{{ path('ltc_story_list') }}">&gt; autres actus</a>
 </article>

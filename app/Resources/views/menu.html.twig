@@ -4,6 +4,7 @@
         <li><a href="{{ path("ltc_tag_cloud") }}">Tags</a></li>
         <li><a href="{{ path("ltc_author") }}">Auteur</a></li>
         <li><a href="{{ path("ltc_archive") }}">Archives</a></li>
+        <li><a href="{{ path("ltc_story_list") }}">Actus</a></li>
     </ul>
 </div>
 
@@ -13,4 +14,7 @@
         <li><a href="{{ path("ltc_article_category_view", {"slug": slug}) }}">{{ title }}</a></li>
         {% endfor %}
     </ul>
+    <div class="side_search small_search">
+        {% include "LtcCoreBundle:Search:form.html.twig" %}
+    </div>
 </div>

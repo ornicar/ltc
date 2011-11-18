@@ -33,6 +33,10 @@
     color: #991010;
     text-decoration: underline;
 }
+
+#header .side_search {
+    margin-top: 0.2em;
+}
 .rss_link {
     position: absolute;
     top: 22px;

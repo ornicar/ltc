@@ -20,14 +20,16 @@ class StoryRepository extends DocumentRepository
     }
 
     /**
-     * Gets all actus ordered by createdAt desc
+     * Gets recent actus, but not  the first one
      *
      * @return array of Actu
      **/
-    public function findAllSortedByCreatedAt()
+    public function findRecentsButFirst($number)
     {
         return $this->createQueryBuilder()
             ->sort('createdAt', 'desc')
+            ->limit($number)
+            ->skip(1)
             ->getQuery()
             ->execute();
     }

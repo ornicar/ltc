@@ -5,9 +5,9 @@
     padding: 1em;
     border: 1px solid #a0a0a0;
     font-size: 90%;
-    -moz-box-shadow:5px 6px 9px #999999;
-	-webkit-box-shadow:5px 6px 9px #999999;
-	box-shadow:5px 6px 9px #999999;
+    -moz-box-shadow:5px 5px 7px #a0a0a0;
+	-webkit-box-shadow:5px 5px 7px #a0a0a0;
+	box-shadow:5px 5px 7px #a0a0a0;
 }
 .story_preview .title {
     float: left;
@@ -19,4 +19,12 @@
 .story_view .summary {
     font-style: italic;
     margin-bottom: 2em;
+}
+.story_preview .all_others {
+    margin-top: -0.7em;
+}
+.story_preview .recent_stories li {
+    border-top: 1px solid #a0a0a0;
+    margin-top: 7px;
+    padding-top: 7px;
 }

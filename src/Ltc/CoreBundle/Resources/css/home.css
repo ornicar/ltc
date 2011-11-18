@@ -7,11 +7,6 @@ body.home div.home_featured {
 body.home div.home_overview {
     margin-top: 20px;
 }
-
-body.home .side_search {
-    margin-top: 0.9em;
-    margin-bottom: 2em;
-}
 body.home div.category_column > div, div.tag_cloud_small, div.home_tags {
     margin-bottom: 20px;
 }

@@ -13,8 +13,9 @@ class StoryController extends Controller
         if (!$story) {
             $story = $this->get('ltc_story.repository.story')->findOneBy(array());
         }
+        $stories = $this->get('ltc_story.repository.story')->findRecentsButFirst(3);
 
-        return $this->render('LtcStoryBundle:Story:featured.html.twig', array('story' => $story));
+        return $this->render('LtcStoryBundle:Story:featured.html.twig', array('story' => $story, 'stories' => $stories));
     }
 
     public function viewAction($slug)
@@ -26,5 +27,12 @@ class StoryController extends Controller
         $stories = $this->get('ltc_story.repository.story')->findAllSortedByCreatedAt();
 
         return $this->render('LtcStoryBundle:Story:view.html.twig', array('story' => $story, 'stories' => $stories));
+    }
+
+    public function listAction()
+    {
+      $stories = $this->get('ltc_story.repository.story')->findAll();
+
+      return $this->render('LtcStoryBundle:Story:list.html.twig', array('stories' => $stories));
     }
 }
