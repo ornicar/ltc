@@ -46,16 +46,12 @@ class DocProvider
      **/
     public function getPublishedDocsSortByPublishedAt($limit)
     {
-        $blogEntries = $this->blogEntryRepository->findPublished()->toArray();
-        $articles    = $this->articleRepository->findPublished()->toArray();
+        $blogEntries = $this->blogEntryRepository->findPublished($limit)->toArray();
+        $articles    = $this->articleRepository->findPublished($limit)->toArray();
 
         $docs = array_merge($blogEntries, $articles);
 
-        usort($docs, function(Doc $a, Doc $b) {
-            return $a->getPublishedAt() < $b->getPublishedAt();
-        });
-
-        return array_slice($docs, 0, $limit);
+        return $docs;
     }
 
     /**

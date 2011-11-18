@@ -500,4 +500,9 @@ abstract class Doc
     {
         return array_map(function($tag) { return $tag->getSlug(); }, $this->getTags()->toArray());
     }
+
+    public function isDoc()
+    {
+        return true;
+    }
 }

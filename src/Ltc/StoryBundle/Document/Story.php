@@ -227,6 +227,11 @@ class Story
         $this->createdAt = $createdAt;
     }
 
+    public function getPublishedAt()
+    {
+        return $this->getCreatedAt();
+    }
+
     /**
      * Gets a unique comment identifier, usable as a slug
      *
@@ -240,5 +245,10 @@ class Story
     public function __toString()
     {
         return (string) $this->getTitle();
+    }
+
+    public function isDoc()
+    {
+        return false;
     }
 }

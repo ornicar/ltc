@@ -19,6 +19,15 @@ class StoryRepository extends DocumentRepository
             ->execute();
     }
 
+    public function findRecent($limit)
+    {
+        return $this->createQueryBuilder()
+            ->sort('createdAt', 'desc')
+            ->limit($limit)
+            ->getQuery()
+            ->execute();
+    }
+
     /**
      * Gets recent actus, but not  the first one
      *

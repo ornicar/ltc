@@ -24,8 +24,16 @@ class MainController extends Controller
 
     public function feedAction()
     {
+        $docs = $this->get('ltc_core.doc_provider')->getPublishedDocsSortByPublishedAt(20);
+        $stories = $this->get('ltc_story.repository.story')->findRecent(50)->toArray();
+        $objects = array_merge($docs, $stories);
+
+        usort($objects, function($a, $b) {
+            return $a->getPublishedAt() < $b->getPublishedAt();
+        });
+
         return $this->render('LtcCoreBundle:Main:feed.xml.twig', array(
-            'docs' => $this->get('ltc_core.doc_provider')->getPublishedDocsSortByPublishedAt(100)
+            'objects' => array_slice($objects, 0, 30)
         ));
     }
 

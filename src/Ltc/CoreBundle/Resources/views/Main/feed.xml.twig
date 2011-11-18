@@ -4,17 +4,27 @@
     <id>{{ url("homepage") }}</id>
     <link href="{{ url("homepage") }}" rel="alternate" />
     <link href="{{ url("homepage") }}" />
-    <updated>{{ docs[0].publishedAt|date("c") }}</updated>
-    {% for doc in docs %}
+    <updated>{{ objects[0].publishedAt|date("c") }}</updated>
+    {% for obj in objects %}
     <entry>
-        <title>{{ doc.title }}</title>
-        <author>
-            <name>{{ ltc_doc_author(doc) }}</name>
-        </author>
-        <updated>{{ doc.publishedAt|date("c")|raw }}</updated>
-        <id>{{ ltc_doc_url(doc) }}</id>
-        <link rel="alternate">{{ ltc_doc_url(doc) }}</link>
-        <summary>{{ doc.summary }}</summary>
+        <title>{{ obj.title }}</title>
+        {% if obj.isDoc %}
+            <author>
+                <name>{{ ltc_doc_author(obj) }}</name>
+            </author>
+            <updated>{{ obj.publishedAt|date("c")|raw }}</updated>
+            <id>{{ ltc_doc_url(obj) }}</id>
+            <link rel="alternate">{{ ltc_doc_url(obj) }}</link>
+            <summary>{{ obj.summary }}</summary>
+        {% else %}
+            <author>
+                <name>{{ obj.authorName }}</name>
+            </author>
+            <updated>{{ obj.publishedAt|date("c")|raw }}</updated>
+            <id>{{ path('ltc_story_view', {"slug": obj.slug}) }}</id>
+            <link rel="alternate">{{ path('ltc_story_view', {"slug": obj.slug}) }}</link>
+            <summary>{{ obj.summary }}</summary>
+        {% endif %}
     </entry>
     {% endfor %}
 </feed>
