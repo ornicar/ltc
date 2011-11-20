@@ -99,3 +99,6 @@ ul.doc_small_list li {
 .hidden_list_container:hover .article_link_list {
     left: 0px;
 }
+.footnotes {
+  font-size: 0.9em;
+}

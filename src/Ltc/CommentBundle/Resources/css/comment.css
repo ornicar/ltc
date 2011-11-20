@@ -14,10 +14,11 @@ div.fos_comment_comment_show .metadata a.delete {
     font-size: 0.8em;
 }
 div.fos_comment_comment_body {
+    font-size: 0.9em;
     line-height: 1.5em;
 }
 div.fos_comment_comment_replies {
-    margin-left: 3em;
+    margin-left: 1em;
 }
 div.fos_comment_comment_reply {
     text-align: right;
