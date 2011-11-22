@@ -24,6 +24,10 @@
             {% render "LtcStoryBundle:Story:featured" %}
         </div>
 
+        <div class="side_comment">
+            {% render "LtcCommentBundle:CommentExtra:recent" %}
+        </div>
+
         <span class="title"><a href="{{ path("ltc_blog_entry_index") }}">Table ronde</a></span>
         {% render "LtcBlogBundle:Blog:smallList" with {"numberOfDocs": 5} %}
         <a class="all_others" href="{{ path("ltc_blog_entry_index") }}">&gt; autres articles</a>

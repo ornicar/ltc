@@ -14,7 +14,7 @@ class CategoryController extends Controller
         foreach ($this->get('ltc_article.repository.category')->findAll()->toArray() as $category) {
             $categories[] = array(
                 'category' => $category,
-                'articles' => $this->get('ltc_article.repository.article')->findLatestByCategory($category, 5)
+                'articles' => $this->get('ltc_article.repository.article')->findLatestByCategory($category, 6)
             );
         }
 

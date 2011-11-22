@@ -1,0 +1,20 @@
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Les Trois Couronnes - Discussions</title>
+    <subtitle>Didactique de l'information-documentation et identité professionnelle de l'enseignant documentaliste. Publications de Pascal Duplessis</subtitle>
+    <id>{{ url("homepage") }}</id>
+    <link href="{{ url("homepage") }}" rel="alternate" />
+    <link href="{{ url("homepage") }}" />
+    <updated>{{ comments[0].createdAt|date("c") }}</updated>
+    {% for obj in comments %}
+    <entry>
+        <title>{{ obj.authorName }}</title>
+        <author>
+            <name>{{ obj.authorName }}</name>
+        </author>
+        <updated>{{ obj.createdAt|date("c")|raw }}</updated>
+        <id>{{ obj.url }}</id>
+        <link rel="alternate">{{ obj.url }}</link>
+        <summary>{{ obj.body }}</summary>
+    </entry>
+    {% endfor %}
+</feed>

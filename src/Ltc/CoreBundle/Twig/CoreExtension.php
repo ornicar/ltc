@@ -50,7 +50,8 @@ class CoreExtension extends Twig_Extension
         return array(
             'ltc_date' => new Twig_Filter_Method($this, 'formatDate'),
             'ltc_shrink_link' => new Twig_Filter_Method($this, 'shrinkLink'),
-            'ltc_comment' => new Twig_Filter_Method($this, 'formatComment')
+            'ltc_comment' => new Twig_Filter_Method($this, 'formatComment'),
+            'ltc_shorten' => new Twig_Filter_Method($this, 'shorten')
         );
     }
 

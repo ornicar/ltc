@@ -51,6 +51,11 @@ class Comment extends BaseComment
         $this->isDeleted = true;
     }
 
+    public function getUrl()
+    {
+        return $this->getThread()->getPermalink() . "#" . $this->getId();
+    }
+
     /**
      * @return Thread
      */

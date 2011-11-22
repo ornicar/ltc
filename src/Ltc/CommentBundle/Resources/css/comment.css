@@ -1,3 +1,19 @@
+.side_comment {
+    position: relative;
+}
+.side_comment li {
+    margin-bottom: 1em;
+    font-size: 0.9em;
+}
+.side_comment .body {
+    margin-left: 0.5em;
+}
+.side_comment .comment_rss_link {
+    position: absolute;
+    right: 0;
+    top: 18px;
+}
+
 div.fos_comment_thread_show {
 }
 div.fos_comment_comment_show .metadata {
@@ -65,9 +81,11 @@ form.fos_comment_comment_form label.author_name input {
     width: 300px;
 }
 form.fos_comment_comment_form textarea {
-    width: 99.8%;
-    height: 8em;
+    width: 97%;
+    height: 16em;
     border: 1px solid #808080;
+    padding: 0.5em;
+    font-size: 0.9em;
 }
 form.fos_comment_comment_form.error textarea {
     border-color: red;
