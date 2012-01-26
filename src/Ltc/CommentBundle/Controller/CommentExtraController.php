@@ -10,9 +10,18 @@ class CommentExtraController extends ContainerAware
 {
     public function recentAction()
     {
-        $comments = $this->getRecentComments(3);
+        $comments = $this->getRecentComments(5);
 
         return $this->container->get('templating')->renderResponse('LtcCommentBundle:Comment:recent.html.twig', array(
+            'comments'     => $comments
+        ));
+    }
+
+    public function listAction()
+    {
+        $comments = $this->getRecentComments(200);
+
+        return $this->container->get('templating')->renderResponse('LtcCommentBundle:Comment:list.html.twig', array(
             'comments'     => $comments
         ));
     }
@@ -30,6 +39,7 @@ class CommentExtraController extends ContainerAware
     {
         return array_values($this->getCommentRepository()->createQueryBuilder()
             ->sort('createdAt', 'desc')
+            ->field('isDeleted')->notEqual(true)
             ->limit($number)
             ->getQuery()
             ->execute()

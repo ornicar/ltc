@@ -9,22 +9,17 @@
     <entry>
         <title>{{ obj.title }}</title>
         {% if obj.isDoc %}
-            <author>
-                <name>{{ ltc_doc_author(obj) }}</name>
-            </author>
-            <updated>{{ obj.publishedAt|date("c")|raw }}</updated>
-            <id>{{ ltc_doc_url(obj) }}</id>
-            <link rel="alternate">{{ ltc_doc_url(obj) }}</link>
-            <summary>{{ obj.summary }}</summary>
+            {% set author = ltc_doc_author(obj) %}
+            {% set url = ltc_doc_url(obj) %}
         {% else %}
-            <author>
-                <name>{{ obj.authorName }}</name>
-            </author>
-            <updated>{{ obj.publishedAt|date("c")|raw }}</updated>
-            <id>{{ path('ltc_story_view', {"slug": obj.slug}) }}</id>
-            <link rel="alternate">{{ path('ltc_story_view', {"slug": obj.slug}) }}</link>
-            <summary>{{ obj.summary }}</summary>
+            {% set author = obj.authorName %}
+            {% set url = url('ltc_story_view', {"slug": obj.slug}) %}
         {% endif %}
+          <author><name>{{ author }}</name></author>
+          <updated>{{ obj.publishedAt|date("c")|raw }}</updated>
+          <id>{{ url }}</id>
+          <link rel="alternate" href="{{ url }}" />
+          <summary>{{ obj.summary }}</summary>
     </entry>
     {% endfor %}
 </feed>

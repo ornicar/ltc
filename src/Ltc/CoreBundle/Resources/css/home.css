@@ -3,6 +3,7 @@ body.home div.home_featured, div.home_banner {
 }
 body.home div.home_featured {
     padding-bottom: 20px;
+    margin-bottom: 20px;
 }
 body.home div.home_overview {
     margin-top: 20px;

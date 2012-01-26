@@ -44,8 +44,11 @@ ltc_comment_delete:
     pattern:        /comment/delete/{commentId}
     defaults: { _controller: LtcCommentBundle:CommentDelete:delete }
 ltc_comment_feed:
-    pattern:        /comment/atom.xml
+    pattern:        /discussion/atom.xml
     defaults: { _controller: LtcCommentBundle:CommentExtra:feed }
+ltc_comment_list:
+    pattern:        /discussion
+    defaults: { _controller: LtcCommentBundle:CommentExtra:list }
 fos_comment:
     resource: "@FOSCommentBundle/Resources/config/routing.yml"
     prefix: /comment

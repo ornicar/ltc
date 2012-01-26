@@ -13,6 +13,10 @@
             {% render "LtcCoreBundle:Main:featured" %}
         </div>
 
+        <span class="title"><a href="{{ path("ltc_blog_entry_index") }}">Table ronde</a></span>
+        {% render "LtcBlogBundle:Blog:smallList" with {"numberOfDocs": 5} %}
+        <a class="all_others" href="{{ path("ltc_blog_entry_index") }}">&gt; autres articles</a>
+
         <div class="home_overview">
             {% render "LtcArticleBundle:Category:overview" %}
         </div>
@@ -27,10 +31,6 @@
         <div class="side_comment">
             {% render "LtcCommentBundle:CommentExtra:recent" %}
         </div>
-
-        <span class="title"><a href="{{ path("ltc_blog_entry_index") }}">Table ronde</a></span>
-        {% render "LtcBlogBundle:Blog:smallList" with {"numberOfDocs": 5} %}
-        <a class="all_others" href="{{ path("ltc_blog_entry_index") }}">&gt; autres articles</a>
 
         <span class="title">Ailleurs</span>
         <a href="{{ photo.url }}"><img src="{{ asset(photo.image|ltc_file|apply_filter("lantenora")) }}" alt="{{ photo.title}}" /></a>

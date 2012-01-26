@@ -144,7 +144,7 @@ class CoreExtension extends Twig_Extension
 
     public function shorten($text, $length = 140)
     {
-        return mb_substr(str_replace("\n", ' ', $this->escape($text)), 0, $length);
+        return mb_substr(str_replace("\n", ' ', $text), 0, $length);
     }
 
     public function escape($string)

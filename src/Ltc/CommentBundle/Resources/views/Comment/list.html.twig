@@ -1,0 +1,25 @@
+{% extends "::base.html.twig" %}
+
+{% block meta_title %}Discussions{% endblock %}
+
+{% block content %}
+
+<div class="row comment_list">
+    <h1 class="title big">Discussions</h1>
+    <a class="comment_rss_link" href="{{ path("ltc_comment_feed") }}"><img alt="Flux RSS" src="/bundles/ltccore/img/rss_icon.jpg?15"> S'abonner aux discussions</a>
+    <div class="nice_list">
+        <ul>
+            {% for comment in comments %}
+            <li>
+                <a href="{{ comment.url }}">
+                    {{ comment.createdAt|ltc_date }}, par <strong class="author_name">{{ comment.authorName|default("Anonyme") }}</strong>
+                </a>
+                <span class="body">{{ comment.body|ltc_shorten(300) }}</span>
+                <a href="{{ comment.url }}">... Lire la suite</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
