@@ -11,6 +11,6 @@
 /web/css
 /web/js
 /web/bundles
-/dump
+/dump*
 /vendor
 .thumbs

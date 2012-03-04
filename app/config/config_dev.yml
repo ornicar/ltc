@@ -22,3 +22,6 @@ monolog:
             type:  stream
             path:  %kernel.logs_dir%/%kernel.environment%.log
             level: info
+
+doctrine_mongodb:
+    default_database: ltc_prod
