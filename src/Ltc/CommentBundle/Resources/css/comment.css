@@ -44,6 +44,9 @@ div.fos_comment_comment_show .metadata a.delete {
     margin-right: 1em;
     font-size: 0.8em;
 }
+div.fos_comment_comment_show .metadata a {
+  color: #808080;
+}
 div.fos_comment_comment_body {
     font-size: 0.9em;
     line-height: 1.5em;
